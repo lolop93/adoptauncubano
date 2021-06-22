@@ -40,10 +40,8 @@
       <path value="$PROJECT_DIR$/src/vendor/doctrine/inflector" />
       <path value="$PROJECT_DIR$/src/vendor/doctrine/migrations" />
       <path value="$PROJECT_DIR$/src/vendor/doctrine/doctrine-migrations-bundle" />
-      <path value="$PROJECT_DIR$/src/vendor/laminas/laminas-eventmanager" />
       <path value="$PROJECT_DIR$/src/vendor/doctrine/common" />
       <path value="$PROJECT_DIR$/src/vendor/webmozart/assert" />
-      <path value="$PROJECT_DIR$/src/vendor/laminas/laminas-zendframework-bridge" />
       <path value="$PROJECT_DIR$/src/vendor/laminas/laminas-code" />
       <path value="$PROJECT_DIR$/src/vendor/friendsofphp/proxy-manager-lts" />
       <path value="$PROJECT_DIR$/src/vendor/symfony/cache-contracts" />
@@ -88,7 +86,9 @@
       <path value="$PROJECT_DIR$/src/vendor/symfony/options-resolver" />
       <path value="$PROJECT_DIR$/src/vendor/symfony/polyfill-intl-icu" />
       <path value="$PROJECT_DIR$/src/vendor/easycorp/easyadmin-bundle" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/polyfill-php81" />
+      <path value="$PROJECT_DIR$/src/vendor/doctrine/deprecations" />
     </include_path>
   </component>
-  <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />
+  <component name="PhpProjectSharedConfiguration" php_language_level="8.0" />
 </project>
