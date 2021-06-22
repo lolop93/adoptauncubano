@@ -84,6 +84,14 @@
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/var-dumper" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/http-foundation" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/framework-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/polyfill-uuid" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/uid" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/intl" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/form" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/translation" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/options-resolver" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/polyfill-intl-icu" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/easycorp/easyadmin-bundle" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

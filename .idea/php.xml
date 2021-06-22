@@ -80,6 +80,14 @@
       <path value="$PROJECT_DIR$/src/vendor/symfony/var-dumper" />
       <path value="$PROJECT_DIR$/src/vendor/symfony/http-foundation" />
       <path value="$PROJECT_DIR$/src/vendor/symfony/framework-bundle" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/polyfill-uuid" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/uid" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/intl" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/form" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/translation" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/options-resolver" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/polyfill-intl-icu" />
+      <path value="$PROJECT_DIR$/src/vendor/easycorp/easyadmin-bundle" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />
