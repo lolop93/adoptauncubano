@@ -90,8 +90,12 @@
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/options-resolver" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/polyfill-intl-icu" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/easycorp/easyadmin-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/monolog-bridge" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/monolog-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/polyfill-php81" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/doctrine/deprecations" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/monolog/monolog" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/debug-bundle" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
