@@ -92,6 +92,8 @@
       <path value="$PROJECT_DIR$/src/vendor/doctrine/deprecations" />
       <path value="$PROJECT_DIR$/src/vendor/monolog/monolog" />
       <path value="$PROJECT_DIR$/src/vendor/symfony/debug-bundle" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/webpack-encore-bundle" />
+      <path value="$PROJECT_DIR$/src/vendor/twbs/bootstrap" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.0" />
