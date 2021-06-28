@@ -8,30 +8,41 @@
 
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .vl {
+        border-left: 3px solid white;
+        height: auto;
+        margin: 0 30px;
+    }
+
 </style>
+<div style="background-size: cover;background-repeat: no-repeat; background-image: url({{ asset('images/mujerbesadora.jpeg') }})">
+    <div class="example-wrapper">
+        <h1>Hello {{ controller_name }}! ✅</h1>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+        This friendly message issym
+        <ul>
+            <li>Your controller at <code><a href="{{ 'C:/Users/Lolito/Documents/proyecto/src/src/Controller/IndexController.php'|file_link(0) }}">src/Controller/IndexController.php</a></code></li>
+            <li>Your template at <code><a href="{{ 'C:/Users/Lolito/Documents/proyecto/src/templates/index/index.html.twig'|file_link(0) }}">templates/index/index.html.twig</a></code></li>
+        </ul>
+    </div>
 
-    This friendly message issym
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/Lolito/Documents/proyecto/src/src/Controller/IndexController.php'|file_link(0) }}">src/Controller/IndexController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/Lolito/Documents/proyecto/src/templates/index/index.html.twig'|file_link(0) }}">templates/index/index.html.twig</a></code></li>
-    </ul>
-</div>
-
-{% endblock %}
-
-{% block footer %}
-    <div class="container-fluid">
+    <div class="container-fluid" style="background-color:rgba(0, 0, 0, 0.2);">
         <div class="row">
             <div class="col-6">
-                <div class="row">
-                    <div class="col-6"><img class="img-fluid" src="{{ asset('images/Logofooter.png') }}" ></div>
+                <div class="row-fluid p-2 d-flex  ">
+                    <div class="col-6 "><img class="img-fluid " src="{{ asset('images/Logofooter.png') }}" ></div>
+                    <div class="vl"></div>
                     <div class="col-6"></div>
                 </div>
             </div>
             <div class="col-6"></div>
         </div>
     </div>
+</div>
+
+
+{% endblock %}
+
+{% block footer %}
+
 {% endblock %}
