@@ -2,6 +2,31 @@
 
 {% block title %}Hello IndexController!{% endblock %}
 
+{% block header %}
+
+
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="/" class="d-flex align-items-center p-2 mb-2 mb-lg-0 text-white text-decoration-none">
+                <img class=" img " style="max-width: 12em" src="{{ asset('images/Logofooter.png') }}" ></img>
+            </a>
+
+            <ul class="nav col-12 col-lg-5 ms-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
+                <li><a href="#" class="nav-link px-2 text-white">Información</a></li>
+                <li><a href="#" class="nav-link px-2 text-white">Ayuda</a></li>
+                <li><a href="#" class="nav-link px-2 text-white">Sobre nosotros</a></li>
+            </ul>
+
+            <div class="text-end">
+                <button type="button" class="btn btn-outline-light me-2">Login</button>
+                <button  style="background-color: #e86362 " type="button" class="btn ">Sign-up</button>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
 
 {% block body %}
 
@@ -15,7 +40,7 @@
             margin: 0px 0px 0px 10px;
         }
         body{
-
+            background-size: cover;
             background-position: center 15%;
             background-repeat: no-repeat;
             background-image: url({{ asset('images/fondoIndex.png') }});
@@ -30,11 +55,11 @@
             margin-left: 1em;
         }
         /*Media query de boostrap*/
-        @media screen and (min-width: 1200px) {
+        /*@media screen and (min-width: 1200px) {
             body{
                 background-size: cover;
             }
-        }
+        }*/
         .footer-links-wrapper{
             overflow: hidden;
             position: relative;
@@ -97,32 +122,6 @@
 
 {% endblock %}
 
-{% block footer %}
-    <div id="footer1" class="container-fluid " style="background-color:rgba(0, 0, 0, 0.2);">
-        <div class="row" style="display: flex; flex-direction: row;justify-content: space-between; align-items: center;">
-            <div class="col-lg-6 col-12 ">
-                <div class="row-fluid p-2 d-flex" >
-                    <div class="col "><img class="img-fluid " src="{{ asset('images/Logofooter.png') }}" ></div>
-                    <div class="col-1  " style="display: flex; flex-direction: row;justify-content: flex-end; align-items: center;">
-                        <div class="vl" ></div>
-                    </div>
-                    <div class="col " style="display: flex; flex-direction: row;justify-content: center; align-items: center;">
-                        <div class="socialiconsFooter" style="">
-                            <img src="{{ asset('images/TwtIcon.png') }}">
-                            <img src="{{ asset('images/InstaIcon.png') }}">
-                            <img src="{{ asset('images/fbIcon.png') }}">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-12  footer-links-wrapper">
-                <ul class="footer-links">
-                    <li><a href="localhost/contacto">Contacto</a></li>
-                    <li><a href="localhost/contacto">Condiciones y privacidad</a></li>
-                    <li><a href="localhost/contacto">©Copyright JoseCubano 2021</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-{% endblock %}
+
+
 

@@ -21,10 +21,44 @@
                 See note below about the "defer" attribute -->
         {% endblock %}
     </head>
+
+    <header class="p-4  text-white p-lg-1" style="background-color:rgba(0, 0, 0, 0.4);">
+        {% block header %}
+
+        {% endblock %}
+    </header>
+
     <body>
         {% block body %}{% endblock %}
         <footer>
-            {% block footer %}  {% endblock %}
+            {% block footer %}
+                <div id="footer1" class="container-fluid " style="background-color:rgba(0, 0, 0, 0.2);">
+                    <div class="row" style="display: flex; flex-direction: row;justify-content: space-between; align-items: center;">
+                        <div class="col-lg-6 col-12 ">
+                            <div class="row-fluid p-2 d-flex" >
+                                <div class="col "><img class="img-fluid "  style="max-width: 12em" src="{{ asset('images/Logofooter.png') }}" ></div>
+                                <div class="col-1  " style="display: flex; flex-direction: row;justify-content: flex-end; align-items: center;">
+                                    <div class="vl" ></div>
+                                </div>
+                                <div class="col " style="display: flex; flex-direction: row;justify-content: center; align-items: center;">
+                                    <div class="socialiconsFooter" style="">
+                                        <img src="{{ asset('images/TwtIcon.png') }}">
+                                        <img src="{{ asset('images/InstaIcon.png') }}">
+                                        <img src="{{ asset('images/fbIcon.png') }}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-12  footer-links-wrapper">
+                            <ul class="footer-links">
+                                <li><a href="localhost/contacto">Contacto</a></li>
+                                <li><a href="localhost/contacto">Condiciones y privacidad</a></li>
+                                <li><a href="localhost/contacto">©Copyright JoseCubano 2021</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            {% endblock %}
         </footer>
     </body>
 
