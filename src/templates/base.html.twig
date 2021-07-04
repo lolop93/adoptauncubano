@@ -35,9 +35,9 @@
                 <div id="footer1" class="container-fluid " style="background-color:rgba(0, 0, 0, 0.2);">
                     <div class="row" style="display: flex; flex-direction: row;justify-content: space-between; align-items: center;">
                         <div class="col-lg-6 col-12 ">
-                            <div class="row-fluid p-2 d-flex" >
-                                <div class="col-1 "><img class="img-fluid "  style="max-width: 12em" src="{{ asset('images/Logos/Logofooter.png') }}" ></div>
-                                <div class="col-8" style="display: flex; flex-direction: row;justify-content: center; align-items: center;">
+                            <div class="row p-2 d-flex" >
+                                <div class="col-12 col-lg-6" style="display: flex; flex-direction: row;justify-content: center; align-items: center;"><img class="img-fluid "  style=" max-width: 12em" src="{{ asset('images/Logos/Logofooter.png') }}" ></div>
+                                <div class="col-12 col-lg-6 " style="display: flex; flex-direction: row;justify-content: center; align-items: center;">
                                     <div class="socialiconsFooter" style="">
                                         <img class="footericon" src="{{ asset('images/icons/TwtIcon.png') }}">
                                         <img class="footericon" src="{{ asset('images/icons/InstaIcon.png') }}">
@@ -55,6 +55,56 @@
                         </div>
                     </div>
                 </div>
+
+                <style>
+                    .socialiconsFooter img{
+                        width: 1.5vw;
+                        height: auto;
+                        margin-left:2em;
+                    }
+                    /*Media query de boostrap*/
+                    /*@media screen and (min-width: 1200px) {
+                        body{
+                            background-size: cover;
+                        }
+                    }*/
+                    .footer-links-wrapper{
+                        overflow: hidden;
+                        position: relative;
+                        top: 8px;
+                    }
+                    .footer-links{
+                        display: flex;
+                        flex-direction: row;
+                        flex-wrap: wrap;
+                        justify-content: space-between;
+                    }
+                    .footer-links li{
+                        flex-grow: 1;
+                        flex-basis: auto;
+                        margin: .25em 0;
+                        padding: 0 1em;
+                        text-align: center;
+                        border-left: 1px solid #ffffff;
+                        letter-spacing: 1px;
+                        list-style-type: none;
+                        font-size: 0.8rem;
+                    }
+                    .footer-links li a{
+                        color: #ffffff;
+                        text-decoration: none;
+                        font-weight: normal;
+                        transition: .2s ease-out;
+                    }
+                    #footer-links-nonborder{
+                        border-left: none;
+                    }
+                    #footer1{
+                        position: absolute;
+                        bottom: 0;
+                    }
+
+                </style>
             {% endblock %}
         </footer>
     </body>
