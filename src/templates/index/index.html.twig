@@ -8,19 +8,16 @@
     <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
             <a href="/" class="d-flex align-items-center p-2 mb-2 mb-lg-0 text-white text-decoration-none">
-                <img class=" img " style="max-width: 12em" src="{{ asset('images/Logofooter.png') }}" ></img>
+                <img class=" img " style="margin-left: 0; max-width: 12em" src="{{ asset('images/Logos/LogoHeader.png') }}" ></img>
             </a>
 
             <ul class="nav col-12 col-lg-5 ms-lg-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
                 <li><a href="#" class="nav-link px-2 text-white">Información</a></li>
                 <li><a href="#" class="nav-link px-2 text-white">Ayuda</a></li>
-                <li><a href="#" class="nav-link px-2 text-white">Sobre nosotros</a></li>
             </ul>
 
             <div class="text-end">
-                <button type="button" class="btn btn-outline-light me-2">Login</button>
-                <button  style="background-color: #e86362 " type="button" class="btn ">Sign-up</button>
+                <button  style="background-color: #e86362; color: white; border-radius: 10px; " type="button" class="btn ">Iniciar Sesión</button>
             </div>
         </div>
     </div>
@@ -50,9 +47,9 @@
 
         }
         .socialiconsFooter img{
-            width: 3vw;
+            width: 1.5vw;
             height: auto;
-            margin-left: 1em;
+            margin-left:2em;
         }
         /*Media query de boostrap*/
         /*@media screen and (min-width: 1200px) {
@@ -81,13 +78,15 @@
             letter-spacing: 1px;
             list-style-type: none;
             font-size: 0.8rem;
-            text-transform: uppercase;
         }
         .footer-links li a{
             color: #ffffff;
             text-decoration: none;
             font-weight: normal;
             transition: .2s ease-out;
+        }
+        #footer-links-nonborder{
+            border-left: none;
         }
 
         body{
