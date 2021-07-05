@@ -22,13 +22,14 @@
         {% endblock %}
     </head>
 
-    <header class="p-4  text-white p-lg-1" style="background-color:rgba(0, 0, 0, 0.4);">
-        {% block header %}
 
-        {% endblock %}
-    </header>
 
     <body>
+        <header class="p-lg-2   text-white p-lg-1" style="background-color:rgba(0, 0, 0, 0.4);">
+            {% block header %}
+
+            {% endblock %}
+        </header>
         {% block body %}{% endblock %}
         <footer>
             {% block footer %}
@@ -36,7 +37,7 @@
                     <div class="row" style="display: flex; flex-direction: row;justify-content: space-between; align-items: center;">
                         <div class="col-lg-6 col-12 ">
                             <div class="row p-2 d-flex" >
-                                <div class="col-12 col-lg-6" style="display: flex; flex-direction: row;justify-content: start; align-items: center;"><img class="img-fluid "  style=" max-width: 12em" src="{{ asset('images/Logos/Logofooter.png') }}" ></div>
+                                <div class="col-12 col-lg-6 justify-content-lg-start justify-content-center" style="display: flex; flex-direction: row; align-items: center;"><img class="img-fluid "  style=" max-width: 12em" src="{{ asset('images/Logos/Logofooter.png') }}" ></div>
                                 <div class="col-12 col-lg-6 " style="display: flex; flex-direction: row;justify-content: center; align-items: center;">
                                     <div class="socialiconsFooter" style="">
                                         <img class="footericon" src="{{ asset('images/icons/TwtIcon.png') }}">

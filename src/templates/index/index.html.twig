@@ -6,18 +6,18 @@
 
 
     <div class="container-fluid">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <div class="d-flex flex-wrap align-items-center  justify-content-lg-start order-lg-1 order-1">
             <a href="/" class="d-flex align-items-center p-2 mb-2 mb-lg-0 text-white text-decoration-none">
-                <img class=" img " style="margin-left: 0; max-width: 12em" src="{{ asset('images/Logos/LogoHeader.png') }}" ></img>
+                <img class=" img " style="margin-left: 0; max-width: 10em" src="{{ asset('images/Logos/LogoHeader.png') }}" ></img>
             </a>
 
-            <ul class="nav col-12 col-lg-5 ms-lg-auto mb-2 justify-content-center mb-md-0">
+            <ul class="nav col-12 col-lg-5 ms-lg-auto mb-2 justify-content-center mb-md-0 order-lg-2 order-3">
                 <li><a href="#" class="nav-link px-2 text-white">Información</a></li>
                 <li><a href="#" class="nav-link px-2 text-white">Ayuda</a></li>
             </ul>
 
-            <div class="text-end">
-                <button  style="background-color: #e86362; color: white; border-radius: 10px; " type="button" class="btn ">Iniciar Sesión</button>
+            <div class="text-end order-lg-3 order-2 ms-auto ms-lg-auto">
+                <button  style="background-color: #e86362; color: white; border-radius: 10px; " type="button" class="btn btn-sm">Iniciar Sesión</button>
             </div>
         </div>
     </div>
@@ -27,10 +27,17 @@
 
 {% block body %}
 
+    <div class="container " id="registroIndex">
+        <div class="d-flex  align-items-center justify-content-center flex-column">
+            <div class="col align-self-center"><p class="text-white">Sal y encuentra el amor</p></div>
+            <div class="col align-self-center"><button  style="background-color: #e86362; color: white; border-radius: 10px; " type="button" class="btn ">Registrarse</button></div>
+
+        </div>
+    </div>
+
     <style>
 
-        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+
         .vl {
             border-left: 3px solid white;
             height: 3vw;
@@ -46,6 +53,9 @@
 
         body{
             height: 100vh;
+        }
+        #registroIndex{
+            padding-top: 20%;
         }
     </style>
 
@@ -63,8 +73,6 @@
     </div>
     #}
 
-    <div class="main-wrapper">
-    </div>
 
 
 
