@@ -26,7 +26,7 @@
 
     <body>
 
-        <header class="p-lg-2   text-white p-lg-1" style="background-color:rgba(0, 0, 0, 0.4);">
+        <header class="p-lg-2   text-white p-lg-1" style="background-color:rgba(0, 0, 0, 0.8);">
             {% block header %}
                 <div class="container-fluid">
                     <div class="d-flex flex-wrap align-items-center  justify-content-lg-start order-lg-1 order-1">
@@ -34,16 +34,24 @@
                             <img class=" img " style="margin-left: 0; max-width: 10em" src="{{ asset('images/Logos/LogoHeader.png') }}" ></img>
                         </a>
 
-                        <ul class="nav col-12 col-lg-5 ms-lg-auto mb-4 justify-content-center  mb-lg-0  order-lg-2 order-3 justify-content-evenly">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-chat-left-fill" viewBox="0 0 16 16">
-                                <path d="M2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
-                                <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-                                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                            </svg>
+                        <ul class="nav col-12 col-lg-5 ms-lg-auto mb-4 mt-3 justify-content-center  mb-lg-0 mt-lg-0 order-lg-2 order-3 justify-content-evenly align-items-center">
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-chat-left-fill" viewBox="0 0 16 16">
+                                    <path d="M2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                                </svg>
+                            </div>
+
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
+                                    <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
+                                </svg>
+                            </div>
+
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                </svg>
+                            </div>
                         </ul>
 
                         <div class="order-lg-3 order-2 ms-auto ms-lg-auto">
@@ -59,10 +67,10 @@
         {% block body %}
             <style>
                 body{
-                    background-size: cover;
-                    background-position: center 15%;
-                    background-repeat: no-repeat;
-                    background-image: url({{ asset('images/fondoIndex.png') }});
+
+
+                    background-repeat: repeat;
+                    background-image: url({{ asset('images/pattern.png') }});
                 }
 
 
@@ -74,7 +82,7 @@
         {% endblock %}
         <footer>
             {% block footer %}
-                <div id="footer1" class="container-fluid " style="background-color:rgba(0, 0, 0, 0.2);">
+                <div id="footer1" class="container-fluid " style="background-color:rgba(0, 0, 0, 0.6);">
                     <div class="row" style="display: flex; flex-direction: row;justify-content: space-between; align-items: center;">
                         <div class="col-lg-6 col-12 ">
                             <div class="row p-2 d-flex" >
