@@ -7,7 +7,7 @@ services:
     restart: always
     environment:
         POSTGRES_PASSWORD: password
-        POSTGRES_DB: dbtest
+        POSTGRES_DB: testdb
     ports:
         - 15432:5432
 
