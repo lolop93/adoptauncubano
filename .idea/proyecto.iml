@@ -82,14 +82,6 @@
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/var-dumper" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/http-foundation" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/framework-bundle" />
-      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/polyfill-uuid" />
-      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/uid" />
-      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/intl" />
-      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/form" />
-      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/translation" />
-      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/options-resolver" />
-      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/polyfill-intl-icu" />
-      <excludeFolder url="file://$MODULE_DIR$/src/vendor/easycorp/easyadmin-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/monolog-bridge" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/monolog-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/polyfill-php81" />
@@ -98,6 +90,13 @@
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/debug-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/webpack-encore-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/twbs/bootstrap" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/translation" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/intl" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/form" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/polyfill-intl-icu" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/options-resolver" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/easycorp/easyadmin-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/pagerfanta/pagerfanta" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

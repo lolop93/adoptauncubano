@@ -25,7 +25,7 @@ class User implements UserInterface
     private $username;
 
     /**
-     * @ORM\Column(type="json")
+     * @ORM\Column(type="json", nullable=true)
      */
     private $roles = [];
 
@@ -37,15 +37,19 @@ class User implements UserInterface
 
     /**
      * @ORM\OneToOne(targetEntity=Galeria::class, inversedBy="usuario", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $galeria;
 
     /**
      * @ORM\OneToOne(targetEntity=UserAttributes::class, inversedBy="usuario", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $atributos;
+
+    public function __toString(){
+        return $this->id .' '.$this->username;
+    }
 
     public function getId(): ?int
     {

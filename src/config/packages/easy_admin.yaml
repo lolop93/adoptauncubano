@@ -1,0 +1,46 @@
+easy_admin:
+    site_name: 'Adopta Un Cubano S.L.'
+
+    design:
+
+        menu:
+            - { route: 'homepage' , label: 'Volver al sitio', icon: 'home' }
+            - { entity: 'Galeria' , label: 'Galeria', icon: 'gallery' }
+            - { entity: 'UserAttributes' , label: 'Atributos', icon: 'attributes' }
+            - { entity: 'User' , label: 'Usuario', icon: 'user' }
+    entities:
+
+        Galeria:
+            class: App\Entity\Galeria
+
+            list:
+                fields:
+                    - id
+                    - { property: 'foto_perfil', type: 'string' }
+                    - { property: 'galeria', type: 'array' }
+                    - { property: 'usuario', type: 'integer' }
+
+        UserAttributes:
+            class: App\Entity\UserAttributes
+
+            list:
+                fields:
+                    - id
+                    - esCubano
+                    - { property: 'color_pelo', type: 'string' }
+                    - { property: 'usuario', type: 'integer' }
+        User:
+            class: App\Entity\User
+
+            list:
+                fields:
+                    - id
+                    - username
+                    - { property: 'roles', type: 'json'}
+                    - password
+                    - { property: 'galeria', type: 'integer'}
+                    - { property: 'atributos', type: 'integer'}
+
+
+
+

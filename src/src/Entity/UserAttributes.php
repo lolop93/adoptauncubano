@@ -32,6 +32,15 @@ class UserAttributes
      */
     private $usuario;
 
+    /**
+     * @param mixed $id
+     */
+
+
+    public function __toString(){
+        return $this->id ;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
