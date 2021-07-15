@@ -26,6 +26,7 @@
 {% endblock %}
 
 {% block body %}
+    {{ parent() }}
 
     <div class="container " id="registroIndex">
         <div class="d-flex  align-items-center justify-content-center flex-column">
@@ -37,12 +38,6 @@
 
     <style>
 
-
-        .vl {
-            border-left: 3px solid white;
-            height: 3vw;
-            margin: 0px 0px 0px 10px;
-        }
         body{
             background-size: cover;
             background-position: center 15%;
@@ -51,29 +46,10 @@
         }
 
 
-        body{
-            height: 100vh;
-        }
         #registroIndex{
             padding-top: 20%;
         }
     </style>
-
-    {# nota: inhabilitado en la plantilla porque ya no se utiliza
-            Lo dejo de ejemplo por si se olvida algo
-
-    <div class="example-wrapper">
-        <h1>Hello {{ controller_name }}! ✅</h1>
-
-        This friendly message issym
-        <ul>
-            <li>Your controller at <code><a href="{{ 'C:/Users/Lolito/Documents/proyecto/src/src/Controller/IndexController.php'|file_link(0) }}">src/Controller/IndexController.php</a></code></li>
-            <li>Your template at <code><a href="{{ 'C:/Users/Lolito/Documents/proyecto/src/templates/index/index.html.twig'|file_link(0) }}">templates/index/index.html.twig</a></code></li>
-        </ul>
-    </div>
-    #}
-
-
 
 
 {% endblock %}

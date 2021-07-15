@@ -73,26 +73,24 @@
                 </div>
             {% endblock %}
         </header>
-        {% block body %}
-            <style>
+        <div class="pt-3 pb-3 main-content"  >
+            {% block body %}
+                <style>
 
-                .buscador-header{
-                    border-radius: 2.25rem;
-                }
-                body{
+                    .buscador-header{
+                        border-radius: 2.25rem;
+                    }
+                    body{
 
-                    background-size: 500px 500px;
-                    background-repeat: repeat;
-                    background-image: url({{ asset('images/pattern_1.0.png') }});
-                }
+                        background-size: 500px 500px;
+                        background-repeat: repeat;
+                        background-image: url({{ asset('images/pattern_1.0.png') }});
+                    }
 
+                </style>
 
-                body{
-                    height: 100vh;
-                }
-            </style>
-
-        {% endblock %}
+            {% endblock %}
+        </div>
         <footer>
             {% block footer %}
                 <div id="footer1" class="container-fluid " style="background-color:rgba(0, 0, 0, 0.6);">
@@ -163,9 +161,38 @@
                         border-left: none;
                     }
                     #footer1{
-                        position: absolute;
-                        bottom: 0;
+
                     }
+                    html{
+                        height: 100%;
+                    }
+
+                    body{
+                        display: flex;
+                        flex-direction: column;
+                        height: 100%;
+                    }
+                    header{
+                        /* We want the header to have a static height,
+                        it will always take up just as much space as it needs.  */
+                        /* 0 flex-grow, 0 flex-shrink, auto flex-basis */
+                        flex: 0 0 auto;
+                    }
+
+                    .main-content{
+                        /* By setting flex-grow to 1, the main content will take up
+                        all of the remaining space on the page.
+                        The other elements have flex-grow: 0 and won't contest the free space. */
+                        /* 1 flex-grow, 0 flex-shrink, auto flex-basis */
+                        flex: 1 0 auto;
+                    }
+
+                    footer{
+                        /* Like the header, the footer will have a static height - it shouldn't grow or shrink.  */
+                        /* 0 flex-grow, 0 flex-shrink, auto flex-basis */
+                        flex: 0 0 auto;
+                    }
+
 
                 </style>
             {% endblock %}
