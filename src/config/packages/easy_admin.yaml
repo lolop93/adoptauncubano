@@ -18,7 +18,7 @@ easy_admin:
                     - id
                     - { property: 'foto_perfil', type: 'string' }
                     - { property: 'galeria', type: 'array' }
-                    - { property: 'usuario', type: 'integer' }
+                    - { property: 'usuario', type: 'text' }
 
         UserAttributes:
             class: App\Entity\UserAttributes
@@ -28,7 +28,7 @@ easy_admin:
                     - id
                     - esCubano
                     - { property: 'color_pelo', type: 'string' }
-                    - { property: 'usuario', type: 'integer' }
+                    - { property: 'usuario', type: 'text' }
         User:
             class: App\Entity\User
 
@@ -38,8 +38,8 @@ easy_admin:
                     - username
                     - { property: 'roles', type: 'json'}
                     - password
-                    - { property: 'galeria', type: 'integer'}
-                    - { property: 'atributos', type: 'integer'}
+                    - { property: 'galeria', type: 'text'}
+                    - { property: 'atributos', type: 'text'}
 
 
 
