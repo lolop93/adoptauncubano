@@ -16,5 +16,11 @@ import './bootstrap';
 
 
 // loads the jquery package from node_modules
-import jquery from 'jquery';
+//import jquery from 'jquery';
 
+import $ from 'jquery';
+
+
+$(document).ready(function() {
+    console.log("Prueba 1");
+});
