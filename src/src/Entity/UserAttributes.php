@@ -33,6 +33,16 @@ class UserAttributes
     private $usuario;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $nombre;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $apellido1;
+
+    /**
      * @param mixed $id
      */
 
@@ -83,6 +93,30 @@ class UserAttributes
         }
 
         $this->usuario = $usuario;
+
+        return $this;
+    }
+
+    public function getNombre(): ?string
+    {
+        return $this->nombre;
+    }
+
+    public function setNombre(string $nombre): self
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    public function getApellido1(): ?string
+    {
+        return $this->apellido1;
+    }
+
+    public function setApellido1(string $apellido1): self
+    {
+        $this->apellido1 = $apellido1;
 
         return $this;
     }
