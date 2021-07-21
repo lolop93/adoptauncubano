@@ -23,12 +23,13 @@ class HomepageController extends AbstractController
 
         $atributos = $userAttributesRepository->findAll();
 
-
+        $login = $this->get('security.token_storage')->getToken()->getUser();
 
         return $this->render('homepage/index.html.twig', [
             'users' => $users,
             'galerias' => $galerias,
             'atributos' => $atributos,
+            'login' => $login,
         ]);
     }
 
