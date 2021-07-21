@@ -6,7 +6,7 @@
 
 {% block body %}
     {{ parent() }}
-    
+    {{  dump() }}
     <div class="container">
         <div class="card">
             <img src="{{ asset('images/imagenes_random/bannerCoche.PNG') }}">
@@ -19,12 +19,12 @@
                 <div class="carousel-item active">
                     <div class="container gridUsers p-4 align-items-center justify-content-center bg-white " style="border-radius: 10px; " >
                         {% if users|length > 0 %}
-                            {% for atributo in atributos|slice(0, 6) %}
+                            {% for user in users|slice(0, 6) %}
                                 <article class="">
-                                    <div class="imagenUser" style="background-image: url({{ asset('images/Perfiles/pexels-gabriel-santos-fotografia-2014649.jpg') }});"></div>
+                                    <div class="imagenUser" style="background-image: url({{ asset('images/Perfiles/' ~ user.galeria.getFotoPerfil) }});"></div>
                                     <div class="mt-2 mb-1 row">
                                         <div class="col-8">
-                                            <h5 class="card-title "  style="font-size:1.7vw;" >{{ atributo.nombre }}</h5>
+                                            <h5 class="card-title "  style="font-size:1.7vw;" >{{ user.atributos.nombre }}</h5>
                                             <p class="card-text " style="font-size:1.2vw;">Nacionalidad</p>
                                             <p class="card-text " style="font-size:1.2vw;">Edad</p>
                                         </div>
