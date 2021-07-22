@@ -23,12 +23,12 @@
                                 <div class="container-fluid contenedor-grid">
                                     <div class="imagenUser " style="background-image: url({{ asset('images/Perfiles/' ~ user.galeria.getFotoPerfil) }});"></div>
                                     <div class="mt-2 mb-1 row">
-                                        <div class="col-8">
+                                        <div class="col-lg-8 col-12">
                                             <h5 class=" text-start " >{{ user.atributos.nombre }}</h5>
                                             <p class=" card-text text-start" >Nacionalidad</p>
                                             <p class="card-text text-start " >Edad</p>
                                         </div>
-                                        <div class="col-4 text-end">
+                                        <div class="col-lg-4 col-12 text-end">
                                             <i class="bi bi-heart-fill" ></i>
                                             <i class="bi bi-chat-left-fill" ></i>
                                         </div>
@@ -48,12 +48,12 @@
                                 <div class="container-fluid contenedor-grid">
                                     <div class="imagenUser" style="background-image: url({{ asset('images/Perfiles/pexels-edu-carvalho-2050994.jpg') }});" ></div>
                                     <div class="mt-2 mb-1 row">
-                                        <div class="col-8">
+                                        <div class="col-lg-8 col-12">
                                             <h5 class="  text-start" >{{ atributo1.nombre }}</h5>
                                             <p class="card-text text-start" >Nacionalidad</p>
                                             <p class="card-text text-start" >Edad</p>
                                         </div>
-                                        <div class="col-4 text-end">
+                                        <div class="col-lg-4 col-12 text-end">
                                             <i class="bi bi-heart-fill" ></i>
                                             <i class="bi bi-chat-left-fill" ></i>
                                         </div>
@@ -73,12 +73,12 @@
                                 <div class="container-fluid contenedor-grid">
                                     <div class="imagenUser" style="background-image: url({{ asset('images/Perfiles/pexels-daniel-xavier-1239291.jpg') }});" ></div>
                                     <div class="mt-2 mb-1 row">
-                                        <div class="col-8">
+                                        <div class="col-lg-8 col-12">
                                             <h5 class=" text-start" >{{ atributo2.nombre }}</h5>
                                             <p class="card-text text-start" >Nacionalidad</p>
                                             <p class="card-text text-start" >Edad</p>
                                         </div>
-                                        <div class="col-4 text-end">
+                                        <div class="col-lg-4 col-12 text-end">
                                             <i class="bi bi-heart-fill" ></i>
                                             <i class="bi bi-chat-left-fill" ></i>
                                         </div>
@@ -109,8 +109,8 @@
         .gridUsers{
             display: grid;
             /*gap: 0.8em;*/
-            column-gap: 3vw;
-            grid-template-columns: 25% 25% 25%;
+            /*column-gap: 3vw;*/
+            grid-template-columns: 33% 33% 33%;
 
         }
         .imagenUser {
