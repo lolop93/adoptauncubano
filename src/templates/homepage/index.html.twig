@@ -20,21 +20,21 @@
                     <div class="container gridUsers p-4 align-items-center justify-content-center bg-white " style="border-radius: 10px; " >
                         {% if users|length > 0 %}
                             {% for user in users|slice(0, 6) %}
-                                <article class="">
+                                <div class="container-fluid">
                                     <div class="imagenUser" style="background-image: url({{ asset('images/Perfiles/' ~ user.galeria.getFotoPerfil) }});"></div>
                                     <div class="mt-2 mb-1 row">
                                         <div class="col-8">
-                                            <h5 class="card-title "  style="font-size:1.7vw;" >{{ user.atributos.nombre }}</h5>
-                                            <p class="card-text " style="font-size:1.2vw;">Nacionalidad</p>
-                                            <p class="card-text " style="font-size:1.2vw;">Edad</p>
+                                            <h5 class="text-start " >{{ user.atributos.nombre }}</h5>
+                                            <p class=" text-start" >Nacionalidad</p>
+                                            <p class="text-start " >Edad</p>
                                         </div>
                                         <div class="col-4">
-                                            <i class="bi bi-heart-fill" style="font-size:1.2vw;"></i>
-                                            <i class="bi bi-chat-left-fill" style="font-size:1.2vw;"></i>
+                                            <i class="bi bi-heart-fill" ></i>
+                                            <i class="bi bi-chat-left-fill" ></i>
                                         </div>
 
                                     </div>
-                                </article>
+                                </div>
                             {% endfor %}
                         {% else %}
                             <div>No hay usuarios disponibles</div>
@@ -45,21 +45,21 @@
                     <div class="container gridUsers p-4 align-items-center justify-content-center bg-white " style="border-radius: 10px; " >
                         {% if users|length > 0 %}
                             {% for atributo1 in atributos|slice(0, 6) %}
-                                <article class="">
+                                <div class="container">
                                     <div class="imagenUser" style="background-image: url({{ asset('images/Perfiles/pexels-edu-carvalho-2050994.jpg') }});" ></div>
                                     <div class="mt-2 mb-1 row">
                                         <div class="col-8">
-                                            <h5 class="card-title "  style="font-size:1.7vw;" >{{ atributo1.nombre }}</h5>
-                                            <p class="card-text " style="font-size:1.2vw;">Nacionalidad</p>
-                                            <p class="card-text " style="font-size:1.2vw;">Edad</p>
+                                            <h5 class="card-title " >{{ atributo1.nombre }}</h5>
+                                            <p class="card-text " >Nacionalidad</p>
+                                            <p class="card-text " >Edad</p>
                                         </div>
                                         <div class="col-4">
-                                            <i class="bi bi-heart-fill" style="font-size:1.2vw;"></i>
-                                            <i class="bi bi-chat-left-fill" style="font-size:1.2vw;"></i>
+                                            <i class="bi bi-heart-fill" ></i>
+                                            <i class="bi bi-chat-left-fill" ></i>
                                         </div>
 
                                     </div>
-                                </article>
+                                </div>
                             {% endfor %}
                         {% else %}
                             <div>No hay usuarios disponibles</div>
@@ -70,21 +70,21 @@
                     <div class="container gridUsers p-4 align-items-center justify-content-center bg-white " style="border-radius: 10px; " >
                         {% if users|length > 0 %}
                             {% for atributo2 in atributos|slice(0, 6) %}
-                                <article class="">
+                                <div class="container">
                                     <div class="imagenUser" style="background-image: url({{ asset('images/Perfiles/pexels-daniel-xavier-1239291.jpg') }});" ></div>
                                     <div class="mt-2 mb-1 row">
                                         <div class="col-8">
-                                            <h5 class="card-title "  style="font-size:1.7vw;" >{{ atributo2.nombre }}</h5>
-                                            <p class="card-text " style="font-size:1.2vw;">Nacionalidad</p>
-                                            <p class="card-text " style="font-size:1.2vw;">Edad</p>
+                                            <h5 class="card-title " >{{ atributo2.nombre }}</h5>
+                                            <p class="card-text " >Nacionalidad</p>
+                                            <p class="card-text " >Edad</p>
                                         </div>
                                         <div class="col-4">
-                                            <i class="bi bi-heart-fill" style="font-size:1.2vw;"></i>
-                                            <i class="bi bi-chat-left-fill" style="font-size:1.2vw;"></i>
+                                            <i class="bi bi-heart-fill" ></i>
+                                            <i class="bi bi-chat-left-fill" ></i>
                                         </div>
 
                                     </div>
-                                </article>
+                                </div>
                             {% endfor %}
                         {% else %}
                             <div>No hay usuarios disponibles</div>
@@ -109,8 +109,8 @@
         .gridUsers{
             display: grid;
             /*gap: 0.8em;*/
-            column-gap: 5vw;
-            grid-template-columns: 20% 20% 20%;
+            column-gap: 3vw;
+            grid-template-columns: 25% 25% 25%;
 
         }
         .imagenUser {
@@ -120,6 +120,16 @@
             background-position: center 15%;
             background-repeat: no-repeat;
             border-radius: 10px;
+        }
+
+        p{
+            font-size: 1.2vw;
+        }
+        h5{
+            font-size: 1.3vw;
+        }
+        i{
+            font-size: 1.2vw;
         }
 
     </style>
