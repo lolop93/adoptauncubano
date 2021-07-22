@@ -21,6 +21,11 @@ import './bootstrap';
 import $ from 'jquery';
 
 
+//importamos nuestro custom js
+
+import './custom.js';
+
+
 $(document).ready(function() {
     console.log("Prueba 1");
 });

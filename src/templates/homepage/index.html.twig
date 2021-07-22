@@ -21,14 +21,14 @@
                         {% if users|length > 0 %}
                             {% for user in users|slice(0, 6) %}
                                 <div class="container-fluid contenedor-grid">
-                                    <div class="imagenUser " style="background-image: url({{ asset('images/Perfiles/' ~ user.galeria.getFotoPerfil) }});"></div>
+                                    <div class="imagenUser mx-auto " style="background-image: url({{ asset('images/Perfiles/' ~ user.galeria.getFotoPerfil) }});"></div>
                                     <div class="mt-2 mb-1 row">
-                                        <div class="col-lg-8 col-12">
+                                        <div class="col-lg-7 col-12">
                                             <h5 class=" text-start " >{{ user.atributos.nombre }}</h5>
                                             <p class=" card-text text-start" >Nacionalidad</p>
                                             <p class="card-text text-start " >Edad</p>
                                         </div>
-                                        <div class="col-lg-4 col-12 text-end">
+                                        <div class="col-lg-5 col-12 text-end">
                                             <i class="bi bi-heart-fill" ></i>
                                             <i class="bi bi-chat-left-fill" ></i>
                                         </div>
@@ -46,14 +46,14 @@
                         {% if users|length > 0 %}
                             {% for atributo1 in atributos|slice(0, 6) %}
                                 <div class="container-fluid contenedor-grid">
-                                    <div class="imagenUser" style="background-image: url({{ asset('images/Perfiles/pexels-edu-carvalho-2050994.jpg') }});" ></div>
+                                    <div class="imagenUser mx-auto" style="background-image: url({{ asset('images/Perfiles/pexels-edu-carvalho-2050994.jpg') }});" ></div>
                                     <div class="mt-2 mb-1 row">
-                                        <div class="col-lg-8 col-12">
+                                        <div class="col-lg-7 col-12">
                                             <h5 class="  text-start" >{{ atributo1.nombre }}</h5>
                                             <p class="card-text text-start" >Nacionalidad</p>
                                             <p class="card-text text-start" >Edad</p>
                                         </div>
-                                        <div class="col-lg-4 col-12 text-end">
+                                        <div class="col-lg-5 col-12 text-end">
                                             <i class="bi bi-heart-fill" ></i>
                                             <i class="bi bi-chat-left-fill" ></i>
                                         </div>
@@ -71,14 +71,14 @@
                         {% if users|length > 0 %}
                             {% for atributo2 in atributos|slice(0, 6) %}
                                 <div class="container-fluid contenedor-grid">
-                                    <div class="imagenUser" style="background-image: url({{ asset('images/Perfiles/pexels-daniel-xavier-1239291.jpg') }});" ></div>
+                                    <div class="imagenUser mx-auto" style="background-image: url({{ asset('images/Perfiles/pexels-daniel-xavier-1239291.jpg') }});" ></div>
                                     <div class="mt-2 mb-1 row">
-                                        <div class="col-lg-8 col-12">
+                                        <div class="col-lg-7 col-12">
                                             <h5 class=" text-start" >{{ atributo2.nombre }}</h5>
                                             <p class="card-text text-start" >Nacionalidad</p>
                                             <p class="card-text text-start" >Edad</p>
                                         </div>
-                                        <div class="col-lg-4 col-12 text-end">
+                                        <div class="col-lg-5 col-12 text-end">
                                             <i class="bi bi-heart-fill" ></i>
                                             <i class="bi bi-chat-left-fill" ></i>
                                         </div>
@@ -105,6 +105,36 @@
         </div>
     </div>
 
+
+    <div class="container mt-5 bg-white  rounded" >
+        <div class="row">
+            <div class="col-lg-6 col-12 selectores  d-flex  ">
+                <div class="col-2 d-flex  ">
+                    <p class="mt-3">Edad</p>
+                </div>
+                <div class="col-10 mt-2">
+                <span class="multi-range">
+                    <input type="range" min="0" max="50" value="5" id="lower">
+                    <input type="range" min="0" max="50" value="45" id="upper">
+                </span>
+                </div>
+            </div>
+            <div class="col-lg-6 col-12 filaUsuarios d-flex">
+                <div class="col-2 d-flex  ">
+                    <p class="mt-3">Edad</p>
+                </div>
+                <div class="col-10 mt-2">
+                    <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                        <option selected>Open this select menu</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <style>
         .gridUsers{
             display: grid;
@@ -120,18 +150,19 @@
             background-position: center 15%;
             background-repeat: no-repeat;
             border-radius: 10px;
+            box-shadow: 5px 5px 14px rgb(0 0 0 / 25%) !important;
 
         }
 
-        p{
+        .gridUsers p{
             font-size: 1vw;
             margin-bottom: 0;
         }
-        h5{
+        .gridUsers h5{
             font-size: 1.2vw;
             margin-bottom: 0;
         }
-        i{
+        .gridUsers i{
             font-size: 1.4vw;
         }
         .contenedor-grid{
@@ -147,6 +178,7 @@
         .bi-chat-left-fill{
             color: #5875AF;
         }
+
 
     </style>
 
