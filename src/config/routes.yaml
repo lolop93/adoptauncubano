@@ -1,3 +1,7 @@
 index:
     path: /
     controller: App\Controller\IndexController::index
+
+pruebas:
+    path: /admin/pruebas
+    controller: App\Controller\SecurityController::pruebas
