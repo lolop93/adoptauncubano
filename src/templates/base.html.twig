@@ -40,22 +40,19 @@
 
                         <ul class="nav col-12 col-lg-2 ms-lg-auto mb-4 mt-3 justify-content-center  mb-lg-0 mt-lg-0 order-lg-2 order-3 justify-content-evenly align-items-center">
                             <div>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-chat-left-fill" viewBox="0 0 16 16">
-                                    <path d="M2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
-                                </svg>
+                                <i class="bi bi-chat-left-fill" style="font-size: 1.5vw; color: white;"></i>
                             </div>
 
                             <div>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
-                                    <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
-                                </svg>
+                                <i class="bi bi-bell-fill" style="font-size: 1.5vw"></i>
+
                             </div>
                         </ul>
 
                         <div class="order-lg-3 order-2 col-lg-5 ms-auto ms-lg-0">
                             <div class="d-flex align-items-center ">
                                 <form class="w-100 me-3">
-                                    <input type="search" class="form-control buscador-header" placeholder="Encuentra..." aria-label="Search">
+                                    <input type="search" class="form-control buscador-header" placeholder="Encuentra..." aria-label="Search" style="border: none">
                                 </form>
 
                                 <div class="flex-shrink-0 dropdown">
@@ -103,9 +100,10 @@
                                 <div class="col-12 col-lg-6 justify-content-lg-start justify-content-center" style="display: flex; flex-direction: row; align-items: center;"><img class="img-fluid "  style=" max-width: 12em" src="{{ asset('images/Logos/Logofooter.png') }}" ></div>
                                 <div class="col-12 col-lg-6 " style="display: flex; flex-direction: row;justify-content: center; align-items: center;">
                                     <div class="socialiconsFooter mt-3 mt-lg-0" style="">
-                                        <img class="footericon" src="{{ asset('images/icons/TwtIcon.png') }}">
-                                        <img class="footericon" src="{{ asset('images/icons/InstaIcon.png') }}">
-                                        <img class="footericon" src="{{ asset('images/icons/fbIcon.png') }}">
+                                        <i class="bi bi-twitter"></i>
+                                        <i class="bi bi-instagram"></i>
+                                        <i class="bi bi-facebook"></i>
+
                                     </div>
                                 </div>
                             </div>
@@ -121,9 +119,10 @@
                 </div>
 
                 <style>
-                    .socialiconsFooter img{
-                        width: 1.5em;
-                        height: auto;
+
+                    .socialiconsFooter i{
+                        color: white;
+                        font-size: 2vw;
                         margin-left:2em;
                     }
                     /*Media query de boostrap*/

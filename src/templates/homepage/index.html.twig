@@ -8,7 +8,7 @@
     {{ parent() }}
     {{  dump() }}
     <div class="container">
-        <div class="card">
+        <div class="card" style="border: none;">
             <img src="{{ asset('images/imagenes_random/bannerCoche.PNG') }}">
         </div>
     </div>
@@ -17,7 +17,7 @@
         <div id="carouselExampleFade" class="carousel slide carousel-fade " data-bs-ride="carousel">
             <div class="carousel-inner mx-auto" style="width: 80%">
                 <div class="carousel-item active">
-                    <div class="container gridUsers p-4 align-items-center justify-content-center bg-white mx-auto" style="border-radius: 10px; " >
+                    <div class="container gridUsers p-4 align-items-center justify-content-center bg-white mx-auto" style="border-radius: 10px; padding: 3rem !important; " >
                         {% if users|length > 0 %}
                             {% for user in users|slice(0, 6) %}
                                 <div class="container-fluid contenedor-grid">
@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="container gridUsers p-4 align-items-center justify-content-center bg-white " style="border-radius: 10px; " >
+                    <div class="container gridUsers p-4 align-items-center justify-content-center bg-white " style="border-radius: 10px; padding: 3rem !important; " >
                         {% if users|length > 0 %}
                             {% for atributo1 in atributos|slice(0, 6) %}
                                 <div class="container-fluid contenedor-grid">
@@ -67,7 +67,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="container gridUsers p-4 align-items-center justify-content-center bg-white " style="border-radius: 10px; " >
+                    <div class="container gridUsers p-4 align-items-center justify-content-center bg-white " style="border-radius: 10px; padding: 3rem !important; " >
                         {% if users|length > 0 %}
                             {% for atributo2 in atributos|slice(0, 6) %}
                                 <div class="container-fluid contenedor-grid">
@@ -150,7 +150,7 @@
             background-position: center 15%;
             background-repeat: no-repeat;
             border-radius: 10px;
-            box-shadow: 5px 5px 14px rgb(0 0 0 / 25%) !important;
+            box-shadow: 10px 22px 23px rgb(0 0 0 / 15%);
 
         }
 
