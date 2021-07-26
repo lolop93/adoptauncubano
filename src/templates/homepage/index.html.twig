@@ -106,8 +106,8 @@
     </div>
 
 
-    <div class="container mt-5 bg-white  rounded " >
-        <div class="row">
+    <div class="container mt-5 bg-white  rounded pt-4 pb-4 " >
+        <div class="row mb-2">
             <div class="col-lg-6 col-12 selectores  d-flex align-items-center ">
                 <div class="col-2 d-flex  ">
                     <p class="mt-3">Edad</p>
@@ -120,11 +120,11 @@
                 </div>
             </div>
             <div class="col-lg-6 col-12 mb-2 mb-lg-0 filaNacionalidad d-flex align-items-center">
-                <div class="col-2 d-flex ">
+                <div class="col-4 d-flex ">
                     <p class="">Nacionalidad</p>
                 </div>
-                <div class="col-10 ">
-                    <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                <div class="col-8 ">
+                    <select class="form-select form-select-sm w-75" aria-label=".form-select-sm example">
                         <option selected>Seleccione...</option>
                         <option value="1">Argentino</option>
                         <option value="2">Cubano</option>
@@ -134,7 +134,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="gridBusquedaRapida">
+            <div class="gridBusquedaRapida ">
                 {% if users|length > 0 %}
                     {% for user in users|slice(0, 5) %}
                         <div class=" ">
@@ -202,12 +202,18 @@
         }
         .filaNacionalidad p{
             margin: 0;
+            font-size: 12px
+
+        }
+        .selectores{
+            font-size: 12px;
+
         }
         .gridBusquedaRapida{
             display: grid;
             grid-template-columns: repeat(5,0.8fr);
             grid-auto-rows: minmax(100px,auto);
-            column-gap: 0.8em;
+
             justify-content: center;
         }
 
