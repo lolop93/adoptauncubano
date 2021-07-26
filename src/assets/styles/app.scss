@@ -18,7 +18,8 @@ body{
 input[type=range] {
     box-sizing: border-box;
     appearance: none;
-    width: 400px;
+    width: 25vw;
+    min-width: 230px;
     margin: 0;
     padding: 0 2px;
     /* Add some L/R padding to ensure box shadow of handle is shown */
@@ -37,8 +38,8 @@ input[type=range] {
     }
 
     &::-webkit-slider-thumb {
-        height: 28px;
-        width: 28px;
+        height: 2vh;
+        width: 2vh;
         border-radius: 28px;
         background-color: #fff;
         position: relative;
@@ -62,10 +63,11 @@ input[type=range] {
 
 .multi-range {
     position: relative;
-    height: 50px;
+
 
     input[type=range] {
         position: absolute;
+        bottom: -9px;
 
         &:nth-child(1) {
             &::-webkit-slider-thumb::before {
