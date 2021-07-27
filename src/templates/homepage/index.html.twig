@@ -22,7 +22,7 @@
                             {% for user in users|slice(0, 6) %}
                                 <div class="">
                                     <div class="imagenUser mx-auto " style="background-image: url({{ asset('images/Perfiles/' ~ user.galeria.getFotoPerfil) }});"></div>
-                                    <div class="mt-2 mb-1 ">
+                                    <div class="mt-2 mb-1 d-flex flex-wrap">
                                         <div class="col-lg-7 col-12">
                                             <h5 class=" text-start " >{{ user.atributos.nombre }}</h5>
                                             <p class=" card-text text-start" >Nacionalidad</p>
@@ -47,7 +47,7 @@
                             {% for atributo1 in atributos|slice(0, 6) %}
                                 <div class=" ">
                                     <div class="imagenUser mx-auto" style="background-image: url({{ asset('images/Perfiles/pexels-edu-carvalho-2050994.jpg') }});" ></div>
-                                    <div class="mt-2 mb-1 ">
+                                    <div class="mt-2 mb-1 d-flex flex-wrap">
                                         <div class="col-lg-7 col-12">
                                             <h5 class="  text-start" >{{ atributo1.nombre }}</h5>
                                             <p class="card-text text-start" >Nacionalidad</p>
@@ -72,7 +72,7 @@
                             {% for atributo2 in atributos|slice(0, 6) %}
                                 <div class=" ">
                                     <div class="imagenUser mx-auto" style="background-image: url({{ asset('images/Perfiles/pexels-daniel-xavier-1239291.jpg') }});" ></div>
-                                    <div class="mt-2 mb-1 ">
+                                    <div class="mt-2 mb-1 d-flex flex-wrap">
                                         <div class="col-lg-7 col-12">
                                             <h5 class=" text-start" >{{ atributo2.nombre }}</h5>
                                             <p class="card-text text-start" >Nacionalidad</p>
@@ -106,7 +106,7 @@
     </div>
 
 
-    <div class=" mt-5 bg-white  rounded pt-4 pb-4 " >
+    <div class=" mt-5 bg-white  rounded p-4 w-75 mx-auto " >
         <div class=" mb-2 ">
             <div class="col-lg-6 col-12 selectores  d-flex align-items-center ">
                 <div class="col-2 d-flex justify-content-center ">
@@ -139,7 +139,7 @@
                     {% for user in users|slice(0, 5) %}
                         <div class=" ">
                             <div class="imagenUser mx-auto" style="background-image: url({{ asset('images/Perfiles/' ~ user.galeria.getFotoPerfil) }});"></div>
-                            <div class="mt-2 mb-1 ms-1 me-1 ">
+                            <div class="mt-2 mb-1 ms-3 me-3 d-flex flex-wrap">
                                 <div class="col-lg-7 col-12">
                                     <h5 class=" text-start">{{ user.atributos.nombre }}</h5>
                                     <p class="card-text text-start">Nacionalidad</p>
@@ -162,7 +162,7 @@
     </div>
 
     <div class="">
-        <div class="gridConsultas mt-5 bg-white p-4 rounded">
+        <div class="gridConsultas mt-5 bg-white p-4 rounded mx-auto w-75">
             {% if users|length > 0 %}
                 {% for userConsultas in users|slice(0, 3) %}
                     <div class="imagenUser mx-auto  " style="background-image: url({{ asset('images/Perfiles/' ~ userConsultas.galeria.getFotoPerfil) }});"></div>
@@ -192,8 +192,8 @@
             grid-template-columns: 33% 33% 33%;
         }
         .imagenUser {
-            width: 12vw;
-            height: 12vw;
+            width: 13vw;
+            height: 13vw;
 
             background-size: cover;
             background-position: center 15%;
@@ -254,7 +254,7 @@
         .gridConsultas{
             display: grid;
             grid-template-columns: repeat(3,1fr);
-            grid-auto-rows: minmax(100px, max-content);
+            grid-auto-rows: minmax(max-content, auto);
             justify-items: start;
         }
 
