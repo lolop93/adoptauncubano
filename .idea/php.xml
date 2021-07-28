@@ -93,6 +93,12 @@
       <path value="$PROJECT_DIR$/src/vendor/symfony/options-resolver" />
       <path value="$PROJECT_DIR$/src/vendor/easycorp/easyadmin-bundle" />
       <path value="$PROJECT_DIR$/src/vendor/pagerfanta/pagerfanta" />
+      <path value="$PROJECT_DIR$/src/vendor/symfonycasts/verify-email-bundle" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/polyfill-intl-idn" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/mime" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/mailer" />
+      <path value="$PROJECT_DIR$/src/vendor/egulias/email-validator" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/google-mailer" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.0" />

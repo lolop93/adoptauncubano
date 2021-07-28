@@ -97,6 +97,12 @@
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/options-resolver" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/easycorp/easyadmin-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/pagerfanta/pagerfanta" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfonycasts/verify-email-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/polyfill-intl-idn" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/mime" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/mailer" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/egulias/email-validator" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/google-mailer" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
