@@ -7,7 +7,8 @@
 {% block body %}
     {{ parent() }}
     {{  dump() }}
-    <div class="">
+
+    <div class="container">
         <div class="card" style="border: none;">
             <img src="{{ asset('images/imagenes_random/bannerCoche.PNG') }}">
         </div>
@@ -22,13 +23,13 @@
                             {% for user in users|slice(0, 6) %}
                                 <div class="">
                                     <div class="imagenUser mx-auto " style="background-image: url({{ asset('images/Perfiles/' ~ user.galeria.getFotoPerfil) }});"></div>
-                                    <div class="mt-2 mb-1 d-flex flex-wrap">
-                                        <div class="col-lg-7 col-12">
-                                            <h5 class=" text-start " >{{ user.atributos.nombre }}</h5>
+                                    <div class="mt-2 mb-1 d-flex flex-wrap justify-content-center">
+                                        <div class="me-4">
+                                            <h5 class="  " >{{ user.atributos.nombre }}</h5>
                                             <p class=" card-text text-start" >Nacionalidad</p>
                                             <p class="card-text text-start " >Edad</p>
                                         </div>
-                                        <div class="col-lg-5 col-12 text-end">
+                                        <div class="">
                                             <i class="bi bi-heart-fill" ></i>
                                             <i class="bi bi-chat-left-fill" ></i>
                                         </div>
@@ -47,13 +48,13 @@
                             {% for atributo1 in atributos|slice(0, 6) %}
                                 <div class=" ">
                                     <div class="imagenUser mx-auto" style="background-image: url({{ asset('images/Perfiles/pexels-edu-carvalho-2050994.jpg') }});" ></div>
-                                    <div class="mt-2 mb-1 d-flex flex-wrap ">
-                                        <div class="col-lg-7 col-12 ">
-                                            <h5 class="  text-start" >{{ atributo1.nombre }}</h5>
+                                    <div class="mt-2 mb-1  d-flex flex-wrap justify-content-center ">
+                                        <div class=" me-4">
+                                            <h5 class="text-start" >{{ atributo1.nombre }}</h5>
                                             <p class="card-text text-start" >Nacionalidad</p>
                                             <p class="card-text text-start" >Edad</p>
                                         </div>
-                                        <div class="col-lg-5 col-12 text-end">
+                                        <div class="text-end">
                                             <i class="bi bi-heart-fill" ></i>
                                             <i class="bi bi-chat-left-fill" ></i>
                                         </div>
@@ -72,13 +73,13 @@
                             {% for atributo2 in atributos|slice(0, 6) %}
                                 <div class=" ">
                                     <div class="imagenUser mx-auto" style="background-image: url({{ asset('images/Perfiles/pexels-daniel-xavier-1239291.jpg') }});" ></div>
-                                    <div class="mt-2 mb-1 d-flex flex-wrap">
-                                        <div class="col-lg-7 col-12">
-                                            <h5 class=" text-start" >{{ atributo2.nombre }}</h5>
+                                    <div class="mt-2 mb-1 d-flex flex-wrap justify-content-center">
+                                        <div class="me-4">
+                                            <h5 class="text-start" >{{ atributo2.nombre }}</h5>
                                             <p class="card-text text-start" >Nacionalidad</p>
                                             <p class="card-text text-start" >Edad</p>
                                         </div>
-                                        <div class="col-lg-5 col-12 text-end">
+                                        <div class="text-end">
                                             <i class="bi bi-heart-fill" ></i>
                                             <i class="bi bi-chat-left-fill" ></i>
                                         </div>
@@ -107,7 +108,7 @@
 
 
     <div class=" mt-5 bg-white  rounded p-4 w-75 mx-auto " >
-        <div class=" mb-2 ">
+        <div class=" mb-2 d-flex flex-wrap">
             <div class="col-lg-6 col-12 selectores  d-flex align-items-center ">
                 <div class="col-2 d-flex justify-content-center ">
                     <p class="mt-3">Edad</p>
@@ -187,7 +188,7 @@
     <style>
         .gridUsers{
             display: grid;
-            /*gap: 0.8em;*/
+            gap: 0.8em;
             /*column-gap: 3vw;*/
             grid-template-columns: 33% 33% 33%;
         }
