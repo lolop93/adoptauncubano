@@ -62,8 +62,8 @@
 
         <div class="info">
             <h1 class="m-4">
-                {% if login.atributos and login.atributos.nombre %}
-                    {{ login.atributos.nombre }}
+                {% if login and login.nombre %}
+                    {{ login.nombre }}
                 {% else %}
                     Marta
                 {% endif %}

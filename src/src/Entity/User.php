@@ -38,6 +38,17 @@ class User implements UserInterface
     private $password;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $nombre;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $apellido1;
+
+
+    /**
      * @ORM\OneToOne(targetEntity=Galeria::class, inversedBy="usuario", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=true)
      */
@@ -183,6 +194,30 @@ class User implements UserInterface
     public function setIsVerified(bool $isVerified): self
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    public function getNombre(): ?string
+    {
+        return $this->nombre;
+    }
+
+    public function setNombre(string $nombre): self
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    public function getApellido1(): ?string
+    {
+        return $this->apellido1;
+    }
+
+    public function setApellido1(string $apellido1): self
+    {
+        $this->apellido1 = $apellido1;
 
         return $this;
     }

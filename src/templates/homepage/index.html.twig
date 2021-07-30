@@ -25,7 +25,7 @@
                                     <div class="imagenUser mx-auto " style="background-image: url({{ asset('images/Perfiles/' ~ user.galeria.getFotoPerfil) }});"></div>
                                     <div class="mt-2 mb-1 d-flex flex-wrap justify-content-center">
                                         <div class="me-4">
-                                            <h5 class="  " >{{ user.atributos.nombre }}</h5>
+                                            <h5 class="  " >{{ user.nombre }}</h5>
                                             <p class=" card-text text-start" >Nacionalidad</p>
                                             <p class="card-text text-start " >Edad</p>
                                         </div>
@@ -45,12 +45,12 @@
                 <div class="carousel-item">
                     <div class=" gridUsers p-4 align-items-center justify-content-center bg-white " style="border-radius: 10px; padding: 3rem !important; " >
                         {% if users|length > 0 %}
-                            {% for atributo1 in atributos|slice(0, 6) %}
+                            {% for user2 in user|slice(0, 6) %}
                                 <div class=" ">
                                     <div class="imagenUser mx-auto" style="background-image: url({{ asset('images/Perfiles/pexels-edu-carvalho-2050994.jpg') }});" ></div>
                                     <div class="mt-2 mb-1  d-flex flex-wrap justify-content-center ">
                                         <div class=" me-4">
-                                            <h5 class="text-start" >{{ atributo1.nombre }}</h5>
+                                            <h5 class="text-start" >{{ user2.nombre }}</h5>
                                             <p class="card-text text-start" >Nacionalidad</p>
                                             <p class="card-text text-start" >Edad</p>
                                         </div>
@@ -70,12 +70,12 @@
                 <div class="carousel-item">
                     <div class=" gridUsers p-4 align-items-center justify-content-center bg-white " style="border-radius: 10px; padding: 3rem !important; " >
                         {% if users|length > 0 %}
-                            {% for atributo2 in atributos|slice(0, 6) %}
+                            {% for user3 in user|slice(0, 6) %}
                                 <div class=" ">
                                     <div class="imagenUser mx-auto" style="background-image: url({{ asset('images/Perfiles/pexels-daniel-xavier-1239291.jpg') }});" ></div>
                                     <div class="mt-2 mb-1 d-flex flex-wrap justify-content-center">
                                         <div class="me-4">
-                                            <h5 class="text-start" >{{ atributo2.nombre }}</h5>
+                                            <h5 class="text-start" >{{ user3.nombre }}</h5>
                                             <p class="card-text text-start" >Nacionalidad</p>
                                             <p class="card-text text-start" >Edad</p>
                                         </div>
@@ -142,7 +142,7 @@
                             <div class="imagenUser mx-auto" style="background-image: url({{ asset('images/Perfiles/' ~ user.galeria.getFotoPerfil) }});"></div>
                             <div class="mt-2 mb-1 ms-3 me-3 d-flex flex-wrap">
                                 <div class="col-lg-7 col-12">
-                                    <h5 class=" text-start">{{ user.atributos.nombre }}</h5>
+                                    <h5 class=" text-start">{{ user.nombre }}</h5>
                                     <p class="card-text text-start">Nacionalidad</p>
                                     <p class="card-text text-start">Edad</p>
                                 </div>
