@@ -20,6 +20,7 @@
         }
 
         .info{
+            color: #CE5353;
 
 
 
@@ -27,9 +28,14 @@
         .info h1{
             font-weight: bolder;
             font-size: 80px;
+
         }
          .editarPerfil{
-            grid-column: 3/5;
+             display: flex;
+             grid-column: 3/5;
+             background-color: #CE5353;
+             color: white;
+             align-items: center;
          }
 
          .imagenUsuario{
@@ -54,7 +60,7 @@
             {% endif %}
         </div>
 
-        <div class="info text-danger">
+        <div class="info">
             <h1 class="m-4">
                 {% if login.atributos and login.atributos.nombre %}
                     {{ login.atributos.nombre }}
@@ -65,7 +71,7 @@
             <p class="m-4" >España</p>
             <p class="m-4" >26 años</p>
         </div>
-        <p class="editarPerfil bg-danger">Editar perfil</p>
+        <div class="editarPerfil"><p >Editar perfil</p></div>
         <p class="atributos m-4"  >OJOS</p>
         <p class="atributos m-4">PELO</p>
         <p class="atributos m-4">PROFESION</p>
