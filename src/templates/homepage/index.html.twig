@@ -45,7 +45,7 @@
                 <div class="carousel-item">
                     <div class=" gridUsers p-4 align-items-center justify-content-center bg-white " style="border-radius: 10px; padding: 3rem !important; " >
                         {% if users|length > 0 %}
-                            {% for user2 in user|slice(0, 6) %}
+                            {% for user2 in users|slice(0, 6) %}
                                 <div class=" ">
                                     <div class="imagenUser mx-auto" style="background-image: url({{ asset('images/Perfiles/pexels-edu-carvalho-2050994.jpg') }});" ></div>
                                     <div class="mt-2 mb-1  d-flex flex-wrap justify-content-center ">
@@ -70,7 +70,7 @@
                 <div class="carousel-item">
                     <div class=" gridUsers p-4 align-items-center justify-content-center bg-white " style="border-radius: 10px; padding: 3rem !important; " >
                         {% if users|length > 0 %}
-                            {% for user3 in user|slice(0, 6) %}
+                            {% for user3 in users|slice(0, 6) %}
                                 <div class=" ">
                                     <div class="imagenUser mx-auto" style="background-image: url({{ asset('images/Perfiles/pexels-daniel-xavier-1239291.jpg') }});" ></div>
                                     <div class="mt-2 mb-1 d-flex flex-wrap justify-content-center">
@@ -169,7 +169,7 @@
                     <div class="imagenUser mx-auto  " style="background-image: url({{ asset('images/Perfiles/' ~ userConsultas.galeria.getFotoPerfil) }});"></div>
                 {% endfor %}
                 {% for userConsultas in users|slice(0, 3) %}
-                    <h5 class=" text-start ">{{ userConsultas.atributos.nombre }}</h5>
+                    <h5 class=" text-start ">{{ userConsultas.nombre }}</h5>
                 {% endfor %}
                 {% for userConsultas in users|slice(0, 3) %}
                     <p class="card-text text-start">Nacionalidad</p>
