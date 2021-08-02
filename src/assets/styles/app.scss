@@ -1,7 +1,15 @@
 @import "custom";
 @import "~bootstrap/scss/bootstrap";
 
+
 @import "~bootstrap-icons/font/bootstrap-icons.css";
+
+p{
+    @include font-size(0.8rem);
+}
+.title {
+    @include font-size(1.5rem);
+}
 
 
 body {

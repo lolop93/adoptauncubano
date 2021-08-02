@@ -21,21 +21,27 @@
 
         .info{
             color: #CE5353;
-
-
-
         }
         .info h1{
             font-weight: bolder;
-            font-size: 15px;
+
 
         }
          .editarPerfil{
              display: flex;
              grid-column: 3/5;
-             background-color: #CE5353;
+             background-color: #E1E1E1;
              color: white;
              align-items: center;
+             justify-content: flex-end;
+
+
+         }
+
+         .editarPerfil p{
+             background-color: #CE5353;
+             border-top-left-radius: 360px;
+             border-bottom-left-radius: 360px;
          }
 
          .imagenUsuario{
@@ -45,9 +51,20 @@
              background-size: cover;
              border-radius: 10px;
          }
-         .atributos{
-             font-size: 10px;
+
+         .descripcion{
+             grid-column: 1/5;
          }
+
+        .galeria{
+            grid-column: 1/5;
+            justify-self: start;
+         }
+        .galeria p{
+            background-color: #CE5353;
+            border-top-right-radius: 360px;
+            border-bottom-right-radius: 360px;
+        }
 
     </style>
 
@@ -55,34 +72,46 @@
 
 {% block contenido %}
     <div class="gridContenido">
-        <div class="fotoGrid mt-4">
+        <div class="fotoGrid mt-4 mx-auto">
             {% if login.galeria and login.galeria.getFotoPerfil %}
-                <div class="imagenUsuario  m-2 " style="background-image: url({{ asset('images/Perfiles/' ~ login.galeria.getFotoPerfil) }});"></div>
+                <div class="imagenUsuario m-2 " style="background-image: url({{ asset('images/Perfiles/' ~ login.galeria.getFotoPerfil) }});"></div>
             {% else %}
                 <p>Sin foto de perfil</p>
             {% endif %}
         </div>
 
         <div class="info">
-            <h1 class="m-2 mt-4">
+            <h1 class="title m-1 mt-4">
                 {% if login and login.nombre %}
                     {{ login.nombre }}
                 {% else %}
                     Marta
                 {% endif %}
             </h1>
-            <p class="m-2" >España</p>
-            <p class="m-2" >26 años</p>
+            <p class="m-1" >España</p>
+            <p class="m-1" >26 años</p>
         </div>
-        <div class="editarPerfil"><p >Editar perfil</p></div>
+        <div class="editarPerfil"><p class="title p-2">Editar perfil</p></div>
         <p class="atributos m-2">OJOS</p>
         <p class="atributos m-2">PELO</p>
         <p class="atributos m-2">PROFESION</p>
         <p class="atributos m-2">CIUDAD</p>
         <p class="atributos m-2">GUSTOS</p>
+
+        <div class="descripcion p-4">
+            Descripcion
+            <p> Why do we use it?
+                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+            </p>
+        </div>
+
+        <div class="galeria">
+            <p class="title p-2 text-white">Galeria</p>
+            <div class="gridGaleria"></div>
+        </div>
     </div>
 {% endblock %}
 
 {% block texto %}
-    <p>Perfil</p>
+    <p class="title">Perfil</p>
 {% endblock %}
