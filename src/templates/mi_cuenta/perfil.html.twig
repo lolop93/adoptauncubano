@@ -27,7 +27,7 @@
         }
         .info h1{
             font-weight: bolder;
-            font-size: 80px;
+            font-size: 15px;
 
         }
          .editarPerfil{
@@ -39,11 +39,14 @@
          }
 
          .imagenUsuario{
-             width:300px;
-             height: 300px;
+             width:150px;
+             height: 150px;
              background-position: center;
              background-size: cover;
              border-radius: 10px;
+         }
+         .atributos{
+             font-size: 10px;
          }
 
     </style>
@@ -52,31 +55,31 @@
 
 {% block contenido %}
     <div class="gridContenido">
-        <div class="fotoGrid">
+        <div class="fotoGrid mt-4">
             {% if login.galeria and login.galeria.getFotoPerfil %}
-                <div class="imagenUsuario mx-auto m-4 " style="background-image: url({{ asset('images/Perfiles/' ~ login.galeria.getFotoPerfil) }});"></div>
+                <div class="imagenUsuario  m-2 " style="background-image: url({{ asset('images/Perfiles/' ~ login.galeria.getFotoPerfil) }});"></div>
             {% else %}
                 <p>Sin foto de perfil</p>
             {% endif %}
         </div>
 
         <div class="info">
-            <h1 class="m-4">
+            <h1 class="m-2 mt-4">
                 {% if login and login.nombre %}
                     {{ login.nombre }}
                 {% else %}
                     Marta
                 {% endif %}
             </h1>
-            <p class="m-4" >España</p>
-            <p class="m-4" >26 años</p>
+            <p class="m-2" >España</p>
+            <p class="m-2" >26 años</p>
         </div>
         <div class="editarPerfil"><p >Editar perfil</p></div>
-        <p class="atributos m-4"  >OJOS</p>
-        <p class="atributos m-4">PELO</p>
-        <p class="atributos m-4">PROFESION</p>
-        <p class="atributos m-4">CIUDAD</p>
-        <p class="atributos m-4">GUSTOS</p>
+        <p class="atributos m-2">OJOS</p>
+        <p class="atributos m-2">PELO</p>
+        <p class="atributos m-2">PROFESION</p>
+        <p class="atributos m-2">CIUDAD</p>
+        <p class="atributos m-2">GUSTOS</p>
     </div>
 {% endblock %}
 
