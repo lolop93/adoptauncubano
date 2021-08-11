@@ -108,7 +108,7 @@
         <div class="galeria">
             <p class="title p-2 text-white">Galeria</p>
             <div class="gridGaleria">
-                {% if is_mobile() %}
+                {% if is_mobile() and is_tablet() == false %}
                     <p>Polla movil</p>
                 {% endif %}
             </div>
