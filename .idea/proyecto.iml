@@ -103,6 +103,8 @@
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/mailer" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/egulias/email-validator" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/google-mailer" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/mobiledetect/mobiledetectlib" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/netbull/mobile-detect-bundle" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
