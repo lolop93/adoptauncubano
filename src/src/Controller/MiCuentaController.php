@@ -37,8 +37,10 @@ class MiCuentaController extends AbstractController
     #[Route('/cuenta/ajustes', name: 'ajustes')]
     public function ajustes(): Response
     {
+        $login = $this->get('security.token_storage')->getToken()->getUser();
+
         return $this->render('mi_cuenta/ajustes.html.twig', [
-            'controller_name' => 'MiCuentaController',
+            'login' => $login,
         ]);
     }
 }

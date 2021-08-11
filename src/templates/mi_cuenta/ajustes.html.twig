@@ -4,6 +4,7 @@
 
 {% block body %}
     {{ parent() }}
+    {{ dump() }}
 
 {% endblock %}
 
@@ -24,17 +25,17 @@
     <div class="gridAjustes" >
         <div class="editarCampos">
             <h3>Nombre</h3>
-            <p></p>
+            <p>{{ login.nombre }}</p>
         </div>
 
         <div class="editarCampos">
             <h3>Apellidos</h3>
-            <p></p>
+            <p>{{ login.apellido1 }}</p>
         </div>
 
         <div class="editarCampos">
             <h3>Correo electrónico</h3>
-            <p></p>
+            <p>{{ login.email }}</p>
         </div>
 
         <div class="editarCampos" style="border: none !important;">
