@@ -45,8 +45,8 @@
          }
 
          .imagenUsuario{
-             width:150px;
-             height: 150px;
+             width:200px;
+             height: 200px;
              background-position: center;
              background-size: cover;
              border-radius: 10px;
@@ -58,12 +58,34 @@
 
         .galeria{
             grid-column: 1/5;
-            justify-self: start;
+            display: grid;
+            grid-template-columns: 1fr ;
+
          }
         .galeria p{
             background-color: #CE5353;
             border-top-right-radius: 360px;
             border-bottom-right-radius: 360px;
+            justify-self: start;
+
+        }
+
+        .gridGaleria{
+            display: grid;
+            grid-template-areas:
+                "foto foto foto"
+                "foto foto foto";
+
+            background-color: #E1E1E1;
+            justify-items: center;
+            place-content: center;
+
+            {% if is_tablet()  %}
+                gap: 0;
+            {% else %}
+                gap: 2em;
+            {% endif %}
+
         }
 
     </style>
@@ -107,9 +129,19 @@
 
         <div class="galeria">
             <p class="title p-2 text-white">Galeria</p>
-            <div class="gridGaleria">
-                {% if is_mobile() and is_tablet() == false %}
-                    <p>Polla movil</p>
+            <div class="gridGaleria mt-4 mb-4">
+                {% if login.galeria %}
+
+                        {% for i in 0..5 %}
+                            {% if i < login.galeria.getGaleria|length %}
+                                <div class="imagenUsuario m-2 " style="background-image: url({{ asset('images/Perfiles/' ~ login.galeria.getGaleria[i]) }});"></div>
+                            {% else %}
+                                <div class="imagenUsuario m-2 " style="background-image: url({{ asset('images/fotodefecto.png') }});"></div>
+                            {% endif %}
+                        {% endfor %}
+
+                {% else %}
+
                 {% endif %}
             </div>
         </div>

@@ -25,7 +25,7 @@ class MiCuentaController extends AbstractController
     }
 
     #[Route('/cuenta/perfil', name: 'perfil')]
-    public function perfil(MobileDetector $mobile, UserRepository $userRepository, GaleriaRepository $galeriaRepository, UserAttributesRepository $userAttributesRepository): Response
+    public function perfil(MobileDetector $pantalla, UserRepository $userRepository, GaleriaRepository $galeriaRepository, UserAttributesRepository $userAttributesRepository): Response
     {
         $login = $this->get('security.token_storage')->getToken()->getUser();
         $galeriaRepository->findAll();
@@ -34,7 +34,7 @@ class MiCuentaController extends AbstractController
         //$mobileDetector = $this->get('mobile_detect.mobile_detector');
 
 
-        if($mobile->isMobile() && !$mobile->isTablet()){
+        if($pantalla->isMobile() && !$pantalla->isTablet()){
             return $this->render('mi_cuenta/perfilMobile.html.twig', [
                 'login' => $login,
             ]);
