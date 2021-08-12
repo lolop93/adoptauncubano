@@ -5,9 +5,14 @@ namespace App\Controller;
 use App\Repository\GaleriaRepository;
 use App\Repository\UserAttributesRepository;
 use App\Repository\UserRepository;
+use Detection\MobileDetect;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+
+//use SunCat\MobileDetectBundle\MobileDetectBundle;
+use SunCat\MobileDetectBundle\DeviceDetector\MobileDetector;
+
 
 class MiCuentaController extends AbstractController
 {
@@ -20,18 +25,26 @@ class MiCuentaController extends AbstractController
     }
 
     #[Route('/cuenta/perfil', name: 'perfil')]
-    public function perfil(UserRepository $userRepository, GaleriaRepository $galeriaRepository, UserAttributesRepository $userAttributesRepository): Response
+    public function perfil(MobileDetector $mobile, UserRepository $userRepository, GaleriaRepository $galeriaRepository, UserAttributesRepository $userAttributesRepository): Response
     {
         $login = $this->get('security.token_storage')->getToken()->getUser();
-
-
         $galeriaRepository->findAll();
-
         $userAttributesRepository->findAll();
 
-        return $this->render('mi_cuenta/perfil.html.twig', [
-            'login' => $login,
-        ]);
+        //$mobileDetector = $this->get('mobile_detect.mobile_detector');
+
+
+        if($mobile->isMobile() && !$mobile->isTablet()){
+            return $this->render('mi_cuenta/perfilMobile.html.twig', [
+                'login' => $login,
+            ]);
+        }else {
+            return $this->render('mi_cuenta/perfil.html.twig', [
+                'login' => $login,
+            ]);
+        }
+
+
     }
 
     #[Route('/cuenta/ajustes', name: 'ajustes')]
