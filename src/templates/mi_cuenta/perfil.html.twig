@@ -79,13 +79,18 @@
             background-color: #E1E1E1;
             justify-items: center;
             place-content: center;
+            gap: 2em;
 
-            {% if is_tablet()  %}
-                gap: 0;
-            {% else %}
-                gap: 2em;
-            {% endif %}
+        }
 
+        @media screen and (max-width: 840px) {
+            .gridGaleria {
+                gap: 0 !important;
+            }
+            .imagenUsuario{
+                width:150px;
+                height: 150px;
+            }
         }
 
     </style>
