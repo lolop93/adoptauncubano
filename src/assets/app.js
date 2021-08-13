@@ -26,6 +26,45 @@ import $ from 'jquery';
 import './custom.js';
 
 
-$(document).ready(function() {
-    console.log("Prueba 1");
+
+// Funcion para el menu desplegable de cabecera
+$('.perfilHeader').click(function(){
+
+    console.log("Prueba perfil");
+    var perfil = $('.perfilHeader');
+    var p = $('.contenedorMenu');
+    var menu = $('.menuDesplegable');
+
+    if (perfil.hasClass("flex-column")){
+        perfil.addClass("flex-row");
+        perfil.removeClass("flex-column");
+        perfil.css("border-bottom-right-radius", '360px');
+        perfil.css("border-bottom-left-radius", '360px');
+
+        menu.addClass('d-none');
+        menu.removeClass('d-block');
+
+        p.css('background-color', '');
+        p.removeClass("order-2");
+        p.css('position', '');
+        p.css('bottom', '');
+
+
+    }
+    else{
+        perfil.addClass("flex-column");
+        perfil.removeClass("flex-row");
+        perfil.css("border-bottom-right-radius", '0');
+        perfil.css("border-bottom-left-radius", '0');
+
+        menu.removeClass('d-none');
+        menu.addClass('d-block');
+
+        p.css('background-color', '#CE5353FF');
+        p.addClass("order-2");
+        p.css('position', 'absolute');
+        p.css('bottom', '-135px');
+
+    }
 });
+// Funcion para el menu desplegable de cabecera

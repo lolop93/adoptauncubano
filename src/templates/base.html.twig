@@ -30,46 +30,36 @@
 
     <body>
 
-        <header class="p-lg-2   text-white p-lg-1" style="background-color:rgba(0, 0, 0, 0.8);">
+        <header class="p-2 text-white " style="background-color:rgba(0, 0, 0, 0.8);">
             {% block header %}
-                <div class="container-fluid">
-                    <div class="d-flex flex-wrap align-items-center  justify-content-lg-start justify-content-center order-lg-1 order-1">
-                        <a href="/" class="d-flex align-items-center p-2 mb-2 mb-lg-0 text-white text-decoration-none">
-                            <img class=" img " style="margin-left: 0; max-width: 10em" src="{{ asset('images/Logos/LogoHeader.png') }}" ></img>
-                        </a>
+                <div class="container-fluid d-flex flex-row align-items-center">
 
-                        <ul class="nav col-12 col-lg-2 ms-lg-auto mb-4 mt-3 justify-content-center  mb-lg-0 mt-lg-0 order-lg-2 order-3 justify-content-evenly align-items-center">
-                            <div>
-                                <i class="bi bi-chat-left-fill" style="font-size: 2.5vh; color: white;"></i>
-                            </div>
+                    <img class=" img me-2" style="max-width: 10em" src="{{ asset('images/Logos/LogoHeader.png') }}" >
 
-                            <div>
-                                <i class="bi bi-bell-fill" style="font-size: 2.5vh"></i>
+                    <i class="bi bi-chat-left-fill ms-auto me-2" style="font-size: 2.5vh; color: white;"></i>
+                    <i class="bi bi-bell-fill me-2" style="font-size: 2.5vh"></i>
 
-                            </div>
-                        </ul>
+                    <input type="search" class="buscador-header ps-2 me-2" placeholder="🔎" aria-label="Search" style="border: none; border-radius: 2.25rem;">
 
-                        <div class="order-lg-3 order-2 col-lg-5 ms-auto ms-lg-0">
-                            <div class="d-flex align-items-center ">
-                                <form class="w-100 me-3">
-                                    <input type="search" class="form-control buscador-header" placeholder="Encuentra..." aria-label="Search" style="border: none; border-radius: 2.25rem;">
-                                </form>
+                    <div class=" perfilHeader d-flex flex-row p-1 align-items-center " style="background-color: #CE5353FF">
 
-                                <div class="flex-shrink-0 dropdown">
-                                    <a href="#" class="d-block link-light text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-                                    </a>
-                                    <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-                                        <li><a class="dropdown-item" href="#">Mi cuenta</a></li>
-                                        <li><a class="dropdown-item" href="#">Perfil</a></li>
-                                        <li><a class="dropdown-item" href="#">Ajustes</a></li>
-                                        <li><hr class="dropdown-divider"></li>
-                                        <li><a class="dropdown-item" href="{{ path('app_logout') }}">Desconectarse</a></li>
-                                    </ul>
-                                </div>
+                        <div class="contenedorMenu ">
+                            <p class="p-2 tituloMenu">Perfil</p>
+                            <div class="menuDesplegable d-none d-flex flex-column align-items-center ">
+                                <i class="bi bi-gear"></i>
+                                <p>Ajustes</p>
+                                <i class="bi bi-person"></i>
+                                <p>Cuenta</p>
+                                <i class="bi bi-box-arrow-left"></i>
+                                <p>Salir</p>
                             </div>
                         </div>
+
+                        <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40" class="rounded-circle" style=" z-index: 1;">
+
+
                     </div>
+
                 </div>
             {% endblock %}
         </header>
@@ -184,6 +174,22 @@
                         z-index: 1000;
                         top: 0;
                     }
+                    .perfilHeader p{
+                        margin: 0;
+                    }
+                    .tituloMenu{
+                        font-size: 13.4px;
+                    }
+
+                    .perfilHeader{
+                        border-top-right-radius: 360px;
+                        border-bottom-right-radius: 360px;
+                        border-top-left-radius: 360px;
+                        border-bottom-left-radius: 360px;
+                    }
+                    .menuDesplegable p{
+                        font-size: 10px;
+                    }
 
                     .main-content{
                         /* By setting flex-grow to 1, the main content will take up
@@ -206,9 +212,6 @@
 
         </footer>
     </body>
-
-
-
 
 
 </html>
