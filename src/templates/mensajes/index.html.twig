@@ -1,0 +1,116 @@
+{% extends 'baseLimpia.html.twig' %}
+
+
+
+{% block body %}
+
+
+        <div class="gridMain">
+            <div class="cabecera text-white">
+                <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40" class="rounded-circle me-3 mt-2 mb-2" >
+                <p class="me-5">Nombre</p>
+                <i class="bi bi-search ms-5"></i>
+                <i class="bi bi-three-dots-vertical ms-3"></i>
+                <i class="bi bi-house-door-fill align-self-start ms-5 me-3" style="background-color: #5875AF; padding: 2px 7px"></i>
+                <div class="infoCabecera ms-auto me-2" >
+                    <p style="font-size: 10px">Nacionalidad, Age</p>
+                    <p style="font-size: 15px">Nombre</p>
+                </div>
+                <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40" class="rounded-circle ">
+
+            </div>
+            <div class="mensajes ">
+                {% for i in 0..14 %}
+                <div class="mensaje p-3 border-bottom border-1 border-dark">
+                    <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40" class="rounded-circle  me-3">
+                    <div class="infoMensaje" >
+                        <p style="font-size: 15px">Nombre</p>
+                        <p style="font-size: 11px">Mensaje..........</p>
+                    </div>
+                    <div class="notificacionMensaje ms-auto rounded-circle text-white">
+                        2
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="conversacion "></div>
+        </div>
+
+
+    <style>
+
+        header{
+            display: none;
+        }
+        footer{
+            display: none;
+        }
+        body{
+            display: flex;
+            flex-direction: column;
+
+        }
+        html, body {
+            height: 100%;
+        }
+        .gridMain{
+            display: grid;
+            grid-template-rows: min-content;
+            grid-template-areas:
+                "cabecera cabecera cabecera cabecera cabecera"
+                "mensajes conversacion conversacion conversacion conversacion";
+            height: 100%;
+        }
+
+
+        .cabecera{
+            grid-area: cabecera;
+            background-color: #CE5353;
+            display: flex;
+            flex-direction: row;
+            padding: 0 10px;
+            align-items: center;
+            z-index: 1;
+            box-shadow: 0px 3px 23px 10px rgb(0 0 0 / 31%);
+        }
+        .cabecera p{
+            margin: 0;
+        }
+
+        .mensajes{
+            grid-area: mensajes;
+            background-color: #E1E1E1;
+            display: flex;
+            flex-direction: column;
+            overflow: auto;
+
+        }
+        .mensaje{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .mensaje p{
+            margin: 0;
+        }
+        .notificacionMensaje{
+            background-color: #CE5353;
+            width: 25px;
+            height: 25px;
+            text-align: center;
+        }
+        .conversacion{
+            grid-area: conversacion;
+            background-size: 500px 500px;
+            background-repeat: repeat;
+            background-image: url({{ asset('images/Backgrounds/pattern_1.0.png') }});
+
+        }
+
+
+    </style>
+{% endblock %}
+
+
+
+
