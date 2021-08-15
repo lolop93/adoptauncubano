@@ -46,11 +46,11 @@
                         <div class="contenedorMenu ">
                             <p class="p-2 tituloMenu">Perfil</p>
                             <div class="menuDesplegable d-none d-flex flex-column align-items-center ">
-                                <i class="bi bi-gear"></i>
+                                <a href="{{ path('ajustes') }}" class="botonMenuPerfil"><i class="bi bi-gear"></i></a>
                                 <p>Ajustes</p>
-                                <i class="bi bi-person"></i>
+                                <a href="{{ path('perfil') }}" class="botonMenuPerfil"><i class="bi bi-person"></i></a>
                                 <p>Cuenta</p>
-                                <i class="bi bi-box-arrow-left"></i>
+                                <a href="{{ path('app_logout') }}" class="botonMenuPerfil"><i class="bi bi-box-arrow-left"></i></a>
                                 <p>Salir</p>
                             </div>
                         </div>
@@ -179,6 +179,9 @@
                     }
                     .tituloMenu{
                         font-size: 13.4px;
+                    }
+                    .botonMenuPerfil{
+                        color: inherit;
                     }
 
                     .perfilHeader{

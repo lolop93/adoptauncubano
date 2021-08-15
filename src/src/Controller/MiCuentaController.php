@@ -16,7 +16,7 @@ use SunCat\MobileDetectBundle\DeviceDetector\MobileDetector;
 
 class MiCuentaController extends AbstractController
 {
-    #[Route('/cuenta', name: 'mi_cuenta')]
+    //#[Route('/cuenta', name: 'mi_cuenta')]
     public function index(): Response
     {
         return $this->render('mi_cuenta/index.html.twig', [
