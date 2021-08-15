@@ -9,20 +9,59 @@
     {% endfor %}
 
 
-    <div class="bg-white">
-        <h1>Register</h1>
+    <div class="d-flex flex-column contenedorForm align-items-center mt-5 ">
+
 
         {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.username) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
+        <h1 class="align-self-start ps-2 pe-2">Registro</h1>
+        {{ form_row(registrationForm.username, { label : 'Nombre de usuario' }) }}
         {{ form_row(registrationForm.email) }}
+        {{ form_row(registrationForm.plainPassword, {
+            label: 'Contraseña'
+        }) }}
         {{ form_row(registrationForm.agreeTerms) }}
 
-        <button type="submit" class="btn">Register</button>
+        <button type="submit" class="btn">Registrar</button>
         {{ form_end(registrationForm) }}
     </div>
+
+    <style>
+        .contenedorForm form div{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .contenedorForm form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #CE5353;
+            background-color:#E1E1E1 ;
+            border-radius: 0.5rem !important;
+            width: 100%;
+            max-width: 500px;
+            min-width: 260px;
+        }
+        .contenedorForm{
+            min-width: 260px;
+        }
+        .contenedorForm button{
+            align-self: flex-end;
+            background-color: #CE5353;
+            color: white;
+            margin-top: 20px;
+            margin-bottom: 20px;
+
+        }
+
+        .contenedorForm h1{
+            background-color: #CE5353;
+            color: white;
+            margin-top: 20px;
+        }
+
+    </style>
 
 
 {% endblock %}
