@@ -18,8 +18,13 @@ import './bootstrap';
 // loads the jquery package from node_modules
 //import jquery from 'jquery';
 
-import $ from 'jquery';
+//import $ from 'jquery';
 
+// require jQuery normally
+const $ = require('jquery');
+
+// create global $ and jQuery variables
+global.$ = global.jQuery = $;
 
 //importamos nuestro custom js
 
