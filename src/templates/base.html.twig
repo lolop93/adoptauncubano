@@ -32,10 +32,10 @@
             {% block header %}
                 <div class="container-fluid d-flex flex-row align-items-center">
 
-                    <img class=" img me-2" style="max-width: 10em" src="{{ asset('images/Logos/LogoHeader.png') }}" >
+                    <a href="{{ path('homepage') }}"><img class=" img me-2" style="max-width: 10em" src="{{ asset('images/Logos/LogoHeader.png') }}" ></a>
 
-                    <i class="bi bi-chat-left-fill ms-auto me-2" style="font-size: 2.5vh; color: white;"></i>
-                    <i class="bi bi-bell-fill me-2" style="font-size: 2.5vh"></i>
+                    <i onclick="window.location.href = '{{ path('mensajes') }}'" class="bi bi-chat-left-fill ms-auto " style="font-size: 25px; color: white; padding: 3px 5px 0 5px"></i>
+                    <i class="bi bi-bell-fill me-2 ms-2" style="font-size: 25px; padding: 0 5px"></i>
 
                     <input type="search" class="buscador-header ps-2 me-2" placeholder="🔎" aria-label="Search" style="border: none; border-radius: 2.25rem;">
 
@@ -172,8 +172,19 @@
                         z-index: 1000;
                         top: 0;
                     }
+
+                    header i:hover{
+                        background-color: #CE5353FF;
+                        cursor: pointer;
+                        border-top-right-radius: 360px;
+                        border-bottom-right-radius: 360px;
+                        border-top-left-radius: 360px;
+                        border-bottom-left-radius: 360px;
+                    }
+
                     .perfilHeader p{
                         margin: 0;
+
                     }
                     .tituloMenu{
                         font-size: 13.4px;
@@ -187,6 +198,9 @@
                         border-bottom-right-radius: 360px;
                         border-top-left-radius: 360px;
                         border-bottom-left-radius: 360px;
+                    }
+                    .perfilHeader img{
+                        cursor: pointer;
                     }
                     .menuDesplegable p{
                         font-size: 10px;

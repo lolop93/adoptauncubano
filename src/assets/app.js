@@ -33,7 +33,7 @@ import './custom.js';
 
 
 // Funcion para el menu desplegable de cabecera
-$('.perfilHeader').click(function(){
+$('.perfilHeader img').click(function(){
 
     console.log("Prueba perfil");
     var perfil = $('.perfilHeader');
