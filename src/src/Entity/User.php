@@ -77,9 +77,15 @@ class User implements UserInterface
      */
     private $conversaciones;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Mensajes::class, mappedBy="usuario", orphanRemoval=true)
+     */
+    private $mensajes;
+
     public function __construct()
     {
         $this->conversaciones = new ArrayCollection();
+        $this->mensajes = new ArrayCollection();
     }
 
     public function __toString(){
@@ -258,6 +264,36 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($conversacion->getEmisor() === $this) {
                 $conversacion->setEmisor(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Mensajes[]
+     */
+    public function getMensajes(): Collection
+    {
+        return $this->mensajes;
+    }
+
+    public function addMensaje(Mensajes $mensaje): self
+    {
+        if (!$this->mensajes->contains($mensaje)) {
+            $this->mensajes[] = $mensaje;
+            $mensaje->setUsuario($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMensaje(Mensajes $mensaje): self
+    {
+        if ($this->mensajes->removeElement($mensaje)) {
+            // set the owning side to null (unless already changed)
+            if ($mensaje->getUsuario() === $this) {
+                $mensaje->setUsuario(null);
             }
         }
 

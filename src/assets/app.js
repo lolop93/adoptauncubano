@@ -86,7 +86,12 @@ $( document ).ready(function() {
             $('<div>', {'class':'popupMensajes d-flex align-items-center'}).append(
                 $('<i class="bi bi-chat-fill mx-auto text-white" style="font-size: 2.7658em"></i>'),
                 $('<div class="text-black-50 chatPopup bg-white" style="width: 400px; height: 400px; display: none ; position: absolute;top: -420px;left: -420px;"> ' +
-                        '<div class="w-100 h-100 " style="display:grid; "></div>' +
+                        '<div class="w-100 h-100 gridContactos" >' +
+                            '<div class="textoCabeceraPoUp bg-white"><p>Polla</p></div>'+
+                            '<div class="icono1Cabecera bg-secondary"><p>Polla</p></div>'+
+                            '<div class="icono2Cabecera bg-danger"><p>Polla</p></div>'+
+                            '<div class="contenidoPopUp bg-dark"><p>Polla</p></div>'+
+                        '</div>' +
                     ' </div>')
             )
         );

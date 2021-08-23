@@ -106,4 +106,34 @@ input[type=range] {
     cursor: pointer;
 }
 
+.chatPopUp{
+
+}
+
+.gridContactos{
+    display:grid;
+    grid-template-areas:
+        "textoCabeceraPoUp icono1Cabecera icono2Cabecera"
+        "contenidoPopUp contenidoPopUp contenidoPopUp";
+    grid-template-rows: 50px auto;
+}
+.contenidoPopUp{
+    grid-column: 1/4;
+    grid-area: contenidoPopUp;
+
+}
+.textoCabeceraPoUp,.icono1Cabecera,.icono2Cabecera{
+
+}
+.textoCabeceraPoUp{
+    grid-area: textoCabeceraPoUp;
+}
+.icono1Cabecera{
+    grid-area: icono1Cabecera;
+}
+.icono2Cabecera{
+    grid-area: icono2Cabecera;
+}
+
+
 /*CSS pop up conversaciones*/
