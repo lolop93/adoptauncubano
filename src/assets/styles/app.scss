@@ -1,7 +1,5 @@
 @import "custom";
 @import "~bootstrap/scss/bootstrap";
-
-
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 
 p{
@@ -93,3 +91,19 @@ input[type=range] {
     }
 }
 /*Selector de rango de js del home*/
+
+/*CSS pop up conversaciones*/
+
+.popupMensajes{
+    position: fixed;
+    bottom: 80px;
+    right: 35px;
+    width: 75px;
+    height: 75px;
+    background-color: #E86362;
+    z-index: 100;
+    border-radius: 360px;
+    cursor: pointer;
+}
+
+/*CSS pop up conversaciones*/

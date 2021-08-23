@@ -73,3 +73,29 @@ $('.perfilHeader img').click(function(){
     }
 });
 // Funcion para el menu desplegable de cabecera
+
+//Pop up conversaciones
+
+$( document ).ready(function() {
+    var windowLoc = $(location).attr('pathname');
+
+    if (windowLoc != '/mensajes' && windowLoc != '/' && windowLoc != '/login' && windowLoc != '/register' && windowLoc != '/admin'){
+        console.log('polla');
+
+        $('body').append(
+            $('<div>', {'class':'popupMensajes d-flex align-items-center'}).append(
+                $('<i class="bi bi-chat-fill mx-auto text-white" style="font-size: 2.7658em"></i>'),
+                $('<div class="text-black-50 chatPopup bg-white" style="width: 400px; height: 400px; display: none ; position: absolute;top: -420px;left: -420px;"> ' +
+                        '<div class="w-100 h-100 " style="display:grid; "></div>' +
+                    ' </div>')
+            )
+        );
+    }
+
+    $('.popupMensajes').click(function(){
+        $('.chatPopup').toggle();
+    });
+});
+
+
+//Pop up conversaciones
