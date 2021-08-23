@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -69,6 +71,16 @@ class User implements UserInterface
      * @ORM\Column(type="boolean", nullable=true)
      */
     private $isVerified = false;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Conversaciones::class, mappedBy="emisor")
+     */
+    private $conversaciones;
+
+    public function __construct()
+    {
+        $this->conversaciones = new ArrayCollection();
+    }
 
     public function __toString(){
         return $this->id .' '.$this->username;
@@ -218,6 +230,36 @@ class User implements UserInterface
     public function setApellido1(string $apellido1): self
     {
         $this->apellido1 = $apellido1;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Conversaciones[]
+     */
+    public function getConversaciones(): Collection
+    {
+        return $this->conversaciones;
+    }
+
+    public function addConversacion(Conversaciones $conversacion): self
+    {
+        if (!$this->conversacion->contains($conversacion)) {
+            $this->conversacion[] = $conversacion;
+            $conversacion->setEmisor($this);
+        }
+
+        return $this;
+    }
+
+    public function removeConversacion(Conversaciones $conversacion): self
+    {
+        if ($this->conversacion->removeElement($conversacion)) {
+            // set the owning side to null (unless already changed)
+            if ($conversacion->getEmisor() === $this) {
+                $conversacion->setEmisor(null);
+            }
+        }
 
         return $this;
     }
