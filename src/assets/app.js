@@ -68,7 +68,7 @@ $('.perfilHeader img').click(function(){
         p.css('background-color', '#CE5353FF');
         p.addClass("order-2");
         p.css('position', 'absolute');
-        p.css('bottom', '-135px');
+        p.css('bottom', '-110px');
 
     }
 });

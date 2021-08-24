@@ -34,22 +34,22 @@
 
                     <a href="{{ path('homepage') }}"><img class=" img me-2" style="max-width: 10em" src="{{ asset('images/Logos/LogoHeader.png') }}" ></a>
 
-                    <i onclick="window.location.href = '{{ path('mensajes') }}'" class="bi bi-chat-left-fill ms-auto " style="font-size: 25px; color: white; padding: 3px 5px 0 5px"></i>
-                    <i class="bi bi-bell-fill me-2 ms-2" style="font-size: 25px; padding: 0 5px"></i>
+                    <i onclick="window.location.href = '{{ path('mensajes') }}'" class="bi bi-chat-fill ms-auto " style="font-size: 20px; color: white; padding: 0 5px;"></i>
+                    <i class="bi bi-bell-fill me-2 ms-2" style="font-size: 20px; padding: 0 5px; margin: 0 20px;"></i>
 
-                    <input type="search" class="buscador-header ps-2 me-2" placeholder="🔎" aria-label="Search" style="border: none; border-radius: 2.25rem;">
+                    <input id="buscador" type="text" class="buscador-header ps-2 me-2" placeholder="&#61442;" aria-label="Search" style="border: none; border-radius: 2.25rem; width: 300px; margin: 0 20px">
 
-                    <div class=" perfilHeader d-flex flex-row p-1 align-items-center " style="background-color: #CE5353FF">
+                    <div class=" perfilHeader d-flex flex-row p-1 align-items-center " style="background-color: #CE5353FF; margin: 0 20px;">
 
-                        <div class="contenedorMenu ">
+                        <div class="contenedorMenu">
                             <p class="p-2 tituloMenu">Perfil</p>
                             <div class="menuDesplegable d-none d-flex flex-column align-items-center ">
                                 <a href="{{ path('ajustes') }}" class="botonMenuPerfil"><i class="bi bi-gear"></i></a>
-                                <p>Ajustes</p>
+
                                 <a href="{{ path('perfil') }}" class="botonMenuPerfil"><i class="bi bi-person"></i></a>
-                                <p>Cuenta</p>
+
                                 <a href="{{ path('app_logout') }}" class="botonMenuPerfil"><i class="bi bi-box-arrow-left"></i></a>
-                                <p>Salir</p>
+
                             </div>
                         </div>
 
@@ -64,7 +64,7 @@
         <div class="pt-3 pb-3 main-content"  >
             {% block body %}
                 <style>
-
+                    @import "//netdna.bootstrapcdn.com/font-awesome/3.0/css/font-awesome.css"; {# placeholder de la importación del icono de la barra de busqueda#}
                     body{
 
                         background-size: 500px 500px;
@@ -172,6 +172,12 @@
                         z-index: 1000;
                         top: 0;
                     }
+                    input{
+                        font-family: Metropolis, FontAwesome;
+                    }
+                    input:focus{
+                        outline: none;
+                    }
 
                     header i:hover{
                         background-color: #CE5353FF;
@@ -186,11 +192,15 @@
                         margin: 0;
 
                     }
+                    .bi-box-arrow-left::before {
+                        margin-right: 3.5px;
+                    }
                     .tituloMenu{
                         font-size: 13.4px;
                     }
                     .botonMenuPerfil{
                         color: inherit;
+                        margin-bottom: 5px;
                     }
 
                     .perfilHeader{

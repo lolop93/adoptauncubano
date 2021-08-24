@@ -2,14 +2,11 @@
 <project version="4">
   <component name="PhpIncludePathManager">
     <include_path>
-      <path value="$PROJECT_DIR$/src/vendor/symfony/http-kernel" />
       <path value="$PROJECT_DIR$/src/vendor/symfony/validator" />
       <path value="$PROJECT_DIR$/src/vendor/symfony/translation-contracts" />
       <path value="$PROJECT_DIR$/src/vendor/symfony/service-contracts" />
       <path value="$PROJECT_DIR$/src/vendor/symfony/string" />
-      <path value="$PROJECT_DIR$/src/vendor/symfony/yaml" />
       <path value="$PROJECT_DIR$/src/vendor/symfony/twig-bridge" />
-      <path value="$PROJECT_DIR$/src/vendor/symfony/serializer" />
       <path value="$PROJECT_DIR$/src/vendor/symfony/security-bundle" />
       <path value="$PROJECT_DIR$/src/vendor/symfony/polyfill-mbstring" />
       <path value="$PROJECT_DIR$/src/vendor/symfony/dotenv" />
@@ -52,7 +49,6 @@
       <path value="$PROJECT_DIR$/src/vendor/symfony/security-core" />
       <path value="$PROJECT_DIR$/src/vendor/symfony/http-client-contracts" />
       <path value="$PROJECT_DIR$/src/vendor/symfony/polyfill-intl-normalizer" />
-      <path value="$PROJECT_DIR$/src/vendor/symfony/polyfill-intl-grapheme" />
       <path value="$PROJECT_DIR$/src/vendor/symfony/doctrine-bridge" />
       <path value="$PROJECT_DIR$/src/vendor/symfony/cache" />
       <path value="$PROJECT_DIR$/src/vendor/symfony/dependency-injection" />
@@ -60,7 +56,6 @@
       <path value="$PROJECT_DIR$/src/vendor/symfony/twig-bundle" />
       <path value="$PROJECT_DIR$/src/vendor/symfony/config" />
       <path value="$PROJECT_DIR$/src/vendor/symfony/security-http" />
-      <path value="$PROJECT_DIR$/src/vendor/symfony/proxy-manager-bridge" />
       <path value="$PROJECT_DIR$/src/vendor/symfony/property-info" />
       <path value="$PROJECT_DIR$/src/vendor/symfony/property-access" />
       <path value="$PROJECT_DIR$/src/vendor/symfony/filesystem" />
@@ -78,7 +73,6 @@
       <path value="$PROJECT_DIR$/src/vendor/symfony/var-dumper" />
       <path value="$PROJECT_DIR$/src/vendor/symfony/http-foundation" />
       <path value="$PROJECT_DIR$/src/vendor/symfony/framework-bundle" />
-      <path value="$PROJECT_DIR$/src/vendor/symfony/monolog-bridge" />
       <path value="$PROJECT_DIR$/src/vendor/symfony/monolog-bundle" />
       <path value="$PROJECT_DIR$/src/vendor/symfony/polyfill-php81" />
       <path value="$PROJECT_DIR$/src/vendor/doctrine/deprecations" />
@@ -101,6 +95,12 @@
       <path value="$PROJECT_DIR$/src/vendor/symfony/google-mailer" />
       <path value="$PROJECT_DIR$/src/vendor/mobiledetect/mobiledetectlib" />
       <path value="$PROJECT_DIR$/src/vendor/netbull/mobile-detect-bundle" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/http-kernel" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/polyfill-intl-grapheme" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/proxy-manager-bridge" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/monolog-bridge" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/serializer" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/yaml" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.0" />
