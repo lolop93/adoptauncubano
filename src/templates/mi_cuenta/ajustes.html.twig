@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block texto %}
-    <h2>AJUSTES</h2>
+    <h2>Ajustes</h2>
 {% endblock %}
 
 {% block primerIcono %}
@@ -30,7 +30,7 @@
 
         <div class="editarCampos">
             <h3>Apellidos</h3>
-            <p>{{ login.apellido1 }}</p>
+            <p class="campoEditable">{{ login.apellido1 }}</p>
         </div>
 
         <div class="editarCampos">
@@ -51,9 +51,11 @@
 
     <style>
 
-        .gridAjustes{
+        .gridAjustes h3,p{
             display: grid;
             grid-auto-rows: minmax(1,auto);
+            padding: 10px 0 0 30px;
+
         }
         .gridAjustes h3{
             color: #CE5353;
@@ -63,9 +65,7 @@
             border-bottom: solid 0px;
             box-shadow: -2px 2px 6px -3px rgb(0 0 0 / 31%);
         }
-        .editarCampos p{
-            margin-left: 60px;
-        }
+
 
     </style>
 {% endblock %}

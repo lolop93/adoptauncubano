@@ -10,7 +10,7 @@
         <i class="main-bi bi{% block primerIcono %} bi-person-fill {% endblock%} bg-white "></i>
             <div class=" titulo d-flex bg-white align-items-center">
                 {% block texto %}
-                <p class=" "> Texto </p>
+                <p class=""> Texto </p>
                 {% endblock %}
             </div>
         <i class="bi {% block segundoIcono %}bi-gear-fill {% endblock%} bg-white align-self-start mt-3"></i>
@@ -35,6 +35,11 @@
     </div>
 
     <style>
+        .bi-person-fill:hover{
+            cursor: pointer;
+
+
+        }
         .grid-menu{
             display: grid;
             grid-auto-rows: minmax(max-content,auto);
@@ -63,8 +68,10 @@
         }
 
         .titulo{
+            display: flex;
             z-index: 1;
             box-shadow: 0px 3px 23px 10px rgb(0 0 0 / 31%);
+            align-content: center;
         }
 
         .main-bi{
@@ -72,6 +79,7 @@
             padding: 0 22px;
         }
     </style>
+
 
 {% endblock %}
 
