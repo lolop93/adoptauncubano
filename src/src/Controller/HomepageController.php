@@ -8,11 +8,12 @@ use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use SunCat\MobileDetectBundle\DeviceDetector\MobileDetector;
 
 class HomepageController extends AbstractController
 {
     #[Route('/homepage', name: 'homepage')]
-    public function index(UserRepository $userRepository, GaleriaRepository $galeriaRepository, UserAttributesRepository $userAttributesRepository): Response
+    public function perfil(MobileDetector $pantalla, UserRepository $userRepository, GaleriaRepository $galeriaRepository, UserAttributesRepository $userAttributesRepository): Response
     {
 
 
@@ -25,12 +26,22 @@ class HomepageController extends AbstractController
 
         $login = $this->get('security.token_storage')->getToken()->getUser();
 
-        return $this->render('homepage/index.html.twig', [
-            'users' => $users,
-            'galerias' => $galerias,
-            'atributos' => $atributos,
-            'login' => $login,
-        ]);
+        if($pantalla->isMobile() && !$pantalla->isTablet()){
+            return $this->render('homepage/indexMobile.html.twig', [
+                'users' => $users,
+                'galerias' => $galerias,
+                'atributos' => $atributos,
+                'login' => $login,
+            ]);
+        }else {
+            return $this->render('homepage/index.html.twig', [
+                'users' => $users,
+                'galerias' => $galerias,
+                'atributos' => $atributos,
+                'login' => $login,
+            ]);
+        }
+
     }
 
     #[Route('/usuario/{id}', name: 'usuario')]

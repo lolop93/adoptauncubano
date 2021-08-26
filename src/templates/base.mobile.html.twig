@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}
+        {# 'app' must match the first argument to addEntry() in webpack.config.js #}
+        {{ encore_entry_link_tags('app') }}
+
+        <!-- Renders a link tag (if your module requires any CSS)
+             <link rel="stylesheet" href="/build/app.css"> -->
+    {% endblock %}
+
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+
+        <!-- Renders app.js & a webpack runtime.js file
+            <script src="/build/runtime.js" defer></script>
+            <script src="/build/app.js" defer></script>
+            See note below about the "defer" attribute -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    {% endblock %}
+</head>
+<body>
+<header class="p-2 text-white " style="background-color:rgba(0, 0, 0, 0.8);">
+    {% block header %}
+        <div class="container-fluid d-flex flex-row align-items-center">
+
+            <a href="{{ path('homepage') }}"><img class=" img me-2" style="max-width: 10em" src="{{ asset('images/Logos/LogoHeader.png') }}" ></a>
+
+            <i onclick="window.location.href = '{{ path('mensajes') }}'" class="bi bi-chat-fill ms-auto " style="font-size: 20px; color: white; padding: 0 5px;"></i>
+            <i class="bi bi-bell-fill me-2 ms-2" style="font-size: 20px; padding: 0 5px; margin: 0 20px;"></i>
+
+            <input id="buscador" type="text" class="buscador-header ps-2 me-2" placeholder="&#61442;" aria-label="Search" style="border: none; border-radius: 2.25rem; width: 300px; margin: 0 20px">
+
+            <div class=" perfilHeader d-flex flex-row p-1 align-items-center " style="background-color: #CE5353FF; margin: 0 20px;">
+
+                <div class="contenedorMenu">
+                    <p class="p-2 tituloMenu">Perfil</p>
+                    <div class="menuDesplegable d-none d-flex flex-column align-items-center ">
+                        <a href="{{ path('ajustes') }}" class="botonMenuPerfil"><i class="bi bi-gear"></i></a>
+
+                        <a href="{{ path('perfil') }}" class="botonMenuPerfil"><i class="bi bi-person"></i></a>
+
+                        <a href="{{ path('app_logout') }}" class="botonMenuPerfil"><i class="bi bi-box-arrow-left"></i></a>
+
+                    </div>
+                </div>
+
+                <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40" class="rounded-circle" style=" z-index: 1;">
+
+
+            </div>
+
+        </div>
+    {% endblock %}
+</header>
+
+
+    <footer>
+    </footer>
+</body>
+
+
+</html>
