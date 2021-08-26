@@ -76,6 +76,31 @@ $('.perfilHeader img').click(function(){
 
 //Pop up conversaciones
 
+function getMensajes() {
+    
+};
+
+function insertMensajes(mensajes) {
+    mensajes=10;
+    for (let i = 0; i < mensajes; i++) {
+        console.log("pollamensajes");
+        $('.mensajesPopUp').append(
+            $(
+                '<div class="mensajePopUp p-3 border-bottom border-1 border-dark">'+
+                    '<img src="https://github.com/mdo.png" alt="mdo" width="40" height="40" class="rounded-circle  me-3">'+
+                        '<div class="infoMensajePopUp">'+
+                            '<p style="font-size: 15px">Nombre</p>'+
+                            '<p style="font-size: 11px">Mensaje..........</p>'+
+                        '</div>'+
+                        '<div class="notificacionMensajePopUp ms-auto rounded-circle text-white">'+
+                            '2'+
+                        '</div>'+
+                '</div>'
+            )
+        );
+    }
+}
+
 $( document ).ready(function() {
     var windowLoc = $(location).attr('pathname');
 
@@ -84,23 +109,34 @@ $( document ).ready(function() {
 
         $('body').append(
             $('<div>', {'class':'popupMensajes d-flex align-items-center'}).append(
-                $('<i class="bi bi-chat-fill mx-auto text-white" style="font-size: 2.7658em"></i>'),
-                $('<div class="text-black-50 chatPopup bg-white" style="width: 400px; height: 400px; display: none ; position: absolute;top: -420px;left: -420px;"> ' +
-                        '<div class="w-100 h-100 gridContactos" >' +
-                            '<div class="textoCabeceraPoUp bg-white"><p>Polla</p></div>'+
-                            '<div class="icono1Cabecera bg-secondary"><p>Polla</p></div>'+
-                            '<div class="icono2Cabecera bg-danger"><p>Polla</p></div>'+
-                            '<div class="contenidoPopUp bg-dark"><p>Polla</p></div>'+
+                $('<i class="botonPopUp bi bi-chat-fill mx-auto text-white" style="font-size: 2.7658em"></i>'),
+                $('<div class="chatPopup" style="width: 400px; height: 400px; display: none ; position: absolute;top: -420px;left: -420px;"> ' +
+                        '<div class="w-100 h-100 gridContactos " >' +
+                            '<div class="textoCabeceraPoUp ms-2 text-white"><p>Contactos</p></div>'+
+                            '<div class="icono1Cabecera text-white">' +
+                                '<i class="bi bi-search ms-5"></i>' +
+                            '</div>'+
+                            '<div class="icono2Cabecera me-3 text-white">' +
+                                '<i class="bi bi-three-dots-vertical ms-3"></i>' +
+                            '</div>'+
+                            '<div class="contenidoPopUp overflow-auto">' +
+                                '<div class="mensajesPopUp">' +
+                                '</div>'+
+                            '</div>'+
                         '</div>' +
                     ' </div>')
             )
         );
     }
 
-    $('.popupMensajes').click(function(){
+    $('.botonPopUp').click(function(){
         $('.chatPopup').toggle();
     });
+
+    //ejecutamos las funciones de relleno de la conversacion
+    insertMensajes(10);
 });
+
 
 
 //Pop up conversaciones

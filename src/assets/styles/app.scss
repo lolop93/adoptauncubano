@@ -110,29 +110,64 @@ input[type=range] {
 
 }
 
+div p{
+    margin-bottom: 0;
+}
+
 .gridContactos{
     display:grid;
     grid-template-areas:
-        "textoCabeceraPoUp icono1Cabecera icono2Cabecera"
-        "contenidoPopUp contenidoPopUp contenidoPopUp";
-    grid-template-rows: 50px auto;
+        "textoCabeceraPoUp textoCabeceraPoUp textoCabeceraPoUp textoCabeceraPoUp icono1Cabecera icono2Cabecera"
+        "contenidoPopUp contenidoPopUp contenidoPopUp contenidoPopUp contenidoPopUp contenidoPopUp";
+    grid-template-rows: 40px auto;
+    background-color: #CE5353FF;
 }
+
 .contenidoPopUp{
     grid-column: 1/4;
     grid-area: contenidoPopUp;
+    background-color: #E1E1E1;
+
 
 }
 .textoCabeceraPoUp,.icono1Cabecera,.icono2Cabecera{
-
+    display: flex;
+    align-items: center ;
 }
+
 .textoCabeceraPoUp{
     grid-area: textoCabeceraPoUp;
 }
 .icono1Cabecera{
     grid-area: icono1Cabecera;
+    justify-self: end;
 }
 .icono2Cabecera{
     grid-area: icono2Cabecera;
+    justify-self: end;
+}
+
+.mensajesPopUp{
+    grid-area: mensajes;
+    background-color: #E1E1E1;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+
+}
+.mensajePopUp{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.mensajePopUp p{
+    margin: 0;
+}
+.notificacionMensajePopUp{
+    background-color: #CE5353;
+    width: 25px;
+    height: 25px;
+    text-align: center;
 }
 
 

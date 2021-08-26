@@ -16,8 +16,6 @@ class HomepageController extends AbstractController
     public function perfil(MobileDetector $pantalla, UserRepository $userRepository, GaleriaRepository $galeriaRepository, UserAttributesRepository $userAttributesRepository): Response
     {
 
-
-
         $users = $userRepository->findAll();
 
         $galerias = $galeriaRepository->findAll();
