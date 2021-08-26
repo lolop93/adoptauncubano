@@ -33,6 +33,7 @@ import './custom.js';
 
 
 // Funcion para el menu desplegable de cabecera
+//---------------------------------------------
 $('.perfilHeader img').click(function(){
 
     console.log("Prueba perfil");
@@ -72,10 +73,12 @@ $('.perfilHeader img').click(function(){
 
     }
 });
+//---------------------------------------------
 // Funcion para el menu desplegable de cabecera
 
-//Pop up conversaciones
 
+//Pop up conversaciones
+//---------------------------------------------
 function getMensajes() {
     
 };
@@ -130,13 +133,11 @@ $( document ).ready(function() {
     }
 
     $('.botonPopUp').click(function(){
-        $('.chatPopup').toggle();
+        $('.chatPopup').fadeToggle();
     });
 
     //ejecutamos las funciones de relleno de la conversacion
     insertMensajes(10);
 });
-
-
-
+//---------------------------------------------
 //Pop up conversaciones
