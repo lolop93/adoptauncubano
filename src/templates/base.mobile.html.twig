@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+    <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>{% block title %}Welcome!{% endblock %}</title>
@@ -23,45 +23,91 @@
 
     {% endblock %}
 </head>
-<body>
+<body style="background-size: 250px 250px; background-repeat: repeat; background-image: url({{ asset('images/Backgrounds/pattern_1.0.png') }});">
 <header class="p-2 text-white " style="background-color:rgba(0, 0, 0, 0.8);">
     {% block header %}
-        <div class="container-fluid d-flex flex-row align-items-center">
+        <div style="display: flex; align-items: center;justify-content: center; width: 100%;">
 
-            <a href="{{ path('homepage') }}"><img class=" img me-2" style="max-width: 10em" src="{{ asset('images/Logos/LogoHeader.png') }}" ></a>
+            <a href="{{ path('homepage') }}"><img class=" img" style="margin-right:auto;max-width: 4em;" src="{{ asset('images/Logos/LOGOHEADERMOVIL.png') }}"></a>
+            <div style="display: flex; justify-content: space-between; margin-left: auto;width: 60%;padding: 0 10px;">
 
-            <i onclick="window.location.href = '{{ path('mensajes') }}'" class="bi bi-chat-fill ms-auto " style="font-size: 20px; color: white; padding: 0 5px;"></i>
-            <i class="bi bi-bell-fill me-2 ms-2" style="font-size: 20px; padding: 0 5px; margin: 0 20px;"></i>
-
-            <input id="buscador" type="text" class="buscador-header ps-2 me-2" placeholder="&#61442;" aria-label="Search" style="border: none; border-radius: 2.25rem; width: 300px; margin: 0 20px">
-
-            <div class=" perfilHeader d-flex flex-row p-1 align-items-center " style="background-color: #CE5353FF; margin: 0 20px;">
-
-                <div class="contenedorMenu">
-                    <p class="p-2 tituloMenu">Perfil</p>
-                    <div class="menuDesplegable d-none d-flex flex-column align-items-center ">
-                        <a href="{{ path('ajustes') }}" class="botonMenuPerfil"><i class="bi bi-gear"></i></a>
-
-                        <a href="{{ path('perfil') }}" class="botonMenuPerfil"><i class="bi bi-person"></i></a>
-
-                        <a href="{{ path('app_logout') }}" class="botonMenuPerfil"><i class="bi bi-box-arrow-left"></i></a>
-
-                    </div>
-                </div>
-
-                <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40" class="rounded-circle" style=" z-index: 1;">
-
+                <i onclick="window.location.href = '{{ path('mensajes') }}'" class="bi bi-chat-fill " style="font-size: 20px; color: white; padding: 0 5px;"></i>
+                <i {#onclick="window.location.href = '{{ path('notificaciones') }}'"#} class="bi bi-bell-fill me-2 ms-2 " style="font-size: 20px; padding: 0 5px; margin: 0 20px;"></i>
+                <i {# Crear script para abrir barra de busqueda #} class="bi bi-search " style="font-size: 20px; padding: 0 5px;"></i>
 
             </div>
+
+            <div  alt="mdo" width="50" height="50" class="rounded-circle" style="background-image: url('{{ asset('images/Perfiles/' ~ login.galeria.getFotoPerfil)}}'); margin-left: auto; background-size: cover;position: center;  width:40px;height:40px;">
+
+            </div>
+
 
         </div>
     {% endblock %}
 </header>
+    <div class="pt-3 pb-3 main-content"  >
+    {% block body %}
+    <p>polla</p>
 
+    {% endblock %}
+    </div>
+    <footer> {#placeholder del footer#}
+        <div id="footer1" class="container-fluid " style="background-color:rgba(0, 0, 0, 0.6);">
+                <div class="row" style="display: flex; flex-direction: row;justify-content: space-between; align-items: center;">
+                    <div class="col-lg-6 col-12 ">
+                        <div class="row p-2 d-flex" >
+                            <div class="col-12 col-lg-6 justify-content-lg-start justify-content-center" style="display: flex; flex-direction: row; align-items: center;"><img class="img-fluid "  style=" max-width: 12em" src="{{ asset('images/Logos/Logofooter.png') }}" ></div>
+                            <div class="col-12 col-lg-6 " style="display: flex; flex-direction: row;justify-content: center; align-items: center;">
+                                <div class="socialiconsFooter mt-3 mt-lg-0" style="">
+                                    <i class="bi bi-twitter"></i>
+                                    <i class="bi bi-instagram"></i>
+                                    <i class="bi bi-facebook"></i>
 
-    <footer>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-12  ">
+                        <ul class="footer-links " style="margin-top: auto; margin-bottom: auto">
+                            <li id="footer-links-nonborder"><a href="localhost/contacto">CONTACTO</a></li>
+                            <li><a href="localhost/contacto">CONDICIONES Y PRIVACIDAD</a></li>
+                            <li style="color: white">©Copyright JoseCubano 2021</li>
+                        </ul>
+                    </div>
+                </div>
+        </div>
     </footer>
-</body>
 
+</body>
+<style>
+    html{
+        height: 100%;
+    }
+
+    body{
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+    header{
+        /* We want the header to have a static height,
+        it will always take up just as much space as it needs.  /
+        / 0 flex-grow, 0 flex-shrink, auto flex-basis */
+        flex: 0 0 auto;
+
+    }
+    footer{
+        /* Like the header, the footer will have a static height - it shouldn't grow or shrink.  /
+        / 0 flex-grow, 0 flex-shrink, auto flex-basis */
+        flex: 0 0 auto;
+    }
+    .main-content{
+        /* By setting flex-grow to 1, the main content will take up
+        all of the remaining space on the page.
+        The other elements have flex-grow: 0 and won't contest the free space. /
+        / 1 flex-grow, 0 flex-shrink, auto flex-basis */
+        flex: 1 0 auto;
+    }
+</style>
 
 </html>
