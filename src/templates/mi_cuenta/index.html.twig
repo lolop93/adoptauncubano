@@ -13,10 +13,11 @@
                 <p class=""> Texto </p>
                 {% endblock %}
             </div>
-        <i class="bi {% block segundoIcono %}bi-gear-fill {% endblock%} bg-white align-self-start mt-3"></i>
+        <i onclick="window.location.href = '{{ app.request.attributes.get('_route')=='perfil' ? path('ajustes') : path('perfil') }}'" class="bi {% block segundoIcono %}bi-gear-fill {% endblock%} bg-white align-self-start mt-3"></i>
         <div class="contenido bg-white">
             {% block contenido %}
-            <p>What is Lorem Ipsum?
+            <p>
+                What is Lorem Ipsum?
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 
                 Why do we use it?
@@ -35,11 +36,7 @@
     </div>
 
     <style>
-        .bi-person-fill:hover{
-            cursor: pointer;
 
-
-        }
         .grid-menu{
             display: grid;
             grid-auto-rows: minmax(max-content,auto);
@@ -78,6 +75,14 @@
             z-index: 2;
             padding: 0 22px;
         }
+        .bi-person-fill:hover{
+            cursor: pointer;
+        }
+
+        .bi-gear-fill:hover{
+            cursor: pointer;
+        }
+
     </style>
 
 

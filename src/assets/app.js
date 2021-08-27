@@ -101,8 +101,8 @@ function insertMensajes(mensajes) {
                 '</div>'
             )
         );
-    }
-}
+    };
+};
 
 $( document ).ready(function() {
     var windowLoc = $(location).attr('pathname');
