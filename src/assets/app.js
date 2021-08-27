@@ -54,6 +54,9 @@ $('.perfilHeader img').click(function(){
         p.removeClass("order-2");
         p.css('position', '');
         p.css('bottom', '');
+        console.log("ESTAFUNCIONANDO ESTA MIERDA?")
+        p.css('padding-top', '0px');
+
 
 
     }
@@ -70,6 +73,8 @@ $('.perfilHeader img').click(function(){
         p.addClass("order-2");
         p.css('position', 'absolute');
         p.css('bottom', '-110px');
+        p.css('padding-top', '20px');
+
 
     }
 });

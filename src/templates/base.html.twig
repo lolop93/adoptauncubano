@@ -51,7 +51,7 @@
 
                             </div>
                         </div>
-
+                        {# Script menu desplegable en app.js #}
                         <img src="{{ asset('images/Perfiles/' ~ login.galeria.getFotoPerfil)}}" alt="mdo" width="40" height="40" class="rounded-circle" style=" z-index: 1;">
 
 
@@ -181,10 +181,7 @@
                     header i:hover{
                         background-color: #CE5353FF;
                         cursor: pointer;
-                        border-top-right-radius: 360px;
-                        border-bottom-right-radius: 360px;
-                        border-top-left-radius: 360px;
-                        border-bottom-left-radius: 360px;
+                        border-radius: 360px;
                     }
 
                     .perfilHeader p{
@@ -203,16 +200,17 @@
                     }
 
                     .perfilHeader{
-                        border-top-right-radius: 360px;
-                        border-bottom-right-radius: 360px;
-                        border-top-left-radius: 360px;
-                        border-bottom-left-radius: 360px;
+                        border-radius: 360px;
                     }
                     .perfilHeader img{
                         cursor: pointer;
                     }
                     .menuDesplegable p{
                         font-size: 10px;
+                        border-radius: 100px;
+                    }
+                    .contenedorMenu{
+                        border-radius: 100px
                     }
 
                     .main-content{
