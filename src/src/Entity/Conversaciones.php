@@ -25,13 +25,13 @@ class Conversaciones
     private $fecha;
 
     /**
-     * @ORM\ManyToOne(targetEntity=user::class, inversedBy="conversaciones")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="conversaciones")
      * @ORM\JoinColumn(nullable=false)
      */
     private $emisor;
 
     /**
-     * @ORM\ManyToOne(targetEntity=user::class, inversedBy="conversaciones")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="conversaciones")
      * @ORM\JoinColumn(nullable=false)
      */
     private $remitente;

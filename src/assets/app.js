@@ -118,7 +118,7 @@ $( document ).ready(function() {
         $('body').append( //Solo necesitamos el popup en escritorio (meter un if en funcion de si es movil o no)
             $('<div>', {'class':'popupMensajes d-flex align-items-center'}).append(
                 $('<i class="botonPopUp bi bi-chat-fill mx-auto text-white" style="font-size: 2.7658em"></i>'),
-                $('<div class="chatPopup" style="width: 400px; height: 400px; display: none ; position: absolute;top: -420px;left: -420px;"> ' +
+                $('<div class="chatPopup" style="width: 300px; height: 400px; display: none ; position: absolute;top: -420px;left: -380px;"> ' +
                         '<div class="w-100 h-100 gridContactos " >' +
                             '<div class="textoCabeceraPoUp ms-2 text-white"><p>Contactos</p></div>'+
                             '<div class="icono1Cabecera text-white">' +
@@ -146,3 +146,19 @@ $( document ).ready(function() {
 });
 //---------------------------------------------
 //Pop up conversaciones
+
+
+//JS ajax para consultar mensajes
+//---------------------------------------------
+
+$( document ).ready(function() {
+    $.ajax({
+        type: 'POST',
+        url: "/mensajes",
+        async:true,
+        dataType: "json",
+        success: function (data){
+            console.log("LA id desde ajax del usuario actual es: " + data['id']);
+        }
+    })
+});
