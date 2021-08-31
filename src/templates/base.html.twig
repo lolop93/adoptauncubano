@@ -52,7 +52,7 @@
                             </div>
                         </div>
                         {# Script menu desplegable en app.js #}
-                        <img src="{{ asset('images/Perfiles/' ~ login.galeria.getFotoPerfil)}}" alt="mdo" width="40" height="40" class="rounded-circle" style=" z-index: 1;">
+                        <div  alt="mdo" width="50" height="50" class="rounded-circle" style="background-image: url('{{ asset('images/Perfiles/' ~ login.galeria.getFotoPerfil)}}'); margin-left: auto; background-size: cover;position: center;  width:40px;height:40px;"></div>
 
 
                     </div>
@@ -79,8 +79,6 @@
             {% block footer %}
                 <div id="footer1" class="container-fluid " style="background-color:rgba(0, 0, 0, 0.6);">
                     <div class="row" style="display: flex; flex-direction: row;justify-content: space-between; align-items: center;">
-                        <div class="col-lg-6 col-12 ">
-                            <div class="row p-2 d-flex" >
                                 <div class="col-12 col-lg-6 justify-content-lg-start justify-content-center" style="display: flex; flex-direction: row; align-items: center;"><img class="img-fluid "  style=" max-width: 12em" src="{{ asset('images/Logos/Logofooter.png') }}" ></div>
                                 <div class="col-12 col-lg-6 " style="display: flex; flex-direction: row;justify-content: center; align-items: center;">
                                     <div class="socialiconsFooter mt-3 mt-lg-0" style="">
@@ -89,9 +87,6 @@
                                         <i class="bi bi-facebook"></i>
 
                                     </div>
-                                </div>
-                            </div>
-                        </div>
                         <div class="col-lg-6 col-12  ">
                             <ul class="footer-links " style="margin-top: auto; margin-bottom: auto">
                                 <li id="footer-links-nonborder"><a href="localhost/contacto">CONTACTO</a></li>

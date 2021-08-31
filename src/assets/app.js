@@ -115,7 +115,7 @@ $( document ).ready(function() {
     if (windowLoc != '/mensajes' && windowLoc != '/' && windowLoc != '/login' && windowLoc != '/register' && windowLoc != '/admin'){
         console.log('polla');
 
-        $('body').append(
+        $('body').append( //Solo necesitamos el popup en escritorio (meter un if en funcion de si es movil o no)
             $('<div>', {'class':'popupMensajes d-flex align-items-center'}).append(
                 $('<i class="botonPopUp bi bi-chat-fill mx-auto text-white" style="font-size: 2.7658em"></i>'),
                 $('<div class="chatPopup" style="width: 300px; height: 400px; display: none ; position: absolute;top: -420px;left: -380px;"> ' +
