@@ -52,30 +52,26 @@
     {% endblock %}
     </div>
     <footer> {#placeholder del footer#}
-        <div id="footer1" class="container-fluid " style="background-color:rgba(0, 0, 0, 0.6);">
-                <div class="row" style="display: flex; flex-direction: row;justify-content: space-between; align-items: center;">
-                    <div class="col-lg-6 col-12 ">
-                        <div class="row p-2 d-flex" >
-                            <div class="col-12 col-lg-6 justify-content-lg-start justify-content-center" style="display: flex; flex-direction: row; align-items: center;"><img class="img-fluid "  style=" max-width: 12em" src="{{ asset('images/Logos/Logofooter.png') }}" ></div>
-                            <div class="col-12 col-lg-6 " style="display: flex; flex-direction: row;justify-content: center; align-items: center;">
-                                <div class="socialiconsFooter mt-3 mt-lg-0" style="">
-                                    <i class="bi bi-twitter"></i>
-                                    <i class="bi bi-instagram"></i>
-                                    <i class="bi bi-facebook"></i>
+        <div class="footerMobile" style="background-color:rgba(0, 0, 0, 0.6);">
+            <div class="logoFooter">
+                <img class="img-fluid "  style=" max-width: 10em" src="{{ asset('images/Logos/Logofooter.png') }}" >
+            </div>
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-12  ">
-                        <ul class="footer-links " style="margin-top: auto; margin-bottom: auto">
-                            <li id="footer-links-nonborder"><a href="localhost/contacto">CONTACTO</a></li>
-                            <li><a href="localhost/contacto">CONDICIONES Y PRIVACIDAD</a></li>
-                            <li style="color: white">©Copyright JoseCubano 2021</li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="iconosFooter">
+                <i class="bi bi-twitter"></i>
+                <i class="bi bi-instagram"></i>
+                <i class="bi bi-facebook"></i>
+            </div>
+
+            <div class="infoFooter">
+                <li class="infoFooterNonBorder"><a href="localhost/contacto">CONTACTO</a></li>
+                <li><a href="localhost/contacto">CONDICIONES Y PRIVACIDAD</a></li>
+                <li style="color: white">©Copyright 2021</li>
+            </div>
+
+
         </div>
+
     </footer>
 
 </body>
@@ -101,6 +97,44 @@
         / 0 flex-grow, 0 flex-shrink, auto flex-basis */
         flex: 0 0 auto;
     }
+    .footerMobile{
+        padding: 12px;
+    }
+    footer .logoFooter{
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+    footer .iconosFooter{
+        display: flex;
+        color: white;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+    footer .iconosFooter i{
+        margin-left: 20px;
+        font-size: 1.2em;
+    }
+    footer a,li{
+        text-decoration: none;
+        color: white;
+        font-size: 8px;
+        list-style: none;
+    }
+    footer .infoFooter{
+        display: flex;
+        justify-content: center;
+    }
+    footer .infoFooter li{
+        border-left: 1px solid #ffffff;
+        margin-left: 10px;
+        padding-left: 10px;
+    }
+    footer .infoFooterNonBorder{
+        border-left: none !important;
+        margin-left: 0 !important;
+    }
+
     .main-content{
         /* By setting flex-grow to 1, the main content will take up
         all of the remaining space on the page.
