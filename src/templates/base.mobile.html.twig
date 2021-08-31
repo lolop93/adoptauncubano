@@ -51,10 +51,10 @@
 
     {% endblock %}
     </div>
-    <footer> {#placeholder del footer#}
-        <div class="footerMobile" style="background-color:rgba(0, 0, 0, 0.6);">
+    <footer>
+        <div class="footerMobile">
             <div class="logoFooter">
-                <img class="img-fluid "  style=" max-width: 10em" src="{{ asset('images/Logos/Logofooter.png') }}" >
+                <img class="img-fluid"  style=" max-width: 10em" src="{{ asset('images/Logos/Logofooter.png') }}" >
             </div>
 
             <div class="iconosFooter">
@@ -99,11 +99,16 @@
     }
     .footerMobile{
         padding: 12px;
+        background-color:rgba(0, 0, 0, 0.6);
     }
     footer .logoFooter{
         display: flex;
         justify-content: center;
         margin-bottom: 10px;
+    }
+    footer .logoFooter img{
+        max-width: 10em;
+
     }
     footer .iconosFooter{
         display: flex;
