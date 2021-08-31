@@ -47,7 +47,7 @@ class MiCuentaController extends AbstractController
 
     }
     #[Route('/cuenta/perfil/{id}', name: 'visitar')]
-    public function perfil(){
+    public function perfilVisita(){
 
     }
 
