@@ -52,7 +52,7 @@
                             </div>
                         </div>
                         {# Script menu desplegable en app.js #}
-                        <div  alt="mdo" width="50" height="50" class="rounded-circle fotoPerfilHeader" style="z-index: 100; background-image: url('{{ asset('images/Perfiles/' ~ login.galeria.getFotoPerfil)}}'); margin-left: auto; background-size: cover;position: center;  width:40px;height:40px;"></div>
+                        <div  alt="mdo" width="50" height="50" class="rounded-circle" style="background-image: url('{{ asset('images/Perfiles/' ~ login.galeria.getFotoPerfil)}}'); margin-left: auto; background-size: cover;position: center;  width:40px;height:40px;"></div>
 
 
                     </div>
@@ -77,76 +77,73 @@
         </div>
         <footer>
             {% block footer %}
-                <div id="footer1" class="container-fluid " style="background-color:rgba(0, 0, 0, 0.6);">
-                    <div class="row" style="display: flex; flex-direction: row;justify-content: space-between; align-items: center;">
-                                <div class="col-12 col-lg-6 justify-content-lg-start justify-content-center" style="display: flex; flex-direction: row; align-items: center;"><img class="img-fluid "  style=" max-width: 12em" src="{{ asset('images/Logos/Logofooter.png') }}" ></div>
-                                <div class="col-12 col-lg-6 " style="display: flex; flex-direction: row;justify-content: center; align-items: center;flex-wrap: wrap;">
-                                    <div class="socialiconsFooter mt-3 mt-lg-0" style="">
-                                        <i class="bi bi-twitter"></i>
-                                        <i class="bi bi-instagram"></i>
-                                        <i class="bi bi-facebook"></i>
-
-                                    </div>
-                        <div class="col-lg-6 col-12  ">
-                            <ul class="footer-links " style="margin-top: auto; margin-bottom: auto">
-                                <li id="footer-links-nonborder"><a href="localhost/contacto">CONTACTO</a></li>
-                                <li><a href="localhost/contacto">CONDICIONES Y PRIVACIDAD</a></li>
-                                <li style="color: white">©Copyright JoseCubano 2021</li>
-                            </ul>
-                        </div>
+                <div class="footerMobile">
+                    <div class="logoFooter" >
+                        <img class="img-fluid"  style=" max-width: 10em" src="{{ asset('images/Logos/Logofooter.png') }}" >
                     </div>
+
+                    <div class="iconosFooter">
+                        <i class="bi bi-twitter"></i>
+                        <i class="bi bi-instagram"></i>
+                        <i class="bi bi-facebook"></i>
+                    </div>
+
+                    <div class="infoFooter">
+                        <li class="infoFooterNonBorder"><a href="localhost/contacto">CONTACTO</a></li>
+                        <li><a href="localhost/contacto">CONDICIONES Y PRIVACIDAD</a></li>
+                        <li style="color: white">©Copyright 2021</li>
+                    </div>
+
+
                 </div>
 
                 <style>
 
-                    .socialiconsFooter i{
+                    footer{
+                        /* Like the header, the footer will have a static height - it shouldn't grow or shrink.  /
+                        / 0 flex-grow, 0 flex-shrink, auto flex-basis */
+                        flex: 0 0 auto;
+                    }
+                    .footerMobile{
+                        padding: 12px;
+                        background-color:rgba(0, 0, 0, 0.6);
+                    }
+                    footer .logoFooter{
+                        display: flex;
+                        justify-content: center;
+                        margin-bottom: 10px;
+                    }
+                    footer .logoFooter img{
+                        max-width: 10em;
+                    }
+                    footer .iconosFooter{
+                        display: flex;
                         color: white;
-                        font-size: 2vw;
-                        margin-left:2em;
+                        justify-content: center;
+                        margin-bottom: 10px;
                     }
-                    .socialiconsFooter{
-                        display: flex;
-                        flex-direction: row;
+                    footer .iconosFooter i{
+                        margin-left: 20px;
+                        font-size: 1.2em;
                     }
-                    /*Media query de boostrap*/
-                    /*@media screen and (min-width: 1200px) {
-                        body{
-                            background-size: cover;
-                        }
-                    }*/
-                    .footer-links-wrapper{
-                        overflow: hidden;
-                        position: relative;
-                        top: 8px;
-                    }
-                    .footer-links{
-                        display: flex;
-                        flex-direction: row;
-                        flex-wrap: wrap;
-                        justify-content: space-between;
-                    }
-                    .footer-links li{
-                        flex-grow: 1;
-                        flex-basis: auto;
-                        margin: .25em 0;
-                        padding: 0 1em;
-                        text-align: center;
-                        border-left: 1px solid #ffffff;
-                        letter-spacing: 1px;
-                        list-style-type: none;
-                        font-size: 0.8rem;
-                    }
-                    .footer-links li a{
-                        color: #ffffff;
+                    footer a,li{
                         text-decoration: none;
-                        font-weight: normal;
-                        transition: .2s ease-out;
+                        color: white;
+                        font-size: 8px;
+                        list-style: none;
                     }
-                    #footer-links-nonborder{
-                        border-left: none;
+                    footer .infoFooter{
+                        display: flex;
+                        justify-content: center;
                     }
-                    #footer1{
-
+                    footer .infoFooter li{
+                        border-left: 1px solid #ffffff;
+                        margin-left: 10px;
+                        padding-left: 10px;
+                    }
+                    footer .infoFooterNonBorder{
+                        border-left: none !important;
+                        margin-left: 0 !important;
                     }
                     html{
                         height: 100%;
@@ -197,7 +194,7 @@
                     .perfilHeader{
                         border-radius: 360px;
                     }
-                    .fotoPerfilHeader {
+                    .perfilHeader img{
                         cursor: pointer;
                     }
                     .menuDesplegable p{
