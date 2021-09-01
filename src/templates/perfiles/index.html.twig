@@ -1,0 +1,161 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PerfilesController!{% endblock %}
+
+{% block body %}
+
+    {{parent()}}
+    {{ dump() }}
+
+    {%  if user is not null %}
+        <div class="gridContenido w-75 mx-auto">
+            <div class="fotoGrid mt-4 mx-auto">
+                {% if user.galeria and user.galeria.getFotoPerfil %}
+                    <div class="imagenUsuario m-2 " style="background-image: url({{ asset('images/Perfiles/' ~ user.galeria.getFotoPerfil) }});"></div>
+                {% else %}
+                    <p>Sin foto de perfil</p>
+                {% endif %}
+            </div>
+
+            <div class="info">
+                <h1 class="title m-1 mt-4">
+                    {% if user and user.nombre %}
+                        {{ user.nombre }}
+                    {% else %}
+                        Marta
+                    {% endif %}
+                </h1>
+                <p class="m-1" >España</p>
+                <p class="m-1" >26 años</p>
+            </div>
+
+            <p class="atributos m-2">OJOS</p>
+            <p class="atributos m-2">PELO</p>
+            <p class="atributos m-2">PROFESION</p>
+            <p class="atributos m-2">CIUDAD</p>
+            <p class="atributos m-2">ALTURA</p>
+            <p class="atributos m-2">PESO</p>
+            <p class="atributos m-2">GUSTOS</p>
+
+            <div class="descripcion p-4">
+                <p style="color: #CE5353; font-size: 18px;">Descripcion</p>
+                <p> Why do we use it?
+                    It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+                </p>
+            </div>
+
+            <div class="galeria ">
+                <p class="title p-2 text-white">Galeria</p>
+                <div class="gridGaleria mt-4 mb-4">
+                    {% if user.galeria %}
+
+                        {% if user.galeria.getFotoPerfil %}
+                            <div class="imagenUsuario m-2 d-flex flex-column justify-content-end" style="background-image: url({{ asset('images/Perfiles/' ~ user.galeria.getFotoPerfil) }});">
+                                <p class="p-1 pe-4 ps-2 text-white mb-2 align-self-start">Foto Perfil</p>
+                            </div>
+                        {% else %}
+                            <div class="imagenUsuario m-2 " style="background-image: url({{ asset('images/fotodefecto.png') }});"></div>
+                        {% endif %}
+
+                        {% for i in 0..4 %}
+                            {% if i < user.galeria.getGaleria|length %}
+                                <div class="imagenUsuario m-2 " style="background-image: url({{ asset('images/Perfiles/' ~ user.galeria.getGaleria[i]) }});"></div>
+                            {% else %}
+                                <div class="imagenUsuario m-2 " style="background-image: url({{ asset('images/fotodefecto.png') }});"></div>
+                            {% endif %}
+                        {% endfor %}
+
+                    {% else %}
+
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="w-100 bg-white text-center ">
+            <h2>No hay ningun perfil asociado a este usuario</h2>
+        </div>
+    {% endif %}
+
+    <style>
+        .gridContenido{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-auto-rows: minmax(min-content,auto);
+            background-color: #E1E1E1;
+
+        }
+
+        .fotoGrid{
+            grid-row: 1/5;
+
+        }
+
+        .info{
+            color: #CE5353;
+            grid-column: 2/5;
+        }
+        .info h1{
+            font-weight: bolder;
+
+
+        }
+
+        .editarPerfil p{
+            background-color: #CE5353;
+            border-top-left-radius: 360px;
+            border-bottom-left-radius: 360px;
+        }
+
+        .imagenUsuario{
+            width:200px;
+            height: 200px;
+            background-position: center;
+            background-size: cover;
+            border-radius: 10px;
+        }
+
+        .descripcion{
+            grid-column: 1/5;
+        }
+
+        .galeria{
+            grid-column: 1/5;
+            display: grid;
+            grid-template-columns: 1fr ;
+
+        }
+        .galeria p{
+            background-color: #CE5353;
+            border-top-right-radius: 360px;
+            border-bottom-right-radius: 360px;
+            justify-self: start;
+
+        }
+
+        .gridGaleria{
+            display: grid;
+            grid-template-areas:
+                "foto foto foto"
+                "foto foto foto";
+
+            background-color: #E1E1E1;
+            justify-items: center;
+            place-content: center;
+            gap: 2em;
+
+        }
+
+        @media screen and (max-width: 840px) {
+            .gridGaleria {
+                gap: 0 !important;
+            }
+            .imagenUsuario{
+                width:150px;
+                height: 150px;
+            }
+        }
+
+    </style>
+
+{% endblock %}

@@ -46,10 +46,7 @@ class MiCuentaController extends AbstractController
 
 
     }
-    #[Route('/cuenta/perfil/{id}', name: 'visitar')]
-    public function perfilVisita(){
 
-    }
 
     #[Route('/cuenta/ajustes', name: 'ajustes')]
     public function ajustes(): Response

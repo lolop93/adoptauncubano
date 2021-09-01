@@ -69,7 +69,7 @@
                         {% if users|length > 0 %}
                             {% for user in users|slice(0, 6) %}
                                 <div class="">
-                                    <div class="imagenUser mx-auto " style="background-image: url({{ asset('images/Perfiles/' ~ user.galeria.getFotoPerfil) }});"></div>
+                                    <a href="{{ path('perfiles',{id:user.id}) }}"><div class="imagenUser mx-auto " style="background-image: url({{ asset('images/Perfiles/' ~ user.galeria.getFotoPerfil) }});"></div></a>
                                     <div class="mt-2 mb-1 d-flex flex-wrap justify-content-center">
                                         <div class="me-4">
                                             <h5 class="  " >{{ user.nombre }}</h5>
@@ -94,7 +94,7 @@
                         {% if users|length > 0 %}
                             {% for user2 in users|slice(0, 6) %}
                                 <div class=" ">
-                                    <div class="imagenUser mx-auto" style="background-image: url({{ asset('images/Perfiles/pexels-edu-carvalho-2050994.jpg') }});" ></div>
+                                    <a href="{{ path('perfiles',{id:user2.id}) }}"><div class="imagenUser mx-auto" style="background-image: url({{ asset('images/Perfiles/pexels-edu-carvalho-2050994.jpg') }});" ></div></a>
                                     <div class="mt-2 mb-1  d-flex flex-wrap justify-content-center ">
                                         <div class=" me-4">
                                             <h5 class="text-start" >{{ user2.nombre }}</h5>
@@ -119,7 +119,7 @@
                         {% if users|length > 0 %}
                             {% for user3 in users|slice(0, 6) %}
                                 <div class=" ">
-                                    <div class="imagenUser mx-auto" style="background-image: url({{ asset('images/Perfiles/pexels-daniel-xavier-1239291.jpg') }});" ></div>
+                                    <a href="{{ path('perfiles',{id:user3.id}) }}"><div class="imagenUser mx-auto" style="background-image: url({{ asset('images/Perfiles/pexels-daniel-xavier-1239291.jpg') }});" ></div></a>
                                     <div class="mt-2 mb-1 d-flex flex-wrap justify-content-center">
                                         <div class="me-4">
                                             <h5 class="text-start" >{{ user3.nombre }}</h5>
