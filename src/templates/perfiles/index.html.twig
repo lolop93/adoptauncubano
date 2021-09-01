@@ -8,7 +8,8 @@
     {{ dump() }}
 
     {%  if user is not null %}
-        <div class="gridContenido w-75 mx-auto">
+        <div class="gridContenido mx-auto" style="width: 85%">
+            <div class="" style="width:85%;position:absolute; z-index: 1;background-color: indianred;height: 105px ;box-shadow: 0px 3px 23px 10px rgb(0 0 0 / 31%);align-content: center;"></div>
             <div class="fotoGrid mt-4 mx-auto">
                 {% if user.galeria and user.galeria.getFotoPerfil %}
                     <div class="imagenUsuario m-2 " style="background-image: url({{ asset('images/Perfiles/' ~ user.galeria.getFotoPerfil) }});"></div>
@@ -26,7 +27,7 @@
                     {% endif %}
                 </h1>
                 <p class="m-1" >España</p>
-                <p class="m-1" >26 años</p>
+                <p class="m-1 mb-2" >26 años</p>
             </div>
 
             <p class="atributos m-2">OJOS</p>
@@ -88,17 +89,20 @@
 
         .fotoGrid{
             grid-row: 1/5;
-
+            z-index: 10;
         }
 
         .info{
-            color: #CE5353;
+            color: white;
             grid-column: 2/5;
+            z-index: 10;
         }
         .info h1{
             font-weight: bolder;
+        }
 
-
+        .atributos{
+            z-index: 10;
         }
 
         .editarPerfil p{

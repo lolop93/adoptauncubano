@@ -39,3 +39,4 @@ security:
         - { path: ^/cuenta,roles: ROLE_USER }
         - { path: ^/homepage,roles: ROLE_USER }
         - { path: ^/mensajes,roles: ROLE_USER }
+        - { path: ^/perfiles,roles: ROLE_USER }
