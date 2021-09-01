@@ -36,18 +36,18 @@
                 <i {# Crear script para abrir barra de busqueda #} class="bi bi-search " style="font-size: 20px; padding: 0 5px;"></i>
 
             </div>
+            <div class="perfil" style="margin-left: 10px">
+                <div class="desplegable" style=""></div>
+                <div  alt="mdo" width="50" height="50" class="rounded-circle" style="background-image: url('{{ asset('images/Perfiles/' ~ login.galeria.getFotoPerfil)}}'); margin-left: auto; background-size: cover;position: center;  width:40px;height:40px;">
 
-            <div  alt="mdo" width="50" height="50" class="rounded-circle" style="background-image: url('{{ asset('images/Perfiles/' ~ login.galeria.getFotoPerfil)}}'); margin-left: auto; background-size: cover;position: center;  width:40px;height:40px;">
-
+                </div>
             </div>
-
 
         </div>
     {% endblock %}
 </header>
     <div class="pt-3 pb-3 main-content"  >
     {% block body %}
-    <p>polla</p>
 
     {% endblock %}
     </div>
@@ -120,7 +120,7 @@
         margin-left: 20px;
         font-size: 1.2em;
     }
-    footer a,li{
+    footer  a,li{
         text-decoration: none;
         color: white;
         font-size: 8px;
