@@ -36,7 +36,14 @@
                     <i onclick="window.location.href = '{{ path('mensajes') }}'" class="bi bi-chat-fill ms-auto " style="font-size: 20px; color: white; padding: 0 5px;"></i>
                     <i class="bi bi-bell-fill me-2 ms-2" style="font-size: 20px; padding: 0 5px; margin: 0 20px;"></i>
 
-                    <input id="buscador" type="text" class="buscador-header ps-2 me-2" placeholder="&#61442;" aria-label="Search" style="border: none; border-radius: 2.25rem; width: 300px; margin: 0 20px">
+
+                    <form name="form" method="get" action="{{ path('busqueda') }}">
+                        <input name="busqueda" type="text" class="buscador-header ps-2 me-2" placeholder="&#61442;" aria-label="Search" style="border: none; border-radius: 2.25rem; width: 300px; margin: 0 20px">
+                        <input type="submit" class="d-none"/>
+                    </form>
+
+                    {# Esto es una forma de renderizar un formulario declarado en una funcion de otro controllador #}
+                    {# {{ render(controller('App\\Controller\\BusquedaController::barraBusqueda')) }}#}
 
                     <div class=" perfilHeader d-flex flex-row p-1 align-items-center " style="background-color: #CE5353FF; margin: 0 20px;">
 
