@@ -72,10 +72,17 @@ class User implements UserInterface
      */
     private $isVerified = false;
 
+
     /**
      * @ORM\OneToMany(targetEntity=Conversaciones::class, mappedBy="emisor")
      */
-    private $conversaciones;
+    private $conversacionesEmisor;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Conversaciones::class, mappedBy="remitente")
+     */
+    private $conversacionesRemitente;
+
 
     /**
      * @ORM\OneToMany(targetEntity=Mensajes::class, mappedBy="usuario", orphanRemoval=true)
@@ -84,7 +91,8 @@ class User implements UserInterface
 
     public function __construct()
     {
-        $this->conversaciones = new ArrayCollection();
+        $this->conversacionesEmisor = new ArrayCollection();
+        $this->conversacionesRemitente = new ArrayCollection();
         $this->mensajes = new ArrayCollection();
     }
 
@@ -243,27 +251,57 @@ class User implements UserInterface
     /**
      * @return Collection|Conversaciones[]
      */
-    public function getConversaciones(): Collection
+    public function getConversacionesEmisor(): Collection
     {
-        return $this->conversaciones;
+        return $this->conversacionesEmisor;
     }
 
-    public function addConversacion(Conversaciones $conversacion): self
+    public function addConversacionEmisor(Conversaciones $conversacion): self
     {
-        if (!$this->conversacion->contains($conversacion)) {
-            $this->conversacion[] = $conversacion;
+        if (!$this->conversacionesEmisor->contains($conversacion)) {
+            $this->conversacionesEmisor[] = $conversacion;
             $conversacion->setEmisor($this);
         }
 
         return $this;
     }
 
-    public function removeConversacion(Conversaciones $conversacion): self
+    public function removeConversacionEmisor(Conversaciones $conversacion): self
     {
-        if ($this->conversacion->removeElement($conversacion)) {
+        if ($this->conversacionesEmisor->removeElement($conversacion)) {
             // set the owning side to null (unless already changed)
             if ($conversacion->getEmisor() === $this) {
                 $conversacion->setEmisor(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Conversaciones[]
+     */
+    public function getConversacionesRemitente(): Collection
+    {
+        return $this->conversacionesRemitente;
+    }
+
+    public function addConversacionRemitente(Conversaciones $conversacion): self
+    {
+        if (!$this->conversacionesRemitente->contains($conversacion)) {
+            $this->conversacionesRemitente[] = $conversacion;
+            $conversacion->setEmisor($this);
+        }
+
+        return $this;
+    }
+
+    public function removeConversacionRemitente(Conversaciones $conversacion): self
+    {
+        if ($this->conversacionesRemitente->removeElement($conversacion)) {
+            // set the owning side to null (unless already changed)
+            if ($conversacion->getReceptor() === $this) {
+                $conversacion->setReceptor(null);
             }
         }
 
