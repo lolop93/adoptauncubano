@@ -7,7 +7,9 @@
 
                 <div class="carousel-card">
                     <div class="pplCard">
-                        <div class="fotoPerfil" style="background-image: url({{ asset('images/Perfiles/pexels-olya-prutskova-7121391.jpg') }}); background-size: cover "></div>
+                        <div class="fotoPerfil" style="background-image: url({{ asset('images/Perfiles/pexels-olya-prutskova-7121391.jpg') }}); background-size: cover ">
+                            <div class="infoCard"><p>MariAHRReShUlOnA, 26</p></div>
+                        </div>
                         <div class="cuerpo">
                             <div class="nope"><i class="bi bi-x-lg"></i></div>
                             <div class="like"><i class="bi bi-suit-heart-fill"></i></div>
@@ -36,9 +38,10 @@
                     <div class="pplCard">
                         <div class="fotoPerfil" style="background-image: url({{ asset('images/Perfiles/pexels-edu-carvalho-2050994.jpg') }}); background-size: cover "></div>
                         <div class="cuerpo">
-                            <div class="nope"><i class="bi bi-x-lg"></i></div>
-                            <div class="like"><i class="bi bi-suit-heart-fill"></i></div>
-                            <div class="chat"><i class="bi bi-chat-fill"></i></div>
+                            <i class="bi bi-x-lg"></i>
+                            <i class="bi bi-suit-heart-fill"></i>
+                            <i class="bi bi-chat-fill"></i>
+                            <h1 STYLE="color: whitesmoke">POLLA DE GOMA CON ENSALADA DE BOGABANTE</h1>
                         </div>
                     </div>
 
@@ -50,18 +53,36 @@
     <style>
         .carousel-card{
             width: 300px;
-            height: 500px;
+            height: 600px;
 
+        }
+        .pplCard{
+            display: block;
+            background-color: rgba(0, 0, 0, 0.25);
         }
         .active{
             display: flex !important;
             justify-content: center;
         }
-        .fotoPerfil{
-            width: 100%;
-            height: 75%;
+        .active .infoCard{
+            background-color: rgba(0, 0, 0, 0.25);
         }
-
+         .active .fotoPerfil{
+            width: 300px;
+            height: 500px;
+        }
+        .active .cuerpo{
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            height: 50px;
+            align-items: center;
+            padding: 15px;
+        }
+        .active .cuerpo i{
+            size: 82px;
+            color: whitesmoke;
+        }
 
     </style>
 {% endblock %}
