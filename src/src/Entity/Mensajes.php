@@ -43,6 +43,10 @@ class Mensajes
     {
         return $this->id;
     }
+    public function __toString(): string
+    {
+        return $this->texto;
+    }
 
     public function getTexto(): ?string
     {

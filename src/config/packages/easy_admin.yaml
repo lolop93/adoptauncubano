@@ -5,9 +5,11 @@ easy_admin:
 
         menu:
             - { route: 'homepage' , label: 'Volver al sitio', icon: 'home' }
-            - { entity: 'Galeria' , label: 'Galeria', icon: 'gallery' }
+            - { entity: 'Galeria' , label: 'Galeria', icon: 'photo-video' }
             - { entity: 'UserAttributes' , label: 'Atributos', icon: 'attributes' }
             - { entity: 'User' , label: 'Usuario', icon: 'user' }
+            - { entity: 'Conversaciones' , label: 'Conversaciones', icon: 'comments' }
+            - { entity: 'Mensajes' , label: 'Mensajes', icon: 'envelope-square' }
     entities:
 
         Galeria:
@@ -42,7 +44,13 @@ easy_admin:
                     - password
                     - { property: 'galeria', type: 'text'}
                     - { property: 'atributos', type: 'text'}
+                    - { property: 'conversacionesEmisor'}
+                    - { property: 'conversacionesRemitente'}
 
+        Conversaciones:
+            class: App\Entity\Conversaciones
 
+        Mensajes:
+            class: App\Entity\Mensajes
 
 

@@ -46,6 +46,10 @@ class Conversaciones
         $this->mensajes = new ArrayCollection();
     }
 
+    public function __toString(){
+        return 'Conversacion: '.$this->id .' entre '.$this->emisor.' y '.$this->remitente;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
