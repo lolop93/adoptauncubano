@@ -59,7 +59,7 @@
                             </div>
                         </div>
                         {# Script menu desplegable en app.js #}
-                        <div  alt="mdo" width="50" height="50" class="rounded-circle" style="z-index:100;background-image: url('{{ asset('images/Perfiles/' ~ login.galeria.getFotoPerfil)}}'); margin-left: auto; background-size: cover;position: center;  width:40px;height:40px;"></div>
+                        <div  alt="mdo" width="50" height="50" class="rounded-circle" style="z-index:100;background-image: url('{{ login.galeria ? asset('images/Perfiles/' ~ login.galeria.getFotoPerfil) : asset('images/fotodefecto.png')}}'); margin-left: auto; background-size: cover;position: center;  width:40px;height:40px;"></div>
 
 
                     </div>

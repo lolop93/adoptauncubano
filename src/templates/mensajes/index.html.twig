@@ -4,6 +4,7 @@
 
 {% block body %}
 
+        {{ dump() }}
 
         <div class="gridMain">
             <div class="cabecera text-white">
@@ -20,18 +21,35 @@
 
             </div>
             <div class="mensajes ">
-                {% for i in 0..14 %}
-                <div class="mensaje p-3 border-bottom border-1 border-dark">
-                    <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40" class="rounded-circle  me-3">
-                    <div class="infoMensaje" >
-                        <p style="font-size: 15px">Nombre</p>
-                        <p style="font-size: 11px">Mensaje..........</p>
-                    </div>
-                    <div class="notificacionMensaje ms-auto rounded-circle text-white">
-                        2
-                    </div>
-                </div>
-                {% endfor %}
+                {% if conversaciones %}
+                    {% for conversacion in conversaciones %}
+                        {% if conversacion.emisor.id == login.id %}
+                            <div class="mensaje p-3 border-bottom border-1 border-dark">
+                                <img src="{{ asset('images/Perfiles/' ~ conversacion.remitente.galeria.getFotoPerfil) }}" alt="mdo" width="40" height="40" class="rounded-circle  me-3">
+                                <div class="infoMensaje" >
+                                    <p style="font-size: 15px">{{ conversacion.remitente.username }}</p>
+                                    <p style="font-size: 11px">Mensaje..........</p>
+                                </div>
+                                <div class="notificacionMensaje ms-auto rounded-circle text-white">
+                                    2
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="mensaje p-3 border-bottom border-1 border-dark">
+                                <img src="{{ asset('images/Perfiles/' ~ conversacion.emisor.galeria.getFotoPerfil) }}" alt="mdo" width="40" height="40" class="rounded-circle  me-3">
+                                <div class="infoMensaje" >
+                                    <p style="font-size: 15px">{{ conversacion.emisor.username }}</p>
+                                    <p style="font-size: 11px">Mensaje..........</p>
+                                </div>
+                                <div class="notificacionMensaje ms-auto rounded-circle text-white">
+                                    2
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    <p class="text-center mt-5">No tienes conversaciones aun <3</p>
+                {% endif %}
             </div>
             <div class="conversacion "></div>
         </div>

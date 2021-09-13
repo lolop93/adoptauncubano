@@ -41,6 +41,11 @@ class Conversaciones
      */
     private $mensajes;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $fechaCreacion;
+
     public function __construct()
     {
         $this->mensajes = new ArrayCollection();
@@ -117,6 +122,18 @@ class Conversaciones
                 $mensaje->setConversacion(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getFechaCreacion(): ?\DateTimeInterface
+    {
+        return $this->fechaCreacion;
+    }
+
+    public function setFechaCreacion(\DateTimeInterface $fechaCreacion): self
+    {
+        $this->fechaCreacion = $fechaCreacion;
 
         return $this;
     }

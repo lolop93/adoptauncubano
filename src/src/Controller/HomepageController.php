@@ -21,8 +21,8 @@ class HomepageController extends AbstractController
         $login = $this->get('security.token_storage')->getToken()->getUser();
 
         $users = $userRepository->findAll();
-        $conversaciones = $conversacionesRepository->findAll();
         $mensajes = $mensajesRepository->findAll();
+        $conversaciones = $conversacionesRepository->findAll();
 
         $galerias = $galeriaRepository->findAll();
         $atributos = $userAttributesRepository->findAll();
@@ -50,9 +50,5 @@ class HomepageController extends AbstractController
 
     }
 
-    #[Route('/usuario/{id}', name: 'usuario')]
-    public function showUser(User $user, GaleriaRepository $galeriaRepository, UserAttributesRepository $attributesRepository): Response
-    {
 
-    }
 }
