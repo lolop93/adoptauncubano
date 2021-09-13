@@ -1,59 +1,64 @@
 {% extends 'base.mobile.html.twig' %}
 {% block title %}Adopta un Cubano{% endblock %}
 {% block body %}
-    <div id="carouselExampleSlidesOnly" class="carousel slide " data-bs-ride="carousel" data-bs-interval="false" style="display: flex; justify-items: center">
-        <div class="carousel-inner" >
-            <div class="carousel-item active">
+    <div class="cuerpo">
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false" data-bs-touch="true" style="display: flex; justify-items: center">
+            <div class="carousel-inner" >
+                <div class="carousel-item active">
 
-                <div class="carousel-card">
-                    <div class="pplCard">
-                        <div class="fotoPerfil" style="background-image: url({{ asset('images/Perfiles/pexels-olya-prutskova-7121391.jpg') }}); background-size: cover ">
-                            <div class="infoCard"><h1>María, 26</h1></div>
-                        </div>
-                        <div class="cuerpo">
-                            <div class="nope"><i class="bi bi-x-lg"></i></div>
-                            <div class="like"><i class="bi bi-suit-heart-fill"></i></div>
-                            <div class="chat"><i class="bi bi-chat-fill"></i></div>
+                    <div class="carousel-card">
+                        <div class="pplCard">
+                            <div class="fotoPerfil" style="background-image: url({{ asset('images/Perfiles/pexels-olya-prutskova-7121391.jpg') }}); background-size: cover ">
+                                <div class="infoCard"><h1>María, 26</h1></div>
+                            </div>
+                            <div class="base">
+                                <i class="small bi bi-x-lg"></i>
+                                <div class="likeContainer"><i class="big bi bi-suit-heart-fill"></i></div>
+                                <i class="small bi bi-chat-fill"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="carousel-item">
-                <div class="carousel-card";>
-                    <div class="pplCard">
-                        <div class="fotoPerfil" style="background-image: url({{ asset('images/Perfiles/pexels-bia-sousa-3226442.jpg') }}); background-size: cover ">
-                            <div class="infoCard"><h1>María, 26</h1></div>
+                <div class="carousel-item">
+                    <div class="carousel-card";>
+                        <div class="pplCard">
+                            <div class="fotoPerfil" style="background-image: url({{ asset('images/Perfiles/pexels-bia-sousa-3226442.jpg') }}); background-size: cover;">
+                                <div class="infoCard"><h1>María, 26</h1></div>
+                            </div>
+                            <div class="base">
+                                <i class="small bi bi-x-lg"></i>
+                                <div class="likeContainer"><i class="big bi bi-suit-heart-fill"></i></div>
+                                <i class="small bi bi-chat-fill"></i>
+                            </div>
                         </div>
-                        <div class="cuerpo">
-                            <div class="nope"><i class="bi bi-x-lg"></i></div>
-                            <div class="like"><i class="bi bi-suit-heart-fill"></i></div>
-                            <div class="chat"><i class="bi bi-chat-fill"></i></div>
-                        </div>
+
                     </div>
-
                 </div>
-            </div>
 
-            <div class="carousel-item" >
-                <div class="carousel-card">
-                    <div class="pplCard">
-                        <div class="fotoPerfil" style="background-image: url({{ asset('images/Perfiles/pexels-edu-carvalho-2050994.jpg') }}); background-size: cover ">
-                            <div class="infoCard"><h1>María, 26</h1></div>
+                <div class="carousel-item" >
+                    <div class="carousel-card">
+                        <div class="pplCard">
+                            <div class="fotoPerfil" style="background-image: url({{ asset('images/Perfiles/pexels-edu-carvalho-2050994.jpg') }}); background-size: cover ">
+                                <div class="infoCard"><h1>María, 26</h1></div>
+                            </div>
+                            <div class="base">
+                                <i class="small bi bi-x-lg"></i>
+                                <div class="likeContainer"><i class="big bi bi-suit-heart-fill"></i></div>
+                                <i class="small bi bi-chat-fill"></i>
+                            </div>
                         </div>
-                        <div class="cuerpo">
-                            <i class="bi bi-x-lg"></i>
-                            <i class="bi bi-suit-heart-fill"></i>
-                            <i class="bi bi-chat-fill"></i>
-                        </div>
+
                     </div>
-
                 </div>
-            </div>
 
+            </div>
         </div>
     </div>
     <style>
+        .cuerpo{
+            padding: 25px 0;
+        }
         .carousel-card{
             width: 300px;
             height: 600px;
@@ -61,39 +66,58 @@
         }
         .pplCard{
             display: block;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: whitesmoke;
         }
         .active{
             display: flex !important;
             justify-content: center;
         }
-        .active .infoCard{
+        .infoCard{
             background-color: rgba(0, 0, 0, 0.35);
             padding: 10px;
+            width: 100%;
+            position: absolute;
+            bottom: 0px;
+
 
         }
-        .active .infoCard h1{
-            font-size: 48px;
+        .infoCard h1{
+            font-size: 42px;
             color: white;
             margin-bottom: 0;
         }
-         .active .fotoPerfil{
+         .fotoPerfil{
             width: 300px;
             height: 500px;
+            position: relative;
         }
-        .active .cuerpo{
+        .base{
             display: flex;
             width: 100%;
             justify-content: space-between;
-            height: 50px;
+            height: 90px;
             align-items: center;
-            padding: 35px;
+            padding: 0 35px;
+            border-radius:0px 0px 50px 50px;
         }
-        .active .cuerpo i{
-            font-size: 32px;
-            color: whitesmoke;
+        .likeContainer{
+            background-color: #CE5353;
+            width: 50%;
+            height: 100%;
+            margin: -10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
+        .base .big{
+            font-size: 42px;
+            color: whitesmoke;
+        }
+        .base .small{
+            font-size: 26px;
+            color: #CE5353;
+        }
     </style>
 {% endblock %}
 

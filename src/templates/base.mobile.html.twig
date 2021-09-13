@@ -29,7 +29,7 @@
         <div style="display: flex; align-items: center;justify-content: center; width: 100%;">
 
             <a href="{{ path('homepage') }}"><img class=" img" style="margin-right:auto;max-width: 4em;" src="{{ asset('images/Logos/LOGOHEADERMOVIL.png') }}"></a>
-            <div style="display: flex; justify-content: space-between; margin-left: auto;width: 60%;padding: 0 10px;">
+            <div style="display: flex; justify-content: space-between; margin-left: auto;width: 65%;padding: 0 15px;">
 
                 <i onclick="window.location.href = '{{ path('mensajes') }}'" class="bi bi-chat-fill " style="font-size: 20px; color: white; padding: 0 5px;"></i>
                 <i {#onclick="window.location.href = '{{ path('notificaciones') }}'"#} class="bi bi-bell-fill me-2 ms-2 " style="font-size: 20px; padding: 0 5px; margin: 0 20px;"></i>
@@ -46,7 +46,7 @@
         </div>
     {% endblock %}
 </header>
-    <div class="pt-3 pb-3 main-content"  >
+    <div class="main-content "  >
     {% block body %}
 
     {% endblock %}
