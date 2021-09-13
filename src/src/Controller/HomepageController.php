@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Repository\ConversacionesRepository;
 use App\Repository\GaleriaRepository;
+use App\Repository\MensajesRepository;
 use App\Repository\UserAttributesRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -13,16 +15,19 @@ use SunCat\MobileDetectBundle\DeviceDetector\MobileDetector;
 class HomepageController extends AbstractController
 {
     #[Route('/homepage', name: 'homepage')]
-    public function perfil(MobileDetector $pantalla, UserRepository $userRepository, GaleriaRepository $galeriaRepository, UserAttributesRepository $userAttributesRepository): Response
+    public function perfil(MobileDetector $pantalla, UserRepository $userRepository, GaleriaRepository $galeriaRepository, UserAttributesRepository $userAttributesRepository,ConversacionesRepository $conversacionesRepository,MensajesRepository $mensajesRepository): Response
     {
 
+        $login = $this->get('security.token_storage')->getToken()->getUser();
+
         $users = $userRepository->findAll();
+        $conversaciones = $conversacionesRepository->findAll();
+        $mensajes = $mensajesRepository->findAll();
 
         $galerias = $galeriaRepository->findAll();
-
         $atributos = $userAttributesRepository->findAll();
 
-        $login = $this->get('security.token_storage')->getToken()->getUser();
+        $mensajeslogin =  $login->getMensajes();
 
         if($pantalla->isMobile() && !$pantalla->isTablet()){
             return $this->render('homepage/indexMobile.html.twig', [
@@ -37,6 +42,9 @@ class HomepageController extends AbstractController
                 'galerias' => $galerias,
                 'atributos' => $atributos,
                 'login' => $login,
+                'conversaciones' => $conversaciones,
+                'mensajes' => $mensajeslogin,
+                'todosmensajes' => $mensajes,
             ]);
         }
 

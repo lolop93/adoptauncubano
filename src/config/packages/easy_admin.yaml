@@ -46,6 +46,7 @@ easy_admin:
                     - { property: 'atributos', type: 'text'}
                     - { property: 'conversacionesEmisor'}
                     - { property: 'conversacionesRemitente'}
+                    - { property: 'mensajes'}
 
         Conversaciones:
             class: App\Entity\Conversaciones
