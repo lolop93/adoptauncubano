@@ -10,7 +10,69 @@
             <h1>Perfil</h1>
         </div>
 
-        <div class="fotoPerfil"> <div class="lafotoensi" {# placeholder de la foto como <img>#}style="background-image: url({{ asset('images/Perfiles/pexels-edu-carvalho-2050994.jpg') }}); background-size: cover "></div></div>
+        <div class="fotoPerfil"> <div class="lafotoensi" {# placeholder de la foto como <img>#}style="background-image: url({{ asset('images/Perfiles/' ~ login.galeria.getFotoPerfil) }}); background-size: cover "></div></div>
+
+        <div class="headInfo">
+            <h1 class="nombre">Maria</h1>
+            <h2 class="nacionalidad">Rusia</h2>
+            <h3 class="edad">18 años</h3>
+        </div>
+
+        <div class="descripcion">
+            <h2 id="titulo">Descripción</h2>
+            <p id="cuerpoDescripción">Estoy quí para hacer amigos igual que entro a Pornhub para ver al fontanero reparar el lavabo</p>
+        </div>
+
+        <div class="galeria">
+            <div class="gridGaleria">
+                {% if login.galeria %}
+                    {% if login.galeria.getFotoPerfil %}
+                        <div class="imagenUsuario d-flex flex-column justify-content-end" style="background-image: url({{ asset('images/Perfiles/' ~ login.galeria.getFotoPerfil) }});">
+                            <p class="p-1 pe-4 ps-2 text-white mb-2 align-self-start">Foto Perfil</p>
+                        </div>
+                    {% else %}
+                        <div class="imagenUsuario m-2 " style="background-image: url({{ asset('images/fotodefecto.png') }});"></div>
+                    {% endif %}
+                    {% for i in 0..4 %}
+                        {% if i < login.galeria.getGaleria|length %}
+                            <div class="imagenUsuario" style="background-image: url({{ asset('images/Perfiles/' ~ login.galeria.getGaleria[i]) }});"></div>
+                        {% else %}
+                            <div class="imagenUsuario" style="background-image: url({{ asset('images/fotodefecto.png') }});"></div>
+                        {% endif %}
+                    {% endfor %}
+
+                {% else %}
+
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="listaAtributos">
+            <div class="ojos">
+                <h2>Ojos</h2>
+                <p>negros</p>
+            </div>
+
+            <div class="pelo">
+                <h2>Pelo</h2>
+                <p>rojo</p>
+            </div>
+
+            <div class="profesion">
+                <h2>Profesión</h2>
+                <p>Actriz porno</p>
+            </div>
+
+            <div class="ciudad">
+                <h2>Ciudad</h2>
+                <p>Tu culo</p>
+            </div>
+
+            <div class="gustos"> {# Aquí van las etiquetas definidad por el usuario #}
+                <h2>Gustos</h2>
+                <p>Por detrás</p>
+            </div>
+        </div>
 
     </div>
 
@@ -22,35 +84,165 @@
         width: 100%;
         height: 100%;
         background-color: whitesmoke;
-        padding: 0 20px;
     }
     .encabezado{
-        width: 112%;
+        width: 100%;
         height: 75px;
         background-color: #CE5353;
         display: flex;
         align-items: center;
-        margin: 0 -20px !important;
-        padding: 20px;
+        padding-left: 20px;
+        box-shadow: -2px 4px 6px -1px rgb(0 0 0 / 60%);
     }
     .encabezado h1{
 
         color: white;
         font-size: 36px;
+        font-weight: bold;
     }
     .fotoPerfil{
         width: 100%;
-        height: 275px;
-        margin-top: 45px;
+        height: 400px;
+        margin-top: 35px;
         display:flex;
         align-items: center;
         justify-content: center;
+        padding: 0 20px;
     }
     .lafotoensi{ {# esto es un placeholder, consultar html #}
-        width: 300px;
-        height: 325px;
+        width: 23em;
+        height: 25em;
         border-radius: 15px;
+        box-shadow: -2px 4px 6px -1px rgb(0 0 0 / 60%);
+        background-position: center;
     }
+    .headInfo{
+        margin-top: 35px;
+        padding:0 0 30px 20px;
+        border: solid 0px;
+        box-shadow: -2px 4px 8px -5px rgb(0 0 0 / 31%);
+    }
+    .headInfo .nombre{
+        font-size: 48px;
+        color:#CE5353;
+        font-weight: bolder;
+    }
+    .headInfo .nacionalidad{
+        font-size: 36px;
+        color:#CE5353;
+        font-weight: bold;
+    }
+    .headInfo .edad{
+        font-size: 28px;
+        color:#CE5353;
+    }
+    .descripcion{
+        margin-top: 35px;
+        padding: 0 0 30px 20px;
+        box-shadow: -2px 4px 8px -5px rgb(0 0 0 / 31%);
+    }
+    .descripcion #titulo{
+        font-weight: bolder;
+        color: #CE5353;
+    }
+    .descripcion #cuerpoDescripción{
+        font-size: 18px;
+    }
+    .galeria{
+        grid-column: 1/5;
+        display: grid;
+        grid-template-columns: 1fr ;
+        margin-top: 35px;
+        padding: 0 0 30px 0;
+        box-shadow: -2px 4px 8px -5px rgb(0 0 0 / 31%);
+
+    }
+    .galeria p{
+        border-top-right-radius: 100px;
+        border-bottom-right-radius: 100px;
+        justify-self: start;
+
+    }
+
+    .gridGaleria{
+        display: grid;
+        grid-template-areas:
+                "foto foto foto"
+                "foto foto foto";
+
+        justify-items: center;
+        place-content: center;
+        gap: 25px;
+
+    }
+    .imagenUsuario{
+        width:100px;
+        height: 100px;
+        background-position: center;
+        background-size: cover;
+        border-radius: 10px;
+    }
+    .ojos{
+        margin-top: 15px;
+        padding: 0 0 15px 20px;
+        box-shadow: -2px 4px 8px -5px rgb(0 0 0 / 31%);
+    }
+    .ojos h2{
+        font-weight: bolder;
+        color: #CE5353;
+    }
+    .ojos p{
+        font-size: 18px;
+    }
+    .pelo{
+        margin-top: 15px;
+        padding: 0 0 15px 20px;
+        box-shadow: -2px 4px 8px -5px rgb(0 0 0 / 31%);
+    }
+    .pelo h2{
+        font-weight: bolder;
+        color: #CE5353;
+    }
+    .pelo p{
+        font-size: 18px;
+    }
+    .profesion{
+        margin-top: 15px;
+        padding: 0 0 15px 20px;
+        box-shadow: -2px 4px 8px -5px rgb(0 0 0 / 31%);
+    }
+    .profesion h2{
+        font-weight: bolder;
+        color: #CE5353;
+    }
+    .profesion p{
+        font-size: 18px;
+    }
+    .ciudad{
+        margin-top: 15px;
+        padding: 0 0 15px 20px;
+        box-shadow: -2px 4px 8px -5px rgb(0 0 0 / 31%);
+    }
+    .ciudad h2{
+        font-weight: bolder;
+        color: #CE5353;
+    }
+    .ciudad p{
+        font-size: 18px;
+    }
+    .gustos{
+        margin-top: 15px;
+        padding: 0 0 15px 20px;
+        box-shadow: -2px 4px 8px -5px rgb(0 0 0 / 31%);
+    }
+    .gustos h2{
+        font-weight: bolder;
+        color: #CE5353;
+    }
+    .gustos p{
+        font-size: 18px;
+    }
+
 
 
 </style>
