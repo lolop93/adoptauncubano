@@ -29,8 +29,6 @@ easy_admin:
                 fields:
                     - id
                     - esCubano
-                    - nombre
-                    - apellido1
                     - { property: 'color_pelo', type: 'string' }
                     - { property: 'usuario', type: 'text' }
         User:

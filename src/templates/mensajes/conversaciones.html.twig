@@ -1,0 +1,123 @@
+{% extends 'mensajes/index.html.twig' %}
+
+{% block body %}
+
+{{ parent() }}
+
+
+{% endblock %}
+
+{%  block contenido %}
+
+    {% if  mensajes %}
+        {%  if mensajes[0].conversacion.emisor.id == login.id or mensajes[0].conversacion.remitente.id == login.id %}
+            <div class="contenido">
+                <div class="mensajes d-flex flex-column">
+                    {% for mensaje in mensajes %}
+                        {% if mensaje.usuario.id  == login.id %}
+                        <div class="ms-auto">
+                            <p class="bocadillo bg-white rounded me-3" >{{ mensaje.texto }}</p>
+                        </div>
+                        {% else %}
+                            <div class="me-auto">
+                                <p class=" bocadillo bg-success rounded ms-3">{{ mensaje.texto }}</p>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                    <div class="ms-auto">
+                        <p class="bocadillo bg-white rounded me-3" >dddd</p>
+                    </div>
+                    <div class="ms-auto">
+                        <p class="bocadillo bg-white rounded me-3" >dddd</p>
+                    </div><div class="ms-auto">
+                        <p class="bocadillo bg-white rounded me-3" >dddd}</p>
+                    </div>
+                    <div class="ms-auto">
+                        <p class="bocadillo bg-white rounded me-3" >dddd}</p>
+                    </div><div class="ms-auto">
+                        <p class="bocadillo bg-white rounded me-3" >dddd}</p>
+                    </div>
+                    <div class="ms-auto">
+                        <p class="bocadillo bg-white rounded me-3" >dddd</p>
+                    </div>
+                    <div class="ms-auto">
+                        <p class="bocadillo bg-white rounded me-3" >dddd</p>
+                    </div>
+                    <div class="ms-auto">
+                        <p class="bocadillo bg-white rounded me-3" >dddd</p>
+                    </div><div class="ms-auto">
+                        <p class="bocadillo bg-white rounded me-3" >dddd}</p>
+                    </div>
+                    <div class="ms-auto">
+                        <p class="bocadillo bg-white rounded me-3" >dddd}</p>
+                    </div><div class="ms-auto">
+                        <p class="bocadillo bg-white rounded me-3" >dddd}</p>
+                    </div>
+                    <div class="ms-auto">
+                        <p class="bocadillo bg-white rounded me-3" >dddd</p>
+                    </div>
+                    <div class="ms-auto">
+                        <p class="bocadillo bg-white rounded me-3" >dddd</p>
+                    </div>
+                    <div class="ms-auto">
+                        <p class="bocadillo bg-white rounded me-3" >dddd</p>
+                    </div><div class="ms-auto">
+                        <p class="bocadillo bg-white rounded me-3" >dddd}</p>
+                    </div>
+                    <div class="ms-auto">
+                        <p class="bocadillo bg-white rounded me-3" >dddd}</p>
+                    </div><div class="ms-auto">
+                        <p class="bocadillo bg-white rounded me-3" >dddd}</p>
+                    </div>
+                    <div class="ms-auto">
+                        <p class="bocadillo bg-white rounded me-3" >dddd</p>
+                    </div>
+                </div>
+
+
+                <div class="formularioMensaje bg-white w-100">
+
+                </div>
+            </div>
+        {% endif %}
+    {% else %}
+        {% for conversacion in conversaciones %}
+            {%  if conversacion.id == request.get('id') %}
+                <div class="contenido">
+                    <p class="bg-white mx-auto p-3 rounded my-auto" style="font-size: 20px; height: 60px;">Esta conversacion no tiene mensajes</p>
+                    <div class="formularioMensaje bg-white w-100">
+
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    <style>
+        .contenido{
+            display: grid;
+            grid-template-columns: 100%;
+            grid-auto-rows: auto 60px;
+            height: 100%;
+            width: 100%;
+
+        }
+        .formularioMensaje{
+
+        }
+
+        .mensajes{
+            row-gap: 10px;
+            margin-bottom: 5px;
+            margin-top: 5px;
+            overflow: auto;
+            /*place-content: flex-end;*/
+
+        }
+        .bocadillo{
+            padding: 10px;
+        }
+
+    </style>
+
+{%  endblock %}

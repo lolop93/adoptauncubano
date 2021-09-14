@@ -4,7 +4,7 @@
 
 {% block body %}
 
-        {{ dump() }}
+
 
         <div class="gridMain">
             <div class="cabecera text-white">
@@ -20,38 +20,45 @@
                 <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40" class="rounded-circle ">
 
             </div>
-            <div class="mensajes ">
+            <div class="conversaciones">
                 {% if conversaciones %}
                     {% for conversacion in conversaciones %}
                         {% if conversacion.emisor.id == login.id %}
-                            <div class="mensaje p-3 border-bottom border-1 border-dark">
-                                <img src="{{ asset('images/Perfiles/' ~ conversacion.remitente.galeria.getFotoPerfil) }}" alt="mdo" width="40" height="40" class="rounded-circle  me-3">
-                                <div class="infoMensaje" >
-                                    <p style="font-size: 15px">{{ conversacion.remitente.username }}</p>
-                                    <p style="font-size: 11px">Mensaje..........</p>
+                            <a href="{{ path('conversaciones',{id:conversacion.id}) }}" style=" text-decoration: none;">
+                                <div class="mensaje p-3 border-bottom border-1 border-dark {{ conversacion.id == request.get('id') ? 'bg-warning' : '' }}">
+                                    <img src="{{ conversacion.remitente.galeria ? asset('images/Perfiles/' ~ conversacion.remitente.galeria.getFotoPerfil) : asset('images/fotodefecto.png') }}" alt="mdo" width="40" height="40" class="rounded-circle  me-3">
+                                    <div class="infoMensaje" >
+                                        <p style="font-size: 15px">{{ conversacion.remitente.username }}</p>
+                                        <p style="font-size: 11px">Mensaje..........</p>
+                                    </div>
+                                    <div class="notificacionMensaje ms-auto rounded-circle text-white">
+                                        2
+                                    </div>
                                 </div>
-                                <div class="notificacionMensaje ms-auto rounded-circle text-white">
-                                    2
-                                </div>
-                            </div>
+                            </a>
                         {% else %}
-                            <div class="mensaje p-3 border-bottom border-1 border-dark">
-                                <img src="{{ asset('images/Perfiles/' ~ conversacion.emisor.galeria.getFotoPerfil) }}" alt="mdo" width="40" height="40" class="rounded-circle  me-3">
-                                <div class="infoMensaje" >
-                                    <p style="font-size: 15px">{{ conversacion.emisor.username }}</p>
-                                    <p style="font-size: 11px">Mensaje..........</p>
+                            <a href="{{ path('conversaciones',{id:conversacion.id}) }}" style=" text-decoration: none;">
+                                <div class="mensaje p-3 border-bottom border-1 border-dark {{ conversacion.id == request.get('id') ? 'bg-warning' : '' }}" >
+                                    <img src="{{ conversacion.emisor.galeria ? asset('images/Perfiles/' ~ conversacion.emisor   .galeria.getFotoPerfil) : asset('images/fotodefecto.png') }}" alt="mdo" width="40" height="40" class="rounded-circle  me-3">
+                                    <div class="infoMensaje" >
+                                        <p style="font-size: 15px">{{ conversacion.emisor.username }}</p>
+                                        <p style="font-size: 11px">Mensaje..........</p>
+                                    </div>
+                                    <div class="notificacionMensaje ms-auto rounded-circle text-white">
+                                        2
+                                    </div>
                                 </div>
-                                <div class="notificacionMensaje ms-auto rounded-circle text-white">
-                                    2
-                                </div>
-                            </div>
+                            </a>
                         {% endif %}
                     {% endfor %}
                 {% else %}
                     <p class="text-center mt-5">No tienes conversaciones aun <3</p>
                 {% endif %}
             </div>
-            <div class="conversacion "></div>
+            <div class="conversacion ">
+                {%  block contenido %}
+                {%  endblock %}
+            </div>
         </div>
 
 
@@ -95,7 +102,7 @@
             margin: 0;
         }
 
-        .mensajes{
+        .conversaciones{
             grid-area: mensajes;
             background-color: #E1E1E1;
             display: flex;
@@ -123,6 +130,11 @@
             background-repeat: repeat;
             background-image: url({{ asset('images/Backgrounds/pattern_1.0.png') }});
 
+        }
+
+        .conversacion{
+            height: calc(100vh - 56px);
+            display: flex;
         }
 
 

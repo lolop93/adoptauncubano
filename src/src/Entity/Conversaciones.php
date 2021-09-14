@@ -42,7 +42,7 @@ class Conversaciones
     private $mensajes;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="datetime")
      */
     private $fechaCreacion;
 
@@ -137,4 +137,6 @@ class Conversaciones
 
         return $this;
     }
+
+
 }
