@@ -1,2 +1,93 @@
 {% extends 'base.mobile.html.twig' %}
 {% block title %}Notificaciones{% endblock %}
+{% block body %}
+    <div class="cuerpo">
+
+        <div class="encabezado">
+            <h1>Notificaciones</h1>
+
+        </div>
+
+        <div class="listaNotificaciones">
+
+            <div class="notificacion">
+                <h2>Marta quiere conocerte</h2>
+                <div class="alerta"><i class="bi bi-exclamation-lg"></i></div>
+            </div>
+
+            <div class="notificacion">
+                <h2>Hazle caso a Marta que quiere conocerte</h2>
+                <div class="alerta"><i class="bi bi-exclamation-lg"></i></div>
+            </div>
+
+            <div class="notificacion">
+                <h2>HABLALE A MARTA COÑO</h2>
+                <div class="alerta"><i class="bi bi-exclamation-lg"></i></div>
+            </div>
+
+            <div class="notificacion">
+                <h2>PASO DE TI</h2>
+                <div class="alerta"><i class="bi bi-exclamation-lg"></i></div>
+            </div>
+
+            <div class="notificacion">
+                <h2>Marta ya no quiere conocerte</h2>
+                <div class="alerta"><i class="bi bi-exclamation-lg"></i></div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <style>
+        .cuerpo{
+            width: 100%;
+            height: 100%;
+            background-color: whitesmoke;
+        }
+        .encabezado{
+            width: 100%;
+            height: 75px;
+            background-color: #CE5353;
+            display: flex;
+            align-items: center;
+            padding-left: 20px;
+            box-shadow: -2px 4px 6px -1px rgb(0 0 0 / 60%);
+            margin-bottom: 25px;
+        }
+        .encabezado h1{
+
+            color: white;
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        .notificacion{
+            display: flex;
+            justify-content: space-between;
+            margin-top: 17px;
+            padding: 0 0 15px 20px;
+            box-shadow: -2px 4px 8px -5px rgb(0 0 0 / 31%);
+        }
+        .notificacion h2{
+            font-weight: bolder;
+            font-size: 18px;
+            margin-bottom: 0;
+        }
+        .notificacion i{
+            margin-top: 5px;
+            font-size: 22px;
+            color: white;
+        }
+        .alerta{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+            margin-right: 40px;
+            border-radius: 100px;
+            background-color: #CE5353;
+        }
+    </style>
+{% endblock %}
