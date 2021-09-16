@@ -168,3 +168,35 @@ $( document ).ready(function() {
         }
     })
 });
+//---------------------------------------------
+//JS ajax para consultar mensajes
+
+
+//JS ajax para enviar mensajes
+//---------------------------------------------
+$( document ).ready(function(){
+    $('#envioMensaje').unbind().submit(function(e){
+        e.preventDefault();
+        var idEmisor = $('#textoChat').data('idEmisor');
+        var idChat = $('#textoChat').data('idChat');
+        var mensaje = $('#textoChat').val();
+        Enviar(mensaje,idEmisor,idChat);
+    });
+});
+
+function Enviar(texto,emisor,id_chat){
+    $.ajax({
+        type: "POST",
+        url: "/mensajes",
+        data: {texto:texto,emisor:emisor,chat:id_chat},
+        async:true,
+        dataType: "json",
+        success: function(data)
+        {
+            console.log(data);
+            //$('#objeto').html(data);
+        }
+});
+}
+//---------------------------------------------
+//JS ajax para enviar mensajes

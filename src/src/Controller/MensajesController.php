@@ -35,7 +35,11 @@ class MensajesController extends AbstractController
         if($request->isXMLHttpRequest()){
             $user = $this->getUser();
             $id = $user->getId();
-            return new JsonResponse(['id'=>$id]);
+            $mensaje = $request->request->get('texto');
+            $emisor = $request->request->get('emisor');
+            $chat = $request->request->get('chat');
+
+            return new JsonResponse(['id'=>$id,'mensaje'=>$mensaje,'emisor'=>$emisor,'chat'=>$chat]);
 
 
         }else{
@@ -82,18 +86,8 @@ class MensajesController extends AbstractController
         $userRepository->findAll();
         $galeriaRepository->findAll();
 
-        $conversacionesEmisor = $conversacionesRepository->findBy(
-            [
-                'emisor'=>$this->getUser()
-            ]
-        );
-
-        $conversacionesRemitente = $conversacionesRepository->findBy(
-            [
-                'remitente' => $this->getUser()
-            ]
-        );
-
+        $conversacionesEmisor = $conversacionesRepository->findBy(['emisor'=>$this->getUser()]);
+        $conversacionesRemitente = $conversacionesRepository->findBy(['remitente' => $this->getUser()]);
         $conversaciones = array_merge($conversacionesEmisor,$conversacionesRemitente);
 
         $mensajes = $mensajesRepository->findBy(['conversacion'=>$request->attributes->get('id')]);
