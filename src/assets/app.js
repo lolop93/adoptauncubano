@@ -54,7 +54,6 @@ $('.perfilHeader div').click(function(){
         p.removeClass("order-2");
         p.css('position', '');
         p.css('bottom', '');
-        console.log("ESTAFUNCIONANDO ESTA MIERDA?")
         p.css('padding-top', '0px');
 
 
