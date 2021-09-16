@@ -156,7 +156,7 @@ $( document ).ready(function() {
 //JS ajax para consultar mensajes
 //---------------------------------------------
 
-$( document ).ready(function() {
+/*$( document ).ready(function() {
     $.ajax({
         type: 'POST',
         url: "/mensajes",
@@ -166,7 +166,7 @@ $( document ).ready(function() {
             console.log("LA id desde ajax del usuario actual es: " + data['id']);
         }
     })
-});
+});*/
 //---------------------------------------------
 //JS ajax para consultar mensajes
 
@@ -193,7 +193,15 @@ function Enviar(texto,emisor,id_chat){
         success: function(data)
         {
             console.log(data);
-            //$('#objeto').html(data);
+
+            $('#textoChat').val('');//borramos el contenido el mensaje
+            $('.mensajes').append(
+                $(
+                    '<div class="ms-auto">' +
+                        '<p class="bocadillo bg-white rounded me-3 ">'+ data.mensaje +'</p>' +
+                    '</div>'
+                )
+            );
         }
 });
 }

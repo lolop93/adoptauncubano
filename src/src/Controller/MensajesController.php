@@ -5,6 +5,8 @@ namespace App\Controller;
 
 
 use App\Entity\Conversaciones;
+use App\Entity\Mensajes;
+use App\Entity\User;
 use App\Repository\ConversacionesRepository;
 use App\Repository\GaleriaRepository;
 use App\Repository\MensajesRepository;
@@ -31,15 +33,46 @@ class MensajesController extends AbstractController
     public function index(Request $request,ConversacionesRepository $conversacionesRepository,UserRepository $userRepository,GaleriaRepository $galeriaRepository): Response
     {
 
-
         if($request->isXMLHttpRequest()){
             $user = $this->getUser();
             $id = $user->getId();
-            $mensaje = $request->request->get('texto');
+            $texto = $request->request->get('texto');
             $emisor = $request->request->get('emisor');
             $chat = $request->request->get('chat');
 
-            return new JsonResponse(['id'=>$id,'mensaje'=>$mensaje,'emisor'=>$emisor,'chat'=>$chat]);
+            //Comprobar si es el primer mensaje y no existe la conversacion
+
+
+            //Si ya existe la conversacion
+            $mensaje = new Mensajes();
+
+            $conversacion = $this->getDoctrine()
+                ->getRepository(Conversaciones::class)
+                ->find($chat);
+
+            $usuario = $this->getDoctrine()
+                ->getRepository(User::class)
+                ->find($emisor);
+
+            $mensaje->setTexto($texto);
+            $mensaje->setConversacion($conversacion);
+            $mensaje->setUsuario($usuario);
+            $mensaje->setFecha(new \DateTime());
+
+
+            $entityManager = $this->getDoctrine()->getManager();
+
+            try {//Intentamos subir el mensaje
+                $entityManager->persist($mensaje);
+                $entityManager->flush();
+
+            } catch (\Exception $e) {//Si falla capturamos la excepcion y la manejamos pa que no nos la lie
+                $error = '### Message ### \n'.$e->getMessage().'\n### Trace ### \n'.$e->getTraceAsString();
+                $this->container->get('logger')->critical($msg);
+                return new JsonResponse(['id'=>$id,'mensaje'=>$texto,'emisor'=>$emisor,'chat'=>$chat,'error'=>$error]);//Devolvemos el error en json a jquery
+            }
+
+            return new JsonResponse(['id'=>$id,'mensaje'=>$texto,'emisor'=>$emisor,'chat'=>$chat,'subido'=>$mensaje->getId()]);//devolvemos el mensaje si ha tenido exito
 
 
         }else{

@@ -30,7 +30,7 @@
 
                 <div class="formularioChat bg-white w-100 d-flex flex-row justify-content-end align-items-center">
                     <form id="envioMensaje" class="me-3">
-                        <input type="text" id="textoChat" data-id-emisor="{{login.id}}" data-id-chat="{{ mensajes[0].conversacion.id  }}" />
+                        <input type="textarea" id="textoChat" data-id-emisor="{{login.id}}" data-id-chat="{{ mensajes[0].conversacion.id  }}" />
                         <input type="hidden" value="">
                         <input type="submit" value="Enviar" />
                     </form>
@@ -44,7 +44,7 @@
                     <p class="bg-white mx-auto p-3 rounded my-auto" style="font-size: 20px; height: 60px;">Esta conversacion no tiene mensajes</p>
                     <div class="formularioChat bg-white w-100 d-flex flex-row justify-content-end align-items-center">
                         <form id="envioMensaje" class="me-3">
-                            <input type="text" id="textoChat" data-id-emisor="{{login.id}}" data-id-chat="{{ conversacion.id  }}" />
+                            <input type="textarea" id="textoChat" data-id-emisor="{{login.id}}" data-id-chat="{{ conversacion.id  }}" />
                             <input type="hidden" value="">
                             <input type="submit" value="Enviar" />
                         </form>
