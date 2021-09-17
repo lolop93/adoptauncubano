@@ -7,7 +7,7 @@
         <div class="gridMain">
             <div class="cabecera text-white">
                 <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40" class="rounded-circle me-3 mt-2 mb-2" >
-                <p class="me-5">Nombre</p>
+                <p style="font-size: 28px; font-weight: bolder;">{{ login.nombre }}</p>
                 <i class="bi bi-search ms-5"></i>
                 <i class="bi bi-three-dots-vertical ms-3"></i>
                 <i onclick="window.location.href = '{{ path('homepage') }}'" class="bi bi-house-door-fill align-self-start ms-5 me-3" style="background-color: #5875AF; padding: 2px 7px; cursor: pointer;"></i>
@@ -23,11 +23,11 @@
                     {% for conversacion in conversaciones %}
                         {% if conversacion.emisor.id == login.id %}
                             <a href="{{ path('conversaciones',{id:conversacion.id}) }}" style=" text-decoration: none;">
-                                <div class="mensaje p-3 border-bottom border-1 border-dark {{ conversacion.id == request.get('id') ? 'bg-warning' : '' }}">
+                                <div class="mensaje {{ conversacion.id == request.get('id')}}">
                                     <img src="{{ conversacion.remitente.galeria ? asset('images/Perfiles/' ~ conversacion.remitente.galeria.getFotoPerfil) : asset('images/fotodefecto.png') }}" alt="mdo" width="40" height="40" class="rounded-circle  me-3">
                                     <div class="infoMensaje" >
-                                        <p style="font-size: 15px">{{ conversacion.remitente.username }}</p>
-                                        <p style="font-size: 11px">Mensaje..........</p>
+                                        <p style="font-size: 15px; color: #CE5353">{{ conversacion.remitente.username }}</p>
+                                        <p style="font-size: 11px; color: black">Mensaje..........</p>
                                     </div>
                                     <div class="notificacionMensaje ms-auto rounded-circle text-white">
                                         2
@@ -112,6 +112,11 @@
             display: flex;
             flex-direction: row;
             align-items: center;
+            padding: 20px 20px;
+            box-shadow: -2px 4px 8px -5px rgb(0 0 0 / 50%);
+        }
+        .mensaje:hover{
+            background-color: lightgray;
         }
         .mensaje p{
             margin: 0;

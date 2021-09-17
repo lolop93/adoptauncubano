@@ -28,11 +28,11 @@
                 </div>
 
 
-                <div class="formularioChat bg-white w-100 d-flex flex-row justify-content-end align-items-center">
-                    <form id="envioMensaje" class="me-3">
-                        <input type="textarea" id="textoChat" data-id-emisor="{{login.id}}" data-id-chat="{{ mensajes[0].conversacion.id  }}" />
+                <div class="formularioChat">
+                    <form id="envioMensaje" autocomplete="off" >
+                        <input id="textoChat" type="textarea" placeholder="Escribe tu mensaje" data-id-emisor="{{login.id}}" data-id-chat="{{ mensajes[0].conversacion.id  }}" />
                         <input type="hidden" value="">
-                        <input type="submit" value="Enviar" />
+                        <button id="btnEnviar" type="submit" value="enviar"><i class="bi bi-shift-fill"></i></button>
                     </form>
                 </div>
             </div>
@@ -42,11 +42,11 @@
             {%  if conversacion.id == request.get('id') %}
                 <div class="contenido">
                     <p class="bg-white mx-auto p-3 rounded my-auto" style="font-size: 20px; height: 60px;">Esta conversacion no tiene mensajes</p>
-                    <div class="formularioChat bg-white w-100 d-flex flex-row justify-content-end align-items-center">
-                        <form id="envioMensaje" class="me-3">
-                            <input type="textarea" id="textoChat" data-id-emisor="{{login.id}}" data-id-chat="{{ conversacion.id  }}" />
-                            <input type="hidden" value="">
-                            <input type="submit" value="Enviar" />
+                    <div class="formularioChat">
+                        <form id="envioMensaje" autocomplete="off">
+                            <input id="textoChat" type="textarea" placeholder="Escribe tu mensaje" autocomplete="nope" data-id-emisor="{{login.id}}" data-id-chat="{{ conversacion.id  }}" />
+                            <input type="hidden"value="">
+                            <input id="btnEnviar" type="submit" value="Enviar" />
                         </form>
                     </div>
                 </div>
@@ -63,20 +63,61 @@
             width: 100%;
 
         }
-        .formularioMensaje{
+        .formularioChat{
+            display: flex;
+            width: 100%;
+            background-color:rgba(0, 0, 0, 0.6);
+            align-items: center;
+            padding: 0 40px;
 
+        }
+        #envioMensaje{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
         .mensajes{
             row-gap: 10px;
-            margin-bottom: 5px;
-            margin-top: 5px;
+            padding: 10px 0;
             overflow: auto;
             /*place-content: flex-end;*/
 
         }
         .bocadillo{
             padding: 10px;
+        }
+        #textoChat{
+            padding-left: 15px;
+            border-radius: 100px;
+            font-family: Metropolis;
+            border: none;
+            background-color: white !important;
+            width: 95%;
+            height: 35px;
+            box-shadow: 1px 8px 8px -5px rgb(0 0 0 / 31%);
+        }
+        #textoChat:focus{
+            border: none;
+            outline: none;
+        }
+        #btnEnviar{
+            background-color: #CE5353;
+            border: none;
+            width: 45px;
+            height: 45px;
+            color: whitesmoke;
+            border-radius: 100px;
+            box-shadow: 1px 8px 8px -5px rgb(0 0 0 / 31%);
+            font-size: 18px;
+        }
+        #btnEnviar:hover{
+            cursor: pointer;
+            background-color: #843636;
+        }
+        #btnEnviar i{
+            font-size: 28px;
         }
 
     </style>
