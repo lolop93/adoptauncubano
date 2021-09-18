@@ -215,6 +215,7 @@ $( document ).ready(function(){
         var idEmisor = $('#textoChat').data('idEmisor');
         var idChat = $('#textoChat').data('idChat');
         var mensaje = $('#textoChat').val();
+        $('#textoChat').val('');//borramos el contenido del mensaje
         Enviar(mensaje,idEmisor,idChat);
     });
 });
@@ -230,7 +231,6 @@ function Enviar(texto,emisor,id_chat){
         {
             console.log(data);
 
-            $('#textoChat').val('');//borramos el contenido del mensaje
             $('.mensajes').append(
                 $(
                     '<div class="ms-auto">' +

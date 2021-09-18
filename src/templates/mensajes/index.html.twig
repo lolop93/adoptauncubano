@@ -23,7 +23,7 @@
                     {% for conversacion in conversaciones %}
                         {% if conversacion.emisor.id == login.id %}
                             <a href="{{ path('conversaciones',{id:conversacion.id}) }}" style=" text-decoration: none;">
-                                <div class="mensaje {{ conversacion.id == request.get('id')}}">
+                                <div class="mensaje {{ conversacion.id == request.get('id') ? 'bg-warning' : '' }}">
                                     <img src="{{ conversacion.remitente.galeria ? asset('images/Perfiles/' ~ conversacion.remitente.galeria.getFotoPerfil) : asset('images/fotodefecto.png') }}" alt="mdo" width="40" height="40" class="rounded-circle  me-3">
                                     <div class="infoMensaje" >
                                         <p style="font-size: 15px; color: #CE5353">{{ conversacion.remitente.username }}</p>
