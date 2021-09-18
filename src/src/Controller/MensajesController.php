@@ -40,10 +40,6 @@ class MensajesController extends AbstractController
             $emisor = $request->request->get('emisor');
             $chat = $request->request->get('chat');
 
-            //Comprobar si es el primer mensaje y no existe la conversacion
-
-
-            //Si ya existe la conversacion
             $mensaje = new Mensajes();
 
             $conversacion = $this->getDoctrine()

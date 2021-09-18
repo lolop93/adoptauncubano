@@ -159,21 +159,48 @@ $( document ).ready(function() {
 
 $( document ).ready(function() {
 
-    setInterval(function(){
-        //this code runs every 2 second
-        var idChat = $('#textoChat').data('idChat');
+    //Hacemos que al cargar la pagina, vaya al ultimo elemento del chat
+    // Handler for .ready() called.
+    $('.mensajes').animate({
+        scrollTop: $('.bocadillo').last().offset().top
+    }, 'slow');
 
-        $.ajax({
-            type: 'POST',
-            url: "/getmensajes",
-            data: {chat:idChat},
-            async:true,
-            dataType: "json",
-            success: function (data){
-                console.log('La conversacion es ' + data['id_conversacion'] + ' y los mensajes son ' + JSON.stringify(data['mensajes']));
-            }
-        })
-    }, 10000);
+
+    //comprobamos que hay un chat sino pa que coño vamos a ejecutar un listener xDDD
+    if($('#textoChat').length){
+        setInterval(function(){           //ejecutamos una funcion cada 2 segundos
+            //this code runs every 2 second
+            var idChat = $('#textoChat').data('idChat');
+
+            $.ajax({
+                type: 'POST',
+                url: "/getmensajes",
+                data: {chat:idChat},
+                async:true,
+                dataType: "json",
+                success: function (data){
+                    console.log('La conversacion es ' + data['id_conversacion'] + ' y los mensajes son ' + JSON.stringify(data['mensajes']));
+
+                    var elementoUltimo = $( ".bocadillo" ).last();
+                    var ultimoMensajeData = data.mensajes.at(-1);
+
+                    if (elementoUltimo[0].innerText !== ultimoMensajeData ){
+                        var elemento = $('.mensajes').append(
+                            $(
+                                '<div class="me-auto">' +
+                                '<p class="bocadillo bg-white rounded ms-3 ">'+ ultimoMensajeData +'</p>' +
+                                '</div>'
+                            )
+                        );
+                        elementoUltimo = elementoUltimo.last();
+                        elementoUltimo[0].scrollIntoView();
+                    }
+
+                }
+            })
+        }, 5000);
+    }
+
 
 });
 //---------------------------------------------
@@ -211,8 +238,11 @@ function Enviar(texto,emisor,id_chat){
                     '</div>'
                 )
             );
+
+            var elementoUltimo = $( ".bocadillo" ).last();
+            elementoUltimo[0].scrollIntoView();
         }
-});
+    });
 }
 //---------------------------------------------
 //JS ajax para enviar mensajes
