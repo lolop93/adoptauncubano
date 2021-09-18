@@ -137,4 +137,34 @@ class MensajesController extends AbstractController
         ]);
 
     }
+
+    /**
+     * @Route("/getmensajes", name="consultarMensajes", options={"expose"=true})
+     */
+    public function consultarMensajes(Request $request,MensajesRepository $mensajesRepository): Response
+    {
+        if($request->isXMLHttpRequest()){
+            //consultamos si un usuario con una id tiene alguna conversacion con esa id
+            $user = $this->getUser();
+            $id = $user->getId();
+            $chat = $request->request->get('chat');
+
+            $conversacion = $this->getDoctrine()
+                ->getRepository(Conversaciones::class)
+                ->find($chat);
+
+            $mensajes = $mensajesRepository->findBy(
+                array('conversacion' => '1'),
+            );
+
+            foreach($conversacion->getMensajes() as $mensaje){
+                //var_dump($mensaje);
+                $mensajes[] = $mensaje->getTexto();
+            }
+
+            return new JsonResponse(['id_conversacion'=>$conversacion->getId(),'mensajes'=>$mensajes]);//devolvemos el mensaje si ha tenido exito
+
+
+        }
+    }
 }

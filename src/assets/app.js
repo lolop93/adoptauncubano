@@ -156,17 +156,26 @@ $( document ).ready(function() {
 //JS ajax para consultar mensajes
 //---------------------------------------------
 
-/*$( document ).ready(function() {
-    $.ajax({
-        type: 'POST',
-        url: "/mensajes",
-        async:true,
-        dataType: "json",
-        success: function (data){
-            console.log("LA id desde ajax del usuario actual es: " + data['id']);
-        }
-    })
-});*/
+
+$( document ).ready(function() {
+
+    setInterval(function(){
+        //this code runs every 2 second
+        var idChat = $('#textoChat').data('idChat');
+
+        $.ajax({
+            type: 'POST',
+            url: "/getmensajes",
+            data: {chat:idChat},
+            async:true,
+            dataType: "json",
+            success: function (data){
+                console.log('La conversacion es ' + data['id_conversacion'] + ' y los mensajes son ' + JSON.stringify(data['mensajes']));
+            }
+        })
+    }, 10000);
+
+});
 //---------------------------------------------
 //JS ajax para consultar mensajes
 
@@ -194,7 +203,7 @@ function Enviar(texto,emisor,id_chat){
         {
             console.log(data);
 
-            $('#textoChat').val('');//borramos el contenido el mensaje
+            $('#textoChat').val('');//borramos el contenido del mensaje
             $('.mensajes').append(
                 $(
                     '<div class="ms-auto">' +
