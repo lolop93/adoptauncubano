@@ -50,9 +50,7 @@
                     <div class="iconosDesplegable" onclick="window.location.href = '{{ path('perfil') }}'"><i class="bi bi-person-fill"></i></div>
                     <div class="iconosDesplegable" onclick="window.location.href = '{{ path('app_logout') }}'" style="margin-right: 40px"><i class="bi bi-x-lg"></i></div>
                 </div>
-                <div id="fotoHeader" class="rounded-circle">
-
-                </div>
+                <div id="fotoHeader" class="rounded-circle" style="background-image: url('{{ asset('images/Perfiles/' ~ login.galeria.getFotoPerfil)}}');"></div>
             </div>
 
         </div>
@@ -112,7 +110,6 @@
         align-items: center;
     }
     #fotoHeader{
-        background-image: url('{{ asset('images/Perfiles/' ~ login.galeria.getFotoPerfil)}}');
         margin-left: auto;
         background-size: cover;
         position: center;
