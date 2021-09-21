@@ -24,21 +24,33 @@
     {% endblock %}
 </head>
 <body style="background-size: 250px 250px; background-repeat: repeat; background-image: url({{ asset('images/Backgrounds/pattern_1.0.png') }});">
-<header class="p-2 text-white " style="background-color:rgba(0, 0, 0, 0.8);">
+<header class="p-2">
     {% block header %}
-        <div style="display: flex; align-items: center; width: 100%;">
+        <div id="cabecera"  style="display: flex; align-items: center; width: 100%;">
+
 
             <a href="{{ path('homepage') }}"><img class=" img" style="margin-right:auto;max-width: 4em;" src="{{ asset('images/Logos/LOGOHEADERMOVIL.png') }}"></a>
-            <div style="display: flex; justify-content: space-between; margin-left: 15px; margin-right: 15px;width: 65%;padding: 0 15px;">
+
+            {# Barra de busqueda oculta #}
+            <div id="searchBar" style="display: none";>
+                <input id="busquedaPlaceholder" placeholder="Escriba sus términos de búsqueda">
+                <button {# hay que darle funcionalidad al boton #}style="color: tomato; margin-left: -30px; background: none; outline: none; border:none"><i id="iconoBusqueda" class="bi bi-search" ></i></button>
+            </div>
+
+            <div class="iconos" style="display: flex; justify-content: space-between; margin-left: 15px;width: 65%;padding: 0 15px;">
 
                 <i onclick="window.location.href = '{{ path('mensajes') }}'" class="bi bi-chat-fill " style="font-size: 20px; color: white; padding: 0 5px;"></i>
-                <i {#onclick="window.location.href = '{{ path('notificaciones') }}'"#} class="bi bi-bell-fill me-2 ms-2 " style="font-size: 20px; padding: 0 5px; margin: 0 20px;"></i>
-                <i {# Crear script para abrir barra de busqueda #} class="bi bi-search " style="font-size: 20px; padding: 0 5px;"></i>
+                <i onclick="window.location.href = '{{ path('notificaciones') }}'" class="bi bi-bell-fill me-2 ms-2 " style="font-size: 20px; padding: 0 5px; margin: 0 20px;"></i>
+                <i id="iconoBusquedaExterior" class="bi bi-search " style="font-size: 20px; padding: 0 5px;"></i>
 
             </div>
-            <div class="perfil" style="margin-left: 10px">
-                <div class="desplegable" style=""></div>
-                <div  alt="mdo" width="50" height="50" class="rounded-circle" style="background-image: url('{{ asset('images/Perfiles/' ~ login.galeria.getFotoPerfil)}}'); margin-left: auto; background-size: cover;position: center;  width:40px;height:40px;">
+            <div id="perfil">
+                <div class="desplegable">
+                    <div class="iconosDesplegable" onclick="window.location.href = '{{ path('ajustes') }}'"><i class="bi bi-gear-fill"></i></div>
+                    <div class="iconosDesplegable" onclick="window.location.href = '{{ path('perfil') }}'"><i class="bi bi-person-fill"></i></div>
+                    <div class="iconosDesplegable" onclick="window.location.href = '{{ path('app_logout') }}'" style="margin-right: 40px"><i class="bi bi-x-lg"></i></div>
+                </div>
+                <div id="fotoHeader" class="rounded-circle">
 
                 </div>
             </div>
@@ -90,7 +102,54 @@
         it will always take up just as much space as it needs.  /
         / 0 flex-grow, 0 flex-shrink, auto flex-basis */
         flex: 0 0 auto;
+        background-color:rgba(0, 0, 0, 0.8);
+        color: white;
 
+    }
+    #perfil{
+        margin-left: 10px;
+        display: flex;
+        align-items: center;
+    }
+    #fotoHeader{
+        background-image: url('{{ asset('images/Perfiles/' ~ login.galeria.getFotoPerfil)}}');
+        margin-left: auto;
+        background-size: cover;
+        position: center;
+        width:40px;
+        height:40px;
+        box-shadow: -3px 0px 5px 3px rgb(0 0 0 / 10%);
+    }
+
+    .desplegable{
+        display: flex;
+        align-items: center;
+        padding-left: 10px;
+        justify-content: center;
+        width:40px;
+        height:30px;
+        background-color: tomato;
+        margin-right: -32px;
+        border-radius: 360px 0 0 360px;
+    }
+    .desplegable div{
+        display: none;
+        margin-right: 18px;
+        width: 20px;
+        height: 20px;
+        background-color: white;
+        color: tomato;
+    }
+    .mostrar .desplegable{
+        width: 150px;
+    }
+    .mostrar .iconosDesplegable{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 100px;
+        font-size: 12px;
+        font-weight: bolder;
     }
     footer{
         /* Like the header, the footer will have a static height - it shouldn't grow or shrink.  /
@@ -147,6 +206,85 @@
         / 1 flex-grow, 0 flex-shrink, auto flex-basis */
         flex: 1 0 auto;
     }
-</style>
+    .nada .iconos,.nada #perfil{
+        display: none !important;
+    }
+    .busqueda{
+        display: flex !important;
+    }
+    .busqueda input{
+        border-radius: 100px;
+        font-family: Metropolis;
+        margin-left: 20px;
+        border:none;
+        background-color: white !important;
+        width: 300px;
+        height: 25px !important;
+        box-shadow: 1px 8px 8px -5px rgb(0 0 0 / 31%);
+        padding-left: 20px;
+        outline: none;
+        font-size: 12px;
+    }
 
+</style>
+<script>
+
+    // perfil
+    var despliegue = document.getElementById('perfil');
+
+    despliegue.addEventListener('click', function (){
+        despliegue.classList.toggle('mostrar');
+    })
+
+    //barra busqueda
+    var busqueda = document.getElementsByClassName('busqueda');
+    var cabecera = document.getElementById('cabecera');
+    var barra = document.getElementById('searchBar');
+    var busquedaPlaceholder = document.getElementById('busquedaPlaceholder');
+
+
+     function mostrarBusqueda(event){
+         console.log('pito')
+         if(event.target.id==='iconoBusquedaExterior'){
+             if(barra.style.display==='none'){
+                 barra.classList.add('busqueda');
+                 cabecera.classList.add('nada')
+             }
+         }
+         else{
+
+             barra.classList.remove('busqueda');
+             cabecera.classList.remove('nada');
+         }
+    }
+
+    document.onclick = function (e){
+        if (e.target.id !== 'iconoBusqueda' && e.target.id !== 'busquedaPlaceholder') {
+            mostrarBusqueda(e)
+        }else{
+            console.log('pitooooo')
+        }
+    }
+    {#  Script menu desplegable
+    var iconos = document.getElementsByClassName('iconosDesplegable');
+        var fotoheader = document.getElementById('fotoHeader');
+        fotoheader.addEventListener("click",function () {
+
+        if(iconos[0].style.display==='block'){
+            document.getElementsByClassName('desplegable')[0].style.width= "40px";
+            for(var i=0;i<iconos.length;i++){
+                iconos[i].style.display = "none";
+            }
+        }
+        else {
+            document.getElementsByClassName('desplegable')[0].style.width = "120px";
+            for(var i=0;i<iconos.length;i++){
+                iconos[i].style.display = "block";
+            }
+        }
+    })
+    #}
+
+
+</script>
 </html>
