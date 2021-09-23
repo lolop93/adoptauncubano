@@ -16,11 +16,11 @@
                     {% for mensaje in mensajes %}
                         {% if mensaje.usuario.id  == login.id %}
                         <div class="ms-auto">
-                            <p class="bocadillo bg-white rounded me-3" data-id-mensaje="{{ mensaje.id }}" >{{ mensaje.texto }}</p>
+                            <p class="bocadillo" data-id-mensaje="{{ mensaje.id }}" >{{ mensaje.texto }}</p>
                         </div>
                         {% else %}
                             <div class="me-auto">
-                                <p class=" bocadillo bg-success rounded ms-3" data-id-mensaje="{{ mensaje.id }}">{{ mensaje.texto }}</p>
+                                <p class=" bocadillo" data-id-mensaje="{{ mensaje.id }}">{{ mensaje.texto }}</p>
                             </div>
                         {% endif %}
                     {% endfor %}
@@ -65,6 +65,7 @@
         }
         .formularioChat{
             display: flex;
+            justify-content: space-between;
             width: 100%;
             background-color:rgba(0, 0, 0, 0.6);
             align-items: center;
@@ -86,8 +87,13 @@
 
         }
         .bocadillo{
-            padding: 10px;
+            padding: 8px 15px;
+            background-color: whitesmoke !important;
+            margin: 0 10px !important;
+            border-radius: 100px !important;
+
         }
+
         #textoChat{
             padding-left: 15px;
             border-radius: 100px;
@@ -107,6 +113,7 @@
             border: none;
             width: 45px;
             height: 45px;
+            margin-left: 30px;
             color: whitesmoke;
             border-radius: 100px;
             box-shadow: 1px 8px 8px -5px rgb(0 0 0 / 31%);

@@ -23,10 +23,10 @@
                     {% for conversacion in conversaciones %}
                         {% if conversacion.emisor.id == login.id %}
                             <a href="{{ path('conversaciones',{id:conversacion.id}) }}" style=" text-decoration: none;">
-                                <div class="mensaje {{ conversacion.id == request.get('id') ? 'bg-warning' : '' }}">
+                                <div class="mensaje {{ conversacion.id == request.get('id') ? 'mensajeSeleccionado' : '' }}">
                                     <img src="{{ conversacion.remitente.galeria ? asset('images/Perfiles/' ~ conversacion.remitente.galeria.getFotoPerfil) : asset('images/fotodefecto.png') }}" alt="mdo" width="40" height="40" class="rounded-circle  me-3">
                                     <div class="infoMensaje" >
-                                        <p style="font-size: 15px; color: #CE5353">{{ conversacion.remitente.username }}</p>
+                                        <h1>{{ conversacion.remitente.username }}</h1>
                                         <p style="font-size: 11px; color: black">Mensaje..........</p>
                                     </div>
                                     <div class="notificacionMensaje ms-auto rounded-circle text-white">
@@ -37,7 +37,7 @@
                         {% else %}
                             <a href="{{ path('conversaciones',{id:conversacion.id}) }}" style=" text-decoration: none;">
                                 <div class="mensaje p-3 border-bottom border-1 border-dark {{ conversacion.id == request.get('id') ? 'bg-warning' : '' }}" >
-                                    <img src="{{ conversacion.emisor.galeria ? asset('images/Perfiles/' ~ conversacion.emisor   .galeria.getFotoPerfil) : asset('images/fotodefecto.png') }}" alt="mdo" width="40" height="40" class="rounded-circle  me-3">
+                                    {# usar background image en div #}<img src="{{ conversacion.emisor.galeria ? asset('images/Perfiles/' ~ conversacion.emisor   .galeria.getFotoPerfil) : asset('images/fotodefecto.png') }}" alt="mdo" width="40" height="40" class="rounded-circle  me-3">
                                     <div class="infoMensaje" >
                                         <p style="font-size: 15px">{{ conversacion.emisor.username }}</p>
                                         <p style="font-size: 11px">Mensaje..........</p>
@@ -113,13 +113,21 @@
             flex-direction: row;
             align-items: center;
             padding: 20px 20px;
-            box-shadow: -2px 4px 8px -5px rgb(0 0 0 / 50%);
+            box-shadow: 0px 3px 10px -6px rgb(0 0 0 / 35%);
         }
         .mensaje:hover{
             background-color: lightgray;
         }
-        .mensaje p{
+        .mensaje *{
             margin: 0;
+            font-weight: bolder;
+        }
+        .mensaje h1{
+            font-size: 18px;
+            color: #CE5353;
+        }
+        .mensajeSeleccionado{
+            background-color: lightgray;
         }
         .notificacionMensaje{
             background-color: #CE5353;
