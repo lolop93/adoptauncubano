@@ -159,17 +159,18 @@ $( document ).ready(function() {
 
 $( document ).ready(function() {
 
-    //Hacemos que al cargar la pagina, vaya al ultimo elemento del chat
-    // Handler for .ready() called.
-    $('.mensajes').animate({
-        scrollTop: $('.bocadillo').last().offset().top
-    }, 'slow');
-
 
     //comprobamos que hay un chat sino pa que coño vamos a ejecutar un listener xDDD
     if($('#textoChat').length){
-        setInterval(function(){           //ejecutamos una funcion cada 2 segundos
-            //this code runs every 2 second
+
+        //Hacemos que al cargar la pagina, vaya al ultimo elemento del chat
+        // Handler for .ready() called.
+        $('.mensajes').animate({
+            scrollTop: $('.bocadillo').last().offset().top
+        }, 'slow');
+
+        setInterval(function(){           //ejecutamos una funcion cada x segundos
+            //this code runs every x second
             var idChat = $('#textoChat').data('idChat');
 
             $.ajax({
@@ -179,22 +180,39 @@ $( document ).ready(function() {
                 async:true,
                 dataType: "json",
                 success: function (data){
-                    console.log('La conversacion es ' + data['id_conversacion'] + ' y los mensajes son ' + JSON.stringify(data['mensajes']));
+                    console.log('La conversacion es la ' + data['id_conversacion'] + ' y los mensajes del otro usuario son ' + JSON.stringify(data['mensajes']));
 
-                    var elementoUltimo = $( ".bocadillo" ).last();
-                    var ultimoMensajeData = data.mensajes.at(-1);
+                    var elementoUltimo = $( ".me-auto" ).last();//cogemos el ultimo elemento del otro usuario
+                    var idUltimo = $(elementoUltimo.children()[0]).data('idMensaje');//cogemos la id del ultimo elemento del otro usuario
 
-                    if (elementoUltimo[0].innerText !== ultimoMensajeData ){
+                    var i = data.mensajes.length - 1;//cogemos la posicion del ultimo elemento que nos devuelve la consulta
+
+                    var ultimosMensajes = [];
+
+                    console.log(JSON.stringify(data.mensajes));
+                    console.log(idUltimo)
+
+                    while(data.mensajes.at(i)['id'] !== idUltimo && data.mensajes.at(i)['id'] > idUltimo){//Recorremos el array de mensajes desde el ultimo hasta que encuentro el ultimo recibido (mirando la id)
+                        ultimosMensajes.push(data.mensajes.at(i));
+                        i--;
+                    }
+                    console.log(ultimosMensajes)
+                    ultimosMensajes.reverse();//le damos la vuelta al array porque al introducir los valores nuevo para imprimir, se introducen empezando por el mas nuevo y si no lo hacemos imprimiriamos antes el nuevo
+
+                    //for aqui
+                    ultimosMensajes.forEach( function(mensaje, indice, array) {
+                        console.log("En el índice " + indice + " hay este valor: " + mensaje.texto);
                         var elemento = $('.mensajes').append(
                             $(
                                 '<div class="me-auto">' +
-                                '<p class="bocadillo bg-white rounded ms-3 ">'+ ultimoMensajeData +'</p>' +
+                                '<p class="bocadillo bg-white rounded ms-3 " data-id-mensaje="'+mensaje.id+'">'+ mensaje.texto +'</p>' +
                                 '</div>'
                             )
                         );
-                        elementoUltimo = elementoUltimo.last();
+                        //elementoUltimo = elementoUltimo.last();
                         elementoUltimo[0].scrollIntoView();
-                    }
+                    });
+                    //for aqui
 
                 }
             })

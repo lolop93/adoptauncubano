@@ -150,15 +150,21 @@ class MensajesController extends AbstractController
                 ->find($chat);
 
             $mensajes = $mensajesRepository->findBy(
-                array('conversacion' => '1'),
+                array('conversacion' => $conversacion->getId()),
             );
 
             foreach($conversacion->getMensajes() as $mensaje){
-                //var_dump($mensaje);
-                $mensajes[] = $mensaje->getTexto();
+                //var_dump($mensaje)
+                if($mensaje->getUsuario()->getId()!=$id){
+                    $mensajes[] = [
+                        'id' => $mensaje->getId(),
+                        'texto' => $mensaje->getTexto()
+                    ];
+                }
+
             }
 
-            return new JsonResponse(['id_conversacion'=>$conversacion->getId(),'mensajes'=>$mensajes]);//devolvemos el mensaje si ha tenido exito
+            return new JsonResponse(['id_conversacion'=>$conversacion->getId(),'mensajes'=>$mensajes]);//devolvemos el mensaje, junto a la id del ultimo mensaje del otro usuario y la id de la conversacion si ha tenido exito
 
 
         }

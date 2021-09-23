@@ -16,11 +16,11 @@
                     {% for mensaje in mensajes %}
                         {% if mensaje.usuario.id  == login.id %}
                         <div class="ms-auto">
-                            <p class="bocadillo bg-white rounded me-3" >{{ mensaje.texto }}</p>
+                            <p class="bocadillo bg-white rounded me-3" data-id-mensaje="{{ mensaje.id }}" >{{ mensaje.texto }}</p>
                         </div>
                         {% else %}
                             <div class="me-auto">
-                                <p class=" bocadillo bg-success rounded ms-3">{{ mensaje.texto }}</p>
+                                <p class=" bocadillo bg-success rounded ms-3" data-id-mensaje="{{ mensaje.id }}">{{ mensaje.texto }}</p>
                             </div>
                         {% endif %}
                     {% endfor %}
