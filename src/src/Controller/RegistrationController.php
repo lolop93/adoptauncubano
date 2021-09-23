@@ -6,6 +6,7 @@ use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Security\AppAuthenticator;
 use App\Security\EmailVerifier;
+use SunCat\MobileDetectBundle\DeviceDetector\MobileDetector;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -26,7 +27,7 @@ class RegistrationController extends AbstractController
     }
 
     #[Route('/register', name: 'app_register')]
-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, AppAuthenticator $authenticator): Response
+    public function register(MobileDetector $pantalla, Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, AppAuthenticator $authenticator): Response
     {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -62,10 +63,11 @@ class RegistrationController extends AbstractController
                 'main' // firewall name in security.yaml
             );
         }
-
-        return $this->render('registration/register.html.twig', [
-            'registrationForm' => $form->createView(),
-        ]);
+        if($pantalla->isMobile() && !$pantalla->isTablet()){
+            return $this->render('registration/register.mobile.html.twig', ['registrationForm' => $form->createView(),]);
+        }else {
+            return $this->render('registration/register.html.twig', ['registrationForm' => $form->createView(),]);
+        }
     }
 
     #[Route('/verify/email', name: 'app_verify_email')]

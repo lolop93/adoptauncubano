@@ -1,0 +1,192 @@
+{% extends 'base.mobile.html.twig' %}
+
+{% block title %}Login{% endblock %}
+{% block header %}
+    <div class="contenedor">
+        <a href="/" class="d-flex align-items-center p-2 mb-lg-0 text-white text-decoration-none">
+            <img class=" img " style="margin-left: 0; max-width: 10em" src="{{ asset('images/Logos/LogoHeader.png') }}" >
+        </a>
+
+        <div class="subHeader">
+            <a href="#" class="nav-link px-2 text-white linkHeader">Información</a>
+            <a href="#" class="nav-link px-2 text-white linkHeader">Ayuda</a>
+        </div>
+    </div>
+
+
+    <style>
+        .contenedor{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .contenedor .linkHeader{
+            font-size: 12px;
+        }
+        .contenedor img{
+        }
+        body{
+        }
+
+    </style>
+{% endblock %}
+{% block body %}
+    <div class="video-container">
+        <video autoplay muted loop>
+            <source src="{{ asset('videos/fondoIndex1.mp4') }}" type="video/mp4" />
+        </video>
+
+        <form method="post">
+            {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
+            {% if app.user %}
+                <div class="mb-3">
+                    You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+                </div>
+            {% endif %}
+
+            <label class="tituloCampo" for="inputUsername">Usuario</label>
+            <input class="campo" type="text" value="{{ last_username }}" name="username" id="inputUsername" autocomplete="username">
+            <label class="tituloCampo" for="inputPassword">Contraseña</label>
+            <input class="campo"type="password" name="password" id="inputPassword"  autocomplete="current-password" required>
+
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+            {#
+            Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+            See https://symfony.com/doc/current/security/remember_me.html
+
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" name="_remember_me"> Remember me
+                </label>
+            </div>
+            #}
+
+            <button class="botonLogin" type="submit">
+                Entrar
+            </button>
+        </form>
+
+    </div>
+    <style>
+
+        .contenedor2{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center !important;
+            align-items: center;
+        }
+        .subHeader{
+            display: flex;
+        }
+        .part{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.2);
+            width: 100%;
+            height: 50%;
+            color: whitesmoke;
+            font-size: 24px;
+            box-shadow:inset 0 0 10px -3px rgb(255 255 255 / 60%);
+        }
+        .part:active{
+            background-color: unset;
+        }
+        .boton{
+            padding: 5px 15px;
+            border-radius: 200px !important;
+            outline: none;
+            border: none;
+            background-color: #e86362;
+            color: white;
+            box-shadow:inset -2px 2px 6px -3px rgb(0 0 0 / 31%);
+            margin-bottom: 25px;
+        }
+        .video-container {
+            height: 100%;
+            width: 100%;
+            position: relative;
+            background-color:  rgba(0 0 0 / 40%);
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            object-fit: cover;
+            z-index: -2;
+            filter: blur(3px);
+        }
+
+         input:-webkit-autofill,
+         input:-webkit-autofill:focus {
+             transition: background-color 600000s 0s, color 600000s 0s;
+         }
+        .cuerpo{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            padding-top: 75px;
+        }
+        .logo{
+            background-image: url("{{ asset('images/Logos/LogoHeader.png') }}");
+            background-size: cover;
+            width: 35em;
+            height: 9.65em;
+            margin-bottom: 75px;
+        }
+        form{
+            width: 100%;
+            height: 85%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        form>.campo{
+            margin-bottom: 20px;
+        }
+        form>.tituloCampo{
+            margin-bottom: 10px;
+            color: whitesmoke;
+            font-weight: bolder;
+            font-size: 28px;
+        }
+        .campo{
+            border-radius: 100px;
+            font-family: Metropolis;
+            border:none;
+            background-color: white !important;
+            box-shadow: 1px 8px 8px -5px rgb(0 0 0 / 31%);
+            padding-left: 20px;
+            outline: none;
+        }
+        .botonLogin {
+            background-color: #CE5353;
+            border: none;
+            color: whitesmoke;
+            width: 125px;
+            height: 45px;
+            margin-top: 15px;
+            border-radius: 100px;
+            box-shadow:inset 0px -9px 8px 0px rgb(0 0 0 / 31%), 1px 8px 8px -5px rgb(0 0 0 / 31%);
+        }
+        .botonLogin:hover{
+            background-color: #A74343;
+        }
+
+
+
+
+    </style>
+
+{% endblock %}
+

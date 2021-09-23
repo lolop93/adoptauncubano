@@ -55,8 +55,8 @@
     {{ parent() }}
     {{  dump() }}
 
-    <div class="container">
-        <div class="card" style="border: none;width: 1440px;height: 500px; position: relative">
+    <div class="contenedor">
+        <div class="card" style="border: none;width: 100%;height: 500px; position: relative;">
             <video autoplay muted src="{{ asset('videos/Bananera') }}"  loop style="object-fit: cover; width: 100%; height: 100%;position: absolute"></video>
         </div>
     </div>
@@ -234,6 +234,11 @@
     </div>
 
     <style>
+        .contenedor{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
         .gridUsers{
             display: grid;
             gap: 0.8em;
@@ -262,7 +267,7 @@
         .gridUsers i{
             font-size: 1.4vw;
         }
-        .container-fluid{
+        .container{
             width: auto;
 
         }
