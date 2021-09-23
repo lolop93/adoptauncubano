@@ -36,7 +36,7 @@
                             </a>
                         {% else %}
                             <a href="{{ path('conversaciones',{id:conversacion.id}) }}" style=" text-decoration: none;">
-                                <div class="mensaje p-3 border-bottom border-1 border-dark {{ conversacion.id == request.get('id') ? 'bg-warning' : '' }}" >
+                                <div class="mensaje {{ conversacion.id == request.get('id') ? 'mensajeSeleccionado' : '' }}" >
                                     {# usar background image en div #}<img src="{{ conversacion.emisor.galeria ? asset('images/Perfiles/' ~ conversacion.emisor   .galeria.getFotoPerfil) : asset('images/fotodefecto.png') }}" alt="mdo" width="40" height="40" class="rounded-circle  me-3">
                                     <div class="infoMensaje" >
                                         <p style="font-size: 15px">{{ conversacion.emisor.username }}</p>
