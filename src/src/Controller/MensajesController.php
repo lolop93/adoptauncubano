@@ -64,7 +64,7 @@ class MensajesController extends AbstractController
 
             } catch (\Exception $e) {//Si falla capturamos la excepcion y la manejamos pa que no nos la lie
                 $error = '### Message ### \n'.$e->getMessage().'\n### Trace ### \n'.$e->getTraceAsString();
-                $this->container->get('logger')->critical($msg);
+                $this->container->get('logger')->critical($error);
                 return new JsonResponse(['id'=>$id,'mensaje'=>$texto,'emisor'=>$emisor,'chat'=>$chat,'error'=>$error]);//Devolvemos el error en json a jquery
             }
 
