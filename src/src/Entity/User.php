@@ -94,6 +94,7 @@ class User implements UserInterface
      */
     private $likesRecibidos;
 
+
     /**
      * @ORM\OneToMany(targetEntity=Likes::class, mappedBy="likesFrom")
      */
