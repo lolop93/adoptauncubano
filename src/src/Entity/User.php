@@ -89,16 +89,27 @@ class User implements UserInterface
      */
     private $mensajes;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Likes::class, mappedBy="likesTo")
+     */
+    private $likesRecibidos;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Likes::class, mappedBy="likesFrom")
+     */
+    private $likesDados;
+
     public function __construct()
     {
         $this->conversacionesEmisor = new ArrayCollection();
         $this->conversacionesRemitente = new ArrayCollection();
         $this->mensajes = new ArrayCollection();
+        $this->likesRecibidos = new ArrayCollection();
+        $this->likesDados = new ArrayCollection();
     }
 
     public function __toString(){
         return $this->id .' '.$this->username;
-
     }
 
     public function getId(): ?int
@@ -333,6 +344,66 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($mensaje->getUsuario() === $this) {
                 $mensaje->setUsuario(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Likes[]
+     */
+    public function getLikesRecibidos(): Collection
+    {
+        return $this->likesRecibidos;
+    }
+
+    public function addLikesRecibido(Likes $likesRecibido): self
+    {
+        if (!$this->likesRecibidos->contains($likesRecibido)) {
+            $this->likesRecibidos[] = $likesRecibido;
+            $likesRecibido->setLikesTo($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLikesRecibido(Likes $likesRecibido): self
+    {
+        if ($this->likesRecibidos->removeElement($likesRecibido)) {
+            // set the owning side to null (unless already changed)
+            if ($likesRecibido->getLikesTo() === $this) {
+                $likesRecibido->setLikesTo(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Likes[]
+     */
+    public function getLikesDados(): Collection
+    {
+        return $this->likesDados;
+    }
+
+    public function addLikesDado(Likes $likesDado): self
+    {
+        if (!$this->likesDados->contains($likesDado)) {
+            $this->likesDados[] = $likesDado;
+            $likesDado->setLikesFrom($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLikesDado(Likes $likesDado): self
+    {
+        if ($this->likesDados->removeElement($likesDado)) {
+            // set the owning side to null (unless already changed)
+            if ($likesDado->getLikesFrom() === $this) {
+                $likesDado->setLikesFrom(null);
             }
         }
 
