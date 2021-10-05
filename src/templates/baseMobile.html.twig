@@ -66,6 +66,7 @@
 
     {% endblock %}
     </div>
+{% block footer %}
     <footer>
         <div class="footerMobile">
             <div class="logoFooter">
@@ -88,6 +89,7 @@
         </div>
 
     </footer>
+{% endblock %}
 
 </body>
 
@@ -109,7 +111,13 @@
         flex: 0 0 auto;
         background-color:rgba(0, 0, 0, 0.9);
         color: white;
+        position: fixed;
+        width: 100%;
+        z-index: 10000;
 
+    }
+    .main-content{
+        margin-top: 60px;
     }
     #perfil{
         margin-left: 10px;

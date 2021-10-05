@@ -12,6 +12,7 @@ use App\Repository\GaleriaRepository;
 use App\Repository\MensajesRepository;
 use App\Repository\UserAttributesRepository;
 use App\Repository\UserRepository;
+use SunCat\MobileDetectBundle\DeviceDetector\MobileDetector;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -30,7 +31,7 @@ class MensajesController extends AbstractController
     /**
      * @Route("/mensajes", name="mensajes", options={"expose"=true})
      */
-    public function index(Request $request,ConversacionesRepository $conversacionesRepository,UserRepository $userRepository,GaleriaRepository $galeriaRepository): Response
+    public function index(MobileDetector $pantalla,Request $request,ConversacionesRepository $conversacionesRepository,UserRepository $userRepository,GaleriaRepository $galeriaRepository): Response
     {
 
         if($request->isXMLHttpRequest()){
@@ -94,12 +95,20 @@ class MensajesController extends AbstractController
             // Sort the array
             //usort($conversaciones, 'App\Controller\compararFecha');
 
+            if($pantalla->isMobile() && !$pantalla->isTablet()){
+                return $this->render('mensajes/indexMobile.html.twig', [
+                    'login' => $this->getUser(),
+                    'conversaciones' => $conversaciones,
+                    'request' => $request,
+                ]);
+            }else {
+                return $this->render('mensajes/index.html.twig', [
+                    'login' => $this->getUser(),
+                    'conversaciones' => $conversaciones,
+                    'request' => $request,
+                ]);
+            }
 
-            return $this->render('mensajes/index.html.twig', [
-                'login' => $this->getUser(),
-                'conversaciones' => $conversaciones,
-                'request' => $request,
-            ]);
             //throw new Exception("Holi :)");
         }
 
@@ -109,7 +118,7 @@ class MensajesController extends AbstractController
     /**
      * @Route("/mensajes/{id}", name="conversaciones", options={"expose"=true})
      */
-    public function conversaciones(Request $request,ConversacionesRepository $conversacionesRepository,MensajesRepository $mensajesRepository,UserRepository $userRepository,GaleriaRepository $galeriaRepository): Response
+    public function conversaciones(MobileDetector $pantalla, Request $request,ConversacionesRepository $conversacionesRepository,MensajesRepository $mensajesRepository,UserRepository $userRepository,GaleriaRepository $galeriaRepository): Response
     {
 
         $userRepository->findAll();
@@ -124,13 +133,22 @@ class MensajesController extends AbstractController
         // Sort the arrays
         //usort($conversaciones, 'App\Controller\compararFecha');
 
-        return $this->render('mensajes/conversaciones.html.twig', [
-            'login' => $this->getUser(),
-            'conversaciones' => $conversaciones,
-            'mensajes'=>$mensajes,
-            'request' =>$request,
+        if($pantalla->isMobile() && !$pantalla->isTablet()){
+            return $this->render('mensajes/conversacionesMobile.html.twig', [
+                'login' => $this->getUser(),
+                'mensajes'=>$mensajes,
+                'conversaciones' => $conversaciones,
+                'request' => $request,
+            ]);
+        }else {
+            return $this->render('mensajes/conversaciones.html.twig', [
+                'login' => $this->getUser(),
+                'mensajes'=>$mensajes,
+                'conversaciones' => $conversaciones,
+                'request' => $request,
+            ]);
+        }
 
-        ]);
 
     }
 

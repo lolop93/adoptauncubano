@@ -25,7 +25,7 @@ class SecurityController extends AbstractController
         $lastUsername = $authenticationUtils->getLastUsername();
 
         if($pantalla->isMobile() && !$pantalla->isTablet()){
-            return $this->render('security/login.mobile.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
+            return $this->render('security/loginMobile.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
         }else {
             return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
         }

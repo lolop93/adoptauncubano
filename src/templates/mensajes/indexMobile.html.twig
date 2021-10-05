@@ -1,0 +1,95 @@
+{% extends 'baseMobile.html.twig' %}
+{% block body %}
+    <div class="cuerpo">
+        <div class="bodyHeader">
+            <h1>CONTACTOS</h1>
+            <i class="bi bi-search"></i>
+            <i class="bi bi-three-dots-vertical"></i>
+        </div>
+
+        <div class="conversaciones">
+            {% if conversaciones %}
+                {% for conversacion in conversaciones %}
+                    {% if conversacion.emisor.id == login.id %}
+                        <a href="{{ path('conversaciones',{id:conversacion.id}) }}" style=" text-decoration: none;">
+                            <div class="mensaje {{ conversacion.id == request.get('id') ? 'mensajeSeleccionado' : '' }}">
+                                <div class="fotoMensaje" style="background-image: url('{{ conversacion.remitente.galeria ? asset('images/Perfiles/' ~ conversacion.remitente.galeria.getFotoPerfil) : asset('images/fotodefecto.png') }}')"></div>
+                                <div class="infoMensaje" >
+                                    <h1>{{ conversacion.remitente.username }}</h1>
+                                    <p style="font-size: 11px; color: black">Mensaje..........</p>
+                                </div>
+
+                            </div>
+                        </a>
+                    {% else %}
+                        <a href="{{ path('conversaciones',{id:conversacion.id}) }}" style=" text-decoration: none;">
+                            <div class="mensaje {{ conversacion.id == request.get('id') ? 'mensajeSeleccionado' : '' }}" >
+                                {# usar background image en div #}<img src="{{ conversacion.emisor.galeria ? asset('images/Perfiles/' ~ conversacion.emisor   .galeria.getFotoPerfil) : asset('images/fotodefecto.png') }}" alt="mdo" width="40" height="40" class="rounded-circle  me-3">
+                                <div class="infoMensaje" >
+                                    <p style="font-size: 15px">{{ conversacion.emisor.username }}</p>
+                                    <p style="font-size: 11px">Mensaje..........</p>
+                                </div>
+                            </div>
+                        </a>
+                    {% endif %}
+                {% endfor %}
+            {% else %}
+                <p class="text-center mt-5">No tienes conversaciones aun <3</p>
+            {% endif %}
+        </div>
+
+
+
+    </div>
+
+
+
+
+    <style>
+        .cuerpo{
+            width: 100%;
+            height: 100%;
+            background-color: #E1E1E1;
+        }
+        .bodyHeader{
+            display: flex;
+            align-items: center;
+            height: 13%;
+            width: 100%;
+            padding: 0 15px;
+            color: #E1E1E1;
+            background-color: #CE5353;
+            font-weight: lighter;
+        }
+        .bodyHeader h1{
+            width: 80%;
+            margin-bottom: 0;
+            font-size: 28px;
+            font-weight: 600;
+        }
+        .bodyHeader i{
+            font-size: 24px;
+            margin-left: 15px;
+        }
+        .mensaje{
+            display: flex;
+            padding: 15px 0 10px 15px;
+            align-items: center;
+            box-shadow: -2px 4px 8px -5px rgb(0 0 0 / 31%);
+        }
+        .fotoMensaje{
+            width: 60px;
+            height: 60px;
+            background-size: cover;
+            background-position: center;
+            background-color:  #CE5353;
+            border-radius: 100px;
+            margin-right: 15px;
+        }
+        .infoMensaje h1{
+            color: #CE5353;
+            font-weight: 600;
+            margin-bottom: 0;
+        }
+    </style>
+{% endblock %}

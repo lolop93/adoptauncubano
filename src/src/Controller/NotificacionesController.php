@@ -31,7 +31,7 @@ class NotificacionesController extends AbstractController
         $mensajeslogin =  $login->getMensajes();
 
         if($pantalla->isMobile() && !$pantalla->isTablet()){
-            return $this->render('notificaciones/index.mobile.html.twig', [
+            return $this->render('notificaciones/indexMobile.html.twig', [
                 'users' => $users,
                 'galerias' => $galerias,
                 'atributos' => $atributos,

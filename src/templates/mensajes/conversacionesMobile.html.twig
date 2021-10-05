@@ -1,0 +1,129 @@
+{% extends 'baseMobile.html.twig' %}
+{% block body %}
+    <div class></div>
+    {% if  mensajes %}
+        {%  if mensajes[0].conversacion.emisor.id == login.id or mensajes[0].conversacion.remitente.id == login.id %}
+            <div class="contenido">
+                <div class="mensajes d-flex flex-column">
+                    {% for mensaje in mensajes %}
+                        {% if mensaje.usuario.id  == login.id %}
+                            <div class="ms-auto">
+                                <p class="bocadillo" data-id-mensaje="{{ mensaje.id }}" >{{ mensaje.texto }}</p>
+                            </div>
+                        {% else %}
+                            <div class="me-auto">
+                                <p class=" bocadillo" data-id-mensaje="{{ mensaje.id }}">{{ mensaje.texto }}</p>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+
+                </div>
+
+
+                <div class="formularioChat">
+                    <form id="envioMensaje" autocomplete="off" >
+                        <input id="textoChat" type="textarea" placeholder="Escribe tu mensaje" data-id-emisor="{{login.id}}" data-id-chat="{{ mensajes[0].conversacion.id  }}" />
+                        <input type="hidden" value="">
+                        <button id="btnEnviar" type="submit" value="enviar"><i class="bi bi-shift-fill"></i></button>
+                    </form>
+                </div>
+            </div>
+        {% endif %}
+    {% else %}
+        {% for conversacion in conversaciones %}
+            {%  if conversacion.id == request.get('id') %}
+                <div class="contenido">
+                    <p class="bg-white mx-auto p-3 rounded my-auto" style="font-size: 20px; height: 60px;">Esta conversacion no tiene mensajes</p>
+                    <div class="formularioChat">
+                        <form id="envioMensaje" autocomplete="off">
+                            <input id="textoChat" type="textarea" placeholder="Escribe tu mensaje" autocomplete="nope" data-id-emisor="{{login.id}}" data-id-chat="{{ conversacion.id  }}" />
+                            <input type="hidden"value="">
+                            <input id="btnEnviar" type="submit" value="Enviar" />
+                        </form>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    <style>
+        .contenido{
+            display: grid;
+            grid-template-columns: 100%;
+            grid-auto-rows: auto 60px;
+            height: 100%;
+            width: 100%;
+            padding-bottom: 75px;
+
+        }
+        .formularioChat{
+            display: flex;
+            position:fixed;
+            bottom: 0;
+            justify-content: space-between;
+            height: 75px;
+            width: 100%;
+            background-color:rgba(0, 0, 0);
+            align-items: center;
+            padding: 0 40px;
+
+        }
+        #envioMensaje{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .mensajes{
+            row-gap: 10px;
+            padding: 10px 0;
+            overflow: auto;
+            /*place-content: flex-end;*/
+
+        }
+        .bocadillo{
+            padding: 8px 15px;
+            background-color: whitesmoke !important;
+            margin: 0 10px !important;
+            border-radius: 100px !important;
+
+        }
+
+        #textoChat{
+            padding-left: 15px;
+            border-radius: 100px;
+            font-family: Metropolis;
+            border: none;
+            background-color: white !important;
+            width: 95%;
+            height: 35px;
+            box-shadow: 1px 8px 8px -5px rgb(0 0 0 / 31%);
+        }
+        #textoChat:focus{
+            border: none;
+            outline: none;
+        }
+        #btnEnviar{
+            background-color: #CE5353;
+            border: none;
+            width: 45px;
+            height: 45px;
+            margin-left: 30px;
+            color: whitesmoke;
+            border-radius: 100px;
+            box-shadow: 1px 8px 8px -5px rgb(0 0 0 / 31%);
+            font-size: 18px;
+        }
+        #btnEnviar:hover{
+            cursor: pointer;
+            background-color: #843636;
+        }
+        #btnEnviar i{
+            font-size: 28px;
+        }
+
+    </style>
+{% endblock %}
+{% block footer %}
+{% endblock %}

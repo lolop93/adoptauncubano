@@ -64,7 +64,7 @@ class RegistrationController extends AbstractController
             );
         }
         if($pantalla->isMobile() && !$pantalla->isTablet()){
-            return $this->render('registration/register.mobile.html.twig', ['registrationForm' => $form->createView(),]);
+            return $this->render('registration/registerMobile.html.twig', ['registrationForm' => $form->createView(),]);
         }else {
             return $this->render('registration/register.html.twig', ['registrationForm' => $form->createView(),]);
         }

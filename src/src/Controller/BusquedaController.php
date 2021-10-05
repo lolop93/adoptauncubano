@@ -19,7 +19,7 @@ class BusquedaController extends AbstractController
         $query = $request->query->get('busqueda');
 
         if($pantalla->isMobile() && !$pantalla->isTablet()){
-            return $this->render('busqueda/busqueda.mobile.html.twig', [
+            return $this->render('busqueda/busquedaMobile.html.twig', [
                 'query' => $query,
                 'request'=> $request,
                 'login' => $login,
