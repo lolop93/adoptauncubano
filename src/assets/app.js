@@ -163,9 +163,10 @@ $( document ).ready(function() {
     //comprobamos que hay un chat sino pa que coño vamos a ejecutar un listener xDDD
     if($('#textoChat').length){
 
+        console.log("scroll");
         //Hacemos que al cargar la pagina, vaya al ultimo elemento del chat
         // Handler for .ready() called.
-        $('.mensajes').animate({
+        $('.mensajes, html').animate({
             scrollTop: $('.bocadillo').last().offset().top
         }, 'slow');
 
