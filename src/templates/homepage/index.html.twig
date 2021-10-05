@@ -78,7 +78,7 @@
                                             <p class="card-text text-start " >Edad</p>
                                         </div>
                                         <div class="">
-                                            <i class="bi bi-heart-fill" ></i>
+                                            <i class="bi bi-heart-fill {{   user.id in likesTotales ? 'matchOk' : 'matchKo' }}" data-id-match="{{ user.id }}" ></i>
                                             <i class="bi bi-chat-left-fill" ></i>
                                         </div>
 
@@ -103,7 +103,7 @@
                                             <p class="card-text text-start" >Edad</p>
                                         </div>
                                         <div class="text-end">
-                                            <i class="bi bi-heart-fill" ></i>
+                                            <i class="bi bi-heart-fill {{   user2.id in likesTotales ? 'matchOk' : 'matchKo' }}" data-id-match="{{ user2.id }}" ></i>
                                             <i class="bi bi-chat-left-fill" ></i>
                                         </div>
 
@@ -128,7 +128,7 @@
                                             <p class="card-text text-start" >Edad</p>
                                         </div>
                                         <div class="text-end">
-                                            <i class="bi bi-heart-fill" ></i>
+                                            <i class="bi bi-heart-fill {{   user3.id in likesTotales ? 'matchOk' : 'matchKo' }}" data-id-match="{{ user3.id }}" ></i>
                                             <i class="bi bi-chat-left-fill" ></i>
                                         </div>
 
@@ -195,7 +195,7 @@
                                     <p class="card-text text-start">Edad</p>
                                 </div>
                                 <div class="col-lg-5 col-12 text-end">
-                                    <i class="bi bi-heart-fill"></i>
+                                    <i class="bi bi-heart-fill  {{   user.id in likesTotales ? 'matchOk' : 'matchKo' }}" data-id-match="{{ user.id }}" ></i>
                                     <i class="bi bi-chat-left-fill"></i>
                                 </div>
 
@@ -271,9 +271,14 @@
             width: auto;
 
         }
-        .bi-heart-fill{
+        .matchOk{
             color: #E86362;
         }
+
+        .matchKo{
+            color: #858585;
+        }
+
         .bi-chat-left-fill{
             color: #5875AF;
         }

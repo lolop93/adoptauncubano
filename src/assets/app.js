@@ -264,3 +264,17 @@ function Enviar(texto,emisor,id_chat){
 }
 //---------------------------------------------
 //JS ajax para enviar mensajes
+
+
+//JS ajax para enviar Likes
+//---------------------------------------------
+
+$( document ).ready(function(){
+    $( '.matchKo' ).click(function() {
+        console.log("corasonsito " + $( this ).data("idMatch"))
+    });
+});
+
+
+//---------------------------------------------
+//JS ajax para enviar Likes
