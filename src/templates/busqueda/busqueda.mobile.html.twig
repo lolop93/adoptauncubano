@@ -1,0 +1,187 @@
+{% extends 'base.mobile.html.twig' %}
+
+{% block title %}Búsqueda{% endblock %}
+
+{% block body %}
+
+    <div class="cuerpo">
+
+        <div class="textoResultado">
+            <h1>"Busqueda realizada"</h1>
+            <p>_n resultados encontrados</p>
+        </div>
+
+        <div class="tarjeta">
+            <div class="fotoBusqueda">
+                <i class="bi bi-eye-fill"></i>
+
+                <div class="infoFoto">
+
+                    <div class="textoFoto">
+                        <h1>Paola</h1>
+                        <h4>19 Brasil</h4>
+                    </div>
+
+                    <i class="bi-suit-heart-fill"></i>
+                </div>
+
+
+            </div>
+
+            <div class="descripcion">
+                <h2 id="titulo">Descripción</h2>
+                <p id="cuerpoDescripción">Estoy quí para hacer amigos igual que entro a Pornhub para ver al fontanero reparar el lavabo</p>
+            </div>
+
+            <div class="atributos">
+                <div class="columna">
+                    <div class="fila">
+                        <h2>Ojos</h2>
+                        <p>blancos</p>
+                    </div>
+                    <div class="fila">
+                        <h2>Ciudad</h2>
+                        <p>Londres</p>
+                    </div>
+                </div>
+                <div class="columna">
+                    <div class="fila">
+                        <h2>Pelo</h2>
+                        <p>Castaño</p>
+                    </div>
+                    <div class="fila">
+                        <h2>Gustos</h2>
+                        <p>Por detrás</p>
+                    </div>
+                </div>
+                <div class="columna">
+                    <div class="fila">
+                        <h2>Profesión</h2>
+                        <p>Streamer</p>
+                    </div>
+                    <div class="fila">
+                        <h2>Deporte</h2>
+                        <p>No, gracias</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+        <div class="tarjeta">
+
+        </div>
+        <div class="tarjeta">
+
+        </div>
+
+
+
+
+    </div>
+
+    <style>
+        .cuerpo{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+        }
+        .textoResultado{
+            color: whitesmoke;
+            text-align: left;
+        }
+        .textoResultado h1{
+            font-size: 24px;
+        }
+        .textoResultado p{
+            font-size: 12px;
+        }
+        .tarjeta{
+            width: 300px;
+            height: 650px;
+            background-color: #E1E1E1;
+            margin-top: 20px;
+        }
+        .fotoBusqueda{
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            width: 100%;
+            height: 60%;
+            background-image: url("{{ asset('images/Perfiles/pexels-gabriel-santos-fotografia-2014649.jpg') }}");
+            background-size: cover;
+            background-position: center;
+            color: whitesmoke;
+        }
+        .bi-eye-fill{
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            color: whitesmoke;
+            font-size: 36px;
+
+        }
+        .infoFoto{
+            position: relative;
+            display: flex;
+            padding: 10px 10px 10px 15px;
+            background-color: rgba(0, 0, 0, 0.45);
+            color: #CE5353;
+        }
+        .infoFoto .textoFoto *{
+            margin-bottom: 0px;
+            color: whitesmoke;
+        }
+        .infoFoto .bi-suit-heart-fill{
+            position: absolute;
+            right: 30px;
+            font-size: 48px;
+        }
+
+        .descripcion{
+            box-shadow: -2px 4px 8px -5px rgb(0 0 0 / 31%);
+            padding: 17px;
+        }
+        .descripcion #titulo{
+            font-size: 24px;
+            font-weight: bolder;
+            color: #CE5353;
+        }
+        .descripcion #cuerpoDescripción{
+            font-size: 12px;
+        }
+        .atributos{
+            display: flex;
+            justify-content: space-between;
+            margin: 17px;
+        }
+        .columna{
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+        .fila{
+            text-align: left;
+        }
+        .fila h2{
+            font-size: 16px;
+            font-weight: bold;
+            color: #CE5353;
+            margin-bottom: 2px;
+        }
+        .fila p{
+            font-size: 12px;
+            margin-bottom: 15px;
+
+        }
+
+
+    </style>
+{% endblock %}

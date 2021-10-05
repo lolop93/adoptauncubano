@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use SunCat\MobileDetectBundle\DeviceDetector\MobileDetector;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -12,17 +13,26 @@ use Symfony\Component\Routing\Annotation\Route;
 class BusquedaController extends AbstractController
 {
     #[Route('/busqueda', name: 'busqueda', methods: ['GET'])]
-    public function index(Request $request): Response
+    public function index(MobileDetector $pantalla, Request $request): Response
     {
         $login = $this->get('security.token_storage')->getToken()->getUser();
         $query = $request->query->get('busqueda');
 
+        if($pantalla->isMobile() && !$pantalla->isTablet()){
+            return $this->render('busqueda/busqueda.mobile.html.twig', [
+                'query' => $query,
+                'request'=> $request,
+                'login' => $login,
+            ]);
+        }else {
+            return $this->render('busqueda/index.html.twig', [
+                'query' => $query,
+                'request'=> $request,
+                'login' => $login,
+            ]);
+        }
 
-        return $this->render('busqueda/index.html.twig', [
-            'query' => $query,
-            'request'=> $request,
-            'login' => $login,
-        ]);
+
     }
 
     public function barraBusqueda(){
@@ -47,3 +57,5 @@ class BusquedaController extends AbstractController
 
     }
 }
+
+
