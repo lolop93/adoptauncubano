@@ -272,6 +272,8 @@ function Enviar(texto,emisor,id_chat){
 
 $( document ).ready(function(){
     $( '.matchKo' ).click(function() {
+
+
         console.log("corasonsito " + $( this ).data("idMatch"))
     });
 });
