@@ -1,6 +1,11 @@
 {% extends 'baseMobile.html.twig' %}
 {% block body %}
-    <div class></div>
+    <div class="chatHeader">
+        <h1>{{ nombreOtro }}</h1>
+        <i class="bi bi-camera-video-fill"></i>
+        <i class="bi bi-three-dots-vertical"></i>
+
+    </div>
     {% if  mensajes %}
         {%  if mensajes[0].conversacion.emisor.id == login.id or mensajes[0].conversacion.remitente.id == login.id %}
             <div class="contenido">
@@ -53,8 +58,32 @@
             grid-auto-rows: auto 60px;
             height: 100%;
             width: 100%;
-            padding-bottom: 75px;
+            padding: 80px 0;
 
+        }
+        .chatHeader{
+            display: flex;
+            position: fixed;
+            align-items: center;
+            width: 100%;
+            background-color:#CE5353;
+            padding: 15px 20px;
+            color:white;
+        }
+        .chatHeader h1{
+            margin: 0;
+            font-size: 32px;
+            font-weight: 600;
+        }
+        .chatHeader .bi-camera-video-fill{
+            position: absolute;
+            font-size: 32px;
+            right: 60px;
+        }
+        .chatHeader .bi-three-dots-vertical{
+            position: absolute;
+            font-size: 32px;
+            right: 15px;
         }
         .formularioChat{
             display: flex;
@@ -65,7 +94,7 @@
             width: 100%;
             background-color:rgba(0, 0, 0);
             align-items: center;
-            padding: 0 40px;
+            padding: 0 20px;
 
         }
         #envioMensaje{
@@ -108,10 +137,10 @@
             background-color: #CE5353;
             border: none;
             width: 45px;
-            height: 45px;
+            height: 40px;
             margin-left: 30px;
             color: whitesmoke;
-            border-radius: 100px;
+            border-radius: 200px;
             box-shadow: 1px 8px 8px -5px rgb(0 0 0 / 31%);
             font-size: 18px;
         }
@@ -120,7 +149,7 @@
             background-color: #843636;
         }
         #btnEnviar i{
-            font-size: 28px;
+            font-size: 24px;
         }
 
     </style>
