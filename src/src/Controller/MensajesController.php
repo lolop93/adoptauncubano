@@ -129,7 +129,11 @@ class MensajesController extends AbstractController
         $conversaciones = array_merge($conversacionesEmisor,$conversacionesRemitente);
 
         $mensajes = $mensajesRepository->findBy(['conversacion'=>$request->attributes->get('id')]);
-
+        if($mensajes[0]->getConversacion()->getRemitente()->getId()==$this->getUser()->getId()){
+            $nombreOtro = $mensajes[0]->getConversacion()->getEmisor()->getUsername();
+        }else{
+            $nombreOtro= $mensajes[0]->getConversacion()->getRemitente()->getUsername();
+        }
         // Sort the arrays
         //usort($conversaciones, 'App\Controller\compararFecha');
 
@@ -139,6 +143,8 @@ class MensajesController extends AbstractController
                 'mensajes'=>$mensajes,
                 'conversaciones' => $conversaciones,
                 'request' => $request,
+                'nombreOtro' => $nombreOtro
+
             ]);
         }else {
             return $this->render('mensajes/conversaciones.html.twig', [
@@ -146,6 +152,7 @@ class MensajesController extends AbstractController
                 'mensajes'=>$mensajes,
                 'conversaciones' => $conversaciones,
                 'request' => $request,
+                'nombreOtro' => $nombreOtro
             ]);
         }
 
