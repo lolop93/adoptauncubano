@@ -76,12 +76,12 @@ class User implements UserInterface
     /**
      * @ORM\OneToMany(targetEntity=Conversaciones::class, mappedBy="emisor")
      */
-    private $conversacionesEmisor;
+    private $conversacionesEmisor; //cuando el propio usuario es el que inicia la conversacion
 
     /**
      * @ORM\OneToMany(targetEntity=Conversaciones::class, mappedBy="remitente")
      */
-    private $conversacionesRemitente;
+    private $conversacionesRemitente; //cuando es el otro usuario es el que inicia la conversacion
 
 
     /**

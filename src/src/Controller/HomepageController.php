@@ -31,17 +31,25 @@ class HomepageController extends AbstractController
         $mensajeslogin =  $login->getMensajes();
 
         //comprobamos que los likes que ha dado a un usuario sea reciproco
-        if($likesRecibidos->count() > 0){
+        if($likesRecibidos->count() > 0){//Si ha recibidos likes buscamos
             foreach ($likesRecibidos as $likeRecibido){
 
                 if(array_search($likeRecibido->getId(), $likesDados)){
-                    $likesTotales[]= $likeRecibido->getId();
+                    $likesTotales[]= $likeRecibido->getLikesFrom()->getId(); //los Likes recibidos son likes en los que $likesFrom es el otro usuario
                 }
 
             }
         }
-        else{
-            $likesTotales = array();
+        else{//sino le ha dado me gusta nadie, pues cogemos solo los likes dados
+
+            if($likesDados->count() > 0){
+                foreach ($likesDados as $likesDado){
+                    $likesTotales[]= $likesDado->getLikesTo()->getId(); //los Likes dados son likes en los que $likesTo es el otro usuario
+                }
+            }else{//Si tampoco le ha dado me gusta a nadie
+                $likesTotales = array(); //creamos un array vacio
+            }
+
         }
 
 

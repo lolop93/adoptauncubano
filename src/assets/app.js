@@ -273,7 +273,20 @@ function Enviar(texto,emisor,id_chat){
 $( document ).ready(function(){
     $( '.matchKo' ).click(function() {
 
+        var id_chat = $( this ).data("idMatch")
 
+        $.ajax({
+            type: "POST",
+            url: "/likes/set",
+            data: {receptor:id_chat},
+            async:true,
+            dataType: "json",
+            success: function(data)
+            {
+                //añadir pintar el corason gitano de rojo
+                console.log(data);
+            }
+        });
         console.log("corasonsito " + $( this ).data("idMatch"))
     });
 });
