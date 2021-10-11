@@ -274,6 +274,7 @@ $( document ).ready(function(){
     $( '.matchKo' ).click(function() {
 
         var id_chat = $( this ).data("idMatch")
+        var elemento = $( this );
 
         $.ajax({
             type: "POST",
@@ -284,6 +285,8 @@ $( document ).ready(function(){
             success: function(data)
             {
                 //añadir pintar el corason gitano de rojo
+                elemento.removeClass("matchKo")
+                elemento.addClass("matchOk")
                 console.log(data);
             }
         });
