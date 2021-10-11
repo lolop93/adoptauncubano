@@ -61,7 +61,21 @@
 
 
     <style>
-
+        *::-webkit-scrollbar{
+            background: none;
+            width: 15px;
+        }
+        *::-webkit-scrollbar-track{
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+        *::-webkit-scrollbar-track-piece{
+            height: 15px;
+        }
+        *::-webkit-scrollbar-thumb{
+            background:#CE5353;
+            border-radius: 100px;
+            width: 2px;
+        }
         header{
             display: none;
         }
@@ -71,10 +85,15 @@
         body{
             display: flex;
             flex-direction: column;
+            padding: 10px 300px;
+            background-color: #2c3034;
 
         }
         html, body {
             height: 100%;
+            background-image: url("{{ asset('images/Backgrounds/pattern_chat.png') }}");
+            background-size: 200px 200px;
+            background-repeat: repeat;
         }
         .gridMain{
             display: grid;
@@ -82,7 +101,8 @@
             grid-template-areas:
                 "cabecera cabecera cabecera cabecera cabecera"
                 "mensajes conversacion conversacion conversacion conversacion";
-            height: 100%;
+            height: 80%;
+            width: 100%;
         }
 
 
@@ -102,6 +122,7 @@
 
         .conversaciones{
             grid-area: mensajes;
+            width: 300px;
             background-color: #E1E1E1;
             display: flex;
             flex-direction: column;
@@ -136,6 +157,8 @@
             text-align: center;
         }
         .conversacion{
+            width: 100%;
+            height: 91vh;
             grid-area: conversacion;
             background-size: 500px 500px;
             background-repeat: repeat;
@@ -144,7 +167,7 @@
         }
 
         .conversacion{
-            height: calc(100vh - 56px);
+
             display: flex;
         }
 

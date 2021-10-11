@@ -32,7 +32,7 @@
                     <form id="envioMensaje" autocomplete="off" >
                         <input id="textoChat" type="textarea" placeholder="Escribe tu mensaje" data-id-emisor="{{login.id}}" data-id-chat="{{ mensajes[0].conversacion.id  }}" />
                         <input type="hidden" value="">
-                        <button id="btnEnviar" type="submit" value="enviar"><i class="bi bi-shift-fill"></i></button>
+                        <button id="btnEnviar" type="submit" value="enviar"><i class="bi bi-forward-fill"></i></button>
                     </form>
                 </div>
             </div>
@@ -55,6 +55,23 @@
     {% endif %}
 
     <style>
+        body::-webkit-scrollbar {
+            width: 12px;               /* width of the entire scrollbar */
+        }
+
+        body::-webkit-scrollbar-track {
+            background: none;        /* color of the tracking area */
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background-color: blue;    /* color of the scroll thumb */
+            border-radius: 100px;       /* roundness of the scroll thumb */
+            border: 3px solid orange;  /* creates padding around scroll thumb */
+        }
+        body {
+            padding: 0 300px;
+        }
+
         .contenido{
             display: grid;
             grid-template-columns: 100%;
