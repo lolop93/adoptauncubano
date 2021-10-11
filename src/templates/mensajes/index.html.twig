@@ -4,13 +4,13 @@
 
 {% block body %}
 
-        <div class="gridMain my-auto w-75 mx-auto">
+        <div class="gridMain">
             <div class="cabecera text-white">
                 <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40" class="rounded-circle me-3 mt-2 mb-2" >
                 <p style="font-size: 28px; font-weight: bolder;">{{ login.nombre }}</p>
                 <i class="bi bi-search ms-5"></i>
                 <i class="bi bi-three-dots-vertical ms-3"></i>
-                <i onclick="window.location.href = '{{ path('homepage') }}'" class="bi bi-house-door-fill align-self-start ms-5 me-3" style="background-color: #5875AF; padding: 2px 7px; cursor: pointer;"></i>
+                <i onclick="window.location.href = '{{ path('homepage') }}'" class="bi bi-house-door-fill align-self-start ms-5 me-3" style="padding: 5px 5px; cursor: pointer;"></i>
                 <div class="infoCabecera ms-auto me-2" >
                     <p style="font-size: 10px">Nacionalidad, Age</p>
                     <p style="font-size: 15px">Nombre</p>
@@ -18,61 +18,62 @@
                 <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40" class="rounded-circle ">
 
             </div>
-            <div class="conversaciones">
-                {% if conversaciones %}
-                    {% for conversacion in conversaciones %}
-                        {% if conversacion.emisor.id == login.id %}
-                            <a href="{{ path('conversaciones',{id:conversacion.id}) }}" style=" text-decoration: none;">
-                                <div class="mensaje {{ conversacion.id == request.get('id') ? 'mensajeSeleccionado' : '' }}">
-                                    <img src="{{ conversacion.remitente.galeria ? asset('images/Perfiles/' ~ conversacion.remitente.galeria.getFotoPerfil) : asset('images/fotodefecto.png') }}" alt="mdo" width="40" height="40" class="rounded-circle  me-3">
-                                    <div class="infoMensaje" >
-                                        <h1>{{ conversacion.remitente.username }}</h1>
-                                        <p style="font-size: 11px; color: black">Mensaje..........</p>
+            <div class="conversation">
+                <div class="conversaciones">
+                    {% if conversaciones %}
+                        {% for conversacion in conversaciones %}
+                            {% if conversacion.emisor.id == login.id %}
+                                <a href="{{ path('conversaciones',{id:conversacion.id}) }}" style=" text-decoration: none;">
+                                    <div class="mensaje {{ conversacion.id == request.get('id') ? 'mensajeSeleccionado' : '' }}">
+                                        <img src="{{ conversacion.remitente.galeria ? asset('images/Perfiles/' ~ conversacion.remitente.galeria.getFotoPerfil) : asset('images/fotodefecto.png') }}" alt="mdo" width="40" height="40" class="rounded-circle  me-3">
+                                        <div class="infoMensaje" >
+                                            <h1>{{ conversacion.remitente.username }}</h1>
+                                            <p style="font-size: 11px; color: black">Mensaje..........</p>
+                                        </div>
+                                        <div class="notificacionMensaje ms-auto rounded-circle text-white">
+                                            2
+                                        </div>
                                     </div>
-                                    <div class="notificacionMensaje ms-auto rounded-circle text-white">
-                                        2
+                                </a>
+                            {% else %}
+                                <a href="{{ path('conversaciones',{id:conversacion.id}) }}" style=" text-decoration: none;">
+                                    <div class="mensaje {{ conversacion.id == request.get('id') ? 'mensajeSeleccionado' : '' }}" >
+                                        {# usar background image en div #}<img src="{{ conversacion.emisor.galeria ? asset('images/Perfiles/' ~ conversacion.emisor   .galeria.getFotoPerfil) : asset('images/fotodefecto.png') }}" alt="mdo" width="40" height="40" class="rounded-circle  me-3">
+                                        <div class="infoMensaje" >
+                                            <p style="font-size: 15px">{{ conversacion.emisor.username }}</p>
+                                            <p style="font-size: 11px">Mensaje..........</p>
+                                        </div>
+                                        <div class="notificacionMensaje ms-auto rounded-circle text-white">
+                                            2
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
-                        {% else %}
-                            <a href="{{ path('conversaciones',{id:conversacion.id}) }}" style=" text-decoration: none;">
-                                <div class="mensaje {{ conversacion.id == request.get('id') ? 'mensajeSeleccionado' : '' }}" >
-                                    {# usar background image en div #}<img src="{{ conversacion.emisor.galeria ? asset('images/Perfiles/' ~ conversacion.emisor   .galeria.getFotoPerfil) : asset('images/fotodefecto.png') }}" alt="mdo" width="40" height="40" class="rounded-circle  me-3">
-                                    <div class="infoMensaje" >
-                                        <p style="font-size: 15px">{{ conversacion.emisor.username }}</p>
-                                        <p style="font-size: 11px">Mensaje..........</p>
-                                    </div>
-                                    <div class="notificacionMensaje ms-auto rounded-circle text-white">
-                                        2
-                                    </div>
-                                </div>
-                            </a>
-                        {% endif %}
-                    {% endfor %}
-                {% else %}
-                    <p class="text-center mt-5">No tienes conversaciones aun <3</p>
-                {% endif %}
-            </div>
-            <div class="conversacion ">
-                {%  block contenido %}
-                {%  endblock %}
+                                </a>
+                            {% endif %}
+                        {% endfor %}
+                    {% else %}
+                        <p class="text-center mt-5">No tienes conversaciones aun <3</p>
+                    {% endif %}
+                </div>
+                <div class="conversacion ">
+                    {%  block contenido %}
+                    {%  endblock %}
+                </div>
             </div>
         </div>
 
-
     <style>
-        .mensajes::-webkit-scrollbar{
+        *::-webkit-scrollbar{
             background: none;
             width: 15px;
         }
-        .mensajes::-webkit-scrollbar-track{
+        *::-webkit-scrollbar-track{
             background-color: rgba(0, 0, 0, 0.3);
         }
-        .mensajes::-webkit-scrollbar-track-piece{
+        *::-webkit-scrollbar-track-piece{
             height: 15px;
         }
-        .mensajes::-webkit-scrollbar-thumb{
-            background:#CE5353;
+        *::-webkit-scrollbar-thumb{
+            background:#E1E1E1;
             border-radius: 100px;
             width: 2px;
         }
@@ -85,7 +86,6 @@
         body{
             display: flex;
             flex-direction: column;
-            padding: 10px 0;
             background-color: #2c3034;
 
         }
@@ -96,15 +96,14 @@
             background-repeat: repeat;
         }
         .gridMain{
-            display: grid;
-            grid-template-rows: min-content;
-            grid-template-areas:
-                "cabecera cabecera cabecera cabecera cabecera"
-                "mensajes conversacion conversacion conversacion conversacion";
-            height: 100%;
-            width: 100%;
+            display: flex;
+            flex-direction: column;
+            margin: 1vh 15vw;
+            box-shadow: 0px 0px 30px 30px rgb(0 0 0 / 31%);
         }
-
+        .conversation{
+            display: flex;
+        }
 
         .cabecera{
             grid-area: cabecera;
@@ -119,10 +118,16 @@
         .cabecera p{
             margin: 0;
         }
-
+        .bi-house-door-fill{
+            font-size: 18px;
+            font-weight: bolder;
+            color: #ce5353;
+            box-shadow: 0px 0px 20px 6px rgb(0 0 0 / 31%);
+            background-color: #f5f5f5;
+        }
         .conversaciones{
             grid-area: mensajes;
-            /*width: 300px;*/
+            width: 20vw;
             background-color: #E1E1E1;
             display: flex;
             flex-direction: column;
@@ -158,12 +163,11 @@
         }
         .conversacion{
             width: 100%;
-            /*height: 92vh;*/
+            height: 92vh;
             grid-area: conversacion;
             background-size: 500px 500px;
             background-repeat: repeat;
             background-image: url({{ asset('images/Backgrounds/pattern_3.0.png') }});
-            overflow: auto;
 
         }
 

@@ -55,35 +55,29 @@
     {% endif %}
 
     <style>
-        body::-webkit-scrollbar {
-            width: 12px;               /* width of the entire scrollbar */
-        }
-
-        body::-webkit-scrollbar-track {
-            background: none;        /* color of the tracking area */
-        }
-
-        body::-webkit-scrollbar-thumb {
-            background-color: blue;    /* color of the scroll thumb */
-            border-radius: 100px;       /* roundness of the scroll thumb */
-            border: 3px solid orange;  /* creates padding around scroll thumb */
-        }
         body {
-            padding: 0 300px;
+
         }
+
 
         .contenido{
-            display: grid;
+            position: relative;
+            display: flex;
+            flex-direction: column;
             grid-template-columns: 100%;
             grid-auto-rows: auto 60px;
             height: 100%;
             width: 100%;
+            padding-bottom: 10vh;
 
         }
         .formularioChat{
+            position: absolute;
+            bottom: 0;
             display: flex;
             justify-content: space-between;
             width: 100%;
+            height: 10vh;
             background-color:rgba(0, 0, 0, 0.6);
             align-items: center;
             padding: 0 40px;
