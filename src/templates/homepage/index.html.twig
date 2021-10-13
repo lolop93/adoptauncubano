@@ -67,7 +67,7 @@
                 <div class="carousel-item active">
                     <div class=" gridUsers p-4 align-items-center justify-content-center bg-white mx-auto" style="border-radius: 10px; padding: 3rem !important; " >
                         {% if users|length > 0 %}
-                            {% for user in users|slice(0, 6) %}
+                            {% for user in users|slice(0, 9) %}
                                 <div class="">
 
                                     <a href="{{ path('perfiles',{id:user.id}) }}"><div class="imagenUser mx-auto " style="background-image: url({{  user.galeria ? asset('images/Perfiles/' ~ user.galeria.getFotoPerfil) : asset('images/fotodefecto.png') }});"></div></a>
@@ -187,7 +187,7 @@
                 {% if users|length > 0 %}
                     {% for user in users|slice(0, 5) %}
                         <div class=" ">
-                            <div class="imagenUser mx-auto" style="background-image: url({{ asset('images/Perfiles/' ~ user.galeria.getFotoPerfil) }});"></div>
+                            <div class="imagenUser mx-auto" style="background-image: url({{  user.galeria ? asset('images/Perfiles/' ~ user.galeria.getFotoPerfil) : asset('images/fotodefecto.png') }});"></div>
                             <div class="mt-2 mb-1 ms-3 me-3 d-flex flex-wrap">
                                 <div class="col-lg-7 col-12">
                                     <h5 class=" text-start">{{ user.nombre }}</h5>
@@ -214,7 +214,7 @@
         <div class="gridConsultas mt-5 bg-white p-4 rounded mx-auto w-75">
             {% if users|length > 0 %}
                 {% for userConsultas in users|slice(0, 3) %}
-                    <div class="imagenUser mx-auto  " style="background-image: url({{ asset('images/Perfiles/' ~ userConsultas.galeria.getFotoPerfil) }});"></div>
+                    <div class="imagenUser mx-auto  " style="background-image: url({{  userConsultas.galeria ? asset('images/Perfiles/' ~ userConsultas.galeria.getFotoPerfil) : asset('images/fotodefecto.png') }});"></div>
                 {% endfor %}
                 {% for userConsultas in users|slice(0, 3) %}
                     <h5 class=" text-start ">{{ userConsultas.nombre }}</h5>

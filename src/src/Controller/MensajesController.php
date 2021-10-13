@@ -129,6 +129,7 @@ class MensajesController extends AbstractController
         $conversaciones = array_merge($conversacionesEmisor,$conversacionesRemitente);
 
         $mensajes = $mensajesRepository->findBy(['conversacion'=>$request->attributes->get('id')]);
+
         if($mensajes[0]->getConversacion()->getRemitente()->getId()==$this->getUser()->getId()){
             $nombreOtro = $mensajes[0]->getConversacion()->getEmisor()->getUsername();
         }else{
