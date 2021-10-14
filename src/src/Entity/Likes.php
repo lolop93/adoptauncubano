@@ -39,6 +39,10 @@ class Likes
         return $this->id;
     }
 
+    public function __toString(){
+        return $this->id ;
+    }
+
     public function getLikesTo(): ?User
     {
         return $this->likesTo;

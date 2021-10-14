@@ -126,14 +126,16 @@ class MensajesController extends AbstractController
 
         $conversacionesEmisor = $conversacionesRepository->findBy(['emisor'=>$this->getUser()]);
         $conversacionesRemitente = $conversacionesRepository->findBy(['remitente' => $this->getUser()]);
-        $conversaciones = array_merge($conversacionesEmisor,$conversacionesRemitente);
+        $conversaciones = array_merge($conversacionesEmisor,$conversacionesRemitente);//Para poder encontrar en twig la que corresponde al usuario
 
         $mensajes = $mensajesRepository->findBy(['conversacion'=>$request->attributes->get('id')]);
 
-        if($mensajes[0]->getConversacion()->getRemitente()->getId()==$this->getUser()->getId()){
-            $nombreOtro = $mensajes[0]->getConversacion()->getEmisor()->getUsername();
+        $conv = $conversacionesRepository->findOneBy(['id' => $request->attributes->get('id')]);
+
+        if($conv->getRemitente()->getId()==$this->getUser()->getId()){
+            $nombreOtro = $conv->getEmisor()->getUsername();
         }else{
-            $nombreOtro= $mensajes[0]->getConversacion()->getRemitente()->getUsername();
+            $nombreOtro= $conv->getRemitente()->getUsername();
         }
         // Sort the arrays
         //usort($conversaciones, 'App\Controller\compararFecha');
