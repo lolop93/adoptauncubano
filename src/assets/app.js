@@ -166,9 +166,12 @@ $( document ).ready(function() {
         console.log("scroll");
         //Hacemos que al cargar la pagina, vaya al ultimo elemento del chat
         // Handler for .ready() called.
-        $('.mensajes, html').animate({
-            scrollTop: $('.bocadillo').last().offset().top
-        }, 'slow');
+
+        if($('.bocadillo').last().length) { //checkeamos que haya mensaje sino pa ke coño hacemos scroll
+            $('.mensajes, html').animate({
+                scrollTop: $('.bocadillo').last().offset().top
+            }, 'slow');
+        }
 
         setInterval(function(){           //ejecutamos una funcion cada x segundos
             //this code runs every x second
@@ -193,27 +196,28 @@ $( document ).ready(function() {
                     console.log(JSON.stringify(data.mensajes));
                     console.log(idUltimo)
 
-                    while(data.mensajes.at(i)['id'] !== idUltimo && data.mensajes.at(i)['id'] > idUltimo){//Recorremos el array de mensajes desde el ultimo hasta que encuentro el ultimo recibido (mirando la id)
-                        ultimosMensajes.push(data.mensajes.at(i));
-                        i--;
-                    }
-                    console.log(ultimosMensajes)
-                    ultimosMensajes.reverse();//le damos la vuelta al array porque al introducir los valores nuevo para imprimir, se introducen empezando por el mas nuevo y si no lo hacemos imprimiriamos antes el nuevo
+                    if(data.mensajes.length){ //si no hay mensajes no tiene sentido hacer nada.
+                        while(data.mensajes.at(i)['id'] !== idUltimo && data.mensajes.at(i)['id'] > idUltimo){//Recorremos el array de mensajes desde el ultimo hasta que encuentro el ultimo recibido (mirando la id)
+                            ultimosMensajes.push(data.mensajes.at(i));
+                            i--;
+                        }
+                        console.log(ultimosMensajes)
+                        ultimosMensajes.reverse();//le damos la vuelta al array porque al introducir los valores nuevo para imprimir, se introducen empezando por el mas nuevo y si no lo hacemos imprimiriamos antes el nuevo
 
-                    //for aqui
-                    ultimosMensajes.forEach( function(mensaje, indice, array) {
-                        console.log("En el índice " + indice + " hay este valor: " + mensaje.texto);
-                        var elemento = $('.mensajes').append(
-                            $(
-                                '<div class="me-auto">' +
-                                '<p class="bocadillo bg-white rounded ms-3 " data-id-mensaje="'+mensaje.id+'">'+ mensaje.texto +'</p>' +
-                                '</div>'
-                            )
-                        );
-                        //elementoUltimo = elementoUltimo.last();
-                        elementoUltimo[0].scrollIntoView();
-                    });
-                    //for aqui
+
+                        ultimosMensajes.forEach( function(mensaje, indice, array) {
+                            console.log("En el índice " + indice + " hay este valor: " + mensaje.texto);
+                            var elemento = $('.mensajes').append(
+                                $(
+                                    '<div class="me-auto">' +
+                                    '<p class="bocadillo bg-white rounded ms-3 " data-id-mensaje="'+mensaje.id+'">'+ mensaje.texto +'</p>' +
+                                    '</div>'
+                                )
+                            );
+                            //elementoUltimo = elementoUltimo.last();
+                            elementoUltimo[0].scrollIntoView();
+                        });
+                    }
 
                 }
             })
@@ -249,6 +253,10 @@ function Enviar(texto,emisor,id_chat){
         success: function(data)
         {
             console.log(data);
+
+            if($('#noMensaje')){//si no habia antes mensajes, eliminamos el cartel de "no hay mensajes"
+                $('#noMensaje').remove();
+            }
 
             $('.mensajes').append(
                 $(

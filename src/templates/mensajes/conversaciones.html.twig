@@ -41,7 +41,9 @@
         {% for conversacion in conversaciones %}
             {%  if conversacion.id == request.get('id') %}
                 <div class="contenido">
-                    <p class="bg-white mx-auto p-3 rounded my-auto" style="font-size: 20px; height: 60px;">Esta conversacion no tiene mensajes</p>
+                    <div class="mensajes d-flex flex-column">
+                        <p id="noMensaje" class=" bg-white mx-auto p-3 rounded my-auto" style="font-size: 20px; height: 60px;">Esta conversacion no tiene mensajes</p>
+                    </div>
                     <div class="formularioChat">
                         <form id="envioMensaje" autocomplete="off">
                             <input id="textoChat" type="textarea" placeholder="Escribe tu mensaje" autocomplete="nope" data-id-emisor="{{login.id}}" data-id-chat="{{ conversacion.id  }}" />

@@ -64,82 +64,39 @@
     <div class=" mt-5">
         <div id="carouselExampleFade" class="carousel slide carousel-fade " data-bs-ride="carousel">
             <div class="carousel-inner mx-auto" style="width: 80%">
-                <div class="carousel-item active">
-                    <div class=" gridUsers p-4 align-items-center justify-content-center bg-white mx-auto" style="border-radius: 10px; padding: 3rem !important; " >
-                        {% if users|length > 0 %}
-                            {% for user in users|slice(0, 6) %}
-                                <div class="">
 
-                                    <a href="{{ path('perfiles',{id:user.id}) }}"><div class="imagenUser mx-auto " style="background-image: url({{  user.galeria ? asset('images/Perfiles/' ~ user.galeria.getFotoPerfil) : asset('images/fotodefecto.png') }});"></div></a>
-                                    <div class="mt-2 mb-1 d-flex flex-wrap justify-content-center">
-                                        <div class="me-4">
-                                            <h5 class="  " >{{ user.nombre }}</h5>
-                                            <p class=" card-text text-start" >Nacionalidad</p>
-                                            <p class="card-text text-start " >Edad</p>
-                                        </div>
-                                        <div class="">
-                                            <i class="bi bi-heart-fill {{   user.id in likesTotales ? 'matchOk' : 'matchKo' }}" data-id-match="{{ user.id }}" ></i>
-                                            <i class="bi bi-chat-left-fill" ></i>
-                                        </div>
 
+                {% for i in 0..2 %} {# Creamos tantos slides como queramos de 6 en 6 #}
+                    {% set cont = 0 %} {#  contador creado para aumentar en 6 el rango del slice del for de usuarios pero aun no hay suficientes usuarios #}
+                    <div class="carousel-item {{ i == 0 ? 'active' : '' }}">
+                        <div class=" gridUsers p-4 align-items-center justify-content-center bg-white mx-auto" style="border-radius: 10px; padding: 3rem !important; " >
+                            {% if users|length > 0 %}
+                                {% for user in users|slice(0, 6) %}
+
+                                    <div class="">
+                                        <a href="{{ path('perfiles',{id:user.id}) }}"><div class="imagenUser mx-auto " style="background-image: url({{  user.galeria ? asset('images/Perfiles/' ~ user.galeria.getFotoPerfil) : asset('images/fotodefecto.png') }});"></div></a>
+                                        <div class="mt-2 mb-1 d-flex flex-wrap justify-content-center">
+                                            <div class="me-4">
+                                                <h5 class="  " >{{ user.nombre }}</h5>
+                                                <p class=" card-text text-start" >Nacionalidad</p>
+                                                <p class="card-text text-start " >Edad</p>
+                                            </div>
+                                            <div class="">
+                                                <i class="bi bi-heart-fill {{   user.id in likesTotales ? 'matchOk' : 'matchKo' }}" data-id-match="{{ user.id }}" ></i>
+                                                <i class="bi bi-chat-left-fill" ></i>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            {% endfor %}
-                        {% else %}
-                            <div>No hay usuarios disponibles</div>
-                        {% endif %}
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class=" gridUsers p-4 align-items-center justify-content-center bg-white " style="border-radius: 10px; padding: 3rem !important; " >
-                        {% if users|length > 0 %}
-                            {% for user2 in users|slice(0, 6) %}
-                                <div class=" ">
-                                    <a href="{{ path('perfiles',{id:user2.id}) }}"><div class="imagenUser mx-auto" style="background-image: url({{ asset('images/Perfiles/pexels-edu-carvalho-2050994.jpg') }});" ></div></a>
-                                    <div class="mt-2 mb-1  d-flex flex-wrap justify-content-center ">
-                                        <div class=" me-4">
-                                            <h5 class="text-start" >{{ user2.nombre }}</h5>
-                                            <p class="card-text text-start" >Nacionalidad</p>
-                                            <p class="card-text text-start" >Edad</p>
-                                        </div>
-                                        <div class="text-end">
-                                            <i class="bi bi-heart-fill {{   user2.id in likesTotales ? 'matchOk' : 'matchKo' }}" data-id-match="{{ user2.id }}" ></i>
-                                            <i class="bi bi-chat-left-fill" ></i>
-                                        </div>
 
-                                    </div>
-                                </div>
-                            {% endfor %}
-                        {% else %}
-                            <div>No hay usuarios disponibles</div>
-                        {% endif %}
+                                {% endfor %}
+                            {% else %}
+                                <div>No hay usuarios disponibles</div>
+                            {% endif %}
+                        </div>
                     </div>
-                </div>
-                <div class="carousel-item">
-                    <div class=" gridUsers p-4 align-items-center justify-content-center bg-white " style="border-radius: 10px; padding: 3rem !important; " >
-                        {% if users|length > 0 %}
-                            {% for user3 in users|slice(0, 6) %}
-                                <div class=" ">
-                                    <a href="{{ path('perfiles',{id:user3.id}) }}"><div class="imagenUser mx-auto" style="background-image: url({{ asset('images/Perfiles/pexels-daniel-xavier-1239291.jpg') }});" ></div></a>
-                                    <div class="mt-2 mb-1 d-flex flex-wrap justify-content-center">
-                                        <div class="me-4">
-                                            <h5 class="text-start" >{{ user3.nombre }}</h5>
-                                            <p class="card-text text-start" >Nacionalidad</p>
-                                            <p class="card-text text-start" >Edad</p>
-                                        </div>
-                                        <div class="text-end">
-                                            <i class="bi bi-heart-fill {{   user3.id in likesTotales ? 'matchOk' : 'matchKo' }}" data-id-match="{{ user3.id }}" ></i>
-                                            <i class="bi bi-chat-left-fill" ></i>
-                                        </div>
+                {% endfor %}
 
-                                    </div>
-                                </div>
-                            {% endfor %}
-                        {% else %}
-                            <div>No hay usuarios disponibles</div>
-                        {% endif %}
-                    </div>
-                </div>
+
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
                     data-bs-slide="prev">
