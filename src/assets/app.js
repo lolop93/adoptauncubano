@@ -197,10 +197,27 @@ $( document ).ready(function() {
                     console.log(idUltimo)
 
                     if(data.mensajes.length){ //si no hay mensajes no tiene sentido hacer nada.
-                        while(data.mensajes.at(i)['id'] !== idUltimo && data.mensajes.at(i)['id'] > idUltimo){//Recorremos el array de mensajes desde el ultimo hasta que encuentro el ultimo recibido (mirando la id)
-                            ultimosMensajes.push(data.mensajes.at(i));
-                            i--;
+
+                        if($('#noMensaje').length){//si no habia antes mensajes, eliminamos el cartel de "no hay mensajes"
+                            $('#noMensaje').remove();
+                            while(i !== 0){
+                                ultimosMensajes.push(data.mensajes.at(i));
+                                i--;
+                            }
+
+                        }else{
+                            if(!idUltimo && data.mensajes.length && data.mensajes.at(i).texto){
+                                console.log("no existen mensajes aun pero hay uno preparado  " + data.mensajes.at(i).texto)
+                                location.reload();
+
+                            }else{
+                                while(data.mensajes.at(i)['id'] !== idUltimo && data.mensajes.at(i)['id'] > idUltimo){//Recorremos el array de mensajes desde el ultimo hasta que encuentro el ultimo recibido (mirando la id)
+                                    ultimosMensajes.push(data.mensajes.at(i));
+                                    i--;
+                                }
+                            }
                         }
+
                         console.log(ultimosMensajes)
                         ultimosMensajes.reverse();//le damos la vuelta al array porque al introducir los valores nuevo para imprimir, se introducen empezando por el mas nuevo y si no lo hacemos imprimiriamos antes el nuevo
 
