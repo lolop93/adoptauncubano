@@ -22,7 +22,6 @@
 
 
                 {{ form_start(registrationForm) }}
-                <div class="align-self-start ps-2 pe-2 registro">Registro</div>
                 {{ form_row(registrationForm.username, { label: 'Nombre de usuario' }) }}
                 {{ form_row(registrationForm.email) }}
                 {{ form_row(registrationForm.plainPassword, {
@@ -82,14 +81,12 @@
             flex-direction: column;
             align-items: center;
             color: #CE5353;
-            background-color:#E1E1E1 ;
+
             border-radius: 0.5rem !important;
-            width: 20em;
-            height: 25em;
+            height: 100%;
             max-width: 500px;
             min-width: 260px;
             position: relative;
-            padding-top: 100px;
         }
 
         .contenedorForm form div{
@@ -122,25 +119,21 @@
 
 
         .contenedorForm button{
-            align-self: flex-end;
             background-color: #CE5353;
             color: white;
             margin-top: 20px;
             margin-bottom: 20px;
             border: none;
-            border-radius: 100px  0 0  100px ;
+            border-radius:100px ;
             font-size: 14px;
             font-weight: bolder;
             width: 120px;
             height: 35px;
-            position: absolute;
-            right: -10px;
-            bottom: 0;
-            box-shadow: 1px 8px 8px -5px rgb(0 0 0 / 31%);
-
-
+            box-shadow:inset 0px -10px 6px -3px rgb(0 0 0 / 31%);
         }
-
+        button:hover{
+            background-color: #A74343;
+        }
         .contenedorForm h1{
             background-color: #CE5353;
             color: white;
