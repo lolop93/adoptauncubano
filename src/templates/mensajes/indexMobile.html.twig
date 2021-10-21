@@ -24,7 +24,7 @@
                     {% else %}
                         <a href="{{ path('conversaciones',{id:conversacion.id}) }}" style=" text-decoration: none;">
                             <div class="mensaje {{ conversacion.id == request.get('id') ? 'mensajeSeleccionado' : '' }}" >
-                                {# usar background image en div #}<img src="{{ conversacion.emisor.galeria ? asset('images/Perfiles/' ~ conversacion.emisor   .galeria.getFotoPerfil) : asset('images/fotodefecto.png') }}" alt="mdo" width="40" height="40" class="rounded-circle  me-3">
+                                <div class="fotoMensaje" style="background-image: url('{{ conversacion.remitente.galeria ? asset('images/Perfiles/' ~ conversacion.remitente.galeria.getFotoPerfil) : asset('images/fotodefecto.png') }}')"></div>
                                 <div class="infoMensaje" >
                                     <p style="font-size: 15px">{{ conversacion.emisor.username }}</p>
                                     <p style="font-size: 11px">Mensaje..........</p>
