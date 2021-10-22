@@ -1,0 +1,22 @@
+{% extends '/mi_cuenta/perfil.html.twig' %}
+
+
+
+{% block nacionalidad %}  {{ form_start(form_atributos) }} {{ form_row(form_atributos.nacionalidad,{ 'label' : 'Nacionalidad' }) }} {% endblock %}
+
+{% block edad %}  {{ form_row(form_atributos.fecha_nac,{ 'label' : 'Fecha Nacimiento'}) }}  {% endblock %}
+
+{% block ojos %}  {{ form_row(form_atributos.ojos,{ 'label' : false }) }}  {% endblock %}
+
+{% block pelo %}  {{ form_row(form_atributos.color_pelo,{ 'label' : false }) }}  {% endblock %}
+
+{% block profesion %}  {{ form_row(form_atributos.profesion,{ 'label' : false }) }}  {% endblock %}
+
+{% block ciudad %}  {{ form_row(form_atributos.ciudad,{ 'label' : false }) }}  {% endblock %}
+
+{% block altura %}  {{ form_row(form_atributos.altura,{ 'label' : false }) }}  {% endblock %}
+
+{% block peso %}  {{ form_row(form_atributos.peso,{ 'label' : false }) }}  {% endblock %}
+
+{% block gustos %}  {{ form_row(form_atributos.gustos,{ 'label' : false }) }} {{ form_row(form_atributos.submit) }} {{ form_end(form_atributos) }}  {% endblock %}
+

@@ -115,20 +115,38 @@
                     Marta
                 {% endif %}
             </h1>
-            <p class="m-1" >España</p>
-            <p class="m-1" >26 años</p>
+            {% block nacionalidad %}<p class="m-1" >{{  login.atributos and login.atributos.getNacionalidad ? login.atributos.getNacionalidad : "Nacionalidad no definida" }}</p>{% endblock %}
+            {% block edad %}<p class="m-1" >{{  login.atributos and login.atributos.getFechaNac ? login.atributos.getFechaNac : "Edad no definida" }}</p>{% endblock %}
         </div>
         <div class="editarPerfil"><p class="title p-2">Editar perfil</p></div>
         <div>
             <h6 class="atributos m-2">OJOS</h6>
-            <p class="atributos m-2">{{  login.atributos and login.atributos.getOjos ? login.atributos.getOjos : "Color de ojos no definido" }}</p>
+            {% block ojos %}<p class="atributos m-2">{{  login.atributos and login.atributos.getOjos ? login.atributos.getOjos : "Color de ojos no definido" }}</p>{% endblock %}
         </div>
-        <p class="atributos m-2">PELO</p>
-        <p class="atributos m-2">PROFESION</p>
-        <p class="atributos m-2">CIUDAD</p>
-        <p class="atributos m-2">ALTURA</p>
-        <p class="atributos m-2">PESO</p>
-        <p class="atributos m-2">GUSTOS</p>
+        <div>
+            <h6 class="atributos m-2">PELO</h6>
+            {% block pelo %}<p class="atributos m-2">{{  login.atributos and login.atributos.getColorPelo ? login.atributos.getColorPelo : "Color de pelo no definido" }}</p>{% endblock %}
+        </div>
+        <div>
+            <h6 class="atributos m-2">PROFESION</h6>
+            {% block profesion %}<p class="atributos m-2">{{  login.atributos and login.atributos.getProfesion ? login.atributos.getProfesion : "Profesión no definida" }}</p>{% endblock %}
+        </div>
+        <div>
+            <h6 class="atributos m-2">CIUDAD</h6>
+            {% block ciudad %}<p class="atributos m-2">{{  login.atributos and login.atributos.getCiudad ? login.atributos.getCiudad : "Ciudad no definida" }}</p>{% endblock %}
+        </div>
+        <div>
+            <h6 class="atributos m-2">ALTURA</h6>
+            {% block altura %}<p class="atributos m-2">{{  login.atributos and login.atributos.getAltura ? login.atributos.getAltura : "Altura no definida" }}</p>{% endblock %}
+        </div>
+        <div>
+            <h6 class="atributos m-2">PESO</h6>
+            {% block peso %}<p class="atributos m-2">{{  login.atributos and login.atributos.getPeso ? login.atributos.getPeso : "Peso no definido" }}</p>{% endblock %}
+        </div>
+        <div>
+            <h6 class="atributos m-2">GUSTOS</h6>
+            {% block gustos %}<p class="atributos m-2">{{  login.atributos and login.atributos.getGustos ? login.atributos.getGustos : "Gustos no definidos" }}</p>{% endblock %}
+        </div>
 
         <div class="descripcion p-4">
             <p style="color: #CE5353; font-size: 18px;">Descripcion</p>

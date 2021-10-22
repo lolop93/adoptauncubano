@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\UserAttributes;
+use App\Form\UserAttributesFormType;
 use App\Repository\GaleriaRepository;
 use App\Repository\UserAttributesRepository;
 use App\Repository\UserRepository;
@@ -43,8 +45,37 @@ class MiCuentaController extends AbstractController
                 'login' => $login,
             ]);
         }
+    }
+
+    #[Route('/cuenta/perfil/editar', name: 'editarperfil')]
+    public function editarperfil(MobileDetector $pantalla, UserRepository $userRepository, GaleriaRepository $galeriaRepository, UserAttributesRepository $userAttributesRepository): Response
+    {
+        $login = $this->get('security.token_storage')->getToken()->getUser();
+        $galeriaRepository->findAll();
+        $userAttributesRepository->findAll();
+
+        //Creamos un objeto atributo y se lo pasamos al objeto formulario de tipo "formulario de atributos"
+        $atributos = new UserAttributes();
+
+        /*$tag1 = 'follar';
+        $tag2 = 'videojuegos';
+        //$atributos->getGustos()->add($tag1);
+        //$atributos->getGustos()->add($tag2);*/
+
+        $form = $this->createForm(UserAttributesFormType::class, $atributos);//Creamos el formulario y lo guardamos en una variable
 
 
+
+        if($pantalla->isMobile() && !$pantalla->isTablet()){
+            return $this->render('mi_cuenta/perfilMobileEditar.html.twig', [
+                'login' => $login,
+            ]);
+        }else {
+            return $this->render('mi_cuenta/perfilEditar.html.twig', [
+                'login' => $login,
+                'form_atributos' => $form->createView(),
+            ]);
+        }
     }
 
 
