@@ -1,8 +1,10 @@
 {% extends '/mi_cuenta/perfil.html.twig' %}
 
+{%  block formstart %}
+    {{ form_start(form_atributos, {'attr': {'class': 'formulario'}}) }}
+{% endblock %}
 
-
-{% block nacionalidad %}  {{ form_start(form_atributos) }} {{ form_row(form_atributos.nacionalidad,{ 'label' : 'Nacionalidad' }) }} {% endblock %}
+{% block nacionalidad %}  {{ form_row(form_atributos.nacionalidad,{ 'label' : 'Nacionalidad' }) }} {% endblock %}
 
 {% block edad %}  {{ form_row(form_atributos.fecha_nac,{ 'label' : 'Fecha Nacimiento'}) }}  {% endblock %}
 
@@ -18,5 +20,42 @@
 
 {% block peso %}  {{ form_row(form_atributos.peso,{ 'label' : false }) }}  {% endblock %}
 
-{% block gustos %}  {{ form_row(form_atributos.gustos,{ 'label' : false }) }} {{ form_row(form_atributos.submit) }} {{ form_end(form_atributos) }}  {% endblock %}
+{% block gustos %}  {{ form_row(form_atributos.gustos,{ 'label' : false }) }}{% endblock %}
+
+{%  block formend %}
+    {{ form_row(form_atributos.submit) }}
+    {{ form_end(form_atributos) }}
+{% endblock %}
+
+{%  block estiloeditar %}
+<style>
+
+        #user_attributes_form_gustos input{
+            margin-right: 2px;
+        }
+
+        #user_attributes_form_gustos label{
+            margin-right: 15px;
+        }
+
+        .gridContenido input{
+            max-width: 120px;
+        }
+
+        .formulario{
+            display:grid;
+            grid-column:2/5;
+
+        }
+
+        .gustos{
+            grid-column:1/5;
+        }
+
+        .descripcion{
+            padding: 10px 15px 10px 0px !important;
+        }
+</style>
+
+{% endblock %}
 

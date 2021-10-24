@@ -16,7 +16,10 @@
 
         .fotoGrid{
             grid-row: 1/5;
+        }
 
+        .gustos{
+            grid-column: 2/5;
         }
 
         .info{
@@ -24,8 +27,6 @@
         }
         .info h1{
             font-weight: bolder;
-
-
         }
          .editarPerfil{
              display: flex;
@@ -93,7 +94,14 @@
             }
         }
 
+
+
     </style>
+
+    {% block estiloeditar %}
+
+    {% endblock %}
+
 
 {% endblock %}
 
@@ -107,6 +115,10 @@
             {% endif %}
         </div>
 
+        {%  block formstart %}
+
+        {% endblock %}
+
         <div class="info">
             <h1 class="title m-1 mt-4">
                 {% if login and login.nombre %}
@@ -118,6 +130,8 @@
             {% block nacionalidad %}<p class="m-1" >{{  login.atributos and login.atributos.getNacionalidad ? login.atributos.getNacionalidad : "Nacionalidad no definida" }}</p>{% endblock %}
             {% block edad %}<p class="m-1" >{{  login.atributos and login.atributos.getFechaNac ? login.atributos.getFechaNac : "Edad no definida" }}</p>{% endblock %}
         </div>
+
+
         <div class="editarPerfil"><a href="{{ path('editarperfil') }}"><p class="title p-2">Editar perfil</p></a></div>
         <div>
             <h6 class="atributos m-2">OJOS</h6>
@@ -143,7 +157,7 @@
             <h6 class="atributos m-2">PESO</h6>
             {% block peso %}<p class="atributos m-2">{{  login.atributos and login.atributos.getPeso ? login.atributos.getPeso : "Peso no definido" }}</p>{% endblock %}
         </div>
-        <div>
+        <div class="gustos">
             <h6 class="atributos m-2">GUSTOS</h6>
             {% block gustos %}<p class="atributos m-2">{{  login.atributos and login.atributos.getGustos ? login.atributos.getGustos : "Gustos no definidos" }}</p>{% endblock %}
         </div>
@@ -154,6 +168,10 @@
                 It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
             </p>
         </div>
+
+        {%  block formend %}
+
+        {% endblock %}
 
         <div class="galeria ">
             <p class="title p-2 text-white">Galeria</p>
