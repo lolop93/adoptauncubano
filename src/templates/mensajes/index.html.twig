@@ -1,9 +1,8 @@
 {% extends 'baseLimpia.html.twig' %}
-
+{% block title %}Chat - Adopta un Cubano{% endblock %}
 
 
 {% block body %}
-
         <div class="gridMain">
             <div class="cabecera text-white">
                 <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40" class="rounded-circle me-3 mt-2 mb-2" >
@@ -84,7 +83,9 @@
             display: none;
         }
         body{
+            justify-content: center;
             display: flex;
+            height: 100%;
             flex-direction: column;
             background-color: #2c3034;
             background-image: url("{{ asset('images/Backgrounds/pattern_chat.png') }}");
@@ -107,36 +108,57 @@
         only screen and (        min-device-pixel-ratio: 2.0),
         only screen and (                min-resolution: 264dpi),
         only screen and (                min-resolution: 2.0dppx) {
-            .gridMain{
+
+            .gridMain {
+                height: 100vh;
                 display: flex;
                 flex-direction: column;
-                margin:0 !important;
+                margin: 0 !important;
                 box-shadow: 0px 0px 30px 30px rgb(0 0 0 / 31%);
             }
+            .conversation{
+                height: 94vh !important;
+            }
+            .cabecera{
+                height: 6vh;
+            }
+
         }
         @media (max-width: 1600px) {
 
             .gridMain{
+
+                height: 100vh;
                 display: flex;
                 flex-direction: column;
                 margin:0 !important;
                 box-shadow: 0px 0px 30px 30px rgb(0 0 0 / 31%);
             }
+            .conversation{
+                height: 94vh!important;
+            }
+            .cabecera{
+                height: 6vh;
+            }
 
-        }
+            }
+
+
 
         .gridMain{
+            margin: 2vh 20%;
+            height: 100%;
             display: flex;
             flex-direction: column;
-            margin: 0.75% 20%;
+
             box-shadow: 0px 0px 30px 30px rgb(0 0 0 / 31%);
         }
-        .conversation{
+        .conversacion{
             display: flex;
         }
 
         .cabecera{
-            grid-area: cabecera;
+            height: 6vh;
             background-color: #CE5353;
             display: flex;
             flex-direction: row;
@@ -154,6 +176,11 @@
             color: #ce5353;
             box-shadow: 0px 0px 20px 6px rgb(0 0 0 / 31%);
             background-color: #f5f5f5;
+        }
+        .conversation{
+            display: flex;
+            height: 92vh;
+            flex-direction: row;
         }
         .conversaciones{
             width: 28rem;
@@ -200,14 +227,13 @@
         }
         .conversacion{
             display: flex;
-            width: 100%;
-            height: 90vh;
-            grid-area: conversacion;
+            width:100% ;
             background-size: 500px 500px;
             background-repeat: repeat;
             background-image: url({{ asset('images/Backgrounds/pattern_3.0.png') }});
 
         }
+
 
 
     </style>
