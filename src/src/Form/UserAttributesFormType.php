@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -14,12 +15,22 @@ class UserAttributesFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+
         $builder
             //->add('esCubano')
             ->add('color_pelo')
             ->add('nacionalidad')
             ->add('fecha_nac')
-            ->add('ojos')
+            ->add('ojos',ChoiceType::class, [
+                'choices'  => [
+                    'Azules' => 'azules',
+                    'Verdes' => 'verdes',
+                    'Marrones' => 'marrones',
+                    'Miel' => 'miel',
+                    'Grises' => 'grises',
+                    'Negros' => 'negros',
+                ],
+            ])
             ->add('profesion')
             ->add('ciudad')
             ->add('altura')

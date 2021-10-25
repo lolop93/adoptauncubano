@@ -1,10 +1,14 @@
 {% extends '/mi_cuenta/perfil.html.twig' %}
 
+{% block editarperfil %} <div class="editarPerfil"><a href=" {{ path('perfil') }}"><p class="title p-2">Volver al perfil</p></a></div>  {% endblock %}
+
 {%  block formstart %}
     {{ form_start(form_atributos, {'attr': {'class': 'formulario'}}) }}
 {% endblock %}
 
-{% block nacionalidad %}  {{ form_row(form_atributos.nacionalidad,{ 'label' : 'Nacionalidad' }) }} {% endblock %}
+
+{# Aqui hacemos un if rapido  en 'value' en una sola linea y ponemos por defecto el valor del usuario si existe en la base de datos sino lo dejamos en blanco #}
+{% block nacionalidad %}  {{ form_row(form_atributos.nacionalidad,{ 'label' : 'Nacionalidad','value' : login.atributos and login.atributos.getNacionalidad ? login.atributos.getNacionalidad : '' }) }} {% endblock %}
 
 {% block edad %}  {{ form_row(form_atributos.fecha_nac,{ 'label' : 'Fecha Nacimiento'}) }}  {% endblock %}
 

@@ -57,13 +57,7 @@ class MiCuentaController extends AbstractController
         //Creamos un objeto atributo y se lo pasamos al objeto formulario de tipo "formulario de atributos"
         $atributos = new UserAttributes();
 
-        /*$tag1 = 'follar';
-        $tag2 = 'videojuegos';
-        //$atributos->getGustos()->add($tag1);
-        //$atributos->getGustos()->add($tag2);*/
-
         $form = $this->createForm(UserAttributesFormType::class, $atributos);//Creamos el formulario y lo guardamos en una variable
-
 
 
         if($pantalla->isMobile() && !$pantalla->isTablet()){
