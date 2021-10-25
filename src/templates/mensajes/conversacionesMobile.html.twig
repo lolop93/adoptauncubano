@@ -1,8 +1,9 @@
 {% extends 'baseMobile.html.twig' %}
 {% block title %}Chat - Adopta un Cubano{% endblock %}
 {% block body %}
+
     <div class="chatHeader">
-        <div class="imgUser" style="background-color: whitesmoke;margin-right: 10px"></div> <!---Imagen de perfil de remitente-->
+        <div class="imgUser" style="background-image: url('{{asset(fotOtro == 'fotodefecto.png' ? 'images/' ~ fotOtro : 'images/Perfiles/' ~ fotOtro) }}');margin-right: 10px"></div>
         <h1>{{ nombreOtro }}</h1>
         <i class="bi bi-camera-video-fill"></i>
         <i class="bi bi-three-dots-vertical"></i>
@@ -106,8 +107,8 @@
             justify-content: space-between;
         }
         .imgUser{
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             border-radius: 100px;
             background-size: cover;
             background-position: center;
