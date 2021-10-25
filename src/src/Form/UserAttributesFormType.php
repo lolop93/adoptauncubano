@@ -4,8 +4,12 @@ namespace App\Form;
 
 use App\Entity\UserAttributes;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\CountryType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -19,8 +23,8 @@ class UserAttributesFormType extends AbstractType
         $builder
             //->add('esCubano')
             ->add('color_pelo')
-            ->add('nacionalidad')
-            ->add('fecha_nac')
+            ->add('nacionalidad',CountryType::class)
+            ->add('fecha_nac',BirthdayType::class)
             ->add('ojos',ChoiceType::class, [
                 'choices'  => [
                     'Azules' => 'azules',
@@ -33,8 +37,8 @@ class UserAttributesFormType extends AbstractType
             ])
             ->add('profesion')
             ->add('ciudad')
-            ->add('altura')
-            ->add('peso')
+            ->add('altura',NumberType::class,['required' => false])
+            ->add('peso',IntegerType::class,['required' => false])
             ->add('gustos',ChoiceType::class, [
                 'choices'  => [
                     'Animales' => 'animales',
