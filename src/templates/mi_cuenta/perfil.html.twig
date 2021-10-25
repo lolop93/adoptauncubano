@@ -128,7 +128,7 @@
                 {% endif %}
             </h1>
             {% block nacionalidad %}<p class="m-1" >{{  login.atributos and login.atributos.getNacionalidad ? login.atributos.getNacionalidad : "Nacionalidad no definida" }}</p>{% endblock %}
-            {% block edad %}<p class="m-1" >{{  login.atributos and login.atributos.getFechaNac ? login.atributos.getFechaNac : "Edad no definida" }}</p>{% endblock %}
+            {% block edad %}<p class="m-1" >{{  login.atributos and login.atributos.getFechaNac ? login.atributos.getFechaNac|date('d-m-Y') : "Edad no definida" }}</p>{% endblock %}
         </div>
 
 
@@ -159,7 +159,7 @@
         </div>
         <div class="gustos">
             <h6 class="atributos m-2">GUSTOS</h6>
-            {% block gustos %}<p class="atributos m-2">{{  login.atributos and login.atributos.getGustos ? login.atributos.getGustos : "Gustos no definidos" }}</p>{% endblock %}
+            {% block gustos %}<p class="atributos m-2">{{  login.atributos and login.atributos.getGustos ? login.atributos.getGustos|join(', ') : "Gustos no definidos" }}</p>{% endblock %}
         </div>
 
         <div class="descripcion p-4">

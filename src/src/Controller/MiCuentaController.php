@@ -9,6 +9,7 @@ use App\Repository\UserAttributesRepository;
 use App\Repository\UserRepository;
 use Detection\MobileDetect;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -48,7 +49,7 @@ class MiCuentaController extends AbstractController
     }
 
     #[Route('/cuenta/perfil/editar', name: 'editarperfil')]
-    public function editarperfil(MobileDetector $pantalla, UserRepository $userRepository, GaleriaRepository $galeriaRepository, UserAttributesRepository $userAttributesRepository): Response
+    public function editarperfil(Request $request, MobileDetector $pantalla, UserRepository $userRepository, GaleriaRepository $galeriaRepository, UserAttributesRepository $userAttributesRepository): Response
     {
         $login = $this->get('security.token_storage')->getToken()->getUser();
         $galeriaRepository->findAll();
@@ -58,17 +59,32 @@ class MiCuentaController extends AbstractController
         $atributos = new UserAttributes();
 
         $form = $this->createForm(UserAttributesFormType::class, $atributos);//Creamos el formulario y lo guardamos en una variable
+        $form->handleRequest($request);
 
+        if ($form->isSubmitted() && $form->isValid()) {
 
-        if($pantalla->isMobile() && !$pantalla->isTablet()){
-            return $this->render('mi_cuenta/perfilMobileEditar.html.twig', [
-                'login' => $login,
-            ]);
-        }else {
-            return $this->render('mi_cuenta/perfilEditar.html.twig', [
-                'login' => $login,
-                'form_atributos' => $form->createView(),
-            ]);
+            $entityManager = $this->getDoctrine()->getManager();
+
+            $atributos = $form->getData();
+            $login->setAtributos($atributos);
+
+            $entityManager->persist($login);
+            $entityManager->persist($atributos);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('perfil');
+        }
+        else{
+            if ($pantalla->isMobile() && !$pantalla->isTablet()) {
+                return $this->render('mi_cuenta/perfilMobileEditar.html.twig', [
+                    'login' => $login,
+                ]);
+            } else {
+                return $this->render('mi_cuenta/perfilEditar.html.twig', [
+                    'login' => $login,
+                    'form_atributos' => $form->createView(),
+                ]);
+            }
         }
     }
 
