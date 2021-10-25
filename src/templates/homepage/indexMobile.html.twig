@@ -1,5 +1,5 @@
 {% extends 'baseMobile.html.twig' %}
-{% block title %}Adopta un Cubano{% endblock %}
+{% block title %}Inicio - Adopta un Cubano{% endblock %}
 {% block body %}
     <div class="cuerpo">
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false" data-bs-touch="true" style="display: flex; justify-items: center">
@@ -14,7 +14,7 @@
                             <div class="base">
                                 <i class="small bi bi-x-lg"></i>
                                 <div class="likeContainer"><i class="big bi bi-suit-heart-fill"></i></div>
-                                <i class="small bi bi-chat-fill"></i>
+                                <i class="bi bi-eye-fill"></i>
                             </div>
                         </div>
                     </div>
@@ -65,9 +65,12 @@
 
         }
         .pplCard{
+            position: relative;
             display: block;
             background-color: whitesmoke;
+            border-radius: 15px;
         }
+
         .active{
             display: flex !important;
             justify-content: center;
@@ -116,6 +119,10 @@
         }
         .base .small{
             font-size: 26px;
+            color: #CE5353;
+        }
+        .base .bi-eye-fill{
+            font-size: 30px;
             color: #CE5353;
         }
     </style>
