@@ -14,17 +14,38 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class UserAttributesFormType extends AbstractType
 {
+
+    private $token;
+
+    //Inyectamos el servicio Token con el constructor para poder acceder al login
+    public function __construct(TokenStorageInterface $token)
+    {
+        $this->token = $token;
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+
+        $login = $this->token->getToken()->getUser();
+        $fech_nac = ($login->getAtributos() && $login->getAtributos()->getFechaNac() ? $login->getAtributos()->getFechaNac()->format('Y-m-d') : '');//Formateamos la fecha de Datetime to String Si existe sino pasamos vacio
+        $gustos = ($login->getAtributos() && $login->getAtributos()->getGustos() ? $login->getAtributos()->getGustos() : array());
 
         $builder
             //->add('esCubano')
             ->add('color_pelo')
-            ->add('nacionalidad',CountryType::class)
-            ->add('fecha_nac',BirthdayType::class)
+            ->add('nacionalidad',CountryType::class,[
+                'placeholder' => 'Selecciona nacionalidad',
+            ])
+            ->add('fecha_nac',BirthdayType::class,[
+                'placeholder' => [
+                    'year' => 'Año', 'month' => 'Mes', 'day' => 'Dia',
+                ],
+                'data' => new \DateTime($fech_nac),//le pasamos un array con la fecha al constructor de DaTetime Para que se lo pase al input de BirthDayType Form
+            ])
             ->add('ojos',ChoiceType::class, [
                 'choices'  => [
                     'Azules' => 'azules',
@@ -34,6 +55,7 @@ class UserAttributesFormType extends AbstractType
                     'Grises' => 'grises',
                     'Negros' => 'negros',
                 ],
+                'placeholder' => 'Elige color',
             ])
             ->add('profesion')
             ->add('ciudad')
@@ -69,6 +91,7 @@ class UserAttributesFormType extends AbstractType
                 ],
                 'multiple' => true,
                 'expanded'  => true,
+                'data' => $gustos,//Datos por defecto si existen
             ])
             //->add('sexo')
             ->add('submit',SubmitType::class)

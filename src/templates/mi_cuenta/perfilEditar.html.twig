@@ -10,21 +10,21 @@
 {# Aqui hacemos un if rapido  en 'value' en una sola linea y ponemos por defecto el valor del usuario si existe en la base de datos sino lo dejamos en blanco #}
 {% block nacionalidad %}  {{ form_row(form_atributos.nacionalidad,{ 'label' : 'Nacionalidad','value' : login.atributos and login.atributos.getNacionalidad ? login.atributos.getNacionalidad : '' }) }} {% endblock %}
 
-{% block edad %}  {{ form_row(form_atributos.fecha_nac,{ 'label' : 'Fecha Nacimiento'}) }}  {% endblock %}
+{% block edad %}  {{ form_row(form_atributos.fecha_nac,{ 'label' : 'Fecha Nacimiento','value' : ''}) }}  {% endblock %}
 
-{% block ojos %}  {{ form_row(form_atributos.ojos,{ 'label' : false }) }}  {% endblock %}
+{% block ojos %}  {{ form_row(form_atributos.ojos,{ 'label' : false , 'value' : login.atributos and login.atributos.getOjos ? login.atributos.getOjos : ''}) }}  {% endblock %}
 
-{% block pelo %}  {{ form_row(form_atributos.color_pelo,{ 'label' : false }) }}  {% endblock %}
+{% block pelo %}  {{ form_row(form_atributos.color_pelo,{ 'label' : false , 'value' : login.atributos and login.atributos.getColorPelo ? login.atributos.getColorPelo : ''}) }}  {% endblock %}
 
-{% block profesion %}  {{ form_row(form_atributos.profesion,{ 'label' : false }) }}  {% endblock %}
+{% block profesion %}  {{ form_row(form_atributos.profesion,{ 'label' : false, 'value' : login.atributos and login.atributos.getProfesion ? login.atributos.getProfesion : '' }) }}  {% endblock %}
 
-{% block ciudad %}  {{ form_row(form_atributos.ciudad,{ 'label' : false }) }}  {% endblock %}
+{% block ciudad %}  {{ form_row(form_atributos.ciudad,{ 'label' : false, 'value' : login.atributos and login.atributos.getCiudad ? login.atributos.getCiudad : '' }) }}  {% endblock %}
 
-{% block altura %}  {{ form_row(form_atributos.altura,{ 'label' : false }) }}  {% endblock %}
+{% block altura %}  {{ form_row(form_atributos.altura,{ 'label' : false, 'value' : login.atributos and login.atributos.getAltura ? login.atributos.getAltura : ''  }) }}  {% endblock %}
 
-{% block peso %}  {{ form_row(form_atributos.peso,{ 'label' : false }) }}  {% endblock %}
+{% block peso %}  {{ form_row(form_atributos.peso,{ 'label' : false, 'value' : login.atributos and login.atributos.getPeso ? login.atributos.getPeso : ''  }) }}  {% endblock %}
 
-{% block gustos %}  {{ form_row(form_atributos.gustos,{ 'label' : false }) }}{% endblock %}
+{% block gustos %}  {{ form_row(form_atributos.gustos,{ 'label' : false, 'value' : login.atributos and login.atributos.getGustos ? login.atributos.getGustos|join(', ') : ''  }) }}{% endblock %}
 
 {%  block formend %}
     {{ form_row(form_atributos.submit) }}
