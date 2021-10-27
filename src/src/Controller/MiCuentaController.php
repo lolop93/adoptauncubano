@@ -90,12 +90,19 @@ class MiCuentaController extends AbstractController
 
 
     #[Route('/cuenta/ajustes', name: 'ajustes')]
-    public function ajustes(): Response
+    public function ajustes(MobileDetector $pantalla): Response
     {
         $login = $this->get('security.token_storage')->getToken()->getUser();
 
-        return $this->render('mi_cuenta/ajustes.html.twig', [
-            'login' => $login,
-        ]);
+
+        if($pantalla->isMobile() && !$pantalla->isTablet()){
+            return $this->render('mi_cuenta/ajustesMobile.html.twig', [
+                'login' => $login,
+            ]);
+        }else {
+            return $this->render('mi_cuenta/ajustes.html.twig', [
+                'login' => $login,
+            ]);
+        }
     }
 }

@@ -3,7 +3,7 @@
 {% block title %}Mi perfil - Adopta un Cubano{% endblock %}
 
 {% block body %}
-
+{{ dump() }}
     <div class="cuerpo">
 
         <div class="encabezado">
@@ -13,9 +13,9 @@
         <div class="fotoPerfil"> <div class="lafotoensi" {# placeholder de la foto como <img>#}style="background-image: url({{ asset('images/Perfiles/' ~ login.galeria.getFotoPerfil) }}); background-size: cover "></div></div>
 
         <div class="headInfo">
-            <h1 class="nombre">Maria</h1>
-            <h2 class="nacionalidad">Rusia</h2>
-            <h3 class="edad">18 años</h3>
+            <h1 class="nombre">{{ login.username }}</h1>
+            <h2 class="nacionalidad">{{ login.atributos.nacionalidad }}</h2>
+            <h3 class="edad">13</h3>
         </div>
 
         <div class="descripcion">
@@ -50,27 +50,27 @@
         <div class="listaAtributos">
             <div class="ojos">
                 <h2>Ojos</h2>
-                <p>negros</p>
+                <p>{{ login.atributos.ojos }}</p>
             </div>
 
             <div class="pelo">
                 <h2>Pelo</h2>
-                <p>rojo</p>
+                <p>{{ login.atributos.colorPelo }}</p>
             </div>
 
             <div class="profesion">
                 <h2>Profesión</h2>
-                <p>Actriz porno</p>
+                <p>{{ login.atributos.profesion }}</p>
             </div>
 
             <div class="ciudad">
                 <h2>Ciudad</h2>
-                <p>Tu culo</p>
+                <p>{{ login.atributos.ciudad }}</p>
             </div>
 
             <div class="gustos"> {# Aquí van las etiquetas definidad por el usuario #}
                 <h2>Gustos</h2>
-                <p>Por detrás</p>
+                <p>{{ login.atributos.getGustos|join(', ') }}</p>
             </div>
         </div>
 
