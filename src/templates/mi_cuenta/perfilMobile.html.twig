@@ -14,8 +14,8 @@
 
         <div class="headInfo">
             <h1 class="nombre">{{ login.username }}</h1>
-            <h2 class="nacionalidad">{{  login.atributos and login.atributos.getNacionalidad ? login.atributos.getNacionalidad|country_name  : "Nacionalidad no definida" }}</h2>
-            <h3 class="edad">{{  login.atributos and login.atributos.getFechaNac ? login.atributos.getFechaNac|date('d-m-Y') : "Edad no definida" }}</h3>
+            <h2 class="nacionalidad">{{ login.atributos.nacionalidad }}</h2>
+            <h3 class="edad">13</h3>
         </div>
 
         <div class="descripcion">
@@ -48,39 +48,29 @@
         </div>
 
         <div class="listaAtributos">
-            <div class="atributo">
+            <div class="ojos">
                 <h2>Ojos</h2>
-                <p>{{  login.atributos and login.atributos.getOjos ? login.atributos.getOjos : "Color de ojos no definido" }}</p>
+                <p>{{ login.atributos.ojos }}</p>
             </div>
 
-            <div class="atributo">
+            <div class="pelo">
                 <h2>Pelo</h2>
-                <p>{{  login.atributos and login.atributos.getColorPelo ? login.atributos.getColorPelo : "Color de pelo no definido" }}</p>
+                <p>{{ login.atributos.colorPelo }}</p>
             </div>
 
-            <div class="atributo">
+            <div class="profesion">
                 <h2>Profesión</h2>
-                <p>{{  login.atributos and login.atributos.getProfesion ? login.atributos.getProfesion : "Profesión no definida" }}</p>
+                <p>{{ login.atributos.profesion }}</p>
             </div>
 
-            <div class="atributo">
+            <div class="ciudad">
                 <h2>Ciudad</h2>
-                <p>{{  login.atributos and login.atributos.getCiudad ? login.atributos.getCiudad : "Ciudad no definida" }}</p>
+                <p>{{ login.atributos.ciudad }}</p>
             </div>
 
-            <div class="atributo">
-                <h2>Altura</h2>
-                <p>{{  login.atributos and login.atributos.getAltura ? login.atributos.getAltura : "Altura no definida" }}</p>
-            </div>
-
-            <div class="atributo">
-                <h2>Peso (kg)</h2>
-                <p>{{  login.atributos and login.atributos.getPeso ? login.atributos.getPeso : "Peso no definido" }}</p>
-            </div>
-
-            <div class="atributo"> {# Aquí van las etiquetas definidad por el usuario #}
+            <div class="gustos"> {# Aquí van las etiquetas definidad por el usuario #}
                 <h2>Gustos</h2>
-                <p>{{  login.atributos and login.atributos.getGustos ? login.atributos.getGustos|join(', ') : "Gustos no definidos" }}</p>
+                <p>{{ login.atributos.getGustos|join(', ') }}</p>
             </div>
         </div>
 
@@ -192,19 +182,66 @@
         background-size: cover;
         border-radius: 10px;
     }
-    .atributo{
+    .ojos{
         margin-top: 15px;
         padding: 0 0 15px 20px;
         box-shadow: -2px 4px 8px -5px rgb(0 0 0 / 31%);
     }
-    .atributo h2{
+    .ojos h2{
         font-weight: bolder;
         color: #CE5353;
     }
-    .atributo p{
+    .ojos p{
         font-size: 18px;
     }
-
+    .pelo{
+        margin-top: 15px;
+        padding: 0 0 15px 20px;
+        box-shadow: -2px 4px 8px -5px rgb(0 0 0 / 31%);
+    }
+    .pelo h2{
+        font-weight: bolder;
+        color: #CE5353;
+    }
+    .pelo p{
+        font-size: 18px;
+    }
+    .profesion{
+        margin-top: 15px;
+        padding: 0 0 15px 20px;
+        box-shadow: -2px 4px 8px -5px rgb(0 0 0 / 31%);
+    }
+    .profesion h2{
+        font-weight: bolder;
+        color: #CE5353;
+    }
+    .profesion p{
+        font-size: 18px;
+    }
+    .ciudad{
+        margin-top: 15px;
+        padding: 0 0 15px 20px;
+        box-shadow: -2px 4px 8px -5px rgb(0 0 0 / 31%);
+    }
+    .ciudad h2{
+        font-weight: bolder;
+        color: #CE5353;
+    }
+    .ciudad p{
+        font-size: 18px;
+    }
+    .gustos{
+        margin-top: 15px;
+        padding: 0 0 15px 20px;
+        box-shadow: -2px 4px 8px -5px rgb(0 0 0 / 31%);
+    }
+    .gustos h2{
+        font-weight: bolder;
+        color: #CE5353;
+    }
+    .gustos p{
+        font-size: 18px;
+    }
 
 
 
