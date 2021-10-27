@@ -24,7 +24,7 @@
 
         <div class="editarCampos" style="border: none !important;">
             <h3>Nacionalidad</h3>
-            <p>{{ login.atributos.nacionalidad }}</p>
+            <p>{{  login.atributos and login.atributos.getNacionalidad ? login.atributos.getNacionalidad|country_name  : "Nacionalidad no definida" }}</p>
         </div>
 
 
