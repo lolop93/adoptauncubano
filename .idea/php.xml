@@ -101,6 +101,8 @@
       <path value="$PROJECT_DIR$/src/vendor/symfony/monolog-bridge" />
       <path value="$PROJECT_DIR$/src/vendor/symfony/serializer" />
       <path value="$PROJECT_DIR$/src/vendor/symfony/yaml" />
+      <path value="$PROJECT_DIR$/src/vendor/twig/intl-extra" />
+      <path value="$PROJECT_DIR$/src/vendor/twig/extra-bundle" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.0" />

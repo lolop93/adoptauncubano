@@ -105,6 +105,8 @@
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/monolog-bridge" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/serializer" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/yaml" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/twig/intl-extra" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/twig/extra-bundle" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
