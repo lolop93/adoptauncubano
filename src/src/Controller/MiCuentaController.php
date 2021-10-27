@@ -15,6 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 //use SunCat\MobileDetectBundle\MobileDetectBundle;
 use SunCat\MobileDetectBundle\DeviceDetector\MobileDetector;
+use Symfony\Component\Validator\Constraints\Date;
 
 
 class MiCuentaController extends AbstractController
@@ -36,14 +37,18 @@ class MiCuentaController extends AbstractController
 
         //$mobileDetector = $this->get('mobile_detect.mobile_detector');
 
+        $age = new \DateTime();//Pasamos la fecha en la que nació a Edad normal
+        $a = date_diff($age, $login->getAtributos()->getFechaNac());
 
         if($pantalla->isMobile() && !$pantalla->isTablet()){
             return $this->render('mi_cuenta/perfilMobile.html.twig', [
                 'login' => $login,
+                'edad' =>  $a,
             ]);
         }else {
             return $this->render('mi_cuenta/perfil.html.twig', [
                 'login' => $login,
+                'edad' =>  $a,
             ]);
         }
     }

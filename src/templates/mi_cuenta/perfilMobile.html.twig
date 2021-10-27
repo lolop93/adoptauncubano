@@ -14,7 +14,7 @@
 
         <div class="headInfo">
             <h1 class="nombre">{{ login.username }}</h1>
-            <h2 class="nacionalidad">{{ login.atributos.nacionalidad }}</h2>
+            <h2 class="nacionalidad">{{ login.atributos.nacionalidad|country_name }}</h2>
             <h3 class="edad">13</h3>
         </div>
 

@@ -3,6 +3,7 @@
 
 {% block body %}
     {{ parent() }}
+    {{ dump() }}
 
 
     <style>
@@ -128,7 +129,7 @@
                 {% endif %}
             </h1>
             {% block nacionalidad %}<p class="m-1" >{{  login.atributos and login.atributos.getNacionalidad ? login.atributos.getNacionalidad|country_name  : "Nacionalidad no definida" }}</p>{% endblock %}
-            {% block edad %}<p class="m-1" >{{  login.atributos and login.atributos.getFechaNac ? login.atributos.getFechaNac|date('d-m-Y') : "Edad no definida" }}</p>{% endblock %}
+            {% block edad %}<p class="m-1" >{{  login.atributos and login.atributos.getFechaNac ? edad|date("%y años") : "Edad no definida" }}</p>{% endblock %}
         </div>
 
 
