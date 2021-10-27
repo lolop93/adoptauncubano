@@ -12,6 +12,7 @@ use App\Repository\GaleriaRepository;
 use App\Repository\MensajesRepository;
 use App\Repository\UserAttributesRepository;
 use App\Repository\UserRepository;
+use ContainerC4GtHXr\getTwig_Runtime_HttpkernelService;
 use SunCat\MobileDetectBundle\DeviceDetector\MobileDetector;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -137,6 +138,25 @@ class MensajesController extends AbstractController
         }else{
             $nombreOtro= $conv->getRemitente()->getUsername();
         }
+
+        foreach($conversaciones as $conversacion){
+            if($conversacion->getId() == $request->attributes->get('id')) {
+                if ($conversacion->getEmisor()->getId() == $this->getUser()->getId()) {
+                    if( $conversacion->getRemitente()->getGaleria() && ($foto =  $conversacion->getRemitente()->getGaleria()->getFotoPerfil())){
+                        $fotOtro = $foto;
+                    }else{
+                        $fotOtro = "fotodefecto.png";
+                    }
+                }else{
+                    if($conversacion->getEmisor()->getGaleria() && ($foto =  $conversacion->getEmisor()->getGaleria()->getFotoPerfil())){
+                        $fotOtro = $foto;
+                    }else{
+                        $fotOtro = "fotodefecto.png";
+                    }
+
+                }
+            }
+        }
         // Sort the arrays
         //usort($conversaciones, 'App\Controller\compararFecha');
 
@@ -146,7 +166,8 @@ class MensajesController extends AbstractController
                 'mensajes'=>$mensajes,
                 'conversaciones' => $conversaciones,
                 'request' => $request,
-                'nombreOtro' => $nombreOtro
+                'nombreOtro' => $nombreOtro,
+                'fotOtro' => $fotOtro
 
             ]);
         }else {
