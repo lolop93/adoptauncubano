@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class BusquedaController extends AbstractController
 {
-    public const PAGINATOR_PER_PAGE = 2;
+    public const PAGINATOR_PER_PAGE = 5;
 
     #[Route('/busqueda', name: 'busqueda', methods: ['GET','POST'])]
     public function index(MobileDetector $pantalla, Request $request): Response

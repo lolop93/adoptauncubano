@@ -38,6 +38,7 @@ easy_admin:
                 fields:
                     - id
                     - username
+                    - { property: 'nombre'}
                     - { property: 'roles', type: 'json'}
                     - password
                     - { property: 'galeria', type: 'text'}

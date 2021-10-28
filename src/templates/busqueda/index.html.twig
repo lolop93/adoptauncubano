@@ -6,22 +6,41 @@
 {{ parent() }}
 {{ dump() }}
 
+    <div class="mx-auto card bg-white gridBusqueda ">
     {% for resultado in resultados %}
 
-        <div class="card bg-white ">
+        <div class="fila">
+            <div style="background-image: url('{{ asset('images/perfiles/' ~ resultado.foto_perfil ~ '') }}'); width: 50px; height: 50px"></div>
             <p>{{ resultado.username }}</p>
+            <p>{{ resultado.ojos }}</p>
         </div>
 
     {% endfor %}
 
-    <div class="card bg-white d-inline m-2">
-        {%  if previous >= 0 %}
-            <a href="{{  path('busqueda',{ busqueda: query, offset: previous  }) }}"> Previous </a>
-        {%  endif %}
-        {%  if next < resultados|length %}
-            <a href="{{  path('busqueda',{ busqueda: query, offset: next  }) }}"> Next </a>
-        {%  endif %}
+        <div class="card bg-white d-inline m-2">
+            {%  if previous >= 0 %}
+                <a href="{{  path('busqueda',{ busqueda: query, offset: previous  }) }}"> Previous </a>
+            {%  endif %}
+            {%  if next < resultados|length %}
+                <a href="{{  path('busqueda',{ busqueda: query, offset: next  }) }}"> Next </a>
+            {%  endif %}
+        </div>
     </div>
 
+
+
+    <style>
+
+        .gridBusqueda{
+            width: 80%;
+            display: grid;
+            row-gap: 15px;
+        }
+
+        .fila{
+            width: 100%;
+        }
+
+    </style>
 
 {% endblock %}
