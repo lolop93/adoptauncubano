@@ -14,8 +14,8 @@
 
         <div class="headInfo">
             <h1 class="nombre">{{ login.username }}</h1>
-            <h2 class="nacionalidad">{{ login.atributos.nacionalidad|country_name }}</h2>
-            <h3 class="edad">13</h3>
+            {% block nacionalidad %}<h2>{{  login.atributos and login.atributos.getNacionalidad ? login.atributos.getNacionalidad|country_name  : "Nacionalidad no definida" }}</h2>{% endblock %}
+            {% block edad %}<h3>{{  login.atributos and login.atributos.getFechaNac ? edad|date("%y años") : "Edad no definida" }}</h3>{% endblock %}
         </div>
 
         <div class="descripcion">
@@ -127,12 +127,12 @@
         color:#CE5353;
         font-weight: bolder;
     }
-    .headInfo .nacionalidad{
+    .headInfo h2{
         font-size: 36px;
         color:#CE5353;
         font-weight: bold;
     }
-    .headInfo .edad{
+    .headInfo h3{
         font-size: 28px;
         color:#CE5353;
     }
