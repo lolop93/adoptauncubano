@@ -32,7 +32,7 @@ class BusquedaController extends AbstractController
             $result = $res->getResult();*/
 
 
-            $paginator = $this->getBusquedaPaginator($offset);
+            $paginator = $this->getBusquedaPaginator($offset,$query);
             $paginator->setUseOutputWalkers(false);//Pa arreglar un fallo que sale por hacer una consulta tocha
 
             return $this->render('busqueda/index.html.twig', [
@@ -86,9 +86,8 @@ class BusquedaController extends AbstractController
 
     }
 
-    public function getBusquedaPaginator(int $offset): Paginator{
+    public function getBusquedaPaginator(int $offset, $busqueda): Paginator{
 
-        $busqueda = '';
 
         $query = $this->getDoctrine()->getManager()
             ->createQuery(" SELECT  u.username ,u.nombre , a.ojos , g.foto_perfil from App\Entity\User u Join App\Entity\UserAttributes a with u.atributos = a.id join App\Entity\Galeria g with g.id = u.galeria WHERE u.username LIKE :query ")
