@@ -1,8 +1,27 @@
-{% extends 'base.html.twig' %}
+    {% extends 'base.html.twig' %}
 
 {% block title %}Búsqueda - Adopta un Cubano{% endblock %}
 
 {% block body %}
 {{ parent() }}
 {{ dump() }}
+
+    {% for resultado in resultados %}
+
+        <div class="card bg-white ">
+            <p>{{ resultado.username }}</p>
+        </div>
+
+    {% endfor %}
+
+    <div class="card bg-white d-inline m-2">
+        {%  if previous >= 0 %}
+            <a href="{{  path('busqueda',{ busqueda: query, offset: previous  }) }}"> Previous </a>
+        {%  endif %}
+        {%  if next < resultados|length %}
+            <a href="{{  path('busqueda',{ busqueda: query, offset: next  }) }}"> Next </a>
+        {%  endif %}
+    </div>
+
+
 {% endblock %}

@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
+use Doctrine\ORM\Tools\Pagination\Paginator;
+use Psr\Container\ContainerInterface;
 use SunCat\MobileDetectBundle\DeviceDetector\MobileDetector;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -12,29 +15,55 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class BusquedaController extends AbstractController
 {
-    #[Route('/busqueda', name: 'busqueda', methods: ['GET'])]
+    public const PAGINATOR_PER_PAGE = 2;
+
+    #[Route('/busqueda', name: 'busqueda', methods: ['GET','POST'])]
     public function index(MobileDetector $pantalla, Request $request): Response
     {
         $login = $this->get('security.token_storage')->getToken()->getUser();
         $query = $request->query->get('busqueda');
+        $offset = max(0,$request->query->getInt('offset',0));
 
-        if($pantalla->isMobile() && !$pantalla->isTablet()){
-            return $this->render('busqueda/busquedaMobile.html.twig', [
-                'query' => $query,
-                'request'=> $request,
-                'login' => $login,
-            ]);
-        }else {
+        if ($request->isMethod('GET') || $request->isMethod('POST')) {
+
+            /*$em = $this -> getDoctrine()->getManager();
+            $res = $em->createQuery(" SELECT  u.username ,u.nombre , a.ojos , g.foto_perfil from App\Entity\User u Join App\Entity\UserAttributes a with u.atributos = a.id join App\Entity\Galeria g with g.id = u.galeria WHERE u.username LIKE :query ")
+                ->setParameter('query', '%' . $query . '%');
+            $result = $res->getResult();*/
+
+
+            $paginator = $this->getBusquedaPaginator($offset);
+            $paginator->setUseOutputWalkers(false);//Pa arreglar un fallo que sale por hacer una consulta tocha
+
             return $this->render('busqueda/index.html.twig', [
                 'query' => $query,
                 'request'=> $request,
                 'login' => $login,
+                'resultados' => $paginator,
+                'previous' => $offset - self::PAGINATOR_PER_PAGE,
+                'next' => min(count($paginator), $offset + self::PAGINATOR_PER_PAGE)
             ]);
+        }
+        else{
+            if($pantalla->isMobile() && !$pantalla->isTablet()){
+                return $this->render('busqueda/busquedaMobile.html.twig', [
+                    'query' => $query,
+                    'request'=> $request,
+                    'login' => $login,
+                ]);
+            }else {
+                return $this->render('busqueda/index.html.twig', [
+                    'query' => $query,
+                    'request'=> $request,
+                    'login' => $login,
+                ]);
+            }
         }
 
 
     }
 
+    //Es una forma NO IMPLEMENTADA  que probé y funciona para insertar un cacho de formulario en cualkier lao
     public function barraBusqueda(){
 
         $form = $this->createFormBuilder(null)
@@ -54,6 +83,21 @@ class BusquedaController extends AbstractController
         return $this->render('busqueda/barraBusqueda.html.twig', [
             'form' => $form->createView()
         ]);
+
+    }
+
+    public function getBusquedaPaginator(int $offset): Paginator{
+
+        $busqueda = '';
+
+        $query = $this->getDoctrine()->getManager()
+            ->createQuery(" SELECT  u.username ,u.nombre , a.ojos , g.foto_perfil from App\Entity\User u Join App\Entity\UserAttributes a with u.atributos = a.id join App\Entity\Galeria g with g.id = u.galeria WHERE u.username LIKE :query ")
+            ->setMaxResults(self::PAGINATOR_PER_PAGE)
+            ->setFirstResult($offset)
+            ->setParameter('query', '%' . $busqueda . '%');
+
+
+        return new Paginator($query);
 
     }
 }
