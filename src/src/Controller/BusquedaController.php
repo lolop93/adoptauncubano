@@ -90,7 +90,7 @@ class BusquedaController extends AbstractController
 
 
         $query = $this->getDoctrine()->getManager()
-            ->createQuery(" SELECT  u.username ,u.nombre , a.ojos , g.foto_perfil from App\Entity\User u Join App\Entity\UserAttributes a with u.atributos = a.id join App\Entity\Galeria g with g.id = u.galeria WHERE u.username LIKE :query ")
+            ->createQuery(" SELECT  u.id, u.username ,u.nombre , g.foto_perfil , a.ojos, a.color_pelo, a.nacionalidad, a.fecha_nac, a.ciudad, a.altura, a.peso, a.gustos, a.profesion, a.sexo from App\Entity\User u Join App\Entity\UserAttributes a with u.atributos = a.id join App\Entity\Galeria g with g.id = u.galeria WHERE u.username LIKE :query ")
             ->setMaxResults(self::PAGINATOR_PER_PAGE)
             ->setFirstResult($offset)
             ->setParameter('query', '%' . $busqueda . '%');
