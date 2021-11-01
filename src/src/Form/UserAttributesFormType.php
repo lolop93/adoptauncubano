@@ -95,7 +95,7 @@ class UserAttributesFormType extends AbstractType
                 'data' => $gustos,//Datos por defecto si existen
             ])
             ->add('descripcion',TextareaType::class, [
-                'attr' => ['class' => 'tinymce'],
+                'attr' => ['class' => 'tinymce', 'maxlength' => 255],
                 'row_attr' => ['class' => 'text-editor'],
             ])
             //->add('buscaGenero')
