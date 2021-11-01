@@ -45,10 +45,11 @@
             <a href="{{ path('homepage') }}"><img class=" img" style="margin-right:auto;max-width: 4em;" src="{{ asset('images/Logos/LOGOHEADERMOVIL.png') }}"></a>
 
             {# Barra de busqueda oculta #}
-            <div id="searchBar" style="display: none";>
-                <input id="busquedaPlaceholder" placeholder="Escriba sus términos de búsqueda">
-                <button {# hay que darle funcionalidad al boton #}style="color: tomato; margin-left: -30px; background: none; outline: none; border:none"><i id="iconoBusqueda" class="bi bi-search" ></i></button>
-            </div>
+            <form id="searchBar" style="display: none" name="form" method="get" action="{{ path('busqueda') }}";>
+                <input name="busqueda" type="text" id="busquedaPlaceholder" placeholder="Escriba sus términos de búsqueda">
+                <button style="color: tomato; margin-left: -30px; background: none; outline: none; border:none" type="submit"><i id="iconoBusqueda" class="bi bi-search" ></i></button>
+            </form>
+
 
             <div class="iconos" style="display: flex; justify-content: space-between; margin-left: 15px;width: 65%;padding: 0 15px;">
 
@@ -178,7 +179,7 @@
     }
     .footerMobile{
         padding: 12px;
-        background-color:rgba(0, 0, 0, 0.9);
+        background-color:rgba(0, 0, 0, 1);
     }
     footer .logoFooter{
         display: flex;
@@ -238,7 +239,7 @@
         margin-left: 20px;
         border:none;
         background-color: white !important;
-        width: 300px;
+        width: 70vw;
         height: 25px !important;
         box-shadow: 1px 8px 8px -5px rgb(0 0 0 / 31%);
         padding-left: 20px;

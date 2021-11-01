@@ -1,7 +1,11 @@
-{% extends '/mi_cuenta/perfil.html.twig' %}
+{% extends '/mi_cuenta/perfilMobile.html.twig' %}
 
 {% block editarperfil %} <div class="editarPerfil"><a href=" {{ path('perfil') }}"><p class="title p-2">Volver al perfil</p></a></div>  {% endblock %}
+{% block botonEditar  %}
 
+    <div class="botonEditar"> <i onclick="window.location.href = '{{ path('perfil') }}'" class="bi bi-arrow-left"></i></div>
+
+{% endblock %}
 {%  block formstart %}
     {{ form_start(form_atributos, {'attr': {'class': 'formulario'}}) }}
 {% endblock %}
@@ -34,7 +38,7 @@
 {% endblock %}
 
 {%  block estiloeditar %}
-<style>
+    <style>
 
         #user_attributes_form_gustos input{
             margin-right: 2px;
@@ -65,7 +69,7 @@
         .descripcion{
             padding: 10px 15px 10px 0px !important;
         }
-</style>
+    </style>
 
 {% endblock %}
 

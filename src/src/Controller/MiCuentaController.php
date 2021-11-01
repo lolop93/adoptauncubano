@@ -83,11 +83,12 @@ class MiCuentaController extends AbstractController
             if ($pantalla->isMobile() && !$pantalla->isTablet()) {
                 return $this->render('mi_cuenta/perfilMobileEditar.html.twig', [
                     'login' => $login,
+                    'form_atributos' => $form->createView()
                 ]);
             } else {
                 return $this->render('mi_cuenta/perfilEditar.html.twig', [
                     'login' => $login,
-                    'form_atributos' => $form->createView(),
+                    'form_atributos' => $form->createView()
                 ]);
             }
         }
