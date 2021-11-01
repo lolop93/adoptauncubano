@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -93,6 +94,11 @@ class UserAttributesFormType extends AbstractType
                 'expanded'  => true,
                 'data' => $gustos,//Datos por defecto si existen
             ])
+            ->add('descripcion',TextareaType::class, [
+                'attr' => ['class' => 'tinymce'],
+                'row_attr' => ['class' => 'text-editor'],
+            ])
+            //->add('buscaGenero')
             //->add('sexo')
             ->add('submit',SubmitType::class)
         ;

@@ -151,11 +151,11 @@
             {% block ciudad %}<p class="atributos m-2">{{  login.atributos and login.atributos.getCiudad ? login.atributos.getCiudad : "Ciudad no definida" }}</p>{% endblock %}
         </div>
         <div>
-            <h6 class="atributos m-2">ALTURA</h6>
+            <h6 class="atributos m-2">ALTURA (cm)</h6>
             {% block altura %}<p class="atributos m-2">{{  login.atributos and login.atributos.getAltura ? login.atributos.getAltura : "Altura no definida" }}</p>{% endblock %}
         </div>
         <div>
-            <h6 class="atributos m-2">PESO (KG)</h6>
+            <h6 class="atributos m-2">PESO (kg)</h6>
             {% block peso %}<p class="atributos m-2">{{  login.atributos and login.atributos.getPeso ? login.atributos.getPeso : "Peso no definido" }}</p>{% endblock %}
         </div>
         <div class="gustos">
@@ -166,9 +166,7 @@
         <div class="descripcion p-4">
             <p style="color: #CE5353; font-size: 18px;">Descripcion</p>
             {% block descripcion %}
-            <p> Why do we use it?
-                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-            </p>
+            <p> {{  login.atributos and login.atributos.getDescripcion ? login.atributos.getDescripcion : "Sin descripcion" }}</p>
             {% endblock %}
         </div>
 

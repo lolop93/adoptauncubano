@@ -26,7 +26,7 @@
 
 {% block gustos %}  {{ form_row(form_atributos.gustos,{ 'label' : false, 'value' : login.atributos and login.atributos.getGustos ? login.atributos.getGustos|join(', ') : ''  }) }}{% endblock %}
 
-{% block descripcion %} {% endblock %}
+{% block descripcion %} {{ form_row(form_atributos.descripcion,{ 'label' : false, 'value' : login.atributos and login.atributos.getDescripcion ? login.atributos.getDescripcion: ''  }) }} {% endblock %}
 
 {%  block formend %}
     {{ form_row(form_atributos.submit) }}

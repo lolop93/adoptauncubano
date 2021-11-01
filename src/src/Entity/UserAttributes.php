@@ -77,6 +77,16 @@ class UserAttributes
      */
     private $sexo;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $descripcion;
+
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $buscaGenero;
+
 
     /**
      * @param mixed $id
@@ -237,6 +247,30 @@ class UserAttributes
     public function setSexo(?string $sexo): self
     {
         $this->sexo = $sexo;
+
+        return $this;
+    }
+
+    public function getDescripcion(): ?string
+    {
+        return $this->descripcion;
+    }
+
+    public function setDescripcion(?string $descripcion): self
+    {
+        $this->descripcion = $descripcion;
+
+        return $this;
+    }
+
+    public function getBuscaGenero(): ?string
+    {
+        return $this->buscaGenero;
+    }
+
+    public function setBuscaGenero(?string $buscaGenero): self
+    {
+        $this->buscaGenero = $buscaGenero;
 
         return $this;
     }
