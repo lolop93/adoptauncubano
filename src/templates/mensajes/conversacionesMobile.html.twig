@@ -3,10 +3,17 @@
 {% block body %}
 
     <div class="chatHeader">
-        <div class="imgUser" style="background-image: url('{{asset(fotOtro == 'fotodefecto.png' ? 'images/' ~ fotOtro : 'images/Perfiles/' ~ fotOtro) }}');margin-right: 10px"></div>
+        <div onclick="window.location.href = '{{ path('mensajes') }}'" class="patras">
+            <i class="bi bi-arrow-left"></i>
+            <div class="imgUser" style="background-image: url('{{asset(fotOtro == 'fotodefecto.png' ? 'images/' ~ fotOtro : 'images/Perfiles/' ~ fotOtro) }}');margin-right: 10px"></div>
+        </div>
         <h1>{{ nombreOtro }}</h1>
-        <i class="bi bi-camera-video-fill"></i>
-        <i class="bi bi-three-dots-vertical"></i>
+        <i class="bi bi-three-dots-vertical" id="flag1"></i>
+
+        <div id="desplegableChatOn">
+            <p>Visitar perfil</p>
+            <p>Eliminar conversación</p>
+        </div>
 
     </div>
     {% if  mensajes %}
@@ -70,22 +77,23 @@
             align-items: center;
             width: 100%;
             background-color:#CE5353;
-            padding: 15px 20px;
+            padding: 5px;
             color:white;
+        }
+        .patras{
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
         .chatHeader h1{
             margin: 0;
-            font-size: 28px;
-            font-weight: 600;
+            font-size: 18px;
+            font-weight: 550;
         }
-        .chatHeader .bi-camera-video-fill{
-            position: absolute;
-            font-size: 32px;
-            right: 60px;
-        }
+
         .chatHeader .bi-three-dots-vertical{
             position: absolute;
-            font-size: 32px;
+            font-size: 22px;
             right: 15px;
         }
         .formularioChat{
@@ -107,8 +115,8 @@
             justify-content: space-between;
         }
         .imgUser{
-            width: 45px;
-            height: 45px;
+            width: 50px;
+            height: 50px;
             border-radius: 100px;
             background-size: cover;
             background-position: center;
@@ -162,8 +170,36 @@
         #btnEnviar i{
             font-size: 24px;
         }
+        #desplegableChatOn{
+            position: absolute;
+            right: 0;
+            top: 0;
+            padding: 20px 20px 0 20px;
+            background-color: #CE5353;
+            color: whitesmoke;
+            display: none;
+            box-shadow: 0px 3px 17px 3px rgb(0 0 0 / 31%);
+        }
+
+        #desplegableChatOn p{
+            margin-bottom:20px ;
+        }
 
     </style>
+
+    <script>
+        var desplegableChat = document.getElementById('desplegableChatOn');
+
+        window.addEventListener('click', function(e){
+            if (document.getElementById('flag1').contains(e.target) || document.getElementById('desplegableChatOn').contains(e.target)){
+                desplegableChat.style.display = 'block'
+            } else{
+                desplegableChat.style.display = 'none'
+            }
+        });
+
+
+    </script>
 {% endblock %}
 {% block footer %}
 {% endblock %}

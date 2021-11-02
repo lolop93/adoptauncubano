@@ -15,6 +15,12 @@
                     <p style="font-size: 15px">Nombre</p>
                 </div>
                 <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40" class="rounded-circle ">
+                <div class="contenedorMenu"> <i class="bi bi-three-dots-vertical" id="flag1"></i></div>
+
+                <div id="desplegableChatOn">
+                    <div class="opcionDesplegable"><p>Visitar perfil</p></div>
+                    <div class="opcionDesplegable"><p>Eliminar conversación</p></div>
+                </div>
 
             </div>
             <div class="conversation">
@@ -158,6 +164,7 @@
         }
 
         .cabecera{
+            position: relative;
             height: 6vh;
             background-color: #CE5353;
             display: flex;
@@ -233,10 +240,64 @@
             background-image: url({{ asset('images/Backgrounds/pattern_3.0.png') }});
 
         }
+        #flag1:hover{
+            cursor: pointer;
+            font-size: 32px;
+        }
+        #desplegableChatOn{
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 120px;
+            background-color: #CE5353;
+            color: whitesmoke;
+            display: none;
+            box-shadow: 0px 3px 17px 3px rgb(0 0 0 / 31%);
+            justify-content: center;
 
+        }
+
+        #desplegableChatOn p{
+            font-size: 18px;
+            padding: 0 10px;
+        }
+
+
+        .contenedorMenu{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+
+        }
+
+        .opcionDesplegable{
+            display: flex;
+            height: 100%;
+            align-items: center;
+        }
+        .opcionDesplegable:hover{
+            cursor: pointer;
+            background-color: #843636;
+        }
 
 
     </style>
+
+    <script>
+        var desplegableChat = document.getElementById('desplegableChatOn');
+
+        window.addEventListener('click', function(e){
+            if (document.getElementById('flag1').contains(e.target) || document.getElementById('desplegableChatOn').contains(e.target)){
+                desplegableChat.style.display = 'flex';
+                desplegableChat.style.flexDirection = 'column';
+            } else{
+                desplegableChat.style.display = 'none'
+            }
+        });
+
+
+    </script>
 {% endblock %}
 
 

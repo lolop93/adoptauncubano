@@ -3,9 +3,10 @@
 {% block body %}
     <div class="cuerpo">
         <div class="bodyHeader">
-            <h1>CONTACTOS</h1>
-            <i class="bi bi-search"></i>
-            <i class="bi bi-three-dots-vertical"></i>
+            <h1>Contactos</h1>
+            <div class="iconosHeader">
+                <i class="bi bi-three-dots-vertical"></i>
+            </div>
         </div>
 
         <div class="conversaciones">
@@ -63,14 +64,18 @@
             font-weight: lighter;
         }
         .bodyHeader h1{
-            width: 80%;
+            width: 85%;
             margin-bottom: 0;
-            font-size: 28px;
+            font-size: 22px;
             font-weight: 600;
         }
         .bodyHeader i{
-            font-size: 24px;
+            font-size: 28px;
             margin-left: 15px;
+        }
+        .iconosHeader{
+            display: flex;
+            justify-content: flex-end;
         }
         .mensaje{
             display: flex;
@@ -79,8 +84,8 @@
             box-shadow: -2px 4px 8px -5px rgb(0 0 0 / 31%);
         }
         .fotoMensaje{
-            width: 60px;
-            height: 60px;
+            width: 40px;
+            height: 40px;
             background-size: cover;
             background-position: center;
             background-color:  #CE5353;
@@ -88,6 +93,7 @@
             margin-right: 15px;
         }
         .infoMensaje h1{
+            font-size: 18px;
             color: #CE5353;
             font-weight: 600;
             margin-bottom: 0;
