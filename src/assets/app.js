@@ -322,3 +322,33 @@ $( document ).ready(function(){
 
 //---------------------------------------------
 //JS ajax para enviar Likes
+
+
+//JS ajax para eliminar fotos o subirlas
+//---------------------------------------------
+
+$( ".fotoAjaxOk" ).mouseenter(function() {
+    console.log("hover Enter");
+    $( this ).children(".editarFoto").removeClass("d-none");
+});
+
+$( ".fotoAjaxOk" ).mouseleave(function() {
+    console.log("hover Leave");
+    $( this ).children(".editarFoto").addClass("d-none");
+
+
+});
+
+$( ".fotoAjaxKo" ).mouseenter(function() {
+    console.log("hover Enter");
+    $( this ).children().removeClass("d-none");
+    $( this ).children().addClass("d-flex");
+});
+
+$( ".fotoAjaxKo" ).mouseleave(function() {
+    console.log("hover Leave");
+    $( this ).children().addClass("d-none");
+
+});
+//---------------------------------------------
+//JS ajax para eliminar fotos o subirlas

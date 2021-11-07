@@ -38,7 +38,7 @@ class MiCuentaController extends AbstractController
         //$mobileDetector = $this->get('mobile_detect.mobile_detector');
 
         $age = new \DateTime();//Pasamos la fecha en la que nació a Edad normal
-        $a = date_diff($age, $login->getAtributos()->getFechaNac());
+        $a = ($login->getAtributos() && $login->getAtributos()->getFechaNac() ? date_diff($age, $login->getAtributos()->getFechaNac()) : "");
 
         if($pantalla->isMobile() && !$pantalla->isTablet()){
             return $this->render('mi_cuenta/perfilMobile.html.twig', [

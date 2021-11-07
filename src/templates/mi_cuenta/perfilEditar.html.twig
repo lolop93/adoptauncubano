@@ -34,6 +34,18 @@
 {% endblock %}
 
 {%  block estiloeditar %}
+
+{% block fotoAjaxOk %}
+    <p class="p-1 pe-4 ps-2 text-white mb-auto align-self-end d-none editarFoto">Editar</p>
+
+{% endblock %}
+
+{% block fotoAjaxKo %}
+<div class="nofoto w-100 h-100 bg-white rounded d-none align-items-center">
+    <i class="bi bi-plus-square mx-auto mx-auto "></i>
+</div>
+{% endblock %}
+
 <style>
 
         #user_attributes_form_gustos input{
@@ -64,6 +76,25 @@
 
         .descripcion{
             padding: 10px 15px 10px 0px !important;
+        }
+        .editarFoto{
+            background-color: #CE5353;
+            border-top-left-radius: 360px;
+            border-bottom-left-radius: 360px;
+            justify-self: end;
+            margin-top: 10px !important;
+            cursor: pointer;
+        }
+
+        .bi-plus-square{
+            font-size: 80px;
+            color: #CE5353;
+        }
+        .bi-plus-square:hover{
+            color: grey;
+        }
+        .nofoto{
+            cursor: pointer;
         }
 
 </style>

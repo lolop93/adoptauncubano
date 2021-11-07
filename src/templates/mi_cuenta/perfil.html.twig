@@ -6,6 +6,7 @@
     {{ dump() }}
 
 
+
     <style>
         .gridContenido{
             display: grid;
@@ -67,7 +68,7 @@
             grid-template-columns: 1fr ;
 
          }
-        .galeria p{
+        .galeria .cartelRojoIzq{
             background-color: #CE5353;
             border-top-right-radius: 360px;
             border-bottom-right-radius: 360px;
@@ -178,23 +179,24 @@
         {% endblock %}
 
         <div class="galeria ">
-            <p class="title p-2 text-white">Galeria</p>
+            <p class="title p-2 text-white cartelRojoIzq">Galeria</p>
             <div class="gridGaleria mt-4 mb-4">
                 {% if login.galeria %}
 
                     {% if login.galeria.getFotoPerfil %}
-                        <div class="imagenUsuario m-2 d-flex flex-column justify-content-end" style="background-image: url({{ asset('images/Perfiles/' ~ login.galeria.getFotoPerfil) }});">
-                            <p class="p-1 pe-4 ps-2 text-white mb-2 align-self-start">Foto Perfil</p>
+                        <div class="imagenUsuario m-2 d-flex flex-column justify-content-end fotoAjaxOk" style="background-image: url({{ asset('images/Perfiles/' ~ login.galeria.getFotoPerfil) }});">
+                            {% block fotoAjaxOk %}{% endblock %}
+                            <p class="p-1 pe-4 ps-2 text-white mb-2 align-self-start cartelRojoIzq">Foto Perfil</p>
                         </div>
                     {% else %}
-                        <div class="imagenUsuario m-2 " style="background-image: url({{ asset('images/fotodefecto.png') }});"></div>
+                        <div class="imagenUsuario m-2 d-flex flex-column justify-content-end fotoAjaxKo" style="background-image: url({{ asset('images/fotodefecto.png') }});">{% block fotoAjaxKo %}{% endblock %}</div>
                     {% endif %}
 
                     {% for i in 0..4 %}
                         {% if i < login.galeria.getGaleria|length %}
-                            <div class="imagenUsuario m-2 " style="background-image: url({{ asset('images/Perfiles/' ~ login.galeria.getGaleria[i]) }});"></div>
+                            <div class="imagenUsuario m-2 d-flex flex-column justify-content-end fotoAjaxOk" style="background-image: url({{ asset('images/Perfiles/' ~ login.galeria.getGaleria[i]) }});">{{ block('fotoAjaxOk') }}</div>
                         {% else %}
-                            <div class="imagenUsuario m-2 " style="background-image: url({{ asset('images/fotodefecto.png') }});"></div>
+                            <div class="imagenUsuario m-2 d-flex flex-column justify-content-end fotoAjaxKo" style="background-image: url({{ asset('images/fotodefecto.png') }});">{{ block('fotoAjaxKo') }}</div>
                         {% endif %}
                     {% endfor %}
 
