@@ -22,7 +22,7 @@ class BusquedaController extends AbstractController
     {
         $login = $this->get('security.token_storage')->getToken()->getUser();
         $query = $request->query->get('busqueda');
-        $offset = max(0,$request->query->getInt('offset',0));
+        $offset = max(0, $request->query->getInt('offset', 0));
 
         if ($request->isMethod('GET') || $request->isMethod('POST')) {
 
@@ -32,36 +32,49 @@ class BusquedaController extends AbstractController
             $result = $res->getResult();*/
 
 
-            $paginator = $this->getBusquedaPaginator($offset,$query);
+            $paginator = $this->getBusquedaPaginator($offset, $query);
             $paginator->setUseOutputWalkers(false);//Pa arreglar un fallo que sale por hacer una consulta tocha
 
-            return $this->render('busqueda/index.html.twig', [
-                'query' => $query,
-                'request'=> $request,
-                'login' => $login,
-                'resultados' => $paginator,
-                'previous' => $offset - self::PAGINATOR_PER_PAGE,
-                'next' => min(count($paginator), $offset + self::PAGINATOR_PER_PAGE)
-            ]);
-        }
-        else{
-            if($pantalla->isMobile() && !$pantalla->isTablet()){
+
+            if ($pantalla->isMobile() && !$pantalla->isTablet()) {
                 return $this->render('busqueda/busquedaMobile.html.twig', [
                     'query' => $query,
-                    'request'=> $request,
+                    'request' => $request,
                     'login' => $login,
+                    'resultados' => $paginator,
+                    'previous' => $offset - self::PAGINATOR_PER_PAGE,
+                    'next' => min(count($paginator), $offset + self::PAGINATOR_PER_PAGE)
                 ]);
-            }else {
+            } else {
                 return $this->render('busqueda/index.html.twig', [
                     'query' => $query,
-                    'request'=> $request,
+                    'request' => $request,
                     'login' => $login,
+                    'resultados' => $paginator,
+                    'previous' => $offset - self::PAGINATOR_PER_PAGE,
+                    'next' => min(count($paginator), $offset + self::PAGINATOR_PER_PAGE)
                 ]);
+
+            }
+        }
+        else {
+                if ($pantalla->isMobile() && !$pantalla->isTablet()) {
+                    return $this->render('busqueda/busquedaMobile.html.twig', [
+                        'query' => $query,
+                        'request' => $request,
+                        'login' => $login,
+                    ]);
+                } else {
+                    return $this->render('busqueda/index.html.twig', [
+                        'query' => $query,
+                        'request' => $request,
+                        'login' => $login,
+                    ]);
+                }
             }
         }
 
 
-    }
 
     //Es una forma NO IMPLEMENTADA  que probé y funciona para insertar un cacho de formulario en cualkier lao
     public function barraBusqueda(){

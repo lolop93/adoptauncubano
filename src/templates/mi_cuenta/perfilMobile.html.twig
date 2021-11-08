@@ -14,7 +14,15 @@
             {% endblock%}
         </div>
 
-        <div class="fotoPerfil"> <div class="lafotoensi" {# placeholder de la foto como <img>#}style="background-image: url({{ asset('images/Perfiles/' ~ login.galeria.getFotoPerfil) }}); background-size: cover "></div></div>
+
+
+        <div class="fotoPerfil">
+            {% if login.galeria and login.galeria.getFotoPerfil %}
+            <div class="lafotoensi" style="background-image: url({{ asset('images/Perfiles/' ~ login.galeria.getFotoPerfil) }}); background-size: cover "></div>
+                {% else %}
+                    <p>Sin foto de perfil</p>
+                {% endif %}
+        </div>
 
         {%  block formstart %}
 
