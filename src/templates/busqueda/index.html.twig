@@ -12,46 +12,46 @@
         <div class="fila bg-white">
             <a class="wrapper-foto" href="{{ path('perfiles',{id:resultado.id}) }}"><div class="foto" style="background-image: url('{{ asset('images/perfiles/' ~ resultado.foto_perfil ~ '') }}');"></div></a>
             <div class="cabecera">
-                <div class="res_nombre"><p>{{ resultado.nombre ? resultado.nombre : 'Sin nombre' }}</p></div>
+                <div class="res_nombre"><p>{{ resultado.nombre ? resultado.nombre : 'Nombre' }}</p></div>
                 <div class="res_edad"><p>{{ resultado.fecha_nac ? date().diff(date(resultado.fecha_nac)).y : 'Sin Edad' }}</p></div>
                 <div class="res_nacionalidad"><p>{{ resultado.nacionalidad ? resultado.nacionalidad|country_name : "Sin nacionalidad" }}</p></div>
             </div>
             <div class="res_ojos">
                 <h6 >OJOS</h6>
-                <p>{{ resultado.ojos ? resultado.ojos : "Sin color de ojos" }}</p></div>
+                <p>{{ resultado.ojos ? resultado.ojos : "none" }}</p></div>
             <div class="res_pelo">
                 <h6 >PELO</h6>
-                <p>{{ resultado.color_pelo ? resultado.color_pelo : "Sin color de pelo"}}</p></div>
+                <p>{{ resultado.color_pelo ? resultado.color_pelo : "none"}}</p></div>
             <div class="res_profesion">
                 <h6 >PROFESION</h6>
-                <p>{{ resultado.profesion ? resultado.profesion : "Sin profesion definidad"}}</p></div>
+                <p>{{ resultado.profesion ? resultado.profesion : "none"}}</p></div>
             <div class="res_ciudad">
                 <h6 >CIUDAD</h6>
-                <p>{{ resultado.ciudad ? resultado.ciudad : "Sin ciudad definida" }}</p></div>
+                <p>{{ resultado.ciudad ? resultado.ciudad : "none" }}</p></div>
             <div class="res_altura">
                 <h6 >ALTURA (cm)</h6>
-                <p>{{ resultado.altura ? resultado.altura : "Sin altura" }}</p></div>
+                <p>{{ resultado.altura ? resultado.altura : "none" }}</p></div>
             <div class="res_peso">
                 <h6 >PESO (kg)</h6>
-                <p>{{ resultado.peso ? resultado.peso : "Sin peso" }}</p></div>
+                <p>{{ resultado.peso ? resultado.peso : "none" }}</p></div>
             <div class="res_gustos">
                 <h6 >GUSTOS</h6>
-                <p>{{ resultado.gustos ? resultado.gustos|join(', ') : "Gustos no definidos" }}</p></div>
+                <p>{{ resultado.gustos ? resultado.gustos|join(', ') : "none" }}</p></div>
             <div class="res_visita">Visitar</div>
             <div class="res_descripcion">
                 <h6 >DESCRIPCION</h6>
-                <p>{{  resultado.descripcion ? resultado.descripcion : "Sin descripcion" }}</p></div>
+                <p>{{  resultado.descripcion ? resultado.descripcion : "none" }}</p></div>
 
         </div>
 
     {% endfor %}
 
-        <div class=" bg-white d-flex m-2">
+        <div class="botonPaginas">
             {%  if previous >= 0 %}
-                <a class="mx-auto" href="{{  path('busqueda',{ busqueda: query, offset: previous  }) }}"> Anteriores </a>
+                <a  href="{{  path('busqueda',{ busqueda: query, offset: previous  }) }}"> Anteriores </a>
             {%  endif %}
             {%  if next < resultados|length %}
-                <a class="mx-auto" href="{{  path('busqueda',{ busqueda: query, offset: next  }) }}"> Siguiente </a>
+                <a  href="{{  path('busqueda',{ busqueda: query, offset: next  }) }}"> Siguiente </a>
             {%  endif %}
         </div>
     </div>
@@ -128,7 +128,21 @@
         div[class^='res_']{ /*Todos los div con class res_ en aldelante*/
             padding: 10px 5px 5px 10px;
         }
-
+        .botonPaginas{
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+        .botonPaginas a{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            background-color: #CE5353;
+            width: 10%;
+            padding: 10px;
+        }
 
     </style>
 

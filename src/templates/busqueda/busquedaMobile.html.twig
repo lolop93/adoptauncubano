@@ -22,11 +22,11 @@
 
 
                             <div class="textoFoto">
-                                <h1>{{ resultado.nombre ? resultado.nombre : 'Sin nombre' }} {{ resultado.fecha_nac ? date().diff(date(resultado.fecha_nac)).y : 'Sin Edad' }}</h1>
-                                <h4>{{ resultado.nacionalidad ? resultado.nacionalidad|country_name : "Sin nacionalidad" }}</h4>
+                                <h1>{{ resultado.nombre ? resultado.nombre : 'Nombre' }} {{ resultado.fecha_nac ? date().diff(date(resultado.fecha_nac)).y : 'Edad' }}</h1>
+                                <h4>{{ resultado.nacionalidad ? resultado.nacionalidad|country_name : "País" }}</h4>
                             </div>
 
-                            <i class="bi-suit-heart-fill"></i>
+                            <i class="bi bi-heart-fill {{   resultado.id in likesTotales ? 'matchOk' : 'matchKo' }}" data-id-match="{{ resultado.id }}"></i>
 
                         </div>
 
@@ -40,7 +40,7 @@
 
                 <div class="descripcion">
                     <h2 id="titulo">Descripción</h2>
-                    <p id="cuerpoDescripción">{{  resultado.descripcion ? resultado.descripcion : "Sin descripcion" }}</p>
+                    <p id="cuerpoDescripción">{{  resultado.descripcion ? resultado.descripcion : "none" }}</p>
                 </div>
 
                 <div class="atributos">
@@ -48,45 +48,54 @@
                     <div class="columna">
                         <div class="fila">
                             <h2>Ojos</h2>
-                            <p>{{ resultado.ojos ? resultado.ojos : "Sin color de ojos" }}</p>
+                            <p>{{ resultado.ojos ? resultado.ojos : "none" }}</p>
                         </div>
 
                         <div class="fila">
                             <h2>Ciudad</h2>
-                            <p>{{ resultado.ciudad ? resultado.ciudad : "Sin ciudad definida" }}</p>
+                            <p>{{ resultado.ciudad ? resultado.ciudad : "none" }}</p>
                         </div>
                     </div>
 
                     <div class="columna">
                         <div class="fila">
                             <h2>Pelo</h2>
-                            <p>{{ resultado.color_pelo ? resultado.color_pelo : "Sin color de pelo"}}</p>
+                            <p>{{ resultado.color_pelo ? resultado.color_pelo : "none"}}</p>
+                        </div>
+
+
+
+                        <div class="fila">
+                            <h2>Profesión</h2>
+                            <p>{{ resultado.profesion ? resultado.profesion : "none"}}</p>
                         </div>
                     </div>
 
                     <div class="columna">
                         <div class="fila">
-                            <h2>Profesión</h2>
-                            <p>{{ resultado.profesion ? resultado.profesion : "Sin profesion definidad"}}</p>
-                        </div>
-
-                        <div class="fila">
                             <h2>Altura (cm)</h2>
-                            <p>{{ resultado.altura ? resultado.altura : "Sin altura" }}</p>
-                        </div>
-
-                        <div class="fila">
-                            <h2>Gustos</h2>
-                            <p>Por detrás</p>
+                            <p>{{ resultado.altura ? resultado.altura : "none" }}</p>
                         </div>
                     </div>
 
                 </div>
 
+                <div class="gustos">
+                    <h2>Gustos</h2>
+                    <p>{{ resultado.gustos ? resultado.gustos|join(', ') : "none" }}</p>
+                </div>
+
             </div>
         {% endfor %}
 
-
+        <div class="botonPaginas">
+            {%  if previous >= 0 %}
+                <a  href="{{  path('busqueda',{ busqueda: query, offset: previous  }) }}"> Anteriores </a>
+            {%  endif %}
+            {%  if next < resultados|length %}
+                <a  href="{{  path('busqueda',{ busqueda: query, offset: next  }) }}"> Siguiente </a>
+            {%  endif %}
+        </div>
 
 
     </div>
@@ -112,9 +121,9 @@
         }
         .tarjeta{
             width: 300px;
-            height: 650px;
+            height: 700px;
             background-color: #E1E1E1;
-            margin-top: 20px;
+            margin-top: 50px;
         }
         .fotoBusqueda{
             position: relative;
@@ -151,7 +160,7 @@
             margin-bottom: 0px;
             color: whitesmoke;
         }
-        .infoFoto .bi-suit-heart-fill{
+        .infoFoto .bi-heart-fill{
             position: absolute;
             right: 30px;
             font-size: 48px;
@@ -172,7 +181,8 @@
         .atributos{
             display: flex;
             justify-content: space-between;
-            margin: 17px;
+            padding: 0 17px;
+            box-shadow: -2px 4px 8px -5px rgb(0 0 0 / 31%);
         }
         .columna{
             display: flex;
@@ -187,11 +197,54 @@
             font-weight: bold;
             color: #CE5353;
             margin-bottom: 2px;
+            margin-top: 10px;
         }
         .fila p{
             font-size: 12px;
-            margin-bottom: 15px;
 
+        }
+        .botonPaginas{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .botonPaginas a{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            background-color: #CE5353;
+            padding: 10px;
+        }
+        .gustos{
+            display: flex;
+            flex-direction: column;
+            text-align: start;
+            margin: 12px 17px;
+        }
+        .gustos h2{
+            font-size: 16px;
+            font-weight: bold;
+            color: #CE5353;
+            margin-bottom: 2px;
+
+        }
+        .bi-heart-fill:hover{
+            cursor: pointer;
+        }
+        .matchOk{
+            color: #E86362;
+        }
+
+        .matchKo{
+            color: #858585;
+        }
+
+        .bi-chat-left-fill{
+            color: #5875AF;
         }
 
 
