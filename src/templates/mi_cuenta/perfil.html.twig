@@ -194,9 +194,9 @@
 
                     {% for i in 0..4 %}
                         {% if i < login.galeria.getGaleria|length %}
-                            <div class="imagenUsuario m-2 d-flex flex-column justify-content-end fotoAjaxOk" style="background-image: url({{ asset('images/Perfiles/' ~ login.galeria.getGaleria[i]) }});">{{ block('fotoAjaxOk') }}</div>
+                            <div class="imagenUsuario m-2 d-flex flex-column justify-content-end fotoAjaxOk" id="foto{{i}}" style="background-image: url({{ asset('images/Perfiles/' ~ login.galeria.getGaleria[i]) }});">{{ block('fotoAjaxOk') }}</div>
                         {% else %}
-                            <div class="imagenUsuario m-2 d-flex flex-column justify-content-end fotoAjaxKo" style="background-image: url({{ asset('images/fotodefecto.png') }});">{{ block('fotoAjaxKo') }}</div>
+                            <div class="imagenUsuario m-2 d-flex flex-column justify-content-end fotoAjaxKo" id="foto{{i}}" style="background-image: url({{ asset('images/fotodefecto.png') }});">{{ block('fotoAjaxKo') }}</div>
                         {% endif %}
                     {% endfor %}
 
