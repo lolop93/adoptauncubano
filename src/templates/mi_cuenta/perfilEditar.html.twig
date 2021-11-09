@@ -33,19 +33,22 @@
     {{ form_end(form_atributos) }}
 {% endblock %}
 
-{%  block estiloeditar %}
+
 
 {% block fotoAjaxOk %}
-    <p class="p-1 pe-4 ps-2 text-white mb-auto align-self-end d-none editarFoto">Editar</p>
+    <p class="p-1 pe-4 ps-2 text-white mb-auto align-self-end d-none editarFoto">Eliminar</p>
 
 {% endblock %}
 
 {% block fotoAjaxKo %}
-<div class="nofoto w-100 h-100 bg-white rounded d-none align-items-center">
-    <i class="bi bi-plus-square mx-auto mx-auto "></i>
-</div>
+    <div class="nofoto w-100 h-100 bg-white rounded d-none align-items-center d-flex flex-column">
+    <!-- <i class="bi bi-plus-square mx-auto mx-auto "></i>-->
+        <input style="visibility:hidden;" class="w-100 fileupload" id="fileupload" type="file" name="fileupload" accept="image/x-png,image/gif,image/jpeg" />
+        <label for="fileupload" class="btn"><i class="bi bi-plus-square mx-auto mx-auto "></i></label>
+    </div>
 {% endblock %}
 
+{%  block estiloeditar %}
 <style>
 
         #user_attributes_form_gustos input{
@@ -56,7 +59,7 @@
             margin-right: 15px;
         }
 
-        .gridContenido input{
+        form[name="user_attributes_form"] input{
             max-width: 120px;
         }
 
@@ -98,6 +101,7 @@
         }
 
 </style>
+
 
 {% endblock %}
 

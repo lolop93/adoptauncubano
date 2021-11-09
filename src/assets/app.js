@@ -350,5 +350,21 @@ $( ".fotoAjaxKo" ).mouseleave(function() {
     $( this ).children().addClass("d-none");
 
 });
+
+
+$(".fileupload").change(function(e) {
+    let filename;
+    let formData = new FormData();
+    formData.append("file", e.target.files[0]);
+    let fotoPadre = $(e.target).parent().parent();
+    console.log(formData);//Datos de la foto para enviar a ajax
+
+
+    filename = e.target.files[0].name;
+    fotoPadre.removeClass("fotoAjaxKo");
+    fotoPadre.addClass("fotoAjaxOk");
+    fotoPadre.children().remove();
+    fotoPadre.append($('<p class="p-1 pe-4 ps-2 text-white mb-auto align-self-end editarFoto d-none">Eliminar</p> '));
+});
 //---------------------------------------------
 //JS ajax para eliminar fotos o subirlas
