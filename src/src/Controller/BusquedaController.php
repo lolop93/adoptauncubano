@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Repository\LikesRepository;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use Psr\Container\ContainerInterface;
 use SunCat\MobileDetectBundle\DeviceDetector\MobileDetector;
@@ -18,11 +19,22 @@ class BusquedaController extends AbstractController
     public const PAGINATOR_PER_PAGE = 5;
 
     #[Route('/busqueda', name: 'busqueda', methods: ['GET','POST'])]
-    public function index(MobileDetector $pantalla, Request $request): Response
+    public function index(MobileDetector $pantalla, Request $request, LikesRepository $likesRepository): Response
     {
         $login = $this->get('security.token_storage')->getToken()->getUser();
         $query = $request->query->get('busqueda');
         $offset = max(0, $request->query->getInt('offset', 0));
+        $likes = $likesRepository->findAll();
+        $likesRecibidos = $login->getLikesRecibidos();
+        $likesDados = $login->getLikesDados();
+
+        if($likesDados->count() > 0){//comprobamos que ha dado me gusta a alguien al menos
+            foreach ($likesDados as $likesDado){
+                $likesTotales[]= $likesDado->getLikesTo()->getId(); //los Likes dados son likes en los que $likesTo es el otro usuario
+            }
+        }else{//Si tampoco le ha dado me gusta a nadie
+            $likesTotales = array(); //creamos un array vacio
+        }
 
         if ($request->isMethod('GET') || $request->isMethod('POST')) {
 
@@ -43,7 +55,8 @@ class BusquedaController extends AbstractController
                     'login' => $login,
                     'resultados' => $paginator,
                     'previous' => $offset - self::PAGINATOR_PER_PAGE,
-                    'next' => min(count($paginator), $offset + self::PAGINATOR_PER_PAGE)
+                    'next' => min(count($paginator), $offset + self::PAGINATOR_PER_PAGE),
+                    'likesTotales' => $likesTotales,
                 ]);
             } else {
                 return $this->render('busqueda/index.html.twig', [
@@ -52,7 +65,8 @@ class BusquedaController extends AbstractController
                     'login' => $login,
                     'resultados' => $paginator,
                     'previous' => $offset - self::PAGINATOR_PER_PAGE,
-                    'next' => min(count($paginator), $offset + self::PAGINATOR_PER_PAGE)
+                    'next' => min(count($paginator), $offset + self::PAGINATOR_PER_PAGE),
+                    'likesTotales' => $likesTotales,
                 ]);
 
             }
@@ -63,12 +77,14 @@ class BusquedaController extends AbstractController
                         'query' => $query,
                         'request' => $request,
                         'login' => $login,
+                        'likesTotales' => $likesTotales,
                     ]);
                 } else {
                     return $this->render('busqueda/index.html.twig', [
                         'query' => $query,
                         'request' => $request,
                         'login' => $login,
+                        'likesTotales' => $likesTotales,
                     ]);
                 }
             }
