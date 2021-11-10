@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Galeria;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -47,6 +49,33 @@ class GaleriaController extends AbstractController
 
             return new JsonResponse(['idFoto'=>$idFoto,'galeria'=>$galeria,'foto'=>$foto,'pathFotoDefault'=>$pathFotoDefault]);//devolvemos  si ha tenido exito
 
+        }
+        else{
+            throw new Exception("Holi :)");
+        }
+    }
+
+    /**
+     * @Route("/galeria/upload", name="galeriaUpload", options={"expose"=true})
+     */
+    public function uploadFoto(Request $request): Response
+    {
+        if($request->isXMLHttpRequest()){
+
+            $user = $this->getUser();
+            $foto = $request->files->get('file');
+            $filename = md5(uniqid()).'.'.$foto->guessExtension();
+
+            if($user->getGaleria()){
+                return new JsonResponse();
+            }else{
+                $nuevaGaleria = new Galeria();
+                return new JsonResponse();
+            }
+
+        }
+        else{
+            throw new Exception("Holi :)");
         }
     }
 }

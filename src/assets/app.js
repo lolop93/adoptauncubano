@@ -329,11 +329,11 @@ $( document ).ready(function(){
 
 $("div").mouseenter(function(){
     if($(this).is(".fotoAjaxOk")) {
-        console.log("hoverOk Enter");
+        //console.log("hoverOk Enter");
         $( this ).children(".eliminarFoto").removeClass("d-none");
     }
     else if($(this).is(".fotoAjaxKo")){
-        console.log("hoverKo Enter");
+        //console.log("hoverKo Enter");
         $( this ).children().removeClass("d-none");
         $( this ).children().addClass("d-flex");
     }
@@ -341,30 +341,49 @@ $("div").mouseenter(function(){
 
 $("div").mouseleave(function(){
     if($(this).is(".fotoAjaxOk")) {
-        console.log("hoverOk Leave");
+        //console.log("hoverOk Leave");
         $( this ).children(".eliminarFoto").addClass("d-none");
     }
     else if($(this).is(".fotoAjaxKo")){
-        console.log("hoverKo Leave");
+        //console.log("hoverKo Leave");
         $( this ).children().addClass("d-none");
     }
 });
 
 //Ajax para subir la foto
 $(".fileupload").change(function(e) {
-    let filename;
+
+    const file = e.target.files[0];
     let formData = new FormData();
     formData.append("file", e.target.files[0]);
 
-    let fotoPadre = $(e.target).parent().parent();
-    console.log(formData);//Datos de la foto para enviar a ajax
+    const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];//comprobamos que es una imagen
 
+    if (validImageTypes.includes(file['type'])) {
+        let fotoPadre = $(e.target).parent().parent();
+        let filename = e.target.files[0].name;//Nombre del archivo
 
-    filename = e.target.files[0].name;//Nombre del archivo
-    fotoPadre.removeClass("fotoAjaxKo");
-    fotoPadre.addClass("fotoAjaxOk");
-    fotoPadre.children().remove();
-    fotoPadre.append($('<p class="p-1 pe-4 ps-2 text-white mb-auto align-self-end eliminarFoto d-none">Eliminar</p> '));
+        $.ajax({
+            type: "POST",
+            url: "/galeria/upload",
+            data: formData,
+            async:true,
+            processData: false,
+            contentType: false,
+            cache: false,
+            success: function(data)
+            {
+                fotoPadre.removeClass("fotoAjaxKo");
+                fotoPadre.addClass("fotoAjaxOk");
+                fotoPadre.children().remove();
+                fotoPadre.append($('<p class="p-1 pe-4 ps-2 text-white mb-auto align-self-end eliminarFoto d-none">Eliminar</p> '));
+            }
+        });
+    }
+    else{
+        console.log("No trolles campeon");
+    }
+
 });
 
 //Ajax para eliminar la foto
