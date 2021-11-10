@@ -6,41 +6,39 @@
 
 
 <div class="cuerpo">
-    <div id="carouselExampleSlidesOnly" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="1" data-bs-touch="true" style=" justify-items: center; width: 100%" >
+    <div id="carouselExampleSlidesOnly" class="carousel slide carousel" data-bs-ride="carousel" data-bs-touch="true" data-bs-interval="false" style=" justify-items: center;" >
         <div class="carousel-inner">
 
+            {% if users|length > 0 %}
+               {% for user in users|slice(0,99) %}
+                    <div class="carousel-item {{ loop.first ? 'active' : '' }}">
+                        <div class="pplCard ">
+                            <div class="">
 
-            {% for i in 0..1 %} {# Creamos tantos slides como queramos de 6 en 6 #}
-                {% set cont = 0 %} {#  contador creado para aumentar en 6 el rango del slice del for de usuarios pero aun no hay suficientes usuarios #}
-                <div class="carousel-item {{ i == 0 ? 'active' : '' }}">
-                    <div class="pplCard ">
-                        {% if users|length > 0 %}
-                            {% for user in users|slice(0+i, 1) %}
-
-                                <div class="">
-
-                                   <div class="fotoPerfil" style="background-image:  url({{  user.galeria ? asset('images/Perfiles/' ~ user.galeria.getFotoPerfil) : asset('images/fotodefecto.png') }}); background-size: cover;">
-                                       <div class="infoCard">
-                                           <h1>{{ user.username }}, Edad </h1>
-                                       </div>
-                                   </div>
-
-                                        <div class="base">
-                                            <i class="small bi bi-x-lg"></i>
-                                            <div class="likeContainer"><i class="big bi bi-heart-fill {{   user.id in likesTotales ? 'matchOk' : 'matchKo' }}" data-id-match="{{ user.id }}" ></i></div>
-                                            <i class="small bi bi-eye-fill"></i>
-
-                                        </div>
+                                <div class="fotoPerfil" style="background-image:  url({{  user.galeria ? asset('images/Perfiles/' ~ user.galeria.getFotoPerfil) : asset('images/fotodefecto.png') }}); background-size: cover; background-position: center">
+                                    <div class="infoCard">
+                                        <h1>{{ user.nombre ? user.nombre : 'noname' }} </h1>
                                     </div>
                                 </div>
 
-                            {% endfor %}
-                        {% else %}
-                            <div>No hay usuarios disponibles</div>
-                        {% endif %}
+                                <div class="base">
+                                    <i class="small bi bi-x-lg"></i>
+                                    <div class="likeContainer"><i class="big bi bi-heart-fill {{   user.id in likesTotales ? 'matchOk' : 'matchKo' }}" data-id-match="{{ user.id }}" ></i></div>
+                                    <i class="small bi bi-eye-fill"></i>
+
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
-                </div>
-            {% endfor %}
+               {% endfor %}
+            {% else %}
+                <div>No hay usuarios disponibles</div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
     <style>
 
         .matchOk{
@@ -118,6 +116,18 @@
         .base .bi-eye-fill{
             font-size: 30px;
             color: #CE5353;
+        }
+        .carousel-item-start, .carousel-item-end{
+            width: 75% !important;
+
+        }
+        .carousel-item-next, .carousel-item-end{
+            margin: 0 50px;
+
+        }
+        .active, .carousel-item-end{
+
+
         }
     </style>
 {% endblock %}
