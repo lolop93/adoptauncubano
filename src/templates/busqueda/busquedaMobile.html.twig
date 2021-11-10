@@ -43,42 +43,6 @@
                     <p id="cuerpoDescripción">{{  resultado.descripcion ? resultado.descripcion : "none" }}</p>
                 </div>
 
-                <div class="atributos">
-
-                    <div class="columna">
-                        <div class="fila">
-                            <h2>Ojos</h2>
-                            <p>{{ resultado.ojos ? resultado.ojos : "none" }}</p>
-                        </div>
-
-                        <div class="fila">
-                            <h2>Ciudad</h2>
-                            <p>{{ resultado.ciudad ? resultado.ciudad : "none" }}</p>
-                        </div>
-                    </div>
-
-                    <div class="columna">
-                        <div class="fila">
-                            <h2>Pelo</h2>
-                            <p>{{ resultado.color_pelo ? resultado.color_pelo : "none"}}</p>
-                        </div>
-
-
-
-                        <div class="fila">
-                            <h2>Profesión</h2>
-                            <p>{{ resultado.profesion ? resultado.profesion : "none"}}</p>
-                        </div>
-                    </div>
-
-                    <div class="columna">
-                        <div class="fila">
-                            <h2>Altura (cm)</h2>
-                            <p>{{ resultado.altura ? resultado.altura : "none" }}</p>
-                        </div>
-                    </div>
-
-                </div>
 
                 <div class="gustos">
                     <h2>Gustos</h2>
@@ -121,7 +85,7 @@
         }
         .tarjeta{
             width: 300px;
-            height: 700px;
+            height: 500px;
             background-color: #E1E1E1;
             margin-top: 50px;
         }
@@ -221,6 +185,7 @@
         }
         .gustos{
             display: flex;
+            justify-content: center;
             flex-direction: column;
             text-align: start;
             margin: 12px 17px;

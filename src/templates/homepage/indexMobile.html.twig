@@ -1,61 +1,56 @@
 {% extends 'baseMobile.html.twig' %}
 {% block title %}Inicio - Adopta un Cubano{% endblock %}
 {% block body %}
-    <div class="cuerpo">
-        <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false" data-bs-touch="true" style="display: flex; justify-items: center">
-            <div class="carousel-inner" >
-                <div class="carousel-item active">
 
-                    <div class="carousel-card">
-                        <div class="pplCard">
-                            <div class="fotoPerfil" style="background-image: url({{ asset('images/Perfiles/pexels-olya-prutskova-7121391.jpg') }}); background-size: cover ">
-                                <div class="infoCard"><h1>María, 26</h1></div>
-                            </div>
-                            <div class="base">
-                                <i class="small bi bi-x-lg"></i>
-                                <div class="likeContainer"><i class="big bi bi-suit-heart-fill"></i></div>
-                                <i class="bi bi-eye-fill"></i>
-                            </div>
-                        </div>
+
+
+
+<div class="cuerpo">
+    <div id="carouselExampleSlidesOnly" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="1" data-bs-touch="true" style=" justify-items: center; width: 100%" >
+        <div class="carousel-inner">
+
+
+            {% for i in 0..1 %} {# Creamos tantos slides como queramos de 6 en 6 #}
+                {% set cont = 0 %} {#  contador creado para aumentar en 6 el rango del slice del for de usuarios pero aun no hay suficientes usuarios #}
+                <div class="carousel-item {{ i == 0 ? 'active' : '' }}">
+                    <div class="pplCard ">
+                        {% if users|length > 0 %}
+                            {% for user in users|slice(0+i, 1) %}
+
+                                <div class="">
+
+                                   <div class="fotoPerfil" style="background-image:  url({{  user.galeria ? asset('images/Perfiles/' ~ user.galeria.getFotoPerfil) : asset('images/fotodefecto.png') }}); background-size: cover;">
+                                       <div class="infoCard">
+                                           <h1>{{ user.username }}, Edad </h1>
+                                       </div>
+                                   </div>
+
+                                        <div class="base">
+                                            <i class="small bi bi-x-lg"></i>
+                                            <div class="likeContainer"><i class="big bi bi-heart-fill {{   user.id in likesTotales ? 'matchOk' : 'matchKo' }}" data-id-match="{{ user.id }}" ></i></div>
+                                            <i class="small bi bi-eye-fill"></i>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            {% endfor %}
+                        {% else %}
+                            <div>No hay usuarios disponibles</div>
+                        {% endif %}
                     </div>
                 </div>
-
-                <div class="carousel-item">
-                    <div class="carousel-card";>
-                        <div class="pplCard">
-                            <div class="fotoPerfil" style="background-image: url({{ asset('images/Perfiles/pexels-bia-sousa-3226442.jpg') }}); background-size: cover;">
-                                <div class="infoCard"><h1>María, 26</h1></div>
-                            </div>
-                            <div class="base">
-                                <i class="small bi bi-x-lg"></i>
-                                <div class="likeContainer"><i class="big bi bi-suit-heart-fill"></i></div>
-                                <i class="small bi bi-chat-fill"></i>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="carousel-item" >
-                    <div class="carousel-card">
-                        <div class="pplCard">
-                            <div class="fotoPerfil" style="background-image: url({{ asset('images/Perfiles/pexels-pixabay-220453.jpg') }}); background-size: cover ">
-                                <div class="infoCard"><h1>María, 26</h1></div>
-                            </div>
-                            <div class="base">
-                                <i class="small bi bi-x-lg"></i>
-                                <div class="likeContainer"><i class="big bi bi-suit-heart-fill"></i></div>
-                                <i class="small bi bi-chat-fill"></i>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
+            {% endfor %}
     <style>
+
+        .matchOk{
+            color: #E86362;
+        }
+
+        .matchKo{
+            color: #858585;
+        }
+
         .cuerpo{
             padding: 25px 0;
         }
@@ -115,7 +110,6 @@
 
         .base .big{
             font-size: 42px;
-            color: whitesmoke;
         }
         .base .small{
             font-size: 26px;
@@ -133,6 +127,3 @@
 
 {% block cerrarvideo %}
 {% endblock %}
-
-
-

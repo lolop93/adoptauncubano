@@ -46,6 +46,7 @@ class HomepageController extends AbstractController
                 'galerias' => $galerias,
                 'atributos' => $atributos,
                 'login' => $login,
+                'likesTotales' => $likesTotales,
             ]);
         }else {
             return $this->render('homepage/index.html.twig', [

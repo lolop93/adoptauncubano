@@ -48,12 +48,12 @@
         {% for conversacion in conversaciones %}
             {%  if conversacion.id == request.get('id') %}
                 <div class="contenido">
-                    <p class="bg-white mx-auto p-3 rounded my-auto" style="font-size: 20px; height: 60px;">Esta conversacion no tiene mensajes</p>
+                    <p class="noMensaje">Esta conversacion no tiene mensajes</p>
                     <div class="formularioChat">
                         <form id="envioMensaje" autocomplete="off">
                             <input id="textoChat" type="textarea" placeholder="Escribe tu mensaje" autocomplete="nope" data-id-emisor="{{login.id}}" data-id-chat="{{ conversacion.id  }}" />
                             <input type="hidden"value="">
-                            <input id="btnEnviar" type="submit" value="Enviar" />
+                            <input id="btnEnviar" type="submit" value="↑" />
                         </form>
                     </div>
                 </div>
@@ -183,6 +183,18 @@
 
         #desplegableChatOn p{
             margin-bottom:20px ;
+        }
+
+        .noMensaje{
+            display: flex;
+            background-color: white;
+            align-items: center;
+            justify-content: center;
+            height: 40px;
+            width: 100%;
+            color: #CE5353;
+            margin: auto 0;
+            box-shadow: 0px 3px 17px 3px rgb(0 0 0 / 31%);
         }
 
     </style>
