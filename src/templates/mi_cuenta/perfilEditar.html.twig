@@ -36,13 +36,12 @@
 
 
 {% block fotoAjaxOk %}
-    <p class="p-1 pe-4 ps-2 text-white mb-auto align-self-end d-none editarFoto">Eliminar</p>
+    <p class="p-1 pe-4 ps-2 text-white mb-auto align-self-end d-none eliminarFoto" >Eliminar</p>
 
 {% endblock %}
 
 {% block fotoAjaxKo %}
     <div class="nofoto w-100 h-100 bg-white rounded d-none align-items-center d-flex flex-column">
-    <!-- <i class="bi bi-plus-square mx-auto mx-auto "></i>-->
         <input style="visibility:hidden;" class="w-100 fileupload" id="fileupload" type="file" name="fileupload" accept="image/x-png,image/gif,image/jpeg" />
         <label for="fileupload" class="btn"><i class="bi bi-plus-square mx-auto mx-auto "></i></label>
     </div>
@@ -80,7 +79,7 @@
         .descripcion{
             padding: 10px 15px 10px 0px !important;
         }
-        .editarFoto{
+        .eliminarFoto{
             background-color: #CE5353;
             border-top-left-radius: 360px;
             border-bottom-left-radius: 360px;

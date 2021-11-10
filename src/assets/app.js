@@ -328,43 +328,77 @@ $( document ).ready(function(){
 //---------------------------------------------
 
 $( ".fotoAjaxOk" ).mouseenter(function() {
-    console.log("hover Enter");
-    $( this ).children(".editarFoto").removeClass("d-none");
+    console.log("hoverOk Enter");
+    $( this ).children(".eliminarFoto").removeClass("d-none");
 });
 
 $( ".fotoAjaxOk" ).mouseleave(function() {
-    console.log("hover Leave");
-    $( this ).children(".editarFoto").addClass("d-none");
-
-
+    console.log("hoverOk Leave");
+    $( this ).children(".eliminarFoto").addClass("d-none");
 });
 
 $( ".fotoAjaxKo" ).mouseenter(function() {
-    console.log("hover Enter");
+    console.log("hoverKo Enter");
     $( this ).children().removeClass("d-none");
     $( this ).children().addClass("d-flex");
 });
 
 $( ".fotoAjaxKo" ).mouseleave(function() {
-    console.log("hover Leave");
+    console.log("hoverKo Leave");
     $( this ).children().addClass("d-none");
 
 });
 
-
+//Ajax para subir la foto
 $(".fileupload").change(function(e) {
     let filename;
     let formData = new FormData();
     formData.append("file", e.target.files[0]);
+
     let fotoPadre = $(e.target).parent().parent();
     console.log(formData);//Datos de la foto para enviar a ajax
 
 
-    filename = e.target.files[0].name;
+    filename = e.target.files[0].name;//Nombre del archivo
     fotoPadre.removeClass("fotoAjaxKo");
     fotoPadre.addClass("fotoAjaxOk");
     fotoPadre.children().remove();
-    fotoPadre.append($('<p class="p-1 pe-4 ps-2 text-white mb-auto align-self-end editarFoto d-none">Eliminar</p> '));
+    fotoPadre.append($('<p class="p-1 pe-4 ps-2 text-white mb-auto align-self-end eliminarFoto d-none">Eliminar</p> '));
+});
+
+//Ajax para eliminar la foto
+$('.eliminarFoto').on( "click", function() {
+
+    let padre = $(this).parent();
+    var nombreFoto = $( this ).parent().data("nombreFoto");
+    var idFoto = $( this ).parent().attr('id');
+
+    $.ajax({
+        type: "POST",
+        url: "/galeria/delete",
+        data: {
+            foto:nombreFoto,
+            idFoto:idFoto,
+        },
+        async:true,
+        dataType: "json",
+        success: function(data)
+        {
+            console.log(data);
+            console.log(padre);
+            padre.css("background-image", "url("+data.pathFotoDefault+"fotodefecto.png)");
+            padre.removeAttr('data-nombre-foto');
+            padre.removeClass("fotoAjaxOk");
+            padre.addClass("fotoAjaxKo");
+            padre.children().remove();
+            padre.append(
+                $('    <div class="nofoto w-100 h-100 bg-white rounded d-none align-items-center d-flex flex-column">\n' +
+                    '        <input style="visibility:hidden;" class="w-100 fileupload" id="fileupload" type="file" name="fileupload" accept="image/x-png,image/gif,image/jpeg" />\n' +
+                    '        <label for="fileupload" class="btn"><i class="bi bi-plus-square mx-auto mx-auto "></i></label>\n' +
+                    '    </div>')
+            );
+        }
+    });
 });
 //---------------------------------------------
 //JS ajax para eliminar fotos o subirlas
