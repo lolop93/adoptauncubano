@@ -327,26 +327,27 @@ $( document ).ready(function(){
 //JS ajax para eliminar fotos o subirlas
 //---------------------------------------------
 
-$( ".fotoAjaxOk" ).mouseenter(function() {
-    console.log("hoverOk Enter");
-    $( this ).children(".eliminarFoto").removeClass("d-none");
+$("div").mouseenter(function(){
+    if($(this).is(".fotoAjaxOk")) {
+        console.log("hoverOk Enter");
+        $( this ).children(".eliminarFoto").removeClass("d-none");
+    }
+    else if($(this).is(".fotoAjaxKo")){
+        console.log("hoverKo Enter");
+        $( this ).children().removeClass("d-none");
+        $( this ).children().addClass("d-flex");
+    }
 });
 
-$( ".fotoAjaxOk" ).mouseleave(function() {
-    console.log("hoverOk Leave");
-    $( this ).children(".eliminarFoto").addClass("d-none");
-});
-
-$( ".fotoAjaxKo" ).mouseenter(function() {
-    console.log("hoverKo Enter");
-    $( this ).children().removeClass("d-none");
-    $( this ).children().addClass("d-flex");
-});
-
-$( ".fotoAjaxKo" ).mouseleave(function() {
-    console.log("hoverKo Leave");
-    $( this ).children().addClass("d-none");
-
+$("div").mouseleave(function(){
+    if($(this).is(".fotoAjaxOk")) {
+        console.log("hoverOk Leave");
+        $( this ).children(".eliminarFoto").addClass("d-none");
+    }
+    else if($(this).is(".fotoAjaxKo")){
+        console.log("hoverKo Leave");
+        $( this ).children().addClass("d-none");
+    }
 });
 
 //Ajax para subir la foto
