@@ -355,7 +355,7 @@ $(".fileupload").change(function(e) {
 
     const file = e.target.files[0];
     let formData = new FormData();
-    formData.append("file", e.target.files[0]);
+    formData.append("file",file);
 
     const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];//comprobamos que es una imagen
 
@@ -373,10 +373,12 @@ $(".fileupload").change(function(e) {
             cache: false,
             success: function(data)
             {
+                console.log(data.error ? data.error : data);
                 fotoPadre.removeClass("fotoAjaxKo");
                 fotoPadre.addClass("fotoAjaxOk");
                 fotoPadre.children().remove();
                 fotoPadre.append($('<p class="p-1 pe-4 ps-2 text-white mb-auto align-self-end eliminarFoto d-none">Eliminar</p> '));
+                fotoPadre.css("background-image", "url("+ data.pathFoto + data.nombreFoto+")");
             }
         });
     }

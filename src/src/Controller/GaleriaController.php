@@ -65,12 +65,49 @@ class GaleriaController extends AbstractController
             $user = $this->getUser();
             $foto = $request->files->get('file');
             $filename = md5(uniqid()).'.'.$foto->guessExtension();
+            $pathFoto = $request->getBasePath() .'/images/Perfiles/';
+
+            $foto-> move($pathFoto,$filename);
+
+            //move_uploaded_file($_FILES['file']['tmp_name'],$pathFoto.$filename);
+
+
 
             if($user->getGaleria()){
-                return new JsonResponse();
+
+                $galeriaUser = $user->getGaleria()->getGaleria();
+                array_push($galeriaUser, $filename);
+                $user->getGaleria()->setGaleria($galeriaUser);
+                $entityManager = $this->getDoctrine()->getManager();
+
+                try {//Intentamos subir la foto
+                    $entityManager->persist($user);
+                    $entityManager->flush();
+
+                } catch (\Exception $e) {//Si falla capturamos la excepcion y la manejamos pa que no nos la lie
+                    $error = '### Message ### \n'.$e->getMessage().'\n### Trace ### \n'.$e->getTraceAsString();
+                    return new JsonResponse(['error'=>$error,'subido'=>'ko']);//Devolvemos el error en json a jquery
+                }
+
+                return new JsonResponse(['subido'=>'ok','urlFoto'=> $filename,'pathFoto'=>$pathFoto,'nombreFoto'=>$filename,"n" => $_FILES['file']['tmp_name']]);
             }else{
                 $nuevaGaleria = new Galeria();
-                return new JsonResponse();
+                $nuevaGaleria->setGaleria(array($filename));
+                $user->setGaleria($nuevaGaleria);
+                $entityManager = $this->getDoctrine()->getManager();
+
+                try {//Intentamos subir la foto
+                    $entityManager->persist($user);
+                    $entityManager->persist($nuevaGaleria);
+                    $entityManager->flush();
+
+                } catch (\Exception $e) {//Si falla capturamos la excepcion y la manejamos pa que no nos la lie
+                    $error = '### Message ### \n'.$e->getMessage().'\n### Trace ### \n'.$e->getTraceAsString();
+                    $this->container->get('logger')->critical($error);
+                    return new JsonResponse(['error'=>$error,'subido'=>'ko']);//Devolvemos el error en json a jquery
+                }
+
+                return new JsonResponse(['subido'=>'ok','urlFoto'=> $filename]);
             }
 
         }
