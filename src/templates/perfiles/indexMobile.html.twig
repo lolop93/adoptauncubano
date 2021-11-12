@@ -1,0 +1,306 @@
+{% extends 'baseMobile.html.twig' %}
+
+{% block title %}Mi perfil - Adopta un Cubano{% endblock %}
+
+{% block body %}
+
+    {%  if user is not null %}
+        <div class="cuerpo">
+
+            <div class="encabezado">
+                <h1>Perfil</h1>
+            </div>
+
+
+
+            <div class="fotoPerfil">
+                {% if user.galeria and user.galeria.getFotoPerfil %}
+                    <div class="lafotoensi" style="background-image: url({{ asset('images/Perfiles/' ~ user.galeria.getFotoPerfil) }}); background-size: cover "></div>
+                {% else %}
+                    <p>Sin foto de perfil</p>
+                {% endif %}
+            </div>
+
+            {%  block formstart %}
+
+            {% endblock %}
+
+            <div class="headInfo">
+                <h1 class="nombre">{{ user.nombre ? user.nombre : 'Sin nombre'}}</h1>
+                {% block nacionalidad %}<h2 class="titulo">{{  user.atributos and user.atributos.getNacionalidad ? user.atributos.getNacionalidad|country_name  : "Nacionalidad no definida" }}</h2>{% endblock %}
+                {% block edad %}<h3 class="titulo">Edad</h3>{% endblock %}
+            </div>
+
+            <div class="descripcion ">
+                <p class="titulo">Descripcion</p>
+                {% block descripcion %}
+                    <p> {{  user.atributos and user.atributos.getDescripcion ? user.atributos.getDescripcion : "Sin descripcion" }}</p>
+                {% endblock %}
+            </div>
+
+            <div class="galeria">
+                <div class="gridGaleria">
+                    <p class="titulo">{{ user.galeria ? 'Galería' : 'Sin galería' }}</p>
+                    {% if user.galeria %}
+                        {% if user.galeria.getFotoPerfil %}
+                            <div class="imagenUsuario d-flex flex-column justify-content-end" style="background-image: url({{ asset('images/Perfiles/' ~ user.galeria.getFotoPerfil) }});">
+                                <p class="p-1 pe-4 ps-2 text-white mb-2 align-self-start">Foto Perfil</p>
+                            </div>
+                        {% else %}
+                            <div class="imagenUsuario  " style="background-image: url({{ asset('images/fotodefecto.png') }});"></div>
+                        {% endif %}
+                        {% for i in 0..4 %}
+                            {% if i < user.galeria.getGaleria|length %}
+                                <div class="imagenUsuario" style="background-image: url({{ asset('images/Perfiles/' ~ user.galeria.getGaleria[i]) }});"></div>
+                            {% else %}
+                                <div class="imagenUsuario" style="background-image: url({{ asset('images/fotodefecto.png') }});"></div>
+                            {% endif %}
+                        {% endfor %}
+
+                    {% else %}
+
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="listaAtributos">
+                <div class="atributo">
+                    <h6 class="titulo ">Ojos</h6>
+                    {% block ojos %}<p class="atributos ">{{  user.atributos and user.atributos.getOjos ? user.atributos.getOjos : "Color de ojos no definido" }}</p>{% endblock %}
+                </div>
+
+                <div class="atributo">
+                    <h6 class="titulo ">Pelo</h6>
+                    {% block pelo %}<p class="atributos ">{{  user.atributos and user.atributos.getColorPelo ? user.atributos.getColorPelo : "Color de pelo no definido" }}</p>{% endblock %}
+                </div>
+
+                <div class="atributo">
+                    <h6 class="titulo ">Profesión</h6>
+                    {% block profesion %}<p class="atributos ">{{  user.atributos and user.atributos.getProfesion ? user.atributos.getProfesion : "Profesión no definida" }}</p>{% endblock %}
+                </div>
+
+                <div class="atributo">
+                    <h6 class="titulo ">Ciudad</h6>
+                    {% block ciudad %}<p class="atributos ">{{  user.atributos and user.atributos.getCiudad ? user.atributos.getCiudad : "Ciudad no definida" }}</p>{% endblock %}
+                </div>
+
+                <div class="atributo">
+                    <h6 class="titulo">Altura (cm)</h6>
+                    {% block altura %}<p class="atributos ">{{  user.atributos and user.atributos.getAltura ? user.atributos.getAltura : "Altura no definida" }}</p>{% endblock %}
+                </div>
+
+                <div class="atributo">
+                    <h6 class="titulo">Peso (kg)</h6>
+                    {% block peso %}<p class="atributos ">{{  user.atributos and user.atributos.getPeso ? user.atributos.getPeso : "Peso no definido" }}</p>{% endblock %}
+                </div>
+
+                <div class="gustos atributo">
+                    <h6 class="titulo ">Gustos</h6>
+                    {% block gustos %}<p class="atributos ">{{  user.atributos and user.atributos.getGustos ? user.atributos.getGustos|join(', ') : "Gustos no definidos" }}</p>{% endblock %}
+                </div>
+
+
+            </div>
+            {%  block formend %}
+
+            {% endblock %}
+    {% endif %}
+
+    </div>
+
+
+
+
+    <style>
+        .cuerpo{
+            width: 100%;
+            height: 100%;
+            background-color: whitesmoke;
+        }
+        .botonEditar{
+            position: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            right: 10px;
+            top: 70px;
+            width: 50px;
+            height: 50px;
+            border-radius: 100px;
+            background-color: whitesmoke;
+            box-shadow: 0px 3px 17px 3px rgb(0 0 0 / 31%);
+        }
+        .botonEditar i{
+            color: #CE5353 ;
+            font-size: 28px;
+        }
+        .encabezado{
+            position: relative;
+            width: 100%;
+            height: 75px;
+            background-color: #CE5353;
+            display: flex;
+            align-items: center;
+            padding-left: 20px;
+            box-shadow: -2px 4px 6px -1px rgb(0 0 0 / 60%);
+        }
+        .encabezado h1{
+            margin: 0;
+            color: white;
+            font-size: 36px;
+            font-weight: bold;
+        }
+        .fotoPerfil{
+            width: 100%;
+            height: 400px;
+            margin-top: 35px;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 20px;
+        }
+        .lafotoensi{ {# esto es un placeholder, consultar html #}
+            width: 23em;
+            height: 25em;
+            border-radius: 15px;
+            box-shadow: -2px 4px 6px -1px rgb(0 0 0 / 60%);
+            background-position: center;
+        }
+        .headInfo{
+            margin-top: 35px;
+            padding:0 0 30px 20px;
+            border: solid 0px;
+            box-shadow: -2px 4px 8px -5px rgb(0 0 0 / 31%);
+        }
+
+        .headInfo .nombre{
+            font-size: 48px;
+            color:#CE5353;
+            font-weight: bolder;
+        }
+
+        .atributo{
+            padding-left: 30px;
+        }
+        .atributo p{
+            font-size: 18px;
+        }
+        .titulo, .headInfo label{
+            font-size: 24px;
+            margin: 20px 0 5px 0;
+            font-weight: 600;
+            color: #CE5353;
+
+        }
+        .descripcion{
+            margin-top: 35px;
+            padding: 0 0 30px 20px;
+            box-shadow: -2px 4px 8px -5px rgb(0 0 0 / 31%);
+        }
+
+        .descripcion p{
+            font-size: 18px;
+        }
+
+        .gustos{
+            margin-bottom: 20px;
+        }
+        .galeria{
+            grid-column: 1/5;
+            display: grid;
+            grid-template-columns: 1fr ;
+            margin-top: 35px;
+            padding: 0 0 30px 0;
+            box-shadow: -2px 4px 8px -5px rgb(0 0 0 / 31%);
+
+        }
+        .galeria p{
+            border-top-right-radius: 100px;
+            border-bottom-right-radius: 100px;
+            justify-self: start;
+
+        }
+
+        .gridGaleria{
+            display: grid;
+            grid-template-areas:
+                "foto foto foto"
+                "foto foto foto";
+
+            justify-items: center;
+            place-content: center;
+            gap: 20px;
+
+        }
+        .imagenUsuario{
+            width:75px;
+            height: 75px;
+            background-position: center;
+            background-size: cover;
+            border-radius: 10px;
+        }
+
+        select{
+            max-width: 260px;
+            padding: 5px;
+            margin-right: 10px;
+        }
+        select, input{
+            border-radius: 100px;
+            outline: none;
+            border: none;
+            box-shadow: 2px 2px 12px -5px rgb(0 0 0 / 31%);
+
+        }
+
+        textarea{
+            border-radius: 10px;
+            border: none;
+            box-shadow: 2px 2px 12px -5px rgb(0 0 0 / 31%);
+            padding: 15px;
+        }
+
+        #user_attributes_form_gustos label{
+            align-self: center;
+            justify-self: left;
+            background-color: #CE5353;
+            padding: 5px;
+            border-radius: 100px;
+            color: whitesmoke;
+            font-size: 11px;
+        }
+
+        #user_attributes_form_gustos input{
+            align-self: center;
+            justify-self: right;
+        }
+        #user_attributes_form_gustos{
+            width: 90%;
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            grid-column-gap:5px;
+            grid-row-gap: 10px;
+            margin-left: -10px;
+            margin-bottom: 50px;
+        }
+        #user_attributes_form_submit{
+            height: 60px;
+            width: 60px;
+            background-color: #CE5353;
+            color: whitesmoke;
+            border-radius: 100px;
+            border: none;
+            position: fixed;
+            right: 10px;
+            top: 130px;
+            box-shadow: 0px 3px 17px 3px rgb(0 0 0 / 31%);
+        }
+
+
+    </style>
+{% endblock %}
+{% block abrirvideo %}
+{% endblock %}
+
+{% block cerrarvideo %}
+{% endblock %}

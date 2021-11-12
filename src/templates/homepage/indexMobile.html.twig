@@ -13,18 +13,18 @@
                {% for user in users|slice(0,99) %}
                     <div class="carousel-item {{ loop.first ? 'active' : '' }}">
                         <div class="pplCard ">
+
                             <div class="">
 
                                 <div class="fotoPerfil" style="background-image:  url({{  user.galeria ? asset('images/Perfiles/' ~ user.galeria.getFotoPerfil) : asset('images/fotodefecto.png') }}); background-size: cover; background-position: center">
+                                    <a href="{{ path('perfiles',{id:user.id}) }}"><div class="ojo"></div></a>
                                     <div class="infoCard">
                                         <h1>{{ user.nombre ? user.nombre : 'noname' }} </h1>
                                     </div>
                                 </div>
 
-                                <div class="base">
-                                    <i class="small bi bi-x-lg"></i>
-                                    <div class="likeContainer"><i class="big bi bi-heart-fill {{   user.id in likesTotales ? 'matchOk' : 'matchKo' }}" data-id-match="{{ user.id }}" ></i></div>
-                                    <i class="small bi bi-eye-fill"></i>
+                                <div class="base" style="display: flex; align-items: center; justify-content: center    ">
+                                   <i class="big bi bi-heart-fill {{   user.id in likesTotales ? 'matchOk' : 'matchKo' }}" data-id-match="{{ user.id }}" ></i>
 
                                 </div>
                             </div>
@@ -40,6 +40,25 @@
 </div>
 
     <style>
+        .ojo{
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            width: 61px;
+            height: 60px;
+            background-image: url("{{ asset('images/css_sprites.png') }}");
+            background-size: cover;
+            animation-name: sprite;
+            animation-duration: 0.6s;
+            animation-timing-function: steps(5);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes sprite{
+            100%{
+                background-position: -3750px;
+            }
+        }
 
         .matchOk{
             color: #E86362;
@@ -62,6 +81,13 @@
             display: block;
             background-color: whitesmoke;
             border-radius: 15px;
+        }
+        .bi-eye-fill{
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            color: white;
+            font-size: 32px;
         }
 
         .active{
@@ -126,7 +152,7 @@
 
         }
         .active, .carousel-item-end{
-
+            display: none;
 
         }
     </style>
