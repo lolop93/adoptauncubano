@@ -354,6 +354,7 @@ $("div").mouseleave(function(){
 $(".fileupload").change(function(e) {
 
     const file = e.target.files[0];
+    console.log(file);
     let formData = new FormData();
     formData.append("file",file);
 

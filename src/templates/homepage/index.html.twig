@@ -53,13 +53,9 @@
 
 {% block body %}
     {{ parent() }}
-    {{  dump() }}
 
-    <div class="contenedor">
-        <div class="card" style="border: none;width: 100%;height: 500px; position: relative;">
-            <video autoplay muted src="{{ asset('videos/Bananera') }}"  loop style="object-fit: cover; width: 100%; height: 100%;position: absolute"></video>
-        </div>
-    </div>
+
+
 
     <div class=" mt-5">
         <div id="carouselExampleFade" class="carousel slide carousel-fade " data-bs-ride="carousel">

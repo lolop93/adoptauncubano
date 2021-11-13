@@ -65,13 +65,10 @@ class GaleriaController extends AbstractController
             $user = $this->getUser();
             $foto = $request->files->get('file');
             $filename = md5(uniqid()).'.'.$foto->guessExtension();
-            $pathFoto = $request->getBasePath() .'/images/Perfiles/';
+            $pathFoto = $this->getParameter('kernel.project_dir') .'\\public\images\Perfiles\\';
+            $urlPhoto =  $request->getBasePath() .'/images/Perfiles/';
 
-            $foto-> move($pathFoto,$filename);
-
-            //move_uploaded_file($_FILES['file']['tmp_name'],$pathFoto.$filename);
-
-
+            $foto->move($pathFoto, $filename);
 
             if($user->getGaleria()){
 
@@ -89,7 +86,7 @@ class GaleriaController extends AbstractController
                     return new JsonResponse(['error'=>$error,'subido'=>'ko']);//Devolvemos el error en json a jquery
                 }
 
-                return new JsonResponse(['subido'=>'ok','urlFoto'=> $filename,'pathFoto'=>$pathFoto,'nombreFoto'=>$filename,"n" => $_FILES['file']['tmp_name']]);
+                return new JsonResponse(['subido'=>'ok','errores'=> $foto->getErrorMessage(),'pathFoto'=>$urlPhoto,'nombreFoto'=>$filename,"n" => $_FILES['file']['tmp_name']]);
             }else{
                 $nuevaGaleria = new Galeria();
                 $nuevaGaleria->setGaleria(array($filename));
