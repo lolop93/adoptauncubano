@@ -351,7 +351,9 @@ $("div").mouseleave(function(){
 });
 
 //Ajax para subir la foto
-$(".fileupload").change(function(e) {
+$(".fileupload").change(function (e) { uploadFoto(e); });
+
+function uploadFoto(e) {
 
     const file = e.target.files[0];
     console.log(file);
@@ -380,6 +382,7 @@ $(".fileupload").change(function(e) {
                 fotoPadre.children().remove();
                 fotoPadre.append($('<p class="p-1 pe-4 ps-2 text-white mb-auto align-self-end eliminarFoto d-none">Eliminar</p> '));
                 fotoPadre.css("background-image", "url("+ data.pathFoto + data.nombreFoto+")");
+                fotoPadre.children().bind( "click", deleteFoto);
             }
         });
     }
@@ -387,10 +390,12 @@ $(".fileupload").change(function(e) {
         console.log("No trolles campeon");
     }
 
-});
+}
 
 //Ajax para eliminar la foto
-$('.eliminarFoto').on( "click", function() {
+$('.eliminarFoto').on( "click",deleteFoto );
+
+function deleteFoto() {
 
     let padre = $(this).parent();
     var nombreFoto = $( this ).parent().data("nombreFoto");
@@ -420,8 +425,9 @@ $('.eliminarFoto').on( "click", function() {
                     '        <label for="fileupload" class="btn"><i class="bi bi-plus-square mx-auto mx-auto "></i></label>\n' +
                     '    </div>')
             );
+            padre.children().children().bind( "change", function (e) { uploadFoto(e); });
         }
     });
-});
+}
 //---------------------------------------------
 //JS ajax para eliminar fotos o subirlas
