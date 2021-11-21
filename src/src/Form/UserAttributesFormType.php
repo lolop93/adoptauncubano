@@ -32,7 +32,7 @@ class UserAttributesFormType extends AbstractType
     {
 
         $login = $this->token->getToken()->getUser();
-        $fech_nac = ($login->getAtributos() && $login->getAtributos()->getFechaNac() ? $login->getAtributos()->getFechaNac()->format('Y-m-d') : '');//Formateamos la fecha de Datetime to String Si existe sino pasamos vacio
+        $fech_nac = ($login->getAtributos() && $login->getAtributos()->getFechaNac() ? $login->getAtributos()->getFechaNac()->format('Y-m-d') : '');//Formateamos la fecha de Datetime to String si existe sino pasamos vacio
         $gustos = ($login->getAtributos() && $login->getAtributos()->getGustos() ? $login->getAtributos()->getGustos() : array());
 
         $builder
@@ -98,8 +98,21 @@ class UserAttributesFormType extends AbstractType
                 'attr' => ['class' => 'tinymce', 'maxlength' => 255],
                 'row_attr' => ['class' => 'text-editor'],
             ])
-            //->add('buscaGenero')
-            //->add('sexo')
+            ->add('sexo',ChoiceType::class, [
+                'choices'  => [
+                    'Chico' => 'chico',
+                    'Chica' => 'chica',
+                ],
+                'placeholder' => 'Elige sexo',
+            ])
+            ->add('buscaGenero',ChoiceType::class, [
+                'choices'  => [
+                    'Chicos' => 'chicos',
+                    'Chicas' => 'chicas',
+                    'Ambos Generos' => 'ambos',
+                ],
+                'placeholder' => 'Que buscas',
+            ])
             ->add('submit',SubmitType::class)
         ;
     }

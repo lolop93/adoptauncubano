@@ -162,6 +162,17 @@
             <h6 class="atributos m-2">PESO (kg)</h6>
             {% block peso %}<p class="atributos m-2">{{  login.atributos and login.atributos.getPeso ? login.atributos.getPeso : "Peso no definido" }}</p>{% endblock %}
         </div>
+
+        <div>
+            <h6 class="atributos m-2">SEXO</h6>
+            {% block sexo %}<p class="atributos m-2">{{  login.atributos and login.atributos.getSexo ? login.atributos.getSexo : "Sexo no definido" }}</p>{% endblock %}
+        </div>
+
+        <div>
+            <h6 class="atributos m-2">BUSCA</h6>
+            {% block buscaGenero %}<p class="atributos m-2">{{  login.atributos and login.atributos.getBuscaGenero ? login.atributos.getBuscaGenero : "Aun no sabe que busca" }}</p>{% endblock %}
+        </div>
+
         <div class="gustos">
             <h6 class="atributos m-2">GUSTOS</h6>
             {% block gustos %}<p class="atributos m-2">{{  login.atributos and login.atributos.getGustos ? login.atributos.getGustos|join(', ') : "Gustos no definidos" }}</p>{% endblock %}
