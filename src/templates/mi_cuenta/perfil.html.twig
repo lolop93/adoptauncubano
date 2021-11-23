@@ -8,6 +8,9 @@
 
 
     <style>
+        .grid-menu{
+            margin-top: 50px;
+        }
         .gridContenido{
             display: grid;
             grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -29,6 +32,9 @@
         }
         .info h1{
             font-weight: bolder;
+        }
+        .info p{
+            color: black;
         }
          .editarPerfil{
              display: flex;
@@ -99,6 +105,10 @@
             }
         }
 
+        h6{
+            color: #CE5353;
+            font-weight: bolder;
+        }
 
 
     </style>
@@ -112,7 +122,7 @@
 
 {% block contenido %}
     <div class="gridContenido">
-        <div class="fotoGrid mt-4 mx-auto">
+        <div class="fotoGrid mt-3 mx-auto">
             {% if login.galeria and login.galeria.getFotoPerfil %}
                 <div class="imagenUsuario m-2 " style="background-image: url({{ asset('images/Perfiles/' ~ login.galeria.getFotoPerfil) }});"></div>
             {% else %}
@@ -137,7 +147,7 @@
         </div>
 
 
-        {% block editarperfil %} <div class="editarPerfil"><a href=" {{ path('editarperfil') }}"><p class="title p-2">Editar perfil</p></a></div> {% endblock %}
+        {% block editarperfil %} <div class="editarPerfil"><a href=" {{ path('editarperfil') }}" style="text-decoration: none; color: white"><p class="title p-2" >Editar perfil</p></a></div> {% endblock %}
         <div>
             <h6 class="atributos m-2">OJOS</h6>
             {% block ojos %}<p class="atributos m-2">{{  login.atributos and login.atributos.getOjos ? login.atributos.getOjos : "Color de ojos no definido" }}</p>{% endblock %}
@@ -179,7 +189,7 @@
         </div>
 
         <div class="descripcion p-4">
-            <p style="color: #CE5353; font-size: 18px;">Descripcion</p>
+            <p style="color: #CE5353; font-size: 18px;font-weight: bolder">Descripcion</p>
             {% block descripcion %}
             <p> {{  login.atributos and login.atributos.getDescripcion ? login.atributos.getDescripcion : "Sin descripcion" }}</p>
             {% endblock %}

@@ -1,6 +1,6 @@
 {% extends '/mi_cuenta/perfil.html.twig' %}
 
-{% block editarperfil %} <div class="editarPerfil"><a href=" {{ path('perfil') }}"><p class="title p-2">Volver al perfil</p></a></div>  {% endblock %}
+{% block editarperfil %} <div class="editarPerfil"><a href=" {{ path('perfil') }}" style="text-decoration: none; color: white"><p class="title p-2">Volver al perfil</p></a></div>  {% endblock %}
 
 {%  block formstart %}
     {{ form_start(form_atributos, {'attr': {'class': 'formulario'}}) }}
@@ -102,6 +102,23 @@
         .nofoto{
             cursor: pointer;
         }
+
+        select{
+            max-width: 260px;
+            padding: 5px;
+            margin-right: 10px;
+        }
+        select, input{
+            margin-bottom: 10px;
+            border-radius: 100px;
+            outline: none;
+            border: none;
+            box-shadow: 2px 2px 12px -5px rgb(0 0 0 / 31%);
+        }
+        input{
+            padding-left: 5px;
+        }
+
 
 </style>
 

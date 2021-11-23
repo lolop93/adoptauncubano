@@ -17,7 +17,7 @@
                             <div class="">
 
                                 <div class="fotoPerfil" style="background-image:  url({{  user.galeria ? asset('images/Perfiles/' ~ user.galeria.getFotoPerfil) : asset('images/fotodefecto.png') }}); background-size: cover; background-position: center">
-                                    <a href="{{ path('perfiles',{id:user.id}) }}"><div class="ojo"></div></a>
+                                    <a href="{{ path('perfiles',{id:user.id}) }}"><i class="bi bi-eye-fill"></i></a>
                                     <div class="infoCard">
                                         <h1>{{ user.nombre ? user.nombre : 'noname' }} </h1>
                                     </div>
@@ -40,26 +40,6 @@
 </div>
 
     <style>
-        .ojo{
-            position: absolute;
-            top: 25px;
-            right: 25px;
-            width: 61px;
-            height: 60px;
-            background-image: url("{{ asset('images/css_sprites.png') }}");
-            background-size: cover;
-            animation-name: sprite;
-            animation-duration: 0.6s;
-            animation-timing-function: steps(5);
-            animation-iteration-count: infinite;
-        }
-
-        @keyframes sprite{
-            100%{
-                background-position: -3750px;
-            }
-        }
-
         .matchOk{
             color: #E86362;
         }
@@ -116,10 +96,9 @@
         .base{
             display: flex;
             width: 100%;
-            justify-content: space-between;
-            height: 90px;
             align-items: center;
-            padding: 0 35px;
+            justify-content: center;
+            height: 90px;
             border-radius:0px 0px 50px 50px;
         }
         .likeContainer{
@@ -133,16 +112,10 @@
         }
 
         .base .big{
-            font-size: 42px;
+            font-size: 64px;
         }
-        .base .small{
-            font-size: 26px;
-            color: #CE5353;
-        }
-        .base .bi-eye-fill{
-            font-size: 30px;
-            color: #CE5353;
-        }
+
+
         .carousel-item-start, .carousel-item-end{
             width: 75% !important;
 

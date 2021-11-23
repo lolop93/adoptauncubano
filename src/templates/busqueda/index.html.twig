@@ -6,7 +6,7 @@
 {{ parent() }}
 {{ dump() }}
 
-    <div class="mx-auto card gridBusqueda ">
+    <div class="mx-auto  gridBusqueda ">
     {% for resultado in resultados %}
 
         <div class="fila bg-white">
@@ -37,7 +37,6 @@
             <div class="res_gustos">
                 <h6 >GUSTOS</h6>
                 <p>{{ resultado.gustos ? resultado.gustos|join(', ') : "none" }}</p></div>
-            <div class="res_visita">Visitar</div>
             <div class="res_descripcion">
                 <h6 >DESCRIPCION</h6>
                 <p>{{  resultado.descripcion ? resultado.descripcion : "none" }}</p></div>
@@ -69,10 +68,12 @@
             row-gap: 30px;
             padding: 20px;
             background-color: #E1E1E1;
+            border-radius: 10px;
         }
 
         .fila{
             width: 100%;
+            border-radius: 10px;
             display: grid;
             grid-template-areas:
                 "foto cabecera cabecera cabecera"
@@ -85,7 +86,7 @@
         }
 
         .wrapper-foto{
-            grid-row: 1/4;
+            grid-row: 1/6;
         }
         .foto{
             background-position: center;
@@ -93,6 +94,7 @@
             width: 150px ;
             height: 200px;
         }
+
 
         .res_gustos{
             grid-column: 2/5;
@@ -109,9 +111,14 @@
                     "nombre nacionalidad";
             grid-template-rows: 30px 30px;
             color: white;
+            padding: 5px;
         }
         .res_nombre{
             grid-row: 1/3;
+
+        }
+        .res_nombre p{
+            font-size: 28px !important;
         }
 
         .res_nombre p{
