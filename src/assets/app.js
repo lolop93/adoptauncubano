@@ -360,7 +360,7 @@ function uploadFoto(e) {
     let formData = new FormData();
     formData.append("file",file);
 
-    const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];//comprobamos que es una imagen
+    const validImageTypes = ['image/gif', 'image/jpeg', 'image/png', 'image/jpg'];//comprobamos que es una imagen
 
     if (validImageTypes.includes(file['type'])) {
         let fotoPadre = $(e.target).parent().parent();
