@@ -30,8 +30,23 @@
 
         <div class="headInfo">
             <h1 class="nombre">{{ login.nombre }}</h1>
-            {% block nacionalidad %}<h2 class="titulo">{{  login.atributos and login.atributos.getNacionalidad ? login.atributos.getNacionalidad|country_name  : "Nacionalidad no definida" }}</h2>{% endblock %}
-            {% block edad %}<h3 class="titulo">{{  login.atributos and login.atributos.getFechaNac ? edad|date("%y años") : "Edad no definida" }}</h3>{% endblock %}
+
+            {% block nacionalidad %}
+                <h2 class="titulo">{{  login.atributos and login.atributos.getNacionalidad ? login.atributos.getNacionalidad|country_name  : "Nacionalidad no definida" }}</h2>
+            {% endblock %}
+
+            {% block edad %}
+                <h3 class="titulo">{{  login.atributos and login.atributos.getFechaNac ? edad|date("%y años") : "Edad no definida" }}</h3>
+            {% endblock %}
+
+            {% block sexo %}
+                <p class="sexo" style="font-size: 18px"> {{  login.atributos and login.atributos.getSexo ? login.atributos.getSexo : "Sexo no definido" }}</p>
+            {% endblock %}
+
+            {% block buscaGenero %}
+                <p class="sexo" style="font-size: 18px"> {{  login.atributos and login.atributos.getBuscaGenero ? login.atributos.getBuscaGenero : "Aun no sabe que busca"}}</p>
+            {% endblock %}
+
         </div>
 
         <div class="descripcion ">
@@ -45,17 +60,26 @@
             <div class="gridGaleria">
                 {% if login.galeria %}
                     {% if login.galeria.getFotoPerfil %}
-                        <div class="imagenUsuario d-flex flex-column justify-content-end" style="background-image: url({{ asset('images/Perfiles/' ~ login.galeria.getFotoPerfil) }});">
-                            <p class="p-1 pe-4 ps-2 text-white mb-2 align-self-start">Foto Perfil</p>
+                        <div class="imagenUsuario imagenPerfil d-flex flex-column justify-content-end fotoAjaxOk" id="fotoPerfil" data-nombre-foto="{{ login.galeria.getFotoPerfil }}" data-foto-perfil="true" style="background-image: url({{ asset('images/Perfiles/' ~ login.galeria.getFotoPerfil) }});">
+                            {% block fotoAjaxOk %}{% endblock %}
+                            <p class="p-1 pe-4 ps-2 text-white mb-2 align-self-start cartelRojoIzq">Foto Perfil</p>
                         </div>
                     {% else %}
-                        <div class="imagenUsuario  " style="background-image: url({{ asset('images/fotodefecto.png') }});"></div>
+                        <div class="imagenUsuario imagenPerfil fotoAjaxKo" id="fotoPerfil" data-foto-perfil="true" style="background-image: url({{ asset('images/fotodefecto.png') }});">
+                            {% block fotoAjaxKo %}{% endblock %}
+                        </div>
                     {% endif %}
                     {% for i in 0..4 %}
                         {% if i < login.galeria.getGaleria|length %}
-                            <div class="imagenUsuario" style="background-image: url({{ asset('images/Perfiles/' ~ login.galeria.getGaleria[i]) }});"></div>
+                            <div class="imagenUsuario fotoAjaxOk" id="foto{{i}}" data-nombre-foto="{{ login.galeria.getGaleria[i] }}" data-foto-perfil="false" style="background-image: url({{ asset('images/Perfiles/' ~ login.galeria.getGaleria[i]) }});">
+                                {{ block('fotoAjaxOk') }}
+                            </div>
+
                         {% else %}
-                            <div class="imagenUsuario" style="background-image: url({{ asset('images/fotodefecto.png') }});"></div>
+                            <div class="imagenUsuario fotoAjaxKo" id="foto{{i}}" data-foto-perfil="false" style="background-image: url({{ asset('images/fotodefecto.png') }});">
+                                {{ block('fotoAjaxKo') }}
+                            </div>
+
                         {% endif %}
                     {% endfor %}
 
@@ -188,7 +212,7 @@
         font-size: 18px;
     }
     .titulo, .headInfo label{
-        font-size: 24px;
+        font-size: 18px;
         margin: 20px 0 5px 0;
         font-weight: 600;
         color: #CE5353;
@@ -297,7 +321,20 @@
         top: 130px;
         box-shadow: 0px 3px 17px 3px rgb(0 0 0 / 31%);
     }
+    input{
+        padding-left: 10px;
+    }
 
+    textarea{
+        width: 93%;
+    }
+
+    .sexo{
+        margin: 10px 0;
+    }
+    #user_attributes_form_sexo{
+        margin: 40px 0;
+    }
 
 </style>
 {% endblock %}

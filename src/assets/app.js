@@ -341,11 +341,11 @@ $("div").mouseenter(function(){
 
 $("div").mouseleave(function(){
     if($(this).is(".fotoAjaxOk")) {
-        //console.log("hoverOk Leave");
+        console.log("hoverOk Leave");
         $( this ).children(".eliminarFoto").addClass("d-none");
     }
     else if($(this).is(".fotoAjaxKo")){
-        //console.log("hoverKo Leave");
+        console.log("hoverKo Leave");
         $( this ).children().addClass("d-none");
     }
 });

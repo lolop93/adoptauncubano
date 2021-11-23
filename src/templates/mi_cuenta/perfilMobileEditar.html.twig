@@ -32,10 +32,29 @@
 
 {% block descripcion %} {{ form_row(form_atributos.descripcion,{ 'label' : false, 'value' : login.atributos and login.atributos.getDescripcion ? login.atributos.getDescripcion: ''  }) }} {% endblock %}
 
+{% block sexo %}  {{ form_row(form_atributos.sexo,{ 'label' : false, 'value' : login.atributos and login.atributos.getSexo ? login.atributos.getSexo : ''  }) }}  {% endblock %}
+
+{% block buscaGenero %}  {{ form_row(form_atributos.buscaGenero,{ 'label' : false, 'value' : login.atributos and login.atributos.getBuscaGenero ? login.atributos.getBuscaGenero : ''  }) }}  {% endblock %}
+
 {%  block formend %}
     {{ form_widget(form_atributos.submit, { 'label': 'Save' }) }}
     {{ form_end(form_atributos) }}
 {% endblock %}
+
+
+{% block fotoAjaxOk %}
+    <p class="p-1 pe-4 ps-2 text-white mb-auto align-self-end d-none eliminarFoto" >Eliminar</p>
+
+{% endblock %}
+
+
+{% block fotoAjaxKo %}
+    <div class="nofoto w-100 h-100 bg-white rounded d-none align-items-center d-flex flex-column">
+        <input style="visibility:hidden;" class="w-100 fileupload" id="fileupload" type="file" name="fileupload" accept="image/x-png,image/gif,image/jpeg" />
+        <label for="fileupload" class="btn"><i class="bi bi-plus-square mx-auto mx-auto "></i></label>
+    </div>
+{% endblock %}
+
 
 {%  block estiloeditar %}
     <style>
@@ -69,6 +88,10 @@
         .descripcion{
             padding: 10px 15px 10px 0px !important;
         }
+        input{
+            padding-left: 100px!important;
+        }
+
 
     </style>
 
