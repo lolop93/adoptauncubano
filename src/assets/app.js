@@ -366,25 +366,53 @@ function uploadFoto(e) {
         let fotoPadre = $(e.target).parent().parent();
         let filename = e.target.files[0].name;//Nombre del archivo
 
-        $.ajax({
-            type: "POST",
-            url: "/galeria/upload",
-            data: formData,
-            async:true,
-            processData: false,
-            contentType: false,
-            cache: false,
-            success: function(data)
-            {
-                console.log(data.error ? data.error : data);
-                fotoPadre.removeClass("fotoAjaxKo");
-                fotoPadre.addClass("fotoAjaxOk");
-                fotoPadre.children().remove();
-                fotoPadre.append($('<p class="p-1 pe-4 ps-2 text-white mb-auto align-self-end eliminarFoto d-none">Eliminar</p> '));
-                fotoPadre.css("background-image", "url("+ data.pathFoto + data.nombreFoto+")");
-                fotoPadre.children().bind( "click", deleteFoto);
-            }
-        });
+        if(fotoPadre.is("#fotoPerfil")){
+            $.ajax({
+                type: "POST",
+                url: "/fotoPerfil/upload",
+                data: formData,
+                async:true,
+                processData: false,
+                contentType: false,
+                cache: false,
+                success: function(data)
+                {
+                    console.log(data.error ? data.error : data);
+                    fotoPadre.removeClass("fotoAjaxKo");
+                    fotoPadre.addClass("fotoAjaxOk");
+                    fotoPadre.children().remove();
+                    fotoPadre.append($('<p class="p-1 pe-4 ps-2 text-white mb-auto align-self-end eliminarFoto d-none">Eliminar</p> '));
+                    fotoPadre.append($('<p class="p-1 pe-4 ps-2 text-white mb-2 align-self-start cartelRojoIzq">Foto Perfil</p> '));
+                    fotoPadre.css("background-image", "url("+ data.pathFoto + data.nombreFoto+")");
+                    fotoPadre.children().bind( "click", deleteFoto);
+
+                    $('.fotoGrid').children().remove();
+                    $('.fotoGrid').append($('<div class="imagenUsuario m-2 "></div> '));
+                    $('.fotoGrid').children().css("background-image", "url("+ data.pathFoto + data.nombreFoto+")");
+
+                }
+            });
+        }else{
+            $.ajax({
+                type: "POST",
+                url: "/galeria/upload",
+                data: formData,
+                async:true,
+                processData: false,
+                contentType: false,
+                cache: false,
+                success: function(data)
+                {
+                    console.log(data.error ? data.error : data);
+                    fotoPadre.removeClass("fotoAjaxKo");
+                    fotoPadre.addClass("fotoAjaxOk");
+                    fotoPadre.children().remove();
+                    fotoPadre.append($('<p class="p-1 pe-4 ps-2 text-white mb-auto align-self-end eliminarFoto d-none">Eliminar</p> '));
+                    fotoPadre.css("background-image", "url("+ data.pathFoto + data.nombreFoto+")");
+                    fotoPadre.children().bind( "click", deleteFoto);
+                }
+            });
+        }
     }
     else{
         console.log("No trolles campeon");
@@ -401,33 +429,67 @@ function deleteFoto() {
     var nombreFoto = $( this ).parent().data("nombreFoto");
     var idFoto = $( this ).parent().attr('id');
 
-    $.ajax({
-        type: "POST",
-        url: "/galeria/delete",
-        data: {
-            foto:nombreFoto,
-            idFoto:idFoto,
-        },
-        async:true,
-        dataType: "json",
-        success: function(data)
-        {
-            console.log(data);
-            console.log(padre);
-            padre.css("background-image", "url("+data.pathFotoDefault+"fotodefecto.png)");
-            padre.removeAttr('data-nombre-foto');
-            padre.removeClass("fotoAjaxOk");
-            padre.addClass("fotoAjaxKo");
-            padre.children().remove();
-            padre.append(
-                $('    <div class="nofoto w-100 h-100 bg-white rounded d-none align-items-center d-flex flex-column">\n' +
-                    '        <input style="visibility:hidden;" class="w-100 fileupload" id="fileupload" type="file" name="fileupload" accept="image/x-png,image/gif,image/jpeg" />\n' +
-                    '        <label for="fileupload" class="btn"><i class="bi bi-plus-square mx-auto mx-auto "></i></label>\n' +
-                    '    </div>')
-            );
-            padre.children().children().bind( "change", function (e) { uploadFoto(e); });
-        }
-    });
+    if(padre.is("#fotoPerfil")){//comprobamos si es la foto de perfil para hacer el ajax a otra url
+        $.ajax({
+            type: "POST",
+            url: "/fotoPerfil/delete",
+            data: {
+                foto:nombreFoto,
+                idFoto:idFoto,
+            },
+            async:true,
+            dataType: "json",
+            success: function(data)
+            {
+                console.log(data);
+                console.log(padre);
+                padre.css("background-image", "url("+data.pathFotoDefault+"fotodefecto.png)");
+                padre.removeAttr('data-nombre-foto');
+                padre.removeClass("fotoAjaxOk");
+                padre.addClass("fotoAjaxKo");
+                padre.children().remove();
+                padre.append(
+                    $('    <div class="nofoto w-100 h-100 bg-white rounded d-none align-items-center d-flex flex-column">\n' +
+                        '        <input style="visibility:hidden;" class="w-100 fileupload" id="fileupload" type="file" name="fileupload" accept="image/x-png,image/gif,image/jpeg" />\n' +
+                        '        <label for="fileupload" class="btn"><i class="bi bi-plus-square mx-auto mx-auto "></i></label>\n' +
+                        '    </div>')
+                );
+                padre.children().children().bind( "change", function (e) { uploadFoto(e); });
+
+                $('.fotoGrid').children().remove();
+                $('.fotoGrid').append($('<p>Sin foto de perfil</p> '));
+            }
+        });
+    }else{//sino es que es una foto de la galeria
+        $.ajax({
+            type: "POST",
+            url: "/galeria/delete",
+            data: {
+                foto:nombreFoto,
+                idFoto:idFoto,
+            },
+            async:true,
+            dataType: "json",
+            success: function(data)
+            {
+                console.log(data);
+                console.log(padre);
+                padre.css("background-image", "url("+data.pathFotoDefault+"fotodefecto.png)");
+                padre.removeAttr('data-nombre-foto');
+                padre.removeClass("fotoAjaxOk");
+                padre.addClass("fotoAjaxKo");
+                padre.children().remove();
+                padre.append(
+                    $('    <div class="nofoto w-100 h-100 bg-white rounded d-none align-items-center d-flex flex-column">\n' +
+                        '        <input style="visibility:hidden;" class="w-100 fileupload" id="fileupload" type="file" name="fileupload" accept="image/x-png,image/gif,image/jpeg" />\n' +
+                        '        <label for="fileupload" class="btn"><i class="bi bi-plus-square mx-auto mx-auto "></i></label>\n' +
+                        '    </div>')
+                );
+                padre.children().children().bind( "change", function (e) { uploadFoto(e); });
+            }
+        });
+    }
+
 }
 //---------------------------------------------
 //JS ajax para eliminar fotos o subirlas

@@ -107,8 +107,8 @@ class UserAttributesFormType extends AbstractType
             ])
             ->add('buscaGenero',ChoiceType::class, [
                 'choices'  => [
-                    'Chicos' => 'chicos',
-                    'Chicas' => 'chicas',
+                    'Chicos' => 'chico',
+                    'Chicas' => 'chica',
                     'Ambos Generos' => 'ambos',
                 ],
                 'placeholder' => 'Que buscas',
