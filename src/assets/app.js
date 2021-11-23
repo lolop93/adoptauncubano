@@ -362,7 +362,7 @@ function uploadFoto(e) {
 
     const validImageTypes = ['image/gif', 'image/jpeg', 'image/png', 'image/jpg'];//comprobamos que es una imagen
 
-    if (validImageTypes.includes(file['type'])) {
+    if (1==1) {
         let fotoPadre = $(e.target).parent().parent();
         let filename = e.target.files[0].name;//Nombre del archivo
 
