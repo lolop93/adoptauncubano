@@ -60,9 +60,10 @@
             <div class="gridGaleria">
                 {% if login.galeria %}
                     {% if login.galeria.getFotoPerfil %}
-                        <div class="imagenUsuario imagenPerfil d-flex flex-column justify-content-end fotoAjaxOk" id="fotoPerfil" data-nombre-foto="{{ login.galeria.getFotoPerfil }}" data-foto-perfil="true" style="background-image: url({{ asset('images/Perfiles/' ~ login.galeria.getFotoPerfil) }});">
+
+                        <div class="imagenUsuario imagenPerfil d-flex flex-column justify-content-end fotoAjaxOk" id="fotoPerfil" data-nombre-foto="{{ login.galeria.getFotoPerfil }}" data-foto-perfil="true" style="position:relative; background-image: url({{ asset('images/Perfiles/' ~ login.galeria.getFotoPerfil) }});">
+                            <p class="textoPerfil">Foto Perfil</p>
                             {% block fotoAjaxOk %}{% endblock %}
-                            <p class="p-1 pe-4 ps-2 text-white mb-2 align-self-start cartelRojoIzq">Foto Perfil</p>
                         </div>
                     {% else %}
                         <div class="imagenUsuario imagenPerfil fotoAjaxKo" id="fotoPerfil" data-foto-perfil="true" style="background-image: url({{ asset('images/fotodefecto.png') }});">
@@ -335,8 +336,23 @@
     #user_attributes_form_sexo{
         margin: 40px 0;
     }
+    .textoPerfil{
+        position: absolute;
+        height: 27px;
+        -webkit-transform: rotate(90deg);
+        color: white;
+        top:20px;
+        left: -12px;
+        padding: 4px;
+        background-color: rgba(0,0,0, .6);
+        font-size: 12px;
+    }
 
 </style>
+    {% block estiloeditar %}
+
+    {% endblock %}
+
 {% endblock %}
 {% block abrirvideo %}
 {% endblock %}
