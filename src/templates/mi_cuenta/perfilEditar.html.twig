@@ -1,6 +1,6 @@
 {% extends '/mi_cuenta/perfil.html.twig' %}
 
-{% block editarperfil %} <div class="editarPerfil"><a href=" {{ path('perfil') }}" style="text-decoration: none; color: white"><p class="title p-2">Volver al perfil</p></a></div>  {% endblock %}
+{% block editarperfil %} <div class="editarPerfil"><a href=" {{ path('perfil') }}" style="text-decoration: none; color: white"><p class="volver title">Volver al perfil</p></a></div>  {% endblock %}
 
 {%  block formstart %}
     {{ form_start(form_atributos, {'attr': {'class': 'formulario'}}) }}
@@ -137,7 +137,21 @@
         }
 
         form button{
-
+            background-color: #CE5353;
+            color: white;
+            border: none;
+            border-radius: 100px;
+            width: 100px;
+        }
+        form button:hover{
+            background-color: darkred;
+        }
+        .volver{
+            padding: 15px 20px;
+        }
+        .volver:hover{
+            background-color: darkred;
+            cursor: pointer;
         }
 
 
