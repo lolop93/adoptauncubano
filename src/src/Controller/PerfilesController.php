@@ -19,7 +19,8 @@ class PerfilesController extends AbstractController
         $user = $userRepository->findOneBy(
             ['id' => $id],
         );
-
+        $age = new \DateTime();//Pasamos la fecha en la que nació a Edad normal
+        $a = ($login->getAtributos() && $login->getAtributos()->getFechaNac() ? date_diff($age, $login->getAtributos()->getFechaNac()) : "");
 
 
         if($pantalla->isMobile() && !$pantalla->isTablet()){
@@ -27,12 +28,14 @@ class PerfilesController extends AbstractController
                 'id' => $id,
                 'login' => $login,
                 'user' => $user,
+                'edad' =>  $a,
             ]);
         }else {
             return $this->render('perfiles/index.html.twig', [
                 'id' => $id,
                 'login' => $login,
                 'user' => $user,
+                'edad' =>  $a,
             ]);
         }
     }

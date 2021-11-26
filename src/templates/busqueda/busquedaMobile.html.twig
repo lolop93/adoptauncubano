@@ -85,7 +85,7 @@
         }
         .tarjeta{
             width: 300px;
-            height: 500px;
+            height: 550px;
             background-color: #E1E1E1;
             margin-top: 50px;
             border-radius: 10px;
@@ -143,6 +143,11 @@
         }
         .descripcion #cuerpoDescripción{
             font-size: 12px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
         }
         .atributos{
             display: flex;
@@ -199,6 +204,13 @@
             color: #CE5353;
             margin-bottom: 2px;
 
+        }
+        .gustos p{
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
         }
         .bi-heart-fill:hover{
             cursor: pointer;

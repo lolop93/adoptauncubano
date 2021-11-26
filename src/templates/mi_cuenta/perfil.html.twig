@@ -3,20 +3,32 @@
 
 {% block body %}
     {{ parent() }}
-    {{ dump() }}
+
 
 
 
     <style>
+        p{
+            font-size: 18px ;
+        }
         .grid-menu{
             margin-top: 50px;
+        }
+        h6{
+            font-size: 24px;
+            font-weight: 600;
         }
         .gridContenido{
             display: grid;
             grid-template-columns: 1fr 1fr 1fr 1fr;
             grid-auto-rows: minmax(min-content,auto);
             background-color: #E1E1E1;
+            border-radius: 0 0 10px 10px;
 
+        }
+        .contenido{
+            border-radius: 10px!important;
+            margin-bottom: 40px;
         }
 
         .fotoGrid{
@@ -24,7 +36,7 @@
         }
 
         .gustos{
-            grid-column: 2/5;
+            grid-column: 1/5;
         }
 
         .info{
@@ -119,7 +131,13 @@
         .cartelGaleria{
             padding: 7px 25px 7px 10px;
         }
+        .titulo{
+            border-radius: 0 10px 0 0;
+        }
+        label{
 
+
+        }
 
     </style>
 
@@ -145,7 +163,7 @@
         {% endblock %}
 
         <div class="info">
-            <h1 class="title m-1 mt-4">
+            <h1 class="title mt-4">
                 {% if login and login.nombre %}
                     {{ login.nombre }}
                 {% else %}
@@ -153,8 +171,8 @@
                 {% endif %}
             </h1>
 
-            {% block nacionalidad %}<p class="m-1" >{{  login.atributos and login.atributos.getNacionalidad ? login.atributos.getNacionalidad|country_name  : "Nacionalidad no definida" }}</p>{% endblock %}
-            {% block edad %}<p class="m-1" >{{  login.atributos and login.atributos.getFechaNac ? edad|date("%y años") : "Edad no definida" }}</p>{% endblock %}
+            {% block nacionalidad %}<p class="m-2" >{{  login.atributos and login.atributos.getNacionalidad ? login.atributos.getNacionalidad|country_name  : "Nacionalidad no definida" }}</p>{% endblock %}
+            {% block edad %}<p class="m-2" >{{  login.atributos and login.atributos.getFechaNac ? edad|date("%y años") : "Edad no definida" }}</p>{% endblock %}
 
 
         </div>
@@ -162,47 +180,47 @@
 
         {% block editarperfil %} <div class="editarPerfil"><a href=" {{ path('editarperfil') }}" style="text-decoration: none; color: white"><p class="volver title" >Editar perfil</p></a></div> {% endblock %}
         <div>
-            <h6 class="atributos m-2">OJOS</h6>
+            <h6 class="atributos m-2">Ojos</h6>
             {% block ojos %}<p class="atributos m-2">{{  login.atributos and login.atributos.getOjos ? login.atributos.getOjos : "Color de ojos no definido" }}</p>{% endblock %}
         </div>
         <div>
-            <h6 class="atributos m-2">PELO</h6>
+            <h6 class="atributos m-2">Pelo</h6>
             {% block pelo %}<p class="atributos m-2">{{  login.atributos and login.atributos.getColorPelo ? login.atributos.getColorPelo : "Color de pelo no definido" }}</p>{% endblock %}
         </div>
         <div>
-            <h6 class="atributos m-2">PROFESION</h6>
+            <h6 class="atributos m-2">Profesión</h6>
             {% block profesion %}<p class="atributos m-2">{{  login.atributos and login.atributos.getProfesion ? login.atributos.getProfesion : "Profesión no definida" }}</p>{% endblock %}
         </div>
         <div>
-            <h6 class="atributos m-2">CIUDAD</h6>
+            <h6 class="atributos m-2">Ciudad</h6>
             {% block ciudad %}<p class="atributos m-2">{{  login.atributos and login.atributos.getCiudad ? login.atributos.getCiudad : "Ciudad no definida" }}</p>{% endblock %}
         </div>
         <div>
-            <h6 class="atributos m-2">ALTURA (cm)</h6>
+            <h6 class="atributos m-2">Altura (cm)</h6>
             {% block altura %}<p class="atributos m-2">{{  login.atributos and login.atributos.getAltura ? login.atributos.getAltura : "Altura no definida" }}</p>{% endblock %}
         </div>
         <div>
-            <h6 class="atributos m-2">PESO (kg)</h6>
+            <h6 class="atributos m-2">Peso (kg)</h6>
             {% block peso %}<p class="atributos m-2">{{  login.atributos and login.atributos.getPeso ? login.atributos.getPeso : "Peso no definido" }}</p>{% endblock %}
         </div>
 
         <div>
-            <h6 class="atributos m-2">SEXO</h6>
+            <h6 class="atributos m-2">Sexo</h6>
             {% block sexo %}<p class="atributos m-2">{{  login.atributos and login.atributos.getSexo ? login.atributos.getSexo : "Sexo no definido" }}</p>{% endblock %}
         </div>
 
         <div>
-            <h6 class="atributos m-2">BUSCA</h6>
+            <h6 class="atributos m-2">Busca</h6>
             {% block buscaGenero %}<p class="atributos m-2">{{  login.atributos and login.atributos.getBuscaGenero ? login.atributos.getBuscaGenero : "Aun no sabe que busca" }}</p>{% endblock %}
         </div>
 
-        <div class="gustos">
-            <h6 class="atributos m-2">GUSTOS</h6>
-            {% block gustos %}<p class="atributos m-2">{{  login.atributos and login.atributos.getGustos ? login.atributos.getGustos|join(', ') : "Gustos no definidos" }}</p>{% endblock %}
+        <div class="gustos p-4" >
+            <h6 class="atributos">Gustos</h6>
+            {% block gustos %}<p class="atributos">{{  login.atributos and login.atributos.getGustos ? login.atributos.getGustos|join(', ') : "Gustos no definidos" }}</p>{% endblock %}
         </div>
 
         <div class="descripcion p-4">
-            <p style="color: #CE5353; font-size: 18px;font-weight: bolder">Descripcion</p>
+            <h6>Descripción</h6>
             {% block descripcion %}
             <p> {{  login.atributos and login.atributos.getDescripcion ? login.atributos.getDescripcion : "Sin descripcion" }}</p>
             {% endblock %}
@@ -213,7 +231,7 @@
         {% endblock %}
 
         <div class="galeria ">
-            <p class="title text-white cartelRojoIzq cartelGaleria">Galeria</p>
+            <p class="title text-white cartelRojoIzq cartelGaleria">Galería</p>
             <div class="gridGaleria mt-4 mb-4">
                 {% if login.galeria %}
 

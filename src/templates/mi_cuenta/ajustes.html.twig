@@ -10,7 +10,7 @@
 
 {% block texto %}
     <h2>Ajustes</h2>
-    <div class="editarAjustes"><a href=" {{ path('editarajustes') }}" style="text-decoration: none; color: white"><p class="title p-2" >Editar ajustes</p></a></div>
+    <div class="editarAjustes"><a href=" {{ path('editarajustes') }}" style="text-decoration: none; color: white"><i class="bi bi-pencil-fill"></i></a></div>
 {% endblock %}
 
 {% block primerIcono %}
@@ -56,6 +56,12 @@
         .grid-menu{
             margin-top: 50px;
         }
+        .titulo{
+            height: 75px;
+        }
+        .titulo h2{
+            margin: 0;
+        }
 
         .gridAjustes h3,p{
             display: grid;
@@ -75,6 +81,28 @@
 
         .editarCampos p{
             font-size: 20px;
+        }
+        .editarAjustes{
+            width: 100%;
+            position: relative;
+
+        }
+        .editarAjustes a{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            right: 20px;
+            top: -30px;
+            font-size: 38px;
+            background-color: white;
+            border-radius: 100px;
+            width: 60px;
+            height: 60px;
+        }
+        .editarAjustes a i{
+            color: #CE5353;
+
         }
 
     </style>

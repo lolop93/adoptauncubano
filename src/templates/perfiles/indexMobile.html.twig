@@ -28,7 +28,7 @@
             <div class="headInfo">
                 <h1 class="nombre">{{ user.nombre ? user.nombre : 'Sin nombre'}}</h1>
                 {% block nacionalidad %}<h2 class="titulo">{{  user.atributos and user.atributos.getNacionalidad ? user.atributos.getNacionalidad|country_name  : "Nacionalidad no definida" }}</h2>{% endblock %}
-                {% block edad %}<h3 class="titulo">Edad</h3>{% endblock %}
+                {% block edad %}<h3 class="titulo">{{  login.atributos and login.atributos.getFechaNac ? edad|date("%y años") : "Edad no definida" }}</h3>{% endblock %}
             </div>
 
             <div class="descripcion ">
@@ -39,8 +39,9 @@
             </div>
 
             <div class="galeria">
+                <p class="titulo" style="margin: 0 0 20px 20px">{{ user.galeria ? 'Galería' : 'Sin galería' }}</p>
                 <div class="gridGaleria">
-                    <p class="titulo">{{ user.galeria ? 'Galería' : 'Sin galería' }}</p>
+
                     {% if user.galeria %}
                         {% if user.galeria.getFotoPerfil %}
                             <div class="imagenUsuario d-flex flex-column justify-content-end" style="background-image: url({{ asset('images/Perfiles/' ~ user.galeria.getFotoPerfil) }});">
@@ -210,7 +211,7 @@
             display: grid;
             grid-template-columns: 1fr ;
             margin-top: 35px;
-            padding: 0 0 30px 0;
+            padding: 0 0 35px 0;
             box-shadow: -2px 4px 8px -5px rgb(0 0 0 / 31%);
 
         }

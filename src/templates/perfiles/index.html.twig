@@ -9,65 +9,76 @@
 
     {%  if user is not null %}
         <div class="gridContenido mx-auto" style="width: 85%; margin-top: 50px">
-            <div class="" style="width:85%;position:absolute; z-index: 1;background-color: indianred;height: 105px ;box-shadow: 0px 3px 23px 10px rgb(0 0 0 / 31%);align-content: center;"></div>
-            <div class="fotoGrid mt-4 mx-auto">
-                {% if user.galeria and user.galeria.getFotoPerfil %}
-                    <div class="imagenUsuario m-2 " style="background-image: url({{ asset('images/Perfiles/' ~ user.galeria.getFotoPerfil) }});"></div>
-                {% else %}
-                    <p>Sin foto de perfil</p>
-                {% endif %}
-            </div>
-
-            <div class="info">
-                <h1 class="title m-1 mt-4">
-                    {% if user and user.nombre %}
-                        {{ user.nombre }}
+            <div class="cabecera">
+                <div class="fotoGrid">
+                    {% if user.galeria and user.galeria.getFotoPerfil %}
+                        <div class="imagenUsuario m-2 " style="background-image: url({{ asset('images/Perfiles/' ~ user.galeria.getFotoPerfil) }});"></div>
                     {% else %}
-                        Marta
+                        <p>Sin foto de perfil</p>
                     {% endif %}
-                </h1>
-                <p class="m-1" >{{  user.atributos and user.atributos.getNacionalidad ? user.atributos.getNacionalidad|country_name : "Nacionalidad no definida" }}</p>
-                <p class="m-1" >{{  user.atributos and user.atributos.getFechaNac ? user.atributos.getFechaNac|date('d-m-Y') : "Edad no definida" }}</p>
+                </div>
+
+                <div class="info">
+                    <h1 class="title m-1 mt-4">
+                        {% if user and user.nombre %}
+                            {{ user.nombre }}
+                        {% else %}
+                            Marta
+                        {% endif %}
+                    </h1>
+                    <p class="m-1" >{{  user.atributos and user.atributos.getNacionalidad ? user.atributos.getNacionalidad|country_name : "Nacionalidad no definida" }}</p>
+                    <p class="m-1" >{{  login.atributos and login.atributos.getFechaNac ? edad|date("%y años") : "Edad no definida" }}</p>
+                </div>
+            </div>
+            <div class="listaAtributos">
+                <div class="atributosRow">
+                    <div>
+                        <h6 class="atributos m-2">Ojos</h6>
+                        <p class="atributos m-2">{{  user.atributos and user.atributos.getOjos ? user.atributos.getOjos : "Color de ojos no definido" }}</p>
+                    </div>
+                    <div>
+                        <h6 class="atributos m-2">Pelo</h6>
+                        <p class="atributos m-2">{{  user.atributos and user.atributos.getColorPelo ? user.atributos.getColorPelo : "Color de pelo no definido" }}</p>
+                    </div>
+                    <div>
+                        <h6 class="atributos m-2">Profesión</h6>
+                        <p class="atributos m-2">{{  user.atributos and user.atributos.getProfesion ? user.atributos.getProfesion : "Profesión no definida" }}</p>
+                    </div>
+                </div>
+
+                <div class="atributosRow">
+                    <div>
+                        <h6 class="atributos m-2">Ciudad</h6>
+                        <p class="atributos m-2">{{  user.atributos and user.atributos.getCiudad ? user.atributos.getCiudad : "Ciudad no definida" }}</p>
+                    </div>
+                    <div>
+                        <h6 class="atributos m-2">Altura</h6>
+                        <p class="atributos m-2">{{  user.atributos and user.atributos.getAltura ? user.atributos.getAltura : "Altura no definida" }}</p>
+                    </div>
+                    <div>
+                        <h6 class="atributos m-2">Peso (Kg)</h6>
+                        <p class="atributos m-2">{{  user.atributos and user.atributos.getPeso ? user.atributos.getPeso : "Peso no definido" }}</p>
+                    </div>
+                </div>
             </div>
 
-            <div>
-                <h6 class="atributos m-2">OJOS</h6>
-                <p class="atributos m-2">{{  user.atributos and user.atributos.getOjos ? user.atributos.getOjos : "Color de ojos no definido" }}</p>
-            </div>
-            <div>
-                <h6 class="atributos m-2">PELO</h6>
-                <p class="atributos m-2">{{  user.atributos and user.atributos.getColorPelo ? user.atributos.getColorPelo : "Color de pelo no definido" }}</p>
-            </div>
-            <div>
-                <h6 class="atributos m-2">PROFESION</h6>
-                <p class="atributos m-2">{{  user.atributos and user.atributos.getProfesion ? user.atributos.getProfesion : "Profesión no definida" }}</p>
-            </div>
-            <div>
-                <h6 class="atributos m-2">CIUDAD</h6>
-                <p class="atributos m-2">{{  user.atributos and user.atributos.getCiudad ? user.atributos.getCiudad : "Ciudad no definida" }}</p>
-            </div>
-            <div>
-                <h6 class="atributos m-2">ALTURA</h6>
-                <p class="atributos m-2">{{  user.atributos and user.atributos.getAltura ? user.atributos.getAltura : "Altura no definida" }}</p>
-            </div>
-            <div>
-                <h6 class="atributos m-2">PESO (KG)</h6>
-                <p class="atributos m-2">{{  user.atributos and user.atributos.getPeso ? user.atributos.getPeso : "Peso no definido" }}</p>
-            </div>
-            <div class="gustos">
-                <h6 class="atributos m-2">GUSTOS</h6>
-                <p class="atributos m-2">{{  user.atributos and user.atributos.getGustos ? user.atributos.getGustos|join(', ') : "Gustos no definidos" }}</p>
+            <div class="gustosDescripcion">
+                <div class="gustos">
+                    <h6 class="atributos">Gustos</h6>
+                    <p class="atributos">{{  user.atributos and user.atributos.getGustos ? user.atributos.getGustos|join(', ') : "Gustos no definidos" }}</p>
+                </div>
+
+                <div class="descripcion">
+                    <h6 class="atributos">Descripción</h6>
+                        <p> Why do we use it?
+                            It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+                        </p>
+                </div>
             </div>
 
-            <div class="descripcion p-4">
-                <p style="color: #CE5353; font-size: 18px;">Descripcion</p>
-                    <p> Why do we use it?
-                        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-                    </p>
-            </div>
 
             <div class="galeria ">
-                <p class="title p-2 text-white">Galeria</p>
+                <p class="galeriaTitulo">Galería</p>
                 <div class="gridGaleria mt-4 mb-4">
                     {% if user.galeria %}
 
@@ -100,30 +111,80 @@
     {% endif %}
 
     <style>
+        p{
+            font-size: 18px ;
+        }
         .gridContenido{
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr;
-            grid-auto-rows: minmax(min-content,auto);
             background-color: #E1E1E1;
+            border-radius: 20px;
 
         }
 
         .fotoGrid{
-            grid-row: 1/5;
-            z-index: 10;
+            position: absolute;
+            left: 30px;
+            top: 24px;
         }
-
+        .cabecera{
+            display: flex;
+            width:100%;
+            position:relative;
+            background-color: #CE5353;
+            height: 150px ;
+            box-shadow: 0px 3px 23px 10px rgb(0 0 0 / 31%);
+            border-radius: 20px 20px 0 0;
+        }
+        .imagenUsuario{
+            width:300px;
+            height: 300px;
+            background-position: center;
+            background-size: cover;
+            border-radius: 10px;
+            box-shadow:7px 5px 20px 0px rgb(0 0 0 / 20%)
+        }
+        .title{
+            font-size: 36px;
+            font-weight: 600;
+        }
+        .galeriaTitulo{
+            font-size: 36px;
+            font-weight: 300;
+            padding: 7px 40px;
+            color: white;
+        }
         .info{
             color: white;
-            grid-column: 2/5;
-            z-index: 10;
+            margin-left: 375px;
+
         }
         .info h1{
             font-weight: bolder;
         }
+        .listaAtributos{
+            width: 100%;
 
+            display: inline-block;
+        }
+        .atributosRow{
+            margin-left: 390px;
+            display: flex;
+            justify-content: space-between;
+            margin-right: 200px;
+        }
+        .gustosDescripcion{
+            margin: 30px 30px 30px calc(30px + 0.5rem);
+        }
+        .gustosDescripcion>*{
+            margin-bottom: 20px;
+        }
         .atributos{
             z-index: 10;
+        }
+        h6{
+            padding-top: 15px;
+            color: #CE5353;
+            font-size: 24px;
+            font-weight: 600;
         }
 
         .editarPerfil p{
@@ -132,13 +193,7 @@
             border-bottom-left-radius: 360px;
         }
 
-        .imagenUsuario{
-            width:200px;
-            height: 200px;
-            background-position: center;
-            background-size: cover;
-            border-radius: 10px;
-        }
+
 
         .descripcion{
             grid-column: 1/5;
@@ -171,7 +226,7 @@
 
         }
 
-        @media screen and (max-width: 840px) {
+        @media screen and (max-width: 1210px) {
             .gridGaleria {
                 gap: 0 !important;
             }
