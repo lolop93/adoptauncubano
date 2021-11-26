@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\UserAttributes;
+use App\Entity\User;
 use App\Form\UserAttributesFormType;
+use App\Form\UserFormType;
 use App\Repository\GaleriaRepository;
 use App\Repository\UserAttributesRepository;
 use App\Repository\UserRepository;
@@ -109,6 +111,45 @@ class MiCuentaController extends AbstractController
             return $this->render('mi_cuenta/ajustes.html.twig', [
                 'login' => $login,
             ]);
+        }
+    }
+
+    #[Route('/cuenta/ajustes/editar', name: 'editarajustes')]
+    public function editarajustes(Request $request, MobileDetector $pantalla): Response
+    {
+        $login = $this->get('security.token_storage')->getToken()->getUser();
+
+        //Creamos un objeto user y se lo pasamos al objeto formulario de tipo "formulario de atributos"
+        $usuario = new User();
+
+        $form = $this->createForm(UserFormType::class, $usuario);//Creamos el formulario y lo guardamos en una variable
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $entityManager = $this->getDoctrine()->getManager();
+
+            $datosUsuario = $form->getData();
+            $login->setNombre($datosUsuario->getNombre());
+            $login->setApellido1($datosUsuario->getApellido1());
+            $login->setEmail($datosUsuario->getEmail());
+            $entityManager->persist($login);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('editarajustes');
+        }
+        else{
+            if ($pantalla->isMobile() && !$pantalla->isTablet()) {
+                return $this->render('mi_cuenta/ajustesMobileEditar.html.twig', [
+                    'login' => $login,
+                    'form_ajustes' => $form->createView()
+                ]);
+            } else {
+                return $this->render('mi_cuenta/ajustesEditar.html.twig', [
+                    'login' => $login,
+                    'form_ajustes' => $form->createView()
+                ]);
+            }
         }
     }
 }

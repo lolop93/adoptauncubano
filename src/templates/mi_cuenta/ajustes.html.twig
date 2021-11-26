@@ -10,6 +10,7 @@
 
 {% block texto %}
     <h2>Ajustes</h2>
+    <div class="editarAjustes"><a href=" {{ path('editarajustes') }}" style="text-decoration: none; color: white"><p class="title p-2" >Editar ajustes</p></a></div>
 {% endblock %}
 
 {% block primerIcono %}
@@ -22,26 +23,31 @@
 
 
 {% block contenido %}
+
+    {%  block formstart %}
+
+    {% endblock %}
+
     <div class="gridAjustes" >
         <div class="editarCampos">
             <h3>Nombre</h3>
-            <p>{{ login.nombre }}</p>
+            <p>{% block nombre %}{{ login.nombre }}{% endblock %}</p>
         </div>
 
         <div class="editarCampos">
             <h3>Apellidos</h3>
-            <p class="campoEditable">{{ login.apellido1 }}</p>
+            <p class="campoEditable">{% block apellido1 %}{{ login.apellido1 }}{% endblock %}</p>
         </div>
 
         <div class="editarCampos">
             <h3>Correo electrónico</h3>
-            <p>{{ login.email }}</p>
+            <p>{% block email %}{{ login.email }}{% endblock %}</p>
         </div>
-
-
-
-
     </div>
+
+    {%  block formend %}
+
+    {% endblock %}
 
 
 

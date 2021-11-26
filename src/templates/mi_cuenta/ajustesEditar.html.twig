@@ -1,0 +1,23 @@
+{% extends '/mi_cuenta/ajustes.html.twig' %}
+
+
+{%  block formstart %}
+    {{ form_start(form_ajustes, {'attr': {'class': 'formulario'}}) }}
+{% endblock %}
+
+
+{# Aqui hacemos un if rapido  en 'value' en una sola linea y ponemos por defecto el valor del usuario si existe en la base de datos sino lo dejamos en blanco #}
+{% block nombre %}  {{ form_row(form_ajustes.nombre,{ 'label' : 'Nombre','value' : login.nombre ? login.nombre : '' }) }} {% endblock %}
+
+{% block apellido1 %}  {{ form_row(form_ajustes.apellido1,{ 'label' : 'Apellido 1','value' : login.apellido1 ? login.apellido1 : ''}) }}  {% endblock %}
+
+{% block email %}  {{ form_row(form_ajustes.email,{ 'label' : false , 'value' : login.email  ? login.email : ''}) }}  {% endblock %}
+
+
+
+{%  block formend %}
+    {{ form_widget(form_ajustes.submit, { 'label': 'Save' }) }}
+    {{ form_end(form_ajustes) }}
+{% endblock %}
+
+
