@@ -43,7 +43,7 @@
 
 
 {% block fotoAjaxOk %}
-    <p class="p-1 pe-4 ps-2 text-white mb-auto align-self-end d-none eliminarFoto" >Eliminar</p>
+    <p class="d-none eliminarFoto" >X</p>
 
 {% endblock %}
 
@@ -58,38 +58,22 @@
 
 {%  block estiloeditar %}
     <style>
-
-        #user_attributes_form_gustos input{
-            margin-right: 2px;
+        .eliminarFoto {
+            background-color: #CE5353;
+            border-radius: 360px!important;
+            justify-self: end;
+            color: white;
+            width: 30px;
+            height: 30px;
+            padding: 4px 0 0 9px;
+            font-size: 16px;
+            margin: 0;
         }
-
-        #user_attributes_form_gustos label{
-            margin-right: 15px;
-        }
-
-        .gridContenido input{
-            max-width: 120px;
-        }
-
-        .gridContenido select{
-            max-width: 120px;
-        }
-
-        .formulario{
-            display:grid;
-            grid-column:2/5;
-
-        }
-
-        .gustos{
-            grid-column:1/5;
-        }
-
-        .descripcion{
-            padding: 10px 15px 10px 0px !important;
-        }
-        input{
-            padding-left: 100px!important;
+        .fotoAjaxOk{
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+            padding: 5px;
         }
 
 
