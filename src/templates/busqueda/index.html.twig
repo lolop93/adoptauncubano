@@ -7,6 +7,7 @@
 {{ dump() }}
 
     <div class="mx-auto  gridBusqueda ">
+        <h1>Resultados de la búsqueda</h1>
     {% for resultado in resultados %}
 
         <div class="fila bg-white">
@@ -17,28 +18,28 @@
                 <div class="res_nacionalidad"><p>{{ resultado.nacionalidad ? resultado.nacionalidad|country_name : "Sin nacionalidad" }}</p></div>
             </div>
             <div class="res_ojos">
-                <h6 >OJOS</h6>
+                <h6 >Ojos</h6>
                 <p>{{ resultado.ojos ? resultado.ojos : "none" }}</p></div>
             <div class="res_pelo">
-                <h6 >PELO</h6>
+                <h6 >Pelo</h6>
                 <p>{{ resultado.color_pelo ? resultado.color_pelo : "none"}}</p></div>
             <div class="res_profesion">
-                <h6 >PROFESION</h6>
+                <h6 >Profesión</h6>
                 <p>{{ resultado.profesion ? resultado.profesion : "none"}}</p></div>
             <div class="res_ciudad">
-                <h6 >CIUDAD</h6>
+                <h6 >Ciudad</h6>
                 <p>{{ resultado.ciudad ? resultado.ciudad : "none" }}</p></div>
             <div class="res_altura">
-                <h6 >ALTURA (cm)</h6>
+                <h6 >Altura (cm)</h6>
                 <p>{{ resultado.altura ? resultado.altura : "none" }}</p></div>
             <div class="res_peso">
-                <h6 >PESO (kg)</h6>
+                <h6 >Peso (kg)</h6>
                 <p>{{ resultado.peso ? resultado.peso : "none" }}</p></div>
             <div class="res_gustos">
-                <h6 >GUSTOS</h6>
+                <h6 >Gustos</h6>
                 <p>{{ resultado.gustos ? resultado.gustos|join(', ') : "none" }}</p></div>
             <div class="res_descripcion">
-                <h6 >DESCRIPCION</h6>
+                <h6 >Descripción</h6>
                 <p>{{  resultado.descripcion ? resultado.descripcion : "none" }}</p></div>
 
         </div>
@@ -65,10 +66,15 @@
         .gridBusqueda{
             width: 80%;
             display: grid;
-            row-gap: 30px;
-            padding: 20px;
+            row-gap: 50px;
+            padding: 50px;
             background-color: #E1E1E1;
             border-radius: 10px;
+        }
+        .gridBusqueda h1{
+            color: #CE5353;
+            font-weight: 600;
+            margin: 0;
         }
 
         .fila{
@@ -83,6 +89,8 @@
                 "visita descripcion descripcion descripcion ";
             grid-template-rows: minmax(min-content,50px) ;
             grid-template-columns: 150px auto auto auto;
+            box-shadow: 6px 9px 10px rgb(0 0 0 / 20%);
+            padding-bottom: 20px;
         }
 
         .wrapper-foto{
@@ -93,6 +101,7 @@
             background-size: cover;
             width: 150px ;
             height: 200px;
+            border-radius: 10px 0 0 0;
         }
 
 
@@ -111,11 +120,15 @@
                     "nombre nacionalidad";
             grid-template-rows: 30px 30px;
             color: white;
-            padding: 5px;
+            padding: 15px;
+            border-radius: 0 10px 0 0;
+            box-shadow: 0px 9px 10px rgb(0 0 0 / 33%);
+        }
+        .cabecera>div{
+            padding: 10px 5px 0px 10px!important;
         }
         .res_nombre{
             grid-row: 1/3;
-
         }
         .res_nombre p{
             font-size: 28px !important;
@@ -127,13 +140,24 @@
         .res_edad{
             justify-self: end;
             align-self: end;
+
+        }
+        .res_edad p{
+            font-size: 20px!important;
         }
         .res_nacionalidad{
             justify-self: end;
             align-self: end;
         }
+        .res_nacionalidad p{
+            font-size: 18px!important;
+        }
         div[class^='res_']{ /*Todos los div con class res_ en aldelante*/
-            padding: 10px 5px 5px 10px;
+            padding: 20px 5px 5px 25px;
+        }
+        div[class^='res_'] p{
+            font-size: 16px;
+            font-weight: 600;
         }
         .botonPaginas{
             display: flex;
@@ -148,8 +172,21 @@
             color: white;
             background-color: #CE5353;
             width: 10%;
-            padding: 10px;
+            padding: 10px 80px;
+            margin-top: 10px;
+            border-radius: 100px;
+            box-shadow: 6px 9px 10px rgb(0 0 0 / 33%);
         }
+        .botonPaginas a:hover{
+            background-color: darkred;
+
+        }
+        div>h6{
+            color: #CE5353;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
 
     </style>
 
