@@ -136,7 +136,7 @@ class MiCuentaController extends AbstractController
             $entityManager->persist($login);
             $entityManager->flush();
 
-            return $this->redirectToRoute('editarajustes');
+            return $this->redirectToRoute('ajustes');
         }
         else{
             if ($pantalla->isMobile() && !$pantalla->isTablet()) {

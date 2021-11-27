@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Galeria;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Security\AppAuthenticator;
@@ -30,6 +31,7 @@ class RegistrationController extends AbstractController
     public function register(MobileDetector $pantalla, Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, AppAuthenticator $authenticator): Response
     {
         $user = new User();
+        $galeria = new Galeria();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
@@ -41,8 +43,10 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
+            $user->setGaleria($galeria);
 
             $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($galeria);
             $entityManager->persist($user);
             $entityManager->flush();
 
