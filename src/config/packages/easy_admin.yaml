@@ -10,6 +10,7 @@ easy_admin:
             - { entity: 'User' , label: 'Usuario', icon: 'user' }
             - { entity: 'Conversaciones' , label: 'Conversaciones', icon: 'comments' }
             - { entity: 'Mensajes' , label: 'Mensajes', icon: 'envelope-square' }
+            - { entity: 'Likes' , label: 'Likes', icon: '' }
     entities:
 
         Galeria:
