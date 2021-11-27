@@ -53,4 +53,7 @@ easy_admin:
         Mensajes:
             class: App\Entity\Mensajes
 
+        Likes:
+            class: App\Entity\Likes
+
 
