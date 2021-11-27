@@ -43,11 +43,10 @@
             <p>{% block email %}{{ login.email }}{% endblock %}</p>
         </div>
     </div>
-
-    {%  block formend %}
-
-    {% endblock %}
-
+    <div class="contenedorBoton">
+        {%  block formend %}
+        {% endblock %}
+    </div>
 
 
     <style>
@@ -105,4 +104,8 @@
         }
 
     </style>
+    {% block estiloAjuste %}
+
+    {% endblock %}
 {% endblock %}
+

@@ -28,7 +28,7 @@
                             <div class="mensaje {{ conversacion.id == request.get('id') ? 'mensajeSeleccionado' : '' }}" >
                                 <div class="fotoMensaje" style="background-image: url('{{ conversacion.remitente.galeria ? asset('images/Perfiles/' ~ conversacion.remitente.galeria.getFotoPerfil) : asset('images/fotodefecto.png') }}')"></div>
                                 <div class="infoMensaje" >
-                                    <h1>{{ conversacion.remitente.username }}</h1>
+                                    <h1>{{ conversacion.emisor.username }}</h1>
                                     <p style="font-size: 11px; color: black">Mensaje..........</p>
                                 </div>
                             </div>

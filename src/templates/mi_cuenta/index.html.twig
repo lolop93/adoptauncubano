@@ -14,7 +14,7 @@
                 {% endblock %}
             </div>
         <i onclick="window.location.href = '{{ app.request.attributes.get('_route')=='perfil' ? path('ajustes') : path('perfil') }}'" class="bi bi-lateral {% block segundoIcono %}bi-gear-fill {% endblock%} bg-white align-self-start mt-3"></i>
-        <div class="contenido bg-white">
+        <div class="contenido">
             {% block contenido %}
             <p>
                 What is Lorem Ipsum?
@@ -36,6 +36,9 @@
     </div>
 
     <style>
+        .contenido{
+            background-color: #E1E1E1;
+        }
 
         .grid-menu{
             display: grid;

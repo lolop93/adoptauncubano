@@ -7,17 +7,66 @@
 
 
 {# Aqui hacemos un if rapido  en 'value' en una sola linea y ponemos por defecto el valor del usuario si existe en la base de datos sino lo dejamos en blanco #}
-{% block nombre %}  {{ form_row(form_ajustes.nombre,{ 'label' : 'Nombre','value' : login.nombre ? login.nombre : '' }) }} {% endblock %}
+{% block nombre %}  {{ form_row(form_ajustes.nombre,{ 'label' : false,'value' : login.nombre ? login.nombre : '' }) }} {% endblock %}
 
-{% block apellido1 %}  {{ form_row(form_ajustes.apellido1,{ 'label' : 'Apellido 1','value' : login.apellido1 ? login.apellido1 : ''}) }}  {% endblock %}
+{% block apellido1 %}  {{ form_row(form_ajustes.apellido1,{ 'label' : false,'value' : login.apellido1 ? login.apellido1 : ''}) }}  {% endblock %}
 
 {% block email %}  {{ form_row(form_ajustes.email,{ 'label' : false , 'value' : login.email  ? login.email : ''}) }}  {% endblock %}
 
 
 
 {%  block formend %}
-    {{ form_widget(form_ajustes.submit, { 'label': 'Save' }) }}
+    {{ form_widget(form_ajustes.submit, { 'label': 'Save'}) }}
     {{ form_end(form_ajustes) }}
 {% endblock %}
 
+{% block estiloAjuste %}
+    <style>
+        .editarAjustes a{
+            display: none;
+        }
+        .editarCampos:nth-child(3){ /*Al meter la contraseña debería ser el 4 hijo y no el tercero*/
+            box-shadow: none;
+        }
+        .contenedorBoton{
+            display: flex;
+            width: 100%;
+            justify-content: flex-end;
+            padding: 30px 50px;
+        }
+        .gridAjustes h3,p{
+            padding: 0;
 
+        }
+        h3{
+            margin: 0;
+            padding: 0;
+        }
+        .editarCampos{
+            padding-left: 30px;
+        }
+        .editarCampos>div{
+            display: flex;
+            flex-direction: column;
+        }
+        input {
+            width: 300px;
+            border-radius: 100px;
+            outline: none;
+            border: none;
+            box-shadow: 2px 2px 12px -5px rgb(0 0 0 / 31%);
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+        button{
+            background-color: #CE5353;
+            color: white;
+            border: none;
+            border-radius: 100px;
+            width: 100px;
+        }
+        button:hover{
+            background-color: darkred;
+        }
+    </style>
+{% endblock %}
