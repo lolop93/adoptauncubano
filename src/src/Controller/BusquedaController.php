@@ -118,11 +118,32 @@ class BusquedaController extends AbstractController
     public function getBusquedaPaginator(int $offset, $busqueda): Paginator{
 
 
+        $palabritas = explode(' ', $busqueda);
+
+        $querycompleta = " SELECT  u.id, u.username ,u.nombre , g.foto_perfil , a.ojos, a.color_pelo, a.nacionalidad, a.fecha_nac, a.ciudad, a.altura, a.peso, a.gustos, a.profesion, a.sexo, a.descripcion from App\Entity\User u Join App\Entity\UserAttributes a with u.atributos = a.id join App\Entity\Galeria g with g.id = u.galeria ";
+
+        $querycompleta .= "WHERE (";
+
+        count($palabritas);
+        $cont = 0;
+
+        foreach ($palabritas as $palabra){
+            $cont++; //para contar cuantos OR concatenamos
+
+            $querycompleta .= " u.username LIKE '%".$palabra."%' OR u.nombre LIKE '%".$palabra."%' OR a.ojos LIKE '%".$palabra."%' OR a.color_pelo LIKE '%".$palabra."%' OR a.ciudad LIKE '%".$palabra."%' OR a.gustos LIKE '%".$palabra."%' OR a.profesion LIKE '%".$palabra."%' OR a.descripcion LIKE '%".$palabra."%' ";
+
+            if($cont <  count($palabritas)){
+                $querycompleta .= " OR ";
+            }
+        }
+        $querycompleta .= ")";
+
+
         $query = $this->getDoctrine()->getManager()
-            ->createQuery(" SELECT  u.id, u.username ,u.nombre , g.foto_perfil , a.ojos, a.color_pelo, a.nacionalidad, a.fecha_nac, a.ciudad, a.altura, a.peso, a.gustos, a.profesion, a.sexo, a.descripcion from App\Entity\User u Join App\Entity\UserAttributes a with u.atributos = a.id join App\Entity\Galeria g with g.id = u.galeria WHERE u.username LIKE :query ")
+            ->createQuery($querycompleta)
             ->setMaxResults(self::PAGINATOR_PER_PAGE)
-            ->setFirstResult($offset)
-            ->setParameter('query', '%' . $busqueda . '%');
+            ->setFirstResult($offset);
+            //->setParameter('query', '%' . $busqueda . '%');
 
 
         return new Paginator($query);
