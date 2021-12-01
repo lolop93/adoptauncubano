@@ -9,6 +9,7 @@
 
             <div class="encabezado">
                 <h1>Perfil</h1>
+                <div class="likeContainer"><i class="big bi bi-heart-fill {{   user.id in likesTotales ? 'matchOk' : 'matchKo' }}" data-id-match="{{ user.id }}" ></i></div>
             </div>
 
 
@@ -150,6 +151,30 @@
             color: white;
             font-size: 36px;
             font-weight: bold;
+        }
+        .likeContainer{
+            position: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            right: 20px;
+            height: 50px;
+            width: 50px;
+            background-color: white;
+            border-radius: 100px;
+            font-size: 28px;
+            padding-top: 7px;
+            box-shadow: 0px 4px 6px -1px rgb(0 0 0 / 60%);
+        }
+        .matchKo{
+            border:none;
+            border-radius: 100px;
+            color: gray;
+        }
+        .matchOk{
+            border:none;
+            border-radius: 100px;
+            color: #CE5353;
         }
         .fotoPerfil{
             width: 100%;

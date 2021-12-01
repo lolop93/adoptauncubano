@@ -10,6 +10,7 @@
     {%  if user is not null %}
         <div class="gridContenido mx-auto" style="width: 85%; margin-top: 50px">
             <div class="cabecera">
+                <div class="likeContainer"><i class="big bi bi-heart-fill {{   user.id in likesTotales ? 'matchOk' : 'matchKo' }}" data-id-match="{{ user.id }}" ></i></div>
                 <div class="fotoGrid">
                     {% if user.galeria and user.galeria.getFotoPerfil %}
                         <div class="imagenUsuario m-2 " style="background-image: url({{ asset('images/Perfiles/' ~ user.galeria.getFotoPerfil) }});"></div>
@@ -23,7 +24,7 @@
                         {% if user and user.nombre %}
                             {{ user.nombre }}
                         {% else %}
-                            Marta
+                            Sin Nombre
                         {% endif %}
                     </h1>
                     <p class="m-1" >{{  user.atributos and user.atributos.getNacionalidad ? user.atributos.getNacionalidad|country_name : "Nacionalidad no definida" }}</p>
@@ -134,6 +135,32 @@
             box-shadow: 0px 3px 23px 10px rgb(0 0 0 / 31%);
             border-radius: 20px 20px 0 0;
         }
+        .likeContainer{
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            top: 20px;
+            right: 20px;
+            height: 85px;
+            width: 85px;
+            background-color: white;
+            border-radius: 100px;
+            font-size: 48px;
+            line-height: 0;
+        }
+        .matchKo{
+            border:none;
+            border-radius: 100px;
+            color: gray;
+            height: 35px;
+        }
+        .matchOk{
+            height: 35px;
+            border:none;
+            border-radius: 100px;
+            color: #CE5353;
+        }
         .imagenUsuario{
             width:300px;
             height: 300px;
@@ -170,6 +197,9 @@
             display: flex;
             justify-content: space-between;
             margin-right: 200px;
+        }
+        .atributosRow div{
+            width: 350px;
         }
         .gustosDescripcion{
             margin: 30px 30px 30px calc(30px + 0.5rem);

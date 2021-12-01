@@ -41,6 +41,7 @@
             <div class="res_descripcion">
                 <h6 >Descripción</h6>
                 <p>{{  resultado.descripcion ? resultado.descripcion : "none" }}</p></div>
+            <button class="{{resultado.id in likesTotales ? 'matchOk' : 'matchKo' }}" data-id-match="{{ resultado.id }}">LIKE</button>
 
         </div>
 
@@ -187,6 +188,28 @@
             font-weight: 600;
         }
 
+        .matchKo{
+            margin-right: 20px;
+            width: 25%;
+            justify-self: flex-end;
+            grid-column: 4/5;
+            border:none;
+            border-radius: 100px;
+            background-color: #4c5367;
+            color: white;
+            height: 35px;
+        }
+        .matchOk{
+            height: 35px;
+            margin-right: 20px;
+            width: 25%;
+            justify-self: flex-end;
+            grid-column: 4/5;
+            border:none;
+            border-radius: 100px;
+            background-color: #CE5353;
+            color: white;
+        }
 
     </style>
 
