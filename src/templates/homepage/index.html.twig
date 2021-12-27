@@ -59,13 +59,14 @@
 
     <div class=" mt-5">
         <div id="carouselExampleFade" class="carousel slide carousel-fade " data-bs-ride="carousel">
-            <div class="carousel-inner mx-auto" style="width: 80%">
 
+            <div class="carousel-inner mx-auto" style="width: 80%">
 
                 {% for i in 0..2 %} {# Creamos tantos slides como queramos de 6 en 6 #}
                     {% set cont = 0 %} {#  contador creado para aumentar en 6 el rango del slice del for de usuarios pero aun no hay suficientes usuarios #}
                     <div class="carousel-item {{ i == 0 ? 'active' : '' }}">
-                        <div class=" gridUsers p-4 align-items-center justify-content-center bg-white mx-auto" style="border-radius: 10px; padding: 3rem !important; " >
+                        <h1 style="color: white">Lista de usuarios</h1>
+                        <div class=" gridUsers p-4 align-items-center justify-content-center bg-white mx-auto" style="border-radius: 20px; padding: 3rem !important; " >
                             {% if users|length > 0 %}
                                 {% for user in users|slice(0+i, 6) %}
 
@@ -108,7 +109,7 @@
     </div>
 
 
-    <div class=" mt-5 bg-white  rounded p-4 w-75 mx-auto " >
+   <!-- <div class=" mt-5 bg-white  rounded p-4 w-75 mx-auto " >
         <div class=" mb-2 d-flex flex-wrap">
             <div class="col-lg-6 col-12 selectores  d-flex align-items-center ">
                 <div class="col-2 d-flex justify-content-center ">
@@ -162,15 +163,16 @@
         </div>
 
     </div>
-
-    <div class="">
-        <div class="gridConsultas mt-5 bg-white p-4 rounded mx-auto w-75">
+    -->
+    <div style="margin-bottom: 50px">
+        <h1 style="color: white;margin-left: 250px; margin-top: 20px">Últimos usuarios</h1>
+        <div class="gridConsultas bg-white p-4 mx-auto w-75">
             {% if users|length > 0 %}
                 {% for userConsultas in users|slice(0, 3) %}
-                    <div class="imagenUser mx-auto  " style="background-image: url({{  userConsultas.galeria ? asset('images/Perfiles/' ~ userConsultas.galeria.getFotoPerfil) : asset('images/fotodefecto.png') }});"></div>
+                    <div class="imagenUser" style="background-image: url({{  userConsultas.galeria ? asset('images/Perfiles/' ~ userConsultas.galeria.getFotoPerfil) : asset('images/fotodefecto.png') }});"></div>
                 {% endfor %}
                 {% for userConsultas in users|slice(0, 3) %}
-                    <h5 class=" text-start ">{{ userConsultas.nombre }}</h5>
+                    <h5 >{{ userConsultas.nombre }}</h5>
                 {% endfor %}
                 {% for userConsultas in users|slice(0, 3) %}
                     <p class="card-text text-start">Nacionalidad</p>
@@ -178,7 +180,7 @@
                 {% for userConsultas in users|slice(0, 3) %}
                     <p class="card-text text-start">Edad</p>
                 {% endfor %}
-                <button class="botonConsultas">Ver mas</button>
+                <button class="botonConsultas">Ver más</button>
 
             {% else %}
                 <div>No hay usuarios disponibles</div>
@@ -271,7 +273,10 @@
             display: grid;
             grid-template-columns: repeat(3,1fr);
             grid-auto-rows: minmax(max-content, auto);
-            justify-items: start;
+            justify-items: center;
+            border-radius: 20px;
+
+
         }
 
         .botonConsultas{
@@ -288,6 +293,17 @@
             margin-bottom: 10px;
         }
 
+        .botonConsultas{
+            background-color: #CE5353;
+            color: white;
+            border: none;
+            border-radius: 100px;
+            width: 100px;
+            box-shadow: 5px 3px 8px 1px rgb(0 0 0 / 33%);
+        }
+
+        .botonConsultas:hover{
+            background-color: darkred;
 
     </style>
 
