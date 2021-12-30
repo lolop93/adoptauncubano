@@ -19,13 +19,13 @@ class BusquedaController extends AbstractController
     public const PAGINATOR_PER_PAGE = 5;
 
     #[Route('/busqueda', name: 'busqueda', methods: ['GET','POST'])]
-    public function index(MobileDetector $pantalla, Request $request, LikesRepository $likesRepository): Response
+    public function index(MobileDetector $pantalla, Request $request /*, LikesRepository $likesRepository*/): Response
     {
         $login = $this->get('security.token_storage')->getToken()->getUser();
         $query = $request->query->get('busqueda');
         $offset = max(0, $request->query->getInt('offset', 0));
-        $likes = $likesRepository->findAll();
-        $likesRecibidos = $login->getLikesRecibidos();
+        //$likes = $likesRepository->findAll();
+        //$likesRecibidos = $login->getLikesRecibidos();
         $likesDados = $login->getLikesDados();
 
         if($likesDados->count() > 0){//comprobamos que ha dado me gusta a alguien al menos
