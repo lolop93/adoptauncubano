@@ -38,7 +38,7 @@ class HomepageController extends AbstractController
             $likesTotales = array(); //creamos un array vacio
         }
 
-
+        shuffle($users);//randomizamos usuarios para mostrar en home
 
         if($pantalla->isMobile() && !$pantalla->isTablet()){
             return $this->render('homepage/indexMobile.html.twig', [
