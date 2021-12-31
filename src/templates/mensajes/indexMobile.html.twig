@@ -26,7 +26,7 @@
                     {% else %}
                         <a href="{{ path('conversaciones',{id:conversacion.id}) }}" style=" text-decoration: none;">
                             <div class="mensaje {{ conversacion.id == request.get('id') ? 'mensajeSeleccionado' : '' }}" >
-                                <div class="fotoMensaje" style="background-image: url('{{ conversacion.remitente.galeria ? asset('images/perfiles/' ~ conversacion.emisor.galeria.getFotoPerfil) : asset('images/fotodefecto.png') }}')"></div>
+                                <div class="fotoMensaje" style="background-image: url('{{ conversacion.emisor.galeria ? asset('images/perfiles/' ~ conversacion.emisor.galeria.getFotoPerfil) : asset('images/fotodefecto.png') }}')"></div>
                                 <div class="infoMensaje" >
                                     <h1>{{ conversacion.emisor.username }}</h1>
                                     <p style="font-size: 11px; color: black">Mensaje..........</p>
