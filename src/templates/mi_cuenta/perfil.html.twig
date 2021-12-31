@@ -155,7 +155,7 @@
     <div class="gridContenido">
         <div class="fotoGrid mt-3 mx-auto">
             {% if login.galeria and login.galeria.getFotoPerfil %}
-                <div class="imagenUsuario m-2 " style="background-image: url({{ asset('images/Perfiles/' ~ login.galeria.getFotoPerfil) }});"></div>
+                <div class="imagenUsuario m-2 " style="background-image: url({{ asset('images/perfiles/' ~ login.galeria.getFotoPerfil) }});"></div>
             {% else %}
                 <p>Sin foto de perfil</p>
             {% endif %}
@@ -239,7 +239,7 @@
                 {% if login.galeria %}
 
                     {% if login.galeria.getFotoPerfil %}
-                        <div class="imagenUsuario imagenPerfil m-2 d-flex flex-column justify-content-end fotoAjaxOk" id="fotoPerfil" data-nombre-foto="{{ login.galeria.getFotoPerfil }}" data-foto-perfil="true" style="background-image: url({{ asset('images/Perfiles/' ~ login.galeria.getFotoPerfil) }});">
+                        <div class="imagenUsuario imagenPerfil m-2 d-flex flex-column justify-content-end fotoAjaxOk" id="fotoPerfil" data-nombre-foto="{{ login.galeria.getFotoPerfil }}" data-foto-perfil="true" style="background-image: url({{ asset('images/perfiles/' ~ login.galeria.getFotoPerfil) }});">
                             {% block fotoAjaxOk %}{% endblock %}
                             <p class="p-1 pe-4 ps-2 text-white mb-2 align-self-start cartelRojoIzq">Foto Perfil</p>
                         </div>
@@ -251,7 +251,7 @@
 
                     {% for i in 0..4 %}
                         {% if i < login.galeria.getGaleria|length %}
-                            <div class="imagenUsuario m-2 d-flex flex-column justify-content-end fotoAjaxOk" id="foto{{i}}" data-nombre-foto="{{ login.galeria.getGaleria[i] }}" data-foto-perfil="false" style="background-image: url({{ asset('images/Perfiles/' ~ login.galeria.getGaleria[i]) }});">
+                            <div class="imagenUsuario m-2 d-flex flex-column justify-content-end fotoAjaxOk" id="foto{{i}}" data-nombre-foto="{{ login.galeria.getGaleria[i] }}" data-foto-perfil="false" style="background-image: url({{ asset('images/perfiles/' ~ login.galeria.getGaleria[i]) }});">
                                 {{ block('fotoAjaxOk') }}
                             </div>
                         {% else %}

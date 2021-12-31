@@ -71,7 +71,7 @@
                                 {% for user in users|slice(0+i, 6) %}
 
                                     <div class="">
-                                        <a href="{{ path('perfiles',{id:user.id}) }}"><div class="imagenUser mx-auto " style="background-image: url({{  user.galeria ? asset('images/Perfiles/' ~ user.galeria.getFotoPerfil) : asset('images/fotodefecto.png') }});"></div></a>
+                                        <a href="{{ path('perfiles',{id:user.id}) }}"><div class="imagenUser mx-auto " style="background-image: url({{  user.galeria ? asset('images/perfiles/' ~ user.galeria.getFotoPerfil) : asset('images/fotodefecto.png') }});"></div></a>
                                         <div class="mt-2 mb-1 d-flex flex-wrap justify-content-center">
                                             <div class="me-4">
                                                 <h5 class="  " >{{ user.nombre }}</h5>
@@ -141,7 +141,7 @@
                 {% if users|length > 0 %}
                     {% for user in users|slice(0, 5) %}
                         <div class=" ">
-                            <div class="imagenUser mx-auto" style="background-image: url({{  user.galeria ? asset('images/Perfiles/' ~ user.galeria.getFotoPerfil) : asset('images/fotodefecto.png') }});"></div>
+                            <div class="imagenUser mx-auto" style="background-image: url({{  user.galeria ? asset('images/perfiles/' ~ user.galeria.getFotoPerfil) : asset('images/fotodefecto.png') }});"></div>
                             <div class="mt-2 mb-1 ms-3 me-3 d-flex flex-wrap">
                                 <div class="col-lg-7 col-12">
                                     <h5 class=" text-start">{{ user.nombre }}</h5>
@@ -169,7 +169,7 @@
         <div class="gridConsultas bg-white p-4 mx-auto w-75">
             {% if users|length > 0 %}
                 {% for userConsultas in users|slice(0, 3) %}
-                    <div class="imagenUser" style="background-image: url({{  userConsultas.galeria ? asset('images/Perfiles/' ~ userConsultas.galeria.getFotoPerfil) : asset('images/fotodefecto.png') }});"></div>
+                    <div class="imagenUser" style="background-image: url({{  userConsultas.galeria ? asset('images/perfiles/' ~ userConsultas.galeria.getFotoPerfil) : asset('images/fotodefecto.png') }});"></div>
                 {% endfor %}
                 {% for userConsultas in users|slice(0, 3) %}
                     <h5 >{{ userConsultas.nombre }}</h5>

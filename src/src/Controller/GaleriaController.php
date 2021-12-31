@@ -65,8 +65,8 @@ class GaleriaController extends AbstractController
             $user = $this->getUser();
             $foto = $request->files->get('file');
             $filename = md5(uniqid()).'.'.$foto->guessExtension();
-            $pathFoto = $this->getParameter('kernel.project_dir') .'\\public\images\Perfiles\\';
-            $urlPhoto =  $request->getBasePath() .'/images/Perfiles/';
+            $pathFoto = $this->getParameter('kernel.project_dir') .'\\public\images\perfiles\\';
+            $urlPhoto =  $request->getBasePath() .'/images/perfiles/';
 
             $foto->move($pathFoto, $filename);
 
@@ -162,8 +162,8 @@ class GaleriaController extends AbstractController
             $user = $this->getUser();
             $foto = $request->files->get('file');
             $filename = md5(uniqid()).'.'.$foto->guessExtension();
-            $pathFoto = $this->getParameter('kernel.project_dir') .'\\public\images\Perfiles\\';
-            $urlPhoto =  $request->getBasePath() .'/images/Perfiles/';
+            $pathFoto = $this->getParameter('kernel.project_dir') .'\\public\images\perfiles\\';
+            $urlPhoto =  $request->getBasePath() .'/images/perfiles/';
 
             $foto->move($pathFoto, $filename);
 

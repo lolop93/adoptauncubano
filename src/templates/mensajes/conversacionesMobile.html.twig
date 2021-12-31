@@ -5,7 +5,7 @@
     <div class="chatHeader">
         <div onclick="window.location.href = '{{ path('mensajes') }}'" class="patras">
             <i class="bi bi-arrow-left"></i>
-            <div class="imgUser" style="background-image: url('{{asset(fotOtro == 'fotodefecto.png' ? 'images/' ~ fotOtro : 'images/Perfiles/' ~ fotOtro) }}');margin-right: 10px"></div>
+            <div class="imgUser" style="background-image: url('{{asset(fotOtro == 'fotodefecto.png' ? 'images/' ~ fotOtro : 'images/perfiles/' ~ fotOtro) }}');margin-right: 10px"></div>
         </div>
         <h1>{{ nombreOtro }}</h1>
         <i class="bi bi-three-dots-vertical" id="flag1"></i>

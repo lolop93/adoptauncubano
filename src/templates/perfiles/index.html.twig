@@ -13,7 +13,7 @@
                 <div class="likeContainer"><i class="big bi bi-heart-fill {{   user.id in likesTotales ? 'matchOk' : 'matchKo' }}" data-id-match="{{ user.id }}" ></i></div>
                 <div class="fotoGrid">
                     {% if user.galeria and user.galeria.getFotoPerfil %}
-                        <div class="imagenUsuario m-2 " style="background-image: url({{ asset('images/Perfiles/' ~ user.galeria.getFotoPerfil) }});"></div>
+                        <div class="imagenUsuario m-2 " style="background-image: url({{ asset('images/perfiles/' ~ user.galeria.getFotoPerfil) }});"></div>
                     {% else %}
                         <p>Sin foto de perfil</p>
                     {% endif %}
@@ -84,7 +84,7 @@
                     {% if user.galeria %}
 
                         {% if user.galeria.getFotoPerfil %}
-                            <div class="imagenUsuario m-2 d-flex flex-column justify-content-end" style="background-image: url({{ asset('images/Perfiles/' ~ user.galeria.getFotoPerfil) }});">
+                            <div class="imagenUsuario m-2 d-flex flex-column justify-content-end" style="background-image: url({{ asset('images/perfiles/' ~ user.galeria.getFotoPerfil) }});">
                                 <p class="p-1 pe-4 ps-2 text-white mb-2 align-self-start">Foto Perfil</p>
                             </div>
                         {% else %}
@@ -93,7 +93,7 @@
 
                         {% for i in 0..4 %}
                             {% if i < user.galeria.getGaleria|length %}
-                                <div class="imagenUsuario m-2 " style="background-image: url({{ asset('images/Perfiles/' ~ user.galeria.getGaleria[i]) }});"></div>
+                                <div class="imagenUsuario m-2 " style="background-image: url({{ asset('images/perfiles/' ~ user.galeria.getGaleria[i]) }});"></div>
                             {% else %}
                                 <div class="imagenUsuario m-2 " style="background-image: url({{ asset('images/fotodefecto.png') }});"></div>
                             {% endif %}

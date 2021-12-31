@@ -16,7 +16,7 @@
 
                             <div class="">
 
-                                <div class="fotoPerfil" style="background-image:  url({{  user.galeria ? asset('images/Perfiles/' ~ user.galeria.getFotoPerfil) : asset('images/fotodefecto.png') }}); background-size: cover; background-position: center">
+                                <div class="fotoPerfil" style="background-image:  url({{  user.galeria ? asset('images/perfiles/' ~ user.galeria.getFotoPerfil) : asset('images/fotodefecto.png') }}); background-size: cover; background-position: center">
                                     <a href="{{ path('perfiles',{id:user.id}) }}"><i class="bi bi-eye-fill"></i></a>
                                     <div class="infoCard">
                                         <h1>{{ user.nombre ? user.nombre : 'noname' }} </h1>
