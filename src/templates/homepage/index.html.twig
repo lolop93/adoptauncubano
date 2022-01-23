@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
 
+
 {% block title %}Inicio - Adopta un Cubano{% endblock %}
 
 {% block header %}
@@ -46,6 +47,10 @@
         //JS para el selector de rango doble
         //----------------------------------------
 
+        //share de redes sociales
+
+
+
     </script>
 {%  endblock %}
 
@@ -53,8 +58,21 @@
 
 {% block body %}
     {{ parent() }}
+<script>
+    function shareBubble(){
+        var whats = document.getElementById('shareWhatsapp');
+        var face = document.getElementById('shareFacebook');
+        var shareButton = document.getElementById('shareRRSS');
+        shareButton.classList.toggle('shareRRSSActive');
+        face.classList.toggle('shareWhatsActive');
+        whats.classList.toggle('shareFaceActive');
 
+    }
+</script>
 
+    <div id="shareRRSS" onclick="shareBubble()"><i class="bi bi-share-fill"></i></div>
+    <div id="shareFacebook"><a href="https://www.facebook.com/sharer/sharer.php?u=adoptauncubano.com" target="_blank"><i class="bi bi-facebook"></i></a></div>
+    <div id="shareWhatsapp"><a href="https://wa.me/?text=adoptauncubano.com" data-action="share/whatsapp/share"><i class="bi bi-whatsapp"></i></a></div>
 
 
     <div class=" mt-5">
@@ -189,6 +207,95 @@
     </div>
 
     <style>
+
+        .shareRRSSActive{
+            background-color: #592626 !important;
+            width: 50px !important;
+            height: 50px!important;
+            font-size: 20px!important;
+            right: 45px!important;
+            top: 110px!important;
+
+
+        }
+        #shareRRSS{
+            display: flex;
+            position: fixed;
+            top: 100px;
+            right: 30px;
+            background-color: #CE5353;
+            color: white;
+            width: 75px;
+            height: 75px;
+            border-radius: 100px;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            padding-right: 8px;
+            padding-top: 5px;
+            z-index: 1000;
+
+        }
+
+        #shareRRSS:hover{
+            color: gray;
+            cursor: pointer;
+        }
+        .shareWhatsActive{
+            display: flex!important;
+        }
+        #shareWhatsapp{
+            display: none;
+            position: fixed;
+            top: 175px;
+            right: 32px;
+            background-color: #CE5353;
+            color: white;
+            width: 75px;
+            height: 75px;
+            border-radius: 100px;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            padding-top: 4px;
+            padding-right: 1px;
+            z-index: 999;
+
+        }
+        #shareWhatsapp a{
+            color: white;
+        }
+        #shareWhatsapp a:hover{
+            color: gray;
+        }
+       .shareFaceActive{
+           display: flex!important;
+       }
+        #shareFacebook{
+            display: none;
+            position: fixed;
+            top: 260px;
+            right: 32px;
+            background-color: #CE5353;
+            color: white;
+            width: 75px;
+            height: 75px;
+            border-radius: 100px;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            padding-top: 4px;
+            padding-right: 1px;
+            z-index: 999;
+
+        }
+        #shareFacebook a{
+            color: white;
+        }
+        #shareFacebook a:hover{
+            color: gray;
+        }
+
         .contenedor{
             display: flex;
             flex-direction: column;
