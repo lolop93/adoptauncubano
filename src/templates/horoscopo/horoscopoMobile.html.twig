@@ -1,0 +1,26 @@
+{%  extends 'baseMobile.html.twig' %}
+{% block title %}Horóscopo - Adopta un cubano{% endblock %}
+{% block share %}
+{% endblock %}
+{% block body %}
+    <div class="cuerpo">
+
+        <table cellpadding="0" cellspacing="0" border="0" style="width: 100%;height: 80vh; background-color: white" align="center"><tr><td><iframe src="https://fb.mon-horoscope-du-jour.com/webmaster_es/content_large.php" name="content" id="content" width="100%" height="100%" marginwidth="0" marginheight="0" scrolling="auto" frameborder="0"></iframe></td></table>
+
+
+    </div>
+
+
+    <style>
+        .main-content{
+            margin-top: 40px !important;
+        }
+        .cuerpo{
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            height: max-content;
+        }
+    </style>
+
+{% endblock %}
