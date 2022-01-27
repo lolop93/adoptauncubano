@@ -35,6 +35,7 @@
 
 
     <body>
+
         <header class=" text-white " style="background-color:rgba(0, 0, 0, 0.8); padding: 10px">
             {% block header %}
                 <div class="container-fluid d-flex flex-row align-items-center">
@@ -75,13 +76,42 @@
 
                 </div>
             {% endblock %}
+
+
+
         </header>
 
 
+        <script>
+            function shareBubble(){
+                var whats = document.getElementById('shareWhatsapp');
+                var face = document.getElementById('shareFacebook');
+                var shareButton = document.getElementById('shareRRSS');
+                shareButton.classList.toggle('shareRRSSActive');
+                face.classList.toggle('shareWhatsActive');
+                whats.classList.toggle('shareFaceActive');
+            }
+        </script>
 
-        <div class="main-content"  >
+        <div id="shareRRSS" onclick="shareBubble()"><i class="bi bi-share-fill"></i></div>
+        <div id="shareFacebook"><a href="https://www.facebook.com/sharer/sharer.php?u=adoptauncubano.com" target="_blank"><i class="bi bi-facebook"></i></a></div>
+        <div id="shareWhatsapp"><a href="https://wa.me/?text=adoptauncubano.com" data-action="share/whatsapp/share"><i class="bi bi-whatsapp"></i></a></div>
+
+
+        {% block subheader %}
+            <div class="subheader">
+                <a href="{{ path('horoscopo') }}"><div class="subheaderItem" ><div id="horoscopo"></div>Oroscopo</div></a>
+                <div class="subheaderItem"><div id="matador"></div>Matador de la semana</div>
+                <div class="subheaderItem"><i class="bi bi-people-fill" style="color:white; font-size: 28px; margin-right: 10px"></i>Últimos perfiles</div>
+                <div class="subheaderItem">Publicidad</div>
+
+
+            </div>
+        {% endblock %}
+        <div class="main-content"  style="margin-top: 60px">
 
             {% block body %}
+
 
                 <style>
                     @import "//netdna.bootstrapcdn.com/font-awesome/3.0/css/font-awesome.css"; {# placeholder de la importación del icono de la barra de busqueda#}
@@ -121,6 +151,130 @@
                 <style>
 
 
+                    .subheader{
+                        display: flex;
+                        width: max-content;
+                        height: max-content;
+                        background-color: black;
+                        opacity: 80%;
+                        position: sticky;
+                        top:68px;
+                        z-index: 10;
+
+                    }
+
+                    .subheaderItem{
+                        height: 50px;
+                        display: flex;
+                        padding: 0px 20px;
+                        align-items: center;
+                        color: white;
+                        font-size: 11px;
+                    }
+                    #matador{
+                        width: 50px;
+                        height: 30px;
+                        margin-right: 10px;
+                        background-image: url({{ asset('images/icons/matador.png')}});
+                        background-position: center;
+                        background-size: cover;
+                    }
+                    #horoscopo{
+                        width: 30px;
+                        height: 30px;
+                        margin-right: 10px;
+                        background-image: url({{ asset('images/icons/horoscopo.png')}});
+                        background-position: center;
+                        background-size: cover;
+                    }
+
+                    .shareRRSSActive{
+                        background-color: #592626 !important;
+                        width: 50px !important;
+                        height: 50px!important;
+                        font-size: 20px!important;
+                        right: 45px!important;
+                        top: 230px!important;
+
+
+                    }
+                    #shareRRSS{
+                        display: flex;
+                        position: fixed;
+                        top: 220px;
+                        right: 30px;
+                        background-color: #CE5353;
+                        color: white;
+                        width: 75px;
+                        height: 75px;
+                        border-radius: 100px;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 36px;
+                        padding-right: 8px;
+                        padding-top: 5px;
+                        z-index: 1000;
+
+                    }
+
+                    #shareRRSS:hover{
+                        color: gray;
+                        cursor: pointer;
+                    }
+                    .shareWhatsActive{
+                        display: flex!important;
+                    }
+                    #shareWhatsapp{
+                        display: none;
+                        position: fixed;
+                        top: 295px;
+                        right: 32px;
+                        background-color: #CE5353;
+                        color: white;
+                        width: 75px;
+                        height: 75px;
+                        border-radius: 100px;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 36px;
+                        padding-top: 4px;
+                        padding-right: 1px;
+                        z-index: 999;
+
+                    }
+                    #shareWhatsapp a{
+                        color: white;
+                    }
+                    #shareWhatsapp a:hover{
+                        color: gray;
+                    }
+                    .shareFaceActive{
+                        display: flex!important;
+                    }
+                    #shareFacebook{
+                        display: none;
+                        position: fixed;
+                        top: 380px;
+                        right: 32px;
+                        background-color: #CE5353;
+                        color: white;
+                        width: 75px;
+                        height: 75px;
+                        border-radius: 100px;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 36px;
+                        padding-top: 4px;
+                        padding-right: 1px;
+                        z-index: 999;
+
+                    }
+                    #shareFacebook a{
+                        color: white;
+                    }
+                    #shareFacebook a:hover{
+                        color: gray;
+                    }
 
                     footer{
                         /* Like the header, the footer will have a static height - it shouldn't grow or shrink.  /

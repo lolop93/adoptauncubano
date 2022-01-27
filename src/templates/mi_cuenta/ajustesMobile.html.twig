@@ -1,25 +1,35 @@
 {% extends 'baseMobile.html.twig' %}
 
 {% block title %} Ajustes perfil - Adopta un Cubano{% endblock %}
+{% block share %}
+{% endblock %}
 {% block body %}
+
     <div class="cuerpo" >
         <div class="encabezado">
             <h1>Ajustes</h1>
         </div>
+
+
         <div class="editarCampos">
             <h3>Nombre</h3>
-            <p>{{ login.nombre }}</p>
+            {% block nombre%} <p>{{ login.nombre }}</p>{% endblock %}
         </div>
+
 
         <div class="editarCampos">
             <h3>Apellidos</h3>
-            <p class="campoEditable">{{ login.apellido1 }}</p>
+            {%  block apellido1 %} <p class="campoEditable">{{ login.apellido1 }}</p>{% endblock %}
         </div>
+
 
         <div class="editarCampos">
             <h3>Correo electrónico</h3>
-            <p>{{ login.email }}</p>
+            {% block email %} <p>{{ login.email }}</p>{% endblock %}
         </div>
+
+    {% block password%}
+    {% endblock %}
 
         <div class="editarCampos contraseña" style="display: none">
             <h3>Contraseña</h3>
@@ -28,10 +38,25 @@
 
 
     </div>
-
+    {% block botoneditar %}<div class="botonEditar"> <i onclick="window.location.href = '{{ path('editarajustes') }}'" class="bi bi-pencil-fill"></i></div>{% endblock %}
+    {% block botonatras %}{%  endblock %}
 
 
     <style>
+        .botonEditar{
+            position: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            right: 10px;
+            top: 110px;
+            width: 50px;
+            height: 50px;
+            border-radius: 100px;
+            background-color: whitesmoke;
+            box-shadow: 0px 3px 17px 3px rgb(0 0 0 / 31%);
+            color: #CE5353;
+        }
         .cuerpo{
             width: 100%;
             height: 100%;

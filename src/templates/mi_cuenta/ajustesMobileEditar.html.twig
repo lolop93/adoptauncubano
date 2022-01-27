@@ -1,0 +1,23 @@
+{% extends '/mi_cuenta/ajustesMobile.html.twig' %}
+{%  block formstart %}
+    {{ form_start(form_ajustes, {'attr': {'class': 'formulario'}}) }}
+{% endblock %}
+{% block botoneditar %}
+{% endblock %}
+
+{% block botonatras %}<div class="botonEditar"> <i onclick="window.location.href = '{{ path('ajustes') }}'" class="bi bi-arrow-left" ></i></div> {% endblock %}
+
+
+{# Aqui hacemos un if rapido  en 'value' en una sola linea y ponemos por defecto el valor del usuario si existe en la base de datos sino lo dejamos en blanco #}
+{% block nombre %}  {{ form_row(form_ajustes.nombre,{ 'label' : false,'value' : login.nombre ? login.nombre : '' }) }} {% endblock %}
+
+{% block apellido1 %}  {{ form_row(form_ajustes.apellido1,{ 'label' : false,'value' : login.apellido1 ? login.apellido1 : ''}) }}  {% endblock %}
+
+{% block email %}  {{ form_row(form_ajustes.email,{ 'label' : false , 'value' : login.email  ? login.email : ''}) }}  {% endblock %}
+
+
+
+{%  block formend %}
+    {{ form_widget(form_ajustes.submit, { 'label': 'Save'}) }}
+    {{ form_end(form_ajustes) }}
+{% endblock %}
