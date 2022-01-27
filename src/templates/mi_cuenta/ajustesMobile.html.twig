@@ -4,6 +4,9 @@
 {% block share %}
 {% endblock %}
 {% block body %}
+    {%  block formstart %}
+
+    {% endblock %}
 
     <div class="cuerpo" >
         <div class="encabezado">
@@ -41,6 +44,10 @@
     {% block botoneditar %}<div class="botonEditar"> <i onclick="window.location.href = '{{ path('editarajustes') }}'" class="bi bi-pencil-fill"></i></div>{% endblock %}
     {% block botonatras %}{%  endblock %}
 
+    <div class="contenedorBoton">
+        {%  block formend %}
+        {% endblock %}
+    </div>
 
     <style>
         .botonEditar{
@@ -56,6 +63,7 @@
             background-color: whitesmoke;
             box-shadow: 0px 3px 17px 3px rgb(0 0 0 / 31%);
             color: #CE5353;
+            font-size: 28px;
         }
         .cuerpo{
             width: 100%;
@@ -96,6 +104,32 @@
         .editarCampos p{
             font-size: 18px;
             width: 100%;
+        }
+        .contenedorBoton{
+            position: absolute;
+            top: 180px;
+            right: 15px;
+        }
+        button{
+            background-color: #CE5353;
+            color: white;
+            border: none;
+            border-radius: 100px;
+            width: 60px;
+            height: 60px;
+        }
+        .formulario{
+            height: 100%;
+        }
+        input {
+            width: 250px;
+            border-radius: 100px;
+            outline: none;
+            border: none;
+            box-shadow: 2px 2px 12px -5px rgb(0 0 0 / 31%);
+            padding-left: 20px;
+            margin-top: 10px;
+            margin-left: 30px;
         }
 
     </style>
