@@ -3,4 +3,24 @@
     {{ parent() }}
     {{ dump() }}
 
+
+    <div class="mx-auto  m-2 d-flex flex-row">
+    <div></div>
+        <div class="">
+            <a class="wrapper-foto " href="{{ path('perfiles',{id:matador.id}) }}"><div class="foto " style="background-image: url('{{ asset('images/perfiles/' ~ matador.getGaleria.getFotoPerfil ~ '') }}');"></div></a>
+        </div>
+        <div class=""></div>
+    </div>
+
+    <style>
+        .foto{
+            background-position: center;
+            background-size: cover;
+            width: 150px ;
+            height: 200px;
+            border-radius: 10px 0 0 0;
+        }
+    </style>
+
 {% endblock %}
+
