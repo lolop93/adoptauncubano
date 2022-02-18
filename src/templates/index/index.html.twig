@@ -32,13 +32,18 @@
         <source src="{{ asset('videos/fondoIndex1.mp4') }}" type="video/mp4" />
     </video>
             <div class="contenedor">
-                <button onclick="location.href='register'" class="col align-self-center button">Regístrate</button>
+                <button onclick="location.href='register'" class="col align-self-center button reg">Regístrate</button>
 
             </div>
 </div>
 
     <style>
-
+        .reg{
+            transition: transform .2s;
+        }
+        .reg:hover{
+            transform: scale(1.1);
+        }
         .main-content{
             margin-top: 0 !important;
         }
