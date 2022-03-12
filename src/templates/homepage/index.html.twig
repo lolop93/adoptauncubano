@@ -61,7 +61,6 @@
 
 
 
-
     <div class=" mt-5">
         <div id="carouselExampleFade" class="carousel slide carousel-fade " data-bs-ride="carousel" >
 
@@ -85,8 +84,10 @@
                                             </div>
                                             <div class="">
                                                 <i class="bi bi-heart-fill {{   user.id in likesTotales ? 'matchOk' : 'matchKo' }}" data-id-match="{{ user.id }}" ></i>
-                                                <i class="bi bi-chat-left-fill" ></i>
+                                                <div>{{ time_diff(user.horaconexion| date() , 'now' | date() ) }}</div>
                                             </div>
+
+
                                         </div>
                                     </div>
 

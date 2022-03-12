@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="e4b00646-af9a-4662-9e81-aaca58640370" name="adoptauncubanoJose">
+        <fileTransfer accessType="SFTP" host="ec2-13-38-93-38.eu-west-3.compute.amazonaws.com" port="22" sshConfigId="bf0aef19-d278-42fe-a2f1-7922ae520a97" sshConfig="El de Jose &lt;username&gt;@&lt;host&gt;:&lt;port&gt;" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

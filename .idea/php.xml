@@ -103,6 +103,7 @@
       <path value="$PROJECT_DIR$/src/vendor/symfony/yaml" />
       <path value="$PROJECT_DIR$/src/vendor/twig/intl-extra" />
       <path value="$PROJECT_DIR$/src/vendor/twig/extra-bundle" />
+      <path value="$PROJECT_DIR$/src/vendor/knplabs/knp-time-bundle" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.0" />

@@ -107,6 +107,7 @@
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/yaml" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/twig/intl-extra" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/twig/extra-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/knplabs/knp-time-bundle" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
