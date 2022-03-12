@@ -169,6 +169,7 @@ class MensajesController extends AbstractController
                 'nombreOtro' => $nombreOtro,
                 'fotOtro' => $fotOtro
 
+
             ]);
         }else {
             return $this->render('mensajes/conversaciones.html.twig', [
@@ -176,7 +177,8 @@ class MensajesController extends AbstractController
                 'mensajes'=>$mensajes,
                 'conversaciones' => $conversaciones,
                 'request' => $request,
-                'nombreOtro' => $nombreOtro
+                'nombreOtro' => $nombreOtro,
+                'fotOtro' => $fotOtro
             ]);
         }
 
