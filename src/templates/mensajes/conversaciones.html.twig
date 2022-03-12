@@ -4,8 +4,17 @@
 
 {{ parent() }}
 
-
 {% endblock %}
+{% block infoCabecera %}
+    <div class="infoCabecera ms-auto me-2" style="align-items: center" >
+        <div style="margin: 0 15px">
+            <h1 style="font-size: 24px; margin: 0">{{ nombreOtro }}</h1>
+        </div>
+        <div class="imgUser" style="width: 6vh; height:6vh;background-image: url('{{asset(fotOtro == 'fotodefecto.png' ? 'images/' ~ fotOtro : 'images/perfiles/' ~ fotOtro) }}');margin-right: 10px"></div>
+        <div class="contenedorMenu"> <i class="bi bi-three-dots-vertical" id="flag1"></i></div>
+    </div>
+{% endblock %}
+
 
 {%  block contenido %}
 
@@ -118,6 +127,9 @@
         #textoChat:focus{
             border: none;
             outline: none;
+        }
+        .infoCabecera{
+            display: flex !important;
         }
         #btnEnviar{
             background-color: #CE5353;
