@@ -100,6 +100,11 @@ class User implements UserInterface
      */
     private $likesDados;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $horaconexion;
+
     public function __construct()
     {
         $this->conversacionesEmisor = new ArrayCollection();
@@ -407,6 +412,18 @@ class User implements UserInterface
                 $likesDado->setLikesFrom(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getHoraconexion(): ?\DateTimeInterface
+    {
+        return $this->horaconexion;
+    }
+
+    public function setHoraconexion(?\DateTimeInterface $horaconexion): self
+    {
+        $this->horaconexion = $horaconexion;
 
         return $this;
     }

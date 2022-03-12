@@ -493,3 +493,27 @@ function deleteFoto() {
 }
 //---------------------------------------------
 //JS ajax para eliminar fotos o subirlas
+
+
+//JS ajax para actualizar hora conexion
+//---------------------------------------------
+
+$( document ).ready(function(){
+
+    $.ajax({
+        type: "POST",
+        url: "/conectado/set",
+        data: {},
+        async:true,
+        dataType: "json",
+        success: function(data)
+        {
+
+        }
+    });
+    console.log("Conectado puesto")
+
+});
+
+//---------------------------------------------
+//JS ajax para actualizar hora conexion
