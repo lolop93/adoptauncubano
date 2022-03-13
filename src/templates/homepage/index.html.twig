@@ -80,7 +80,7 @@
                                             <div class="me-4">
                                                 <h5 class="  " >{{ user.nombre }}</h5>
                                                 <p class=" card-text text-start" >{{  user.atributos and user.atributos.getNacionalidad ? user.atributos.getNacionalidad : "Nacionalidad no definida" }}</p>
-                                                <p class="card-text text-start " >Edad</p>
+                                                <p class="card-text text-start " >{{  user.atributos and user.atributos.getFechaNac ? user.atributos.getFechaNac|date("d/m/Y") : "Edad no definida" }}</p>
                                             </div>
                                             <div class="">
                                                 <i class="bi bi-heart-fill {{   user.id in likesTotales ? 'matchOk' : 'matchKo' }}" data-id-match="{{ user.id }}" ></i>
@@ -181,12 +181,12 @@
                     <h5 >{{ userConsultas.nombre }}</h5>
                 {% endfor %}
                 {% for userConsultas in users|slice(0, 3) %}
-                    <p class="card-text text-start">Nacionalidad</p>
+                    <p class="card-text text-start">{{  userConsultas.atributos and userConsultas.atributos.getNacionalidad ? userConsultas.atributos.getNacionalidad : "Nacionalidad no definida" }}</p>
                 {% endfor %}
                 {% for userConsultas in users|slice(0, 3) %}
-                    <p class="card-text text-start">Edad</p>
+                    <p class="card-text text-start">{{ userConsultas.atributos and userConsultas.atributos.getFechaNac ? userConsultas.atributos.getFechaNac|date("d/m/Y") : "Edad no definida"  }}</p>
                 {% endfor %}
-                <button class="botonConsultas">Ver más</button>
+                <button onclick="window.open('adoptauncubano.com/busqueda')" class="botonConsultas">Ver más</button>
 
             {% else %}
                 <div>No hay usuarios disponibles</div>

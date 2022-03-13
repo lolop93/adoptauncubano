@@ -26,9 +26,12 @@
                         {% else %}
                             Sin Nombre
                         {% endif %}
+
                     </h1>
+                    <p class="m-1" style="font-weight: 0; font-size: 12px">{{ time_diff(user.horaconexion| date() , 'now' | date() ) }}</p>
+
                     <p class="m-1" >{{  user.atributos and user.atributos.getNacionalidad ? user.atributos.getNacionalidad|country_name : "Nacionalidad no definida" }}</p>
-                    <p class="m-1" >{{  login.atributos and login.atributos.getFechaNac ? edad|date("%y años") : "Edad no definida" }}</p>
+                    <p class="m-1" >{{  user.atributos and user.atributos.getFechaNac ? user.atributos.getFechaNac|date("d/m/Y") : "Edad no definida" }}</p>
                 </div>
             </div>
             <div class="listaAtributos">

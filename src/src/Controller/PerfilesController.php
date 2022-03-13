@@ -27,8 +27,7 @@ class PerfilesController extends AbstractController
         );
 
 
-        $age = new \DateTime();//Pasamos la fecha en la que nació a Edad normal
-        $a = ($login->getAtributos() && $login->getAtributos()->getFechaNac() ? date_diff($age, $login->getAtributos()->getFechaNac()) : "");
+
 
         if($likesDados->count() > 0){//comprobamos que ha dado me gusta a alguien al menos
             foreach ($likesDados as $likesDado){
@@ -44,7 +43,7 @@ class PerfilesController extends AbstractController
                 'id' => $id,
                 'login' => $login,
                 'user' => $user,
-                'edad' =>  $a,
+
                 'likesTotales' => $likesTotales,
             ]);
         }else {
@@ -52,7 +51,7 @@ class PerfilesController extends AbstractController
                 'id' => $id,
                 'login' => $login,
                 'user' => $user,
-                'edad' =>  $a,
+
                 'likesTotales' => $likesTotales,
             ]);
         }

@@ -38,6 +38,9 @@ class HomepageController extends AbstractController
             $likesTotales = array(); //creamos un array vacio
         }
 
+        $age = new \DateTime();//Pasamos la fecha en la que nació a Edad normal
+        $a = ($login->getAtributos() && $login->getAtributos()->getFechaNac() ? date_diff($age, $login->getAtributos()->getFechaNac()) : "");
+
         shuffle($users);//randomizamos usuarios para mostrar en home
 
         if($pantalla->isMobile() && !$pantalla->isTablet()){
@@ -47,6 +50,7 @@ class HomepageController extends AbstractController
                 'atributos' => $atributos,
                 'login' => $login,
                 'likesTotales' => $likesTotales,
+
             ]);
         }else {
             return $this->render('homepage/index.html.twig', [
@@ -58,6 +62,7 @@ class HomepageController extends AbstractController
                 'conversaciones' => $conversaciones,
                 'mensajes' => $mensajeslogin,
                 'todosmensajes' => $mensajes,
+
             ]);
         }
 
