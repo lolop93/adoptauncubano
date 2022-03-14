@@ -186,7 +186,7 @@
                 {% for userConsultas in users|slice(0, 3) %}
                     <p class="card-text text-start">{{ userConsultas.atributos and userConsultas.atributos.getFechaNac ? userConsultas.atributos.getFechaNac|date("d/m/Y") : "Edad no definida"  }}</p>
                 {% endfor %}
-                <button onclick="window.open('adoptauncubano.com/busqueda')" class="botonConsultas">Ver más</button>
+                <button onclick="window.open('/busqueda')" class="botonConsultas">Ver más</button>
 
             {% else %}
                 <div>No hay usuarios disponibles</div>
